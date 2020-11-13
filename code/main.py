@@ -87,7 +87,7 @@ if __name__ == "__main__":
     args = parse_args()
     if args.cfg_file is not None:
         cfg_from_file(args.cfg_file)
-
+    # GPU使う場合、引数から設定
     if args.gpu_id != -1:
         cfg.GPU_ID = args.gpu_id
     else:
@@ -120,6 +120,7 @@ if __name__ == "__main__":
 
     # Get data loader
     imsize = cfg.TREE.BASE_SIZE * (2 ** (cfg.TREE.BRANCH_NUM - 1))
+    # 前処理定義
     image_transform = transforms.Compose([
         transforms.Resize(int(imsize * 76 / 64)),
         transforms.RandomCrop(imsize),
