@@ -99,12 +99,19 @@ def train(dataloader, cnn_model, rnn_model, batch_size,
 
         if step % UPDATE_INTERVAL == 0:
             count = epoch * len(dataloader) + step
+            
+            
+            #s_cur_loss0 = s_total_loss0[0] / UPDATE_INTERVAL
+            #s_cur_loss1 = s_total_loss1[0] / UPDATE_INTERVAL
 
-            s_cur_loss0 = s_total_loss0[0] / UPDATE_INTERVAL
-            s_cur_loss1 = s_total_loss1[0] / UPDATE_INTERVAL
+            #w_cur_loss0 = w_total_loss0[0] / UPDATE_INTERVAL
+            #w_cur_loss1 = w_total_loss1[0] / UPDATE_INTERVAL
+            
+            s_cur_loss0 = s_total_loss0.item() / UPDATE_INTERVAL
+            s_cur_loss1 = s_total_loss1.item() / UPDATE_INTERVAL
 
-            w_cur_loss0 = w_total_loss0[0] / UPDATE_INTERVAL
-            w_cur_loss1 = w_total_loss1[0] / UPDATE_INTERVAL
+            w_cur_loss0 = w_total_loss0.item() / UPDATE_INTERVAL
+            w_cur_loss1 = w_total_loss1.item() / UPDATE_INTERVAL
 
             elapsed = time.time() - start_time
             print('| epoch {:3d} | {:5d}/{:5d} batches | ms/batch {:5.2f} | '
@@ -220,7 +227,7 @@ if __name__ == "__main__":
     ##########################################################################
     now = datetime.datetime.now(dateutil.tz.tzlocal())
     timestamp = now.strftime('%Y_%m_%d_%H_%M_%S')
-    output_dir = '../output/%s_%s_%s' % \
+    output_dir = '/data/Users/nakachi/stair/AttnGAN/output/%s_%s_%s' % \
         (cfg.DATASET_NAME, cfg.CONFIG_NAME, timestamp)
 
     model_dir = os.path.join(output_dir, 'Model')
@@ -249,7 +256,7 @@ if __name__ == "__main__":
         shuffle=True, num_workers=int(cfg.WORKERS))
 
     # # validation data #
-    dataset_val = TextDataset(cfg.DATA_DIR, 'test',
+    dataset_val = TextDataset(cfg.DATA_DIR, 'val', # stair用。本来はtest
                               base_size=cfg.TREE.BASE_SIZE,
                               transform=image_transform)
     dataloader_val = torch.utils.data.DataLoader(

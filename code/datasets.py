@@ -111,9 +111,13 @@ class TextDataset(data.Dataset):
         else:
             self.bbox = None
         split_dir = os.path.join(data_dir, split)
-
-        self.filenames, self.captions, self.ixtoword, \
-            self.wordtoix, self.n_words = self.load_text_data(data_dir, split)
+        
+        if data_dir.find('stair') != -1:
+            self.filenames, self.captions, self.ixtoword, \
+                self.wordtoix, self.n_words = self.load_text_data_stair(data_dir, split)
+        else:
+            self.filenames, self.captions, self.ixtoword, \
+                self.wordtoix, self.n_words = self.load_text_data(data_dir, split)
 
         self.class_id = self.load_class_id(split_dir, len(self.filenames))
         self.number_example = len(self.filenames)
@@ -175,6 +179,26 @@ class TextDataset(data.Dataset):
                     print('ERROR: the captions for %s less than %d'
                           % (filenames[i], cnt))
         return all_captions
+    
+    ## 追加
+    def load_captions_stair(self, data_dir, filenames):
+        all_captions = []
+        for i in range(len(filenames)):
+            cap_path = '%s/text/%s.txt' % (data_dir, filenames[i])
+            with open(cap_path, "r", encoding='utf-8') as f:
+                captions = f.read().split('\n')
+                cnt = 0
+                for cap in captions:
+                    all_captions.append(cap.split(' '))
+                    cnt += 1
+                    if cnt == self.embeddings_num:
+                        break
+                if cnt < self.embeddings_num:
+                    print('ERROR: the captions for %s less than %d'
+                          % (filenames[i], cnt))
+                    exit()
+        return all_captions
+
 
     def build_dictionary(self, train_captions, test_captions):
         word_counts = defaultdict(float)
@@ -247,6 +271,39 @@ class TextDataset(data.Dataset):
             captions = test_captions
             filenames = test_names
         return filenames, captions, ixtoword, wordtoix, n_words
+    
+    # 追加
+    def load_text_data_stair(self, data_dir, split):
+        filepath = os.path.join(data_dir, 'captions.pickle')
+        train_names = self.load_filenames_stair(data_dir, 'train_filenames.pickle')
+        test_names = self.load_filenames_stair(data_dir, 'val_filenames.pickle')
+        if not os.path.isfile(filepath):
+            train_captions = self.load_captions_stair(data_dir, train_names)
+            test_captions = self.load_captions_stair(data_dir, test_names)
+
+            train_captions, test_captions, ixtoword, wordtoix, n_words = \
+                self.build_dictionary(train_captions, test_captions)
+            with open(filepath, 'wb') as f:
+                pickle.dump([train_captions, test_captions,
+                             ixtoword, wordtoix], f, protocol=2)
+                print('Save to: ', filepath)
+        else:
+            with open(filepath, 'rb') as f:
+                x = pickle.load(f)
+                train_captions, test_captions = x[0], x[1]
+                ixtoword, wordtoix = x[2], x[3]
+                del x
+                n_words = len(ixtoword)
+                print('Load from: ', filepath)
+        if split == 'train':
+            # a list of list: each list contains
+            # the indices of words in a sentence
+            captions = train_captions
+            filenames = train_names
+        else:  # split=='test'
+            captions = test_captions
+            filenames = test_names
+        return filenames, captions, ixtoword, wordtoix, n_words
 
     def load_class_id(self, data_dir, total_num):
         if os.path.isfile(data_dir + '/class_info.pickle'):
@@ -258,6 +315,16 @@ class TextDataset(data.Dataset):
 
     def load_filenames(self, data_dir, split):
         filepath = '%s/%s/filenames.pickle' % (data_dir, split)
+        if os.path.isfile(filepath):
+            with open(filepath, 'rb') as f:
+                filenames = pickle.load(f)
+            print('Load filenames from: %s (%d)' % (filepath, len(filenames)))
+        else:
+            filenames = []
+        return filenames
+
+    def load_filenames_stair(self, data_dir, filename):
+        filepath = '%s/%s' % (data_dir, filename)
         if os.path.isfile(filepath):
             with open(filepath, 'rb') as f:
                 filenames = pickle.load(f)
@@ -298,7 +365,12 @@ class TextDataset(data.Dataset):
             bbox = None
             data_dir = self.data_dir
         #
-        img_name = '%s/images/%s.jpg' % (data_dir, key)
+        # stair用に編集
+        # img_name = '%s/images/%s.jpg' % (data_dir, key)
+        if 'train' in key:
+            img_name = '%s/train2014/%s.jpg' % (data_dir, key)
+        elif 'val' in key:
+            img_name = '%s/val2014/%s.jpg' % (data_dir, key)
         imgs = get_imgs(img_name, self.imsize,
                         bbox, self.transform, normalize=self.norm)
         # random select a sentence
