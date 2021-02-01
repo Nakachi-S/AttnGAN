@@ -42,7 +42,7 @@ def drawCaption(convas, captions, ixtoword, vis_size, off1=2, off2=2):
         for j in range(len(cap)):
             if cap[j] == 0:
                 break
-            word = ixtoword[cap[j]].encode('ascii', 'ignore').decode('ascii')
+            word = ixtoword[cap[j]].encode('utf-8', 'ignore').decode('utf-8')
             d.text(((j + off1) * (vis_size + off2), i * FONT_MAX), '%d:%s' % (j, word[:6]),
                    font=fnt, fill=(255, 255, 255, 255))
             sentence.append(word)
