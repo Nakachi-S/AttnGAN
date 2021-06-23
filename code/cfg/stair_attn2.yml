@@ -12,7 +12,7 @@ TREE:
 
 TRAIN:
     FLAG: True
-    NET_G: ''  # '../models/coco_AttnGAN2.pth'
+    NET_G: '/data/Users/nakachi/stair/AttnGAN/output/stair_attn2-stair_2021_02_02_10_40_53/Model/netG_epoch_30.pth'  # '../models/coco_AttnGAN2.pth'
     B_NET_D: True
     BATCH_SIZE: 14  # 32
     MAX_EPOCH: 120
