@@ -112,7 +112,7 @@ class TextDataset(data.Dataset):
             self.bbox = None
         split_dir = os.path.join(data_dir, split)
         
-        if data_dir.find('stair') != -1:
+        if data_dir.find('stair') != -1 or data_dir.find('category_split'):
             self.filenames, self.captions, self.ixtoword, \
                 self.wordtoix, self.n_words = self.load_text_data_stair(data_dir, split)
         else:
@@ -364,13 +364,12 @@ class TextDataset(data.Dataset):
         else:
             bbox = None
             data_dir = self.data_dir
-        #
-        # stair用に編集
-        # img_name = '%s/images/%s.jpg' % (data_dir, key)
+
+        image_data_dir = '/data/Users/nakachi/stair'
         if 'train' in key:
-            img_name = '%s/train2014/%s.jpg' % (data_dir, key)
+            img_name = '%s/train2014/%s.jpg' % (image_data_dir, key)
         elif 'val' in key:
-            img_name = '%s/val2014/%s.jpg' % (data_dir, key)
+            img_name = '%s/val2014/%s.jpg' % (image_data_dir, key)
         imgs = get_imgs(img_name, self.imsize,
                         bbox, self.transform, normalize=self.norm)
         # random select a sentence
