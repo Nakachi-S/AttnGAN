@@ -112,7 +112,7 @@ class TextDataset(data.Dataset):
             self.bbox = None
         split_dir = os.path.join(data_dir, split)
         
-        if data_dir.find('stair') != -1 or data_dir.find('category_split'):
+        if data_dir.find('stair') != -1 or data_dir.find('category_split') != -1:
             self.filenames, self.captions, self.ixtoword, \
                 self.wordtoix, self.n_words = self.load_text_data_stair(data_dir, split)
         else:
@@ -239,6 +239,34 @@ class TextDataset(data.Dataset):
 
         return [train_captions_new, test_captions_new,
                 ixtoword, wordtoix, len(ixtoword)]
+    
+    def build_dictionary_category_split(self, train_captions, test_captions):
+        filepath = '/home/nakachi/data/stair/captions.pickle'
+        with open(filepath, 'rb') as f:
+            x = pickle.load(f)
+            ixtoword, wordtoix = x[2], x[3]
+            del x
+
+        train_captions_new = []
+        for t in train_captions:
+            rev = []
+            for w in t:
+                if w in wordtoix:
+                    rev.append(wordtoix[w])
+            # rev.append(0)  # do not need '<end>' token
+            train_captions_new.append(rev)
+
+        test_captions_new = []
+        for t in test_captions:
+            rev = []
+            for w in t:
+                if w in wordtoix:
+                    rev.append(wordtoix[w])
+            # rev.append(0)  # do not need '<end>' token
+            test_captions_new.append(rev)
+
+        return [train_captions_new, test_captions_new,
+                ixtoword, wordtoix, len(ixtoword)]
 
     def load_text_data(self, data_dir, split):
         filepath = os.path.join(data_dir, 'captions.pickle')
@@ -280,9 +308,15 @@ class TextDataset(data.Dataset):
         if not os.path.isfile(filepath):
             train_captions = self.load_captions_stair(data_dir, train_names)
             test_captions = self.load_captions_stair(data_dir, test_names)
-
-            train_captions, test_captions, ixtoword, wordtoix, n_words = \
-                self.build_dictionary(train_captions, test_captions)
+            ## 追加
+            if data_dir.find('category_split') != -1:
+                # n_wordsがズレるため調整したやつでdictを作る
+                print('category_split process!!!!!!!!!!!!!')
+                train_captions, test_captions, ixtoword, wordtoix, n_words = \
+                    self.build_dictionary_category_split(train_captions, test_captions)
+            else:
+                train_captions, test_captions, ixtoword, wordtoix, n_words = \
+                    self.build_dictionary(train_captions, test_captions)
             with open(filepath, 'wb') as f:
                 pickle.dump([train_captions, test_captions,
                              ixtoword, wordtoix], f, protocol=2)
