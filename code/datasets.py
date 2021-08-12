@@ -112,7 +112,7 @@ class TextDataset(data.Dataset):
             self.bbox = None
         split_dir = os.path.join(data_dir, split)
         
-        if data_dir.find('stair') != -1 or data_dir.find('category_split') != -1:
+        if data_dir.find('stair') != -1 or data_dir.find('category_split') != -1 or data_dir.find('coco') != -1:
             self.filenames, self.captions, self.ixtoword, \
                 self.wordtoix, self.n_words = self.load_text_data_stair(data_dir, split)
         else:
@@ -150,8 +150,8 @@ class TextDataset(data.Dataset):
         all_captions = []
         for i in range(len(filenames)):
             cap_path = '%s/text/%s.txt' % (data_dir, filenames[i])
-            with open(cap_path, "r") as f:
-                captions = f.read().decode('utf8').split('\n')
+            with open(cap_path, "r", encoding='utf-8') as f:
+                captions = f.read().split('\n')
                 cnt = 0
                 for cap in captions:
                     if len(cap) == 0:
@@ -306,8 +306,14 @@ class TextDataset(data.Dataset):
         train_names = self.load_filenames_stair(data_dir, 'train_filenames.pickle')
         test_names = self.load_filenames_stair(data_dir, 'val_filenames.pickle')
         if not os.path.isfile(filepath):
-            train_captions = self.load_captions_stair(data_dir, train_names)
-            test_captions = self.load_captions_stair(data_dir, test_names)
+            # TODO: catergory_splitのenの場合は対応していないからする
+            if data_dir.find('coco') != -1:
+                print('coco dataset process !!!!!!!!!')
+                train_captions = self.load_captions(data_dir, train_names)
+                test_captions = self.load_captions(data_dir, test_names)
+            else:
+                train_captions = self.load_captions_stair(data_dir, train_names)
+                test_captions = self.load_captions_stair(data_dir, test_names)
             ## 追加
             if data_dir.find('category_split') != -1:
                 # n_wordsがズレるため調整したやつでdictを作る
