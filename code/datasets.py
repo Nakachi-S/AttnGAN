@@ -240,8 +240,14 @@ class TextDataset(data.Dataset):
         return [train_captions_new, test_captions_new,
                 ixtoword, wordtoix, len(ixtoword)]
     
-    def build_dictionary_category_split(self, train_captions, test_captions):
-        filepath = '/home/nakachi/data/stair/captions.pickle'
+    def build_dictionary_category_split(self, data_dir, train_captions, test_captions):
+        if '_ja' in data_dir:
+            filepath = '/home/nakachi/data/stair/captions.pickle'
+        elif '_en' in data_dir:
+            filepath = '/home/nakachi/data/coco/captions.pickle'
+        else:
+            print('ERROR: no captions.pickle')
+            exit()
         with open(filepath, 'rb') as f:
             x = pickle.load(f)
             ixtoword, wordtoix = x[2], x[3]
@@ -306,8 +312,7 @@ class TextDataset(data.Dataset):
         train_names = self.load_filenames_stair(data_dir, 'train_filenames.pickle')
         test_names = self.load_filenames_stair(data_dir, 'val_filenames.pickle')
         if not os.path.isfile(filepath):
-            # TODO: catergory_splitのenの場合は対応していないからする
-            if data_dir.find('coco') != -1:
+            if data_dir.find('coco') != -1 or data_dir.find('_en'):
                 print('coco dataset process !!!!!!!!!')
                 train_captions = self.load_captions(data_dir, train_names)
                 test_captions = self.load_captions(data_dir, test_names)
@@ -319,7 +324,7 @@ class TextDataset(data.Dataset):
                 # n_wordsがズレるため調整したやつでdictを作る
                 print('category_split process!!!!!!!!!!!!!')
                 train_captions, test_captions, ixtoword, wordtoix, n_words = \
-                    self.build_dictionary_category_split(train_captions, test_captions)
+                    self.build_dictionary_category_split(data_dir, train_captions, test_captions)
             else:
                 train_captions, test_captions, ixtoword, wordtoix, n_words = \
                     self.build_dictionary(train_captions, test_captions)
