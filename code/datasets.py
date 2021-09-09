@@ -312,7 +312,7 @@ class TextDataset(data.Dataset):
         train_names = self.load_filenames_stair(data_dir, 'train_filenames.pickle')
         test_names = self.load_filenames_stair(data_dir, 'val_filenames.pickle')
         if not os.path.isfile(filepath):
-            if data_dir.find('coco') != -1 or data_dir.find('_en'):
+            if 'coco' in data_dir or '_en' in data_dir:
                 print('coco dataset process !!!!!!!!!')
                 train_captions = self.load_captions(data_dir, train_names)
                 test_captions = self.load_captions(data_dir, test_names)
