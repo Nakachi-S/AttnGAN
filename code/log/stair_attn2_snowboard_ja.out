@@ -1,0 +1,555 @@
+Using config:
+{'B_VALIDATION': False,
+ 'CONFIG_NAME': 'attn2-stair-snowboard-ja',
+ 'CUDA': True,
+ 'DATASET_NAME': 'stair-snowboard-ja',
+ 'DATA_DIR': '/data/Users/nakachi/category_split/snowboard_ja/',
+ 'GAN': {'B_ATTENTION': True,
+         'B_DCGAN': False,
+         'CONDITION_DIM': 100,
+         'DF_DIM': 96,
+         'GF_DIM': 48,
+         'R_NUM': 3,
+         'Z_DIM': 100},
+ 'GPU_ID': 1,
+ 'RNN_TYPE': 'LSTM',
+ 'TEXT': {'CAPTIONS_PER_IMAGE': 5, 'EMBEDDING_DIM': 256, 'WORDS_NUM': 12},
+ 'TRAIN': {'BATCH_SIZE': 12,
+           'B_NET_D': True,
+           'DISCRIMINATOR_LR': 0.0002,
+           'ENCODER_LR': 0.0002,
+           'FLAG': True,
+           'GENERATOR_LR': 0.0002,
+           'MAX_EPOCH': 120,
+           'NET_E': '/data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth',
+           'NET_G': '',
+           'RNN_GRAD_CLIP': 0.25,
+           'SMOOTH': {'GAMMA1': 4.0,
+                      'GAMMA2': 5.0,
+                      'GAMMA3': 10.0,
+                      'LAMBDA': 50.0},
+           'SNAPSHOT_INTERVAL': 5},
+ 'TREE': {'BASE_SIZE': 64, 'BRANCH_NUM': 3},
+ 'WORKERS': 4}
+Load filenames from: /data/Users/nakachi/category_split/snowboard_ja//train_filenames.pickle (1170)
+Load filenames from: /data/Users/nakachi/category_split/snowboard_ja//val_filenames.pickle (533)
+category_split process!!!!!!!!!!!!!
+Save to:  /data/Users/nakachi/category_split/snowboard_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load image encoder from: /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+Load text encoder from: /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+# of netsD 3
+/home/nakachi/AttnGAN/code/miscc/config.py:103: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+/home/nakachi/miniconda3/envs/env/lib/python3.6/site-packages/torchvision/models/inception.py:77: FutureWarning: The default weight initialization of inception_v3 will be changed in future releases of torchvision. If you wish to keep the old behavior (which leads to long initialization times due to scipy/scipy#11299), please set init_weights=True.
+  ' due to scipy/scipy#11299), please set init_weights=True.', FutureWarning)
+/home/nakachi/miniconda3/envs/env/lib/python3.6/site-packages/torch/nn/modules/rnn.py:60: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
+[W TensorIterator.cpp:918] Warning: Mixed memory format inputs detected while calling the operator. The operator will output contiguous tensor even if some of the inputs are in channels_last format. (function operator())
+[0/120][97]
+                  Loss_D: 2.21 Loss_G: 656.14 Time: 65.80s
+Save G/Ds models.
+/home/nakachi/AttnGAN/code/miscc/losses.py:125: UserWarning: masked_fill_ received a mask with dtype torch.uint8, this behavior is now deprecated,please use a mask with dtype torch.bool instead. (Triggered internally at  /opt/conda/conda-bld/pytorch_1595629427286/work/aten/src/ATen/native/cuda/LegacyDefinitions.cpp:19.)
+  similarities.data.masked_fill_(masks, -float('inf'))
+/home/nakachi/AttnGAN/code/miscc/losses.py:52: UserWarning: masked_fill_ received a mask with dtype torch.uint8, this behavior is now deprecated,please use a mask with dtype torch.bool instead. (Triggered internally at  /opt/conda/conda-bld/pytorch_1595629427286/work/aten/src/ATen/native/cuda/LegacyDefinitions.cpp:19.)
+  scores0.data.masked_fill_(masks, -float('inf'))
+/home/nakachi/AttnGAN/code/trainer.py:309: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha) (Triggered internally at  /opt/conda/conda-bld/pytorch_1595629427286/work/torch/csrc/utils/python_arg_parser.cpp:766.)
+  avg_p.mul_(0.999).add_(0.001, p.data)
+errD0: 0.62 errD1: 0.67 errD2: 0.59 
+g_loss0: 10.53 g_loss1: 11.89 g_loss2: 20.49 w_loss: 303.85 s_loss: 245.16 kl_loss: 0.01 
+[1/120][97]
+                  Loss_D: 1.74 Loss_G: 585.16 Time: 63.83s
+errD0: 0.57 errD1: 0.68 errD2: 0.59 
+g_loss0: 9.94 g_loss1: 10.17 g_loss2: 20.99 w_loss: 256.26 s_loss: 256.42 kl_loss: 0.01 
+[2/120][97]
+                  Loss_D: 1.59 Loss_G: 606.38 Time: 63.94s
+errD0: 0.46 errD1: 0.58 errD2: 0.61 
+g_loss0: 10.83 g_loss1: 13.53 g_loss2: 16.63 w_loss: 269.58 s_loss: 233.50 kl_loss: 0.01 
+[3/120][97]
+                  Loss_D: 1.91 Loss_G: 526.10 Time: 63.89s
+errD0: 0.31 errD1: 0.58 errD2: 0.41 
+g_loss0: 11.39 g_loss1: 10.82 g_loss2: 21.99 w_loss: 240.41 s_loss: 210.23 kl_loss: 0.01 
+[4/120][97]
+                  Loss_D: 1.62 Loss_G: 584.80 Time: 63.92s
+errD0: 0.38 errD1: 0.51 errD2: 0.51 
+g_loss0: 15.54 g_loss1: 16.20 g_loss2: 24.69 w_loss: 285.79 s_loss: 263.50 kl_loss: 0.01 
+[5/120][97]
+                  Loss_D: 1.93 Loss_G: 490.07 Time: 64.15s
+Save G/Ds models.
+errD0: 0.47 errD1: 0.47 errD2: 1.17 
+g_loss0: 16.16 g_loss1: 15.80 g_loss2: 1.96 w_loss: 233.87 s_loss: 228.14 kl_loss: 0.01 
+[6/120][97]
+                  Loss_D: 2.88 Loss_G: 504.90 Time: 63.73s
+errD0: 0.87 errD1: 0.41 errD2: 0.60 
+g_loss0: 16.89 g_loss1: 18.20 g_loss2: 7.49 w_loss: 283.86 s_loss: 247.55 kl_loss: 0.01 
+[7/120][97]
+                  Loss_D: 2.44 Loss_G: 497.28 Time: 63.94s
+errD0: 0.35 errD1: 0.44 errD2: 0.55 
+g_loss0: 19.31 g_loss1: 6.50 g_loss2: 10.95 w_loss: 260.41 s_loss: 199.70 kl_loss: 0.01 
+[8/120][97]
+                  Loss_D: 1.38 Loss_G: 489.98 Time: 63.93s
+errD0: 0.25 errD1: 0.46 errD2: 0.76 
+g_loss0: 14.84 g_loss1: 15.77 g_loss2: 5.45 w_loss: 198.14 s_loss: 198.91 kl_loss: 0.01 
+[9/120][97]
+                  Loss_D: 2.66 Loss_G: 487.07 Time: 63.94s
+errD0: 0.38 errD1: 0.70 errD2: 0.66 
+g_loss0: 12.84 g_loss1: 17.46 g_loss2: 11.39 w_loss: 201.96 s_loss: 205.61 kl_loss: 0.01 
+[10/120][97]
+                  Loss_D: 1.33 Loss_G: 501.88 Time: 89.90s
+Save G/Ds models.
+errD0: 0.92 errD1: 0.71 errD2: 0.61 
+g_loss0: 13.73 g_loss1: 16.64 g_loss2: 11.49 w_loss: 189.26 s_loss: 221.58 kl_loss: 0.01 
+[11/120][97]
+                  Loss_D: 1.34 Loss_G: 445.96 Time: 64.02s
+errD0: 0.31 errD1: 0.33 errD2: 0.52 
+g_loss0: 14.35 g_loss1: 17.76 g_loss2: 12.42 w_loss: 111.48 s_loss: 193.48 kl_loss: 0.01 
+[12/120][97]
+                  Loss_D: 0.88 Loss_G: 481.48 Time: 63.79s
+errD0: 0.19 errD1: 0.36 errD2: 0.54 
+g_loss0: 22.35 g_loss1: 12.80 g_loss2: 12.62 w_loss: 171.07 s_loss: 201.72 kl_loss: 0.01 
+[13/120][97]
+                  Loss_D: 0.99 Loss_G: 433.43 Time: 63.63s
+errD0: 1.00 errD1: 1.00 errD2: 1.48 
+g_loss0: 15.29 g_loss1: 20.98 g_loss2: 1.83 w_loss: 175.73 s_loss: 182.80 kl_loss: 0.01 
+[14/120][97]
+                  Loss_D: 1.46 Loss_G: 308.31 Time: 63.49s
+errD0: 0.57 errD1: 0.72 errD2: 1.51 
+g_loss0: 15.14 g_loss1: 15.84 g_loss2: 8.96 w_loss: 191.12 s_loss: 186.97 kl_loss: 0.01 
+[15/120][97]
+                  Loss_D: 1.06 Loss_G: 359.66 Time: 63.46s
+Save G/Ds models.
+errD0: 0.22 errD1: 0.11 errD2: 0.47 
+g_loss0: 16.00 g_loss1: 9.64 g_loss2: 9.32 w_loss: 235.56 s_loss: 193.99 kl_loss: 0.01 
+[16/120][97]
+                  Loss_D: 1.01 Loss_G: 393.14 Time: 63.56s
+errD0: 0.10 errD1: 0.26 errD2: 0.44 
+g_loss0: 6.62 g_loss1: 12.43 g_loss2: 12.64 w_loss: 121.43 s_loss: 192.31 kl_loss: 0.01 
+[17/120][97]
+                  Loss_D: 1.34 Loss_G: 337.81 Time: 63.59s
+errD0: 0.40 errD1: 0.82 errD2: 0.90 
+g_loss0: 13.80 g_loss1: 15.43 g_loss2: 13.96 w_loss: 114.90 s_loss: 155.57 kl_loss: 0.01 
+[18/120][97]
+                  Loss_D: 1.90 Loss_G: 391.07 Time: 63.75s
+errD0: 0.07 errD1: 0.21 errD2: 0.30 
+g_loss0: 12.88 g_loss1: 9.57 g_loss2: 16.22 w_loss: 115.51 s_loss: 167.41 kl_loss: 0.01 
+[19/120][97]
+                  Loss_D: 0.77 Loss_G: 350.37 Time: 63.54s
+errD0: 0.17 errD1: 0.21 errD2: 0.17 
+g_loss0: 20.33 g_loss1: 15.04 g_loss2: 18.01 w_loss: 215.68 s_loss: 184.43 kl_loss: 0.01 
+[20/120][97]
+                  Loss_D: 0.29 Loss_G: 370.79 Time: 89.46s
+Save G/Ds models.
+errD0: 0.15 errD1: 0.24 errD2: 0.36 
+g_loss0: 13.80 g_loss1: 20.64 g_loss2: 10.34 w_loss: 131.53 s_loss: 165.82 kl_loss: 0.01 
+[21/120][97]
+                  Loss_D: 0.44 Loss_G: 358.10 Time: 63.78s
+errD0: 0.67 errD1: 0.35 errD2: 1.01 
+g_loss0: 15.94 g_loss1: 11.75 g_loss2: 9.96 w_loss: 206.99 s_loss: 184.39 kl_loss: 0.02 
+[22/120][97]
+                  Loss_D: 0.99 Loss_G: 339.68 Time: 63.66s
+errD0: 0.53 errD1: 0.24 errD2: 0.23 
+g_loss0: 17.15 g_loss1: 12.78 g_loss2: 14.78 w_loss: 127.39 s_loss: 161.09 kl_loss: 0.01 
+[23/120][97]
+                  Loss_D: 1.34 Loss_G: 391.16 Time: 63.28s
+errD0: 0.04 errD1: 0.10 errD2: 0.03 
+g_loss0: 16.32 g_loss1: 10.70 g_loss2: 14.44 w_loss: 125.59 s_loss: 165.33 kl_loss: 0.02 
+[24/120][97]
+                  Loss_D: 2.61 Loss_G: 340.08 Time: 63.56s
+errD0: 0.04 errD1: 0.11 errD2: 0.09 
+g_loss0: 27.51 g_loss1: 16.47 g_loss2: 11.18 w_loss: 103.59 s_loss: 163.83 kl_loss: 0.02 
+[25/120][97]
+                  Loss_D: 1.36 Loss_G: 363.38 Time: 63.30s
+Save G/Ds models.
+errD0: 1.08 errD1: 1.12 errD2: 0.98 
+g_loss0: 15.95 g_loss1: 15.76 g_loss2: 16.01 w_loss: 145.86 s_loss: 160.40 kl_loss: 0.01 
+[26/120][97]
+                  Loss_D: 1.18 Loss_G: 329.01 Time: 63.26s
+errD0: 0.04 errD1: 0.09 errD2: 0.26 
+g_loss0: 16.30 g_loss1: 26.22 g_loss2: 18.23 w_loss: 117.81 s_loss: 184.41 kl_loss: 0.02 
+[27/120][97]
+                  Loss_D: 1.95 Loss_G: 319.95 Time: 63.36s
+errD0: 0.19 errD1: 0.11 errD2: 0.18 
+g_loss0: 12.38 g_loss1: 9.86 g_loss2: 15.02 w_loss: 166.04 s_loss: 180.12 kl_loss: 0.02 
+[28/120][97]
+                  Loss_D: 0.99 Loss_G: 290.08 Time: 63.45s
+errD0: 0.29 errD1: 0.39 errD2: 0.87 
+g_loss0: 12.14 g_loss1: 12.58 g_loss2: 14.13 w_loss: 111.28 s_loss: 158.78 kl_loss: 0.02 
+[29/120][97]
+                  Loss_D: 0.47 Loss_G: 370.70 Time: 63.67s
+errD0: 0.21 errD1: 0.13 errD2: 0.39 
+g_loss0: 17.26 g_loss1: 10.90 g_loss2: 17.26 w_loss: 110.02 s_loss: 145.95 kl_loss: 0.02 
+[30/120][97]
+                  Loss_D: 0.56 Loss_G: 353.06 Time: 89.31s
+Save G/Ds models.
+errD0: 0.29 errD1: 0.37 errD2: 0.33 
+g_loss0: 14.50 g_loss1: 21.11 g_loss2: 16.25 w_loss: 74.80 s_loss: 173.67 kl_loss: 0.02 
+[31/120][97]
+                  Loss_D: 1.92 Loss_G: 258.25 Time: 64.02s
+errD0: 0.36 errD1: 0.59 errD2: 0.37 
+g_loss0: 14.83 g_loss1: 14.15 g_loss2: 16.62 w_loss: 138.90 s_loss: 167.60 kl_loss: 0.02 
+[32/120][97]
+                  Loss_D: 0.43 Loss_G: 330.26 Time: 63.59s
+[33/120][97]
+                  Loss_D: 0.44 Loss_G: 328.34 Time: 63.49s
+errD0: 0.20 errD1: 0.87 errD2: 0.21 
+g_loss0: 22.90 g_loss1: 14.46 g_loss2: 15.03 w_loss: 149.18 s_loss: 140.68 kl_loss: 0.02 
+[34/120][97]
+                  Loss_D: 5.57 Loss_G: 322.56 Time: 63.72s
+errD0: 0.06 errD1: 0.08 errD2: 0.16 
+g_loss0: 18.18 g_loss1: 10.99 g_loss2: 12.61 w_loss: 93.12 s_loss: 152.97 kl_loss: 0.03 
+[35/120][97]
+                  Loss_D: 2.01 Loss_G: 288.61 Time: 63.72s
+Save G/Ds models.
+errD0: 0.05 errD1: 0.18 errD2: 0.49 
+g_loss0: 16.43 g_loss1: 10.96 g_loss2: 12.62 w_loss: 109.88 s_loss: 167.45 kl_loss: 0.03 
+[36/120][97]
+                  Loss_D: 0.20 Loss_G: 276.73 Time: 63.54s
+errD0: 0.28 errD1: 0.06 errD2: 0.04 
+g_loss0: 18.16 g_loss1: 12.06 g_loss2: 16.25 w_loss: 64.61 s_loss: 132.31 kl_loss: 0.02 
+[37/120][97]
+                  Loss_D: 0.38 Loss_G: 336.25 Time: 63.68s
+errD0: 0.08 errD1: 0.16 errD2: 0.31 
+g_loss0: 16.76 g_loss1: 14.19 g_loss2: 20.97 w_loss: 118.81 s_loss: 181.76 kl_loss: 0.03 
+[38/120][97]
+                  Loss_D: 0.19 Loss_G: 344.52 Time: 63.76s
+errD0: 0.17 errD1: 0.22 errD2: 0.26 
+g_loss0: 20.27 g_loss1: 11.67 g_loss2: 12.48 w_loss: 117.32 s_loss: 157.73 kl_loss: 0.02 
+[39/120][97]
+                  Loss_D: 0.28 Loss_G: 245.58 Time: 63.66s
+errD0: 0.56 errD1: 0.24 errD2: 0.80 
+g_loss0: 13.58 g_loss1: 17.38 g_loss2: 14.09 w_loss: 121.38 s_loss: 155.44 kl_loss: 0.03 
+[40/120][97]
+                  Loss_D: 0.22 Loss_G: 306.79 Time: 63.33s
+Save G/Ds models.
+errD0: 0.25 errD1: 0.09 errD2: 0.40 
+g_loss0: 20.66 g_loss1: 10.53 g_loss2: 14.99 w_loss: 109.03 s_loss: 161.64 kl_loss: 0.02 
+[41/120][97]
+                  Loss_D: 0.97 Loss_G: 286.07 Time: 88.46s
+errD0: 0.02 errD1: 0.10 errD2: 0.05 
+g_loss0: 13.93 g_loss1: 10.28 g_loss2: 16.63 w_loss: 74.13 s_loss: 160.81 kl_loss: 0.03 
+[42/120][97]
+                  Loss_D: 1.64 Loss_G: 285.48 Time: 63.66s
+errD0: 0.06 errD1: 0.06 errD2: 0.24 
+g_loss0: 16.26 g_loss1: 14.59 g_loss2: 17.02 w_loss: 102.09 s_loss: 148.00 kl_loss: 0.02 
+[43/120][97]
+                  Loss_D: 1.80 Loss_G: 276.13 Time: 63.51s
+errD0: 0.01 errD1: 0.06 errD2: 1.89 
+g_loss0: 15.79 g_loss1: 12.73 g_loss2: 15.07 w_loss: 155.23 s_loss: 147.65 kl_loss: 0.03 
+[44/120][97]
+                  Loss_D: 0.93 Loss_G: 312.03 Time: 63.36s
+errD0: 0.11 errD1: 0.74 errD2: 3.74 
+g_loss0: 16.45 g_loss1: 11.21 g_loss2: 8.05 w_loss: 86.84 s_loss: 124.01 kl_loss: 0.03 
+[45/120][97]
+                  Loss_D: 1.28 Loss_G: 295.06 Time: 63.58s
+Save G/Ds models.
+errD0: 0.04 errD1: 0.10 errD2: 0.07 
+g_loss0: 12.91 g_loss1: 9.63 g_loss2: 10.87 w_loss: 109.34 s_loss: 147.31 kl_loss: 0.03 
+[46/120][97]
+                  Loss_D: 0.56 Loss_G: 272.41 Time: 63.24s
+errD0: 0.09 errD1: 0.54 errD2: 0.20 
+g_loss0: 10.80 g_loss1: 16.29 g_loss2: 12.86 w_loss: 88.76 s_loss: 150.82 kl_loss: 0.04 
+[47/120][97]
+                  Loss_D: 1.21 Loss_G: 290.55 Time: 63.46s
+errD0: 0.35 errD1: 0.28 errD2: 0.56 
+g_loss0: 13.55 g_loss1: 9.89 g_loss2: 16.63 w_loss: 132.05 s_loss: 143.81 kl_loss: 0.03 
+[48/120][97]
+                  Loss_D: 2.34 Loss_G: 232.66 Time: 63.37s
+errD0: 0.03 errD1: 0.03 errD2: 0.16 
+g_loss0: 19.67 g_loss1: 25.38 g_loss2: 14.87 w_loss: 77.58 s_loss: 147.43 kl_loss: 0.04 
+[49/120][97]
+                  Loss_D: 0.58 Loss_G: 282.58 Time: 63.40s
+errD0: 0.35 errD1: 0.52 errD2: 0.29 
+g_loss0: 17.53 g_loss1: 20.67 g_loss2: 16.84 w_loss: 98.69 s_loss: 161.94 kl_loss: 0.04 
+[50/120][97]
+                  Loss_D: 0.95 Loss_G: 280.31 Time: 63.57s
+Save G/Ds models.
+errD0: 0.01 errD1: 0.17 errD2: 0.08 
+g_loss0: 13.05 g_loss1: 19.77 g_loss2: 16.02 w_loss: 61.50 s_loss: 139.35 kl_loss: 0.04 
+[51/120][97]
+                  Loss_D: 0.67 Loss_G: 333.48 Time: 89.04s
+errD0: 0.73 errD1: 0.21 errD2: 0.25 
+g_loss0: 11.32 g_loss1: 29.26 g_loss2: 14.99 w_loss: 99.83 s_loss: 127.84 kl_loss: 0.04 
+[52/120][97]
+                  Loss_D: 2.94 Loss_G: 307.81 Time: 63.71s
+errD0: 0.03 errD1: 0.07 errD2: 0.11 
+g_loss0: 13.50 g_loss1: 12.76 g_loss2: 12.44 w_loss: 104.86 s_loss: 108.68 kl_loss: 0.03 
+[53/120][97]
+                  Loss_D: 1.85 Loss_G: 248.62 Time: 63.37s
+errD0: 0.01 errD1: 0.01 errD2: 0.49 
+g_loss0: 21.95 g_loss1: 17.57 g_loss2: 15.11 w_loss: 117.36 s_loss: 132.23 kl_loss: 0.04 
+[54/120][97]
+                  Loss_D: 0.33 Loss_G: 298.57 Time: 63.46s
+errD0: 0.04 errD1: 0.18 errD2: 0.29 
+g_loss0: 12.78 g_loss1: 13.33 g_loss2: 5.75 w_loss: 118.03 s_loss: 140.39 kl_loss: 0.05 
+[55/120][97]
+                  Loss_D: 3.75 Loss_G: 255.67 Time: 63.68s
+Save G/Ds models.
+errD0: 0.39 errD1: 0.12 errD2: 0.26 
+g_loss0: 11.77 g_loss1: 10.77 g_loss2: 13.76 w_loss: 49.69 s_loss: 112.37 kl_loss: 0.05 
+[56/120][97]
+                  Loss_D: 0.36 Loss_G: 294.57 Time: 63.66s
+errD0: 2.77 errD1: 1.06 errD2: 0.12 
+g_loss0: 16.56 g_loss1: 16.17 g_loss2: 9.98 w_loss: 82.65 s_loss: 148.55 kl_loss: 0.04 
+[57/120][97]
+                  Loss_D: 0.15 Loss_G: 203.03 Time: 63.88s
+errD0: 0.32 errD1: 0.23 errD2: 0.68 
+g_loss0: 13.24 g_loss1: 16.10 g_loss2: 9.07 w_loss: 104.69 s_loss: 166.79 kl_loss: 0.05 
+[58/120][97]
+                  Loss_D: 0.18 Loss_G: 245.11 Time: 63.66s
+errD0: 0.07 errD1: 0.13 errD2: 0.06 
+g_loss0: 12.43 g_loss1: 10.88 g_loss2: 11.88 w_loss: 75.83 s_loss: 123.55 kl_loss: 0.05 
+[59/120][97]
+                  Loss_D: 1.04 Loss_G: 255.07 Time: 63.60s
+errD0: 0.17 errD1: 0.45 errD2: 0.51 
+g_loss0: 11.78 g_loss1: 9.59 g_loss2: 13.33 w_loss: 103.26 s_loss: 162.97 kl_loss: 0.06 
+[60/120][97]
+                  Loss_D: 3.71 Loss_G: 246.58 Time: 63.64s
+Save G/Ds models.
+errD0: 0.02 errD1: 0.05 errD2: 0.04 
+g_loss0: 21.71 g_loss1: 16.61 g_loss2: 13.76 w_loss: 88.36 s_loss: 121.15 kl_loss: 0.05 
+[61/120][97]
+                  Loss_D: 0.88 Loss_G: 214.86 Time: 88.64s
+errD0: 0.48 errD1: 0.19 errD2: 0.39 
+g_loss0: 13.79 g_loss1: 10.07 g_loss2: 11.53 w_loss: 95.83 s_loss: 148.34 kl_loss: 0.06 
+[62/120][97]
+                  Loss_D: 0.37 Loss_G: 254.78 Time: 63.42s
+errD0: 0.04 errD1: 0.05 errD2: 0.11 
+g_loss0: 20.69 g_loss1: 11.82 g_loss2: 15.10 w_loss: 91.56 s_loss: 144.18 kl_loss: 0.05 
+[63/120][97]
+                  Loss_D: 0.57 Loss_G: 220.45 Time: 63.59s
+errD0: 0.14 errD1: 0.12 errD2: 0.29 
+g_loss0: 14.26 g_loss1: 12.13 g_loss2: 10.92 w_loss: 88.56 s_loss: 118.07 kl_loss: 0.05 
+[64/120][97]
+                  Loss_D: 0.67 Loss_G: 331.57 Time: 63.39s
+errD0: 0.85 errD1: 0.64 errD2: 0.52 
+g_loss0: 22.02 g_loss1: 15.50 g_loss2: 10.80 w_loss: 80.76 s_loss: 132.19 kl_loss: 0.05 
+[65/120][97]
+                  Loss_D: 0.51 Loss_G: 301.95 Time: 63.57s
+Save G/Ds models.
+[66/120][97]
+                  Loss_D: 0.99 Loss_G: 278.92 Time: 63.24s
+errD0: 0.00 errD1: 0.10 errD2: 0.03 
+g_loss0: 20.65 g_loss1: 21.72 g_loss2: 18.06 w_loss: 86.50 s_loss: 143.16 kl_loss: 0.07 
+[67/120][97]
+                  Loss_D: 1.84 Loss_G: 239.00 Time: 63.72s
+errD0: 0.56 errD1: 0.54 errD2: 0.17 
+g_loss0: 22.05 g_loss1: 17.62 g_loss2: 14.91 w_loss: 87.14 s_loss: 127.19 kl_loss: 0.06 
+[68/120][97]
+                  Loss_D: 0.05 Loss_G: 233.10 Time: 63.51s
+errD0: 0.07 errD1: 0.13 errD2: 0.30 
+g_loss0: 18.57 g_loss1: 14.51 g_loss2: 14.12 w_loss: 96.11 s_loss: 144.17 kl_loss: 0.04 
+[69/120][97]
+                  Loss_D: 0.30 Loss_G: 255.37 Time: 63.78s
+errD0: 0.32 errD1: 0.37 errD2: 0.21 
+g_loss0: 20.06 g_loss1: 10.09 g_loss2: 11.40 w_loss: 71.14 s_loss: 105.49 kl_loss: 0.07 
+[70/120][97]
+                  Loss_D: 3.52 Loss_G: 212.61 Time: 63.34s
+Save G/Ds models.
+errD0: 0.02 errD1: 0.04 errD2: 0.02 
+g_loss0: 11.06 g_loss1: 12.50 g_loss2: 11.20 w_loss: 80.98 s_loss: 124.66 kl_loss: 0.09 
+[71/120][97]
+                  Loss_D: 0.10 Loss_G: 222.41 Time: 63.42s
+errD0: 0.07 errD1: 4.58 errD2: 0.03 
+g_loss0: 14.82 g_loss1: 2.10 g_loss2: 18.72 w_loss: 65.71 s_loss: 123.20 kl_loss: 0.06 
+[72/120][97]
+                  Loss_D: 0.25 Loss_G: 292.85 Time: 88.85s
+errD0: 0.18 errD1: 0.08 errD2: 0.32 
+g_loss0: 15.02 g_loss1: 19.32 g_loss2: 14.55 w_loss: 109.93 s_loss: 144.64 kl_loss: 0.07 
+[73/120][97]
+                  Loss_D: 1.47 Loss_G: 329.21 Time: 63.54s
+errD0: 1.54 errD1: 1.26 errD2: 1.28 
+g_loss0: 15.62 g_loss1: 15.98 g_loss2: 16.60 w_loss: 98.25 s_loss: 143.49 kl_loss: 0.06 
+[74/120][97]
+                  Loss_D: 0.58 Loss_G: 240.90 Time: 63.57s
+errD0: 0.03 errD1: 0.01 errD2: 0.09 
+g_loss0: 10.92 g_loss1: 15.37 g_loss2: 19.60 w_loss: 66.63 s_loss: 112.40 kl_loss: 0.08 
+[75/120][97]
+                  Loss_D: 0.15 Loss_G: 224.73 Time: 63.83s
+Save G/Ds models.
+errD0: 0.06 errD1: 0.25 errD2: 0.18 
+g_loss0: 15.88 g_loss1: 14.20 g_loss2: 18.94 w_loss: 62.84 s_loss: 137.42 kl_loss: 0.07 
+[76/120][97]
+                  Loss_D: 0.04 Loss_G: 183.65 Time: 63.54s
+errD0: 0.37 errD1: 0.12 errD2: 2.51 
+g_loss0: 19.30 g_loss1: 13.59 g_loss2: 5.54 w_loss: 71.02 s_loss: 106.86 kl_loss: 0.08 
+[77/120][97]
+                  Loss_D: 0.34 Loss_G: 237.92 Time: 63.56s
+errD0: 0.43 errD1: 0.49 errD2: 0.11 
+g_loss0: 19.64 g_loss1: 16.83 g_loss2: 10.89 w_loss: 76.45 s_loss: 128.26 kl_loss: 0.12 
+[78/120][97]
+                  Loss_D: 0.22 Loss_G: 239.14 Time: 63.51s
+errD0: 0.04 errD1: 0.06 errD2: 0.07 
+g_loss0: 19.83 g_loss1: 20.67 g_loss2: 16.47 w_loss: 66.09 s_loss: 107.27 kl_loss: 0.05 
+[79/120][97]
+                  Loss_D: 0.23 Loss_G: 223.93 Time: 63.57s
+errD0: 2.14 errD1: 0.16 errD2: 0.33 
+g_loss0: 7.60 g_loss1: 12.72 g_loss2: 13.00 w_loss: 86.56 s_loss: 128.34 kl_loss: 0.08 
+[80/120][97]
+                  Loss_D: 0.63 Loss_G: 186.93 Time: 63.65s
+Save G/Ds models.
+errD0: 0.01 errD1: 0.01 errD2: 0.06 
+g_loss0: 16.46 g_loss1: 20.47 g_loss2: 17.30 w_loss: 66.30 s_loss: 107.95 kl_loss: 0.10 
+[81/120][97]
+                  Loss_D: 1.85 Loss_G: 202.74 Time: 63.26s
+errD0: 0.01 errD1: 0.08 errD2: 0.15 
+g_loss0: 13.72 g_loss1: 10.29 g_loss2: 16.39 w_loss: 81.43 s_loss: 138.77 kl_loss: 0.09 
+[82/120][97]
+                  Loss_D: 0.15 Loss_G: 243.57 Time: 88.91s
+errD0: 0.05 errD1: 0.07 errD2: 0.06 
+g_loss0: 12.73 g_loss1: 12.58 g_loss2: 14.63 w_loss: 53.16 s_loss: 104.33 kl_loss: 0.10 
+[83/120][97]
+                  Loss_D: 2.50 Loss_G: 196.36 Time: 63.48s
+errD0: 0.12 errD1: 0.20 errD2: 0.49 
+g_loss0: 19.17 g_loss1: 9.76 g_loss2: 18.76 w_loss: 91.46 s_loss: 137.08 kl_loss: 0.07 
+[84/120][97]
+                  Loss_D: 0.61 Loss_G: 295.52 Time: 63.46s
+errD0: 0.16 errD1: 0.17 errD2: 0.80 
+g_loss0: 20.49 g_loss1: 20.77 g_loss2: 13.25 w_loss: 56.72 s_loss: 107.75 kl_loss: 0.08 
+[85/120][97]
+                  Loss_D: 0.31 Loss_G: 235.51 Time: 63.48s
+Save G/Ds models.
+errD0: 0.25 errD1: 0.13 errD2: 0.27 
+g_loss0: 17.45 g_loss1: 9.07 g_loss2: 11.20 w_loss: 75.00 s_loss: 133.85 kl_loss: 0.10 
+[86/120][97]
+                  Loss_D: 0.34 Loss_G: 218.03 Time: 63.66s
+errD0: 0.09 errD1: 0.33 errD2: 0.50 
+g_loss0: 27.08 g_loss1: 22.16 g_loss2: 18.73 w_loss: 86.54 s_loss: 109.89 kl_loss: 0.08 
+[87/120][97]
+                  Loss_D: 0.24 Loss_G: 231.01 Time: 63.41s
+errD0: 0.20 errD1: 0.08 errD2: 0.15 
+g_loss0: 17.08 g_loss1: 23.22 g_loss2: 16.58 w_loss: 70.72 s_loss: 124.33 kl_loss: 0.11 
+[88/120][97]
+                  Loss_D: 6.14 Loss_G: 268.46 Time: 63.68s
+errD0: 0.36 errD1: 0.71 errD2: 0.03 
+g_loss0: 9.47 g_loss1: 23.26 g_loss2: 22.09 w_loss: 52.10 s_loss: 107.07 kl_loss: 0.08 
+[89/120][97]
+                  Loss_D: 0.15 Loss_G: 201.89 Time: 63.39s
+errD0: 0.46 errD1: 0.39 errD2: 0.56 
+g_loss0: 16.34 g_loss1: 16.28 g_loss2: 21.83 w_loss: 59.25 s_loss: 105.02 kl_loss: 0.11 
+[90/120][97]
+                  Loss_D: 0.30 Loss_G: 284.26 Time: 63.60s
+Save G/Ds models.
+errD0: 0.58 errD1: 0.57 errD2: 0.31 
+g_loss0: 12.92 g_loss1: 13.97 g_loss2: 8.64 w_loss: 64.78 s_loss: 118.93 kl_loss: 0.11 
+[91/120][97]
+                  Loss_D: 0.54 Loss_G: 237.24 Time: 63.58s
+errD0: 0.06 errD1: 0.02 errD2: 0.03 
+g_loss0: 11.46 g_loss1: 13.99 g_loss2: 14.65 w_loss: 88.79 s_loss: 149.65 kl_loss: 0.09 
+[92/120][97]
+                  Loss_D: 0.12 Loss_G: 210.14 Time: 89.09s
+errD0: 0.20 errD1: 0.10 errD2: 0.09 
+g_loss0: 11.80 g_loss1: 9.33 g_loss2: 12.58 w_loss: 63.76 s_loss: 120.86 kl_loss: 0.10 
+[93/120][97]
+                  Loss_D: 0.29 Loss_G: 240.27 Time: 63.58s
+errD0: 0.03 errD1: 0.01 errD2: 0.22 
+g_loss0: 14.85 g_loss1: 15.80 g_loss2: 13.00 w_loss: 86.81 s_loss: 112.62 kl_loss: 0.11 
+[94/120][97]
+                  Loss_D: 0.09 Loss_G: 256.29 Time: 63.43s
+errD0: 0.15 errD1: 0.10 errD2: 0.27 
+g_loss0: 19.06 g_loss1: 8.74 g_loss2: 14.16 w_loss: 71.32 s_loss: 127.02 kl_loss: 0.13 
+[95/120][97]
+                  Loss_D: 1.79 Loss_G: 240.60 Time: 63.85s
+Save G/Ds models.
+errD0: 0.10 errD1: 1.13 errD2: 0.08 
+g_loss0: 17.85 g_loss1: 5.06 g_loss2: 15.61 w_loss: 116.86 s_loss: 164.33 kl_loss: 0.10 
+[96/120][97]
+                  Loss_D: 1.12 Loss_G: 231.48 Time: 63.86s
+errD0: 0.20 errD1: 0.09 errD2: 0.40 
+g_loss0: 18.24 g_loss1: 18.61 g_loss2: 19.71 w_loss: 42.75 s_loss: 110.62 kl_loss: 0.08 
+[97/120][97]
+                  Loss_D: 0.64 Loss_G: 166.01 Time: 63.68s
+errD0: 0.96 errD1: 0.12 errD2: 0.10 
+g_loss0: 13.01 g_loss1: 16.91 g_loss2: 24.63 w_loss: 102.79 s_loss: 108.81 kl_loss: 0.11 
+[98/120][97]
+                  Loss_D: 1.51 Loss_G: 258.92 Time: 63.81s
+errD0: 0.21 errD1: 0.02 errD2: 0.07 
+g_loss0: 16.34 g_loss1: 22.52 g_loss2: 13.87 w_loss: 43.81 s_loss: 102.13 kl_loss: 0.15 
+[99/120][97]
+                  Loss_D: 0.30 Loss_G: 198.83 Time: 63.69s
+[100/120][97]
+                  Loss_D: 1.75 Loss_G: 242.42 Time: 63.71s
+Save G/Ds models.
+errD0: 0.02 errD1: 0.88 errD2: 0.71 
+g_loss0: 23.10 g_loss1: 20.92 g_loss2: 14.57 w_loss: 88.63 s_loss: 117.88 kl_loss: 0.10 
+[101/120][97]
+                  Loss_D: 0.07 Loss_G: 204.85 Time: 63.45s
+errD0: 0.01 errD1: 0.01 errD2: 0.14 
+g_loss0: 15.57 g_loss1: 17.08 g_loss2: 20.07 w_loss: 56.00 s_loss: 97.65 kl_loss: 0.10 
+[102/120][97]
+                  Loss_D: 0.43 Loss_G: 248.99 Time: 63.38s
+errD0: 0.02 errD1: 0.06 errD2: 1.05 
+g_loss0: 14.07 g_loss1: 12.10 g_loss2: 15.15 w_loss: 86.27 s_loss: 148.56 kl_loss: 0.12 
+[103/120][97]
+                  Loss_D: 0.14 Loss_G: 218.18 Time: 87.99s
+errD0: 0.05 errD1: 0.36 errD2: 0.01 
+g_loss0: 8.12 g_loss1: 17.84 g_loss2: 15.01 w_loss: 70.83 s_loss: 122.28 kl_loss: 0.12 
+[104/120][97]
+                  Loss_D: 0.14 Loss_G: 222.70 Time: 63.76s
+errD0: 0.02 errD1: 0.00 errD2: 0.13 
+g_loss0: 15.69 g_loss1: 25.97 g_loss2: 12.06 w_loss: 76.89 s_loss: 100.12 kl_loss: 0.14 
+[105/120][97]
+                  Loss_D: 0.52 Loss_G: 247.40 Time: 63.49s
+Save G/Ds models.
+errD0: 0.24 errD1: 0.24 errD2: 0.52 
+g_loss0: 18.75 g_loss1: 14.55 g_loss2: 24.08 w_loss: 64.43 s_loss: 110.69 kl_loss: 0.10 
+[106/120][97]
+                  Loss_D: 0.30 Loss_G: 225.07 Time: 63.65s
+errD0: 0.08 errD1: 0.30 errD2: 0.08 
+g_loss0: 12.30 g_loss1: 11.05 g_loss2: 18.24 w_loss: 47.27 s_loss: 108.89 kl_loss: 0.14 
+[107/120][97]
+                  Loss_D: 0.50 Loss_G: 216.31 Time: 63.45s
+errD0: 0.02 errD1: 0.12 errD2: 0.13 
+g_loss0: 17.56 g_loss1: 17.93 g_loss2: 20.63 w_loss: 23.90 s_loss: 68.15 kl_loss: 0.11 
+[108/120][97]
+                  Loss_D: 0.36 Loss_G: 213.64 Time: 63.46s
+errD0: 0.00 errD1: 0.05 errD2: 0.09 
+g_loss0: 22.40 g_loss1: 19.61 g_loss2: 15.54 w_loss: 62.56 s_loss: 88.48 kl_loss: 0.15 
+[109/120][97]
+                  Loss_D: 0.50 Loss_G: 182.75 Time: 63.88s
+errD0: 0.07 errD1: 0.02 errD2: 0.02 
+g_loss0: 11.11 g_loss1: 13.34 g_loss2: 14.04 w_loss: 41.99 s_loss: 92.84 kl_loss: 0.10 
+[110/120][97]
+                  Loss_D: 0.58 Loss_G: 191.17 Time: 64.03s
+Save G/Ds models.
+errD0: 0.30 errD1: 1.06 errD2: 0.33 
+g_loss0: 13.96 g_loss1: 9.20 g_loss2: 7.73 w_loss: 104.15 s_loss: 121.02 kl_loss: 0.17 
+[111/120][97]
+                  Loss_D: 0.42 Loss_G: 238.66 Time: 63.38s
+errD0: 0.02 errD1: 0.44 errD2: 0.09 
+g_loss0: 12.38 g_loss1: 23.58 g_loss2: 10.86 w_loss: 55.71 s_loss: 119.23 kl_loss: 0.10 
+[112/120][97]
+                  Loss_D: 0.16 Loss_G: 156.59 Time: 63.34s
+errD0: 0.46 errD1: 0.19 errD2: 0.15 
+g_loss0: 26.29 g_loss1: 17.17 g_loss2: 23.11 w_loss: 70.90 s_loss: 90.98 kl_loss: 0.16 
+[113/120][97]
+                  Loss_D: 2.74 Loss_G: 206.24 Time: 88.36s
+errD0: 0.35 errD1: 0.04 errD2: 0.04 
+g_loss0: 28.28 g_loss1: 10.38 g_loss2: 10.94 w_loss: 47.98 s_loss: 105.60 kl_loss: 0.16 
+[114/120][97]
+                  Loss_D: 2.18 Loss_G: 197.97 Time: 63.61s
+errD0: 0.01 errD1: 0.16 errD2: 0.05 
+g_loss0: 16.76 g_loss1: 21.95 g_loss2: 9.95 w_loss: 42.61 s_loss: 98.16 kl_loss: 0.15 
+[115/120][97]
+                  Loss_D: 0.35 Loss_G: 211.21 Time: 63.60s
+Save G/Ds models.
+errD0: 0.25 errD1: 1.21 errD2: 0.03 
+g_loss0: 13.68 g_loss1: 18.03 g_loss2: 18.54 w_loss: 85.32 s_loss: 135.69 kl_loss: 0.19 
+[116/120][97]
+                  Loss_D: 0.17 Loss_G: 179.59 Time: 63.79s
+errD0: 0.02 errD1: 0.02 errD2: 0.05 
+g_loss0: 28.64 g_loss1: 14.07 g_loss2: 12.67 w_loss: 58.76 s_loss: 101.43 kl_loss: 0.14 
+[117/120][97]
+                  Loss_D: 0.16 Loss_G: 299.64 Time: 63.58s
+errD0: 0.51 errD1: 0.29 errD2: 0.03 
+g_loss0: 10.28 g_loss1: 18.84 g_loss2: 18.22 w_loss: 58.42 s_loss: 91.99 kl_loss: 0.13 
+[118/120][97]
+                  Loss_D: 1.00 Loss_G: 211.22 Time: 63.67s
+errD0: 0.08 errD1: 0.04 errD2: 0.20 
+g_loss0: 12.33 g_loss1: 11.01 g_loss2: 29.66 w_loss: 72.25 s_loss: 80.60 kl_loss: 0.16 
+[119/120][97]
+                  Loss_D: 0.57 Loss_G: 203.46 Time: 63.34s
+Save G/Ds models.
+Total time for training: 8053.623644351959
