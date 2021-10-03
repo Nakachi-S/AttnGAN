@@ -1,0 +1,42 @@
+Using config:
+{'B_VALIDATION': True,
+ 'CONFIG_NAME': 'eval-coco',
+ 'CUDA': True,
+ 'DATASET_NAME': 'coco',
+ 'DATA_DIR': '/home/nakachi/data/coco/',
+ 'GAN': {'B_ATTENTION': True,
+         'B_DCGAN': False,
+         'CONDITION_DIM': 100,
+         'DF_DIM': 96,
+         'GF_DIM': 48,
+         'R_NUM': 3,
+         'Z_DIM': 100},
+ 'GPU_ID': 1,
+ 'RNN_TYPE': 'LSTM',
+ 'TEXT': {'CAPTIONS_PER_IMAGE': 5, 'EMBEDDING_DIM': 256, 'WORDS_NUM': 20},
+ 'TRAIN': {'BATCH_SIZE': 12,
+           'B_NET_D': False,
+           'DISCRIMINATOR_LR': 0.0002,
+           'ENCODER_LR': 0.0002,
+           'FLAG': False,
+           'GENERATOR_LR': 0.0002,
+           'MAX_EPOCH': 600,
+           'NET_E': '/home/nakachi/data/models/coco/text_encoder100.pth',
+           'NET_G': '/home/nakachi/data/models/coco_AttnGAN2.pth',
+           'RNN_GRAD_CLIP': 0.25,
+           'SMOOTH': {'GAMMA1': 5.0,
+                      'GAMMA2': 5.0,
+                      'GAMMA3': 10.0,
+                      'LAMBDA': 1.0},
+           'SNAPSHOT_INTERVAL': 2000},
+ 'TREE': {'BASE_SIZE': 64, 'BRANCH_NUM': 3},
+ 'WORKERS': 1}
+Load filenames from: /home/nakachi/data/coco//train_filenames.pickle (82783)
+Load filenames from: /home/nakachi/data/coco//val_filenames.pickle (40470)
+Load from:  /home/nakachi/data/coco/captions.pickle
+Load text encoder from: /home/nakachi/data/models/coco/text_encoder100.pth
+Load G from:  /home/nakachi/data/models/coco_AttnGAN2.pth
+/home/nakachi/AttnGAN/code/miscc/config.py:103: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+/home/nakachi/miniconda3/envs/env/lib/python3.6/site-packages/torch/nn/modules/rnn.py:60: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
