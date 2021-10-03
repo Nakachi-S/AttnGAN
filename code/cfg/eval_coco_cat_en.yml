@@ -1,0 +1,30 @@
+CONFIG_NAME: 'eval-coco-cat-en'
+
+DATASET_NAME: 'coco-cat-en'
+DATA_DIR: '/data/Users/nakachi/category_split/cat_en/'
+GPU_ID: 3
+WORKERS: 1
+
+B_VALIDATION: True
+TREE:
+    BRANCH_NUM: 3
+
+
+TRAIN:
+    FLAG: False
+    NET_G: '/data/Users/nakachi/stair/AttnGAN/output/coco-cat-en_attn2-coco-cat-en_2021_09_09_01_40_53/Model/netG_epoch_120.pth'
+    B_NET_D: False
+    BATCH_SIZE: 12
+    NET_E: '/data/Users/nakachi/stair/AttnGAN/output/coco_DAMSM_2021_08_12_11_29_09/Model/text_encoder530.pth'
+
+
+GAN:
+    DF_DIM: 96
+    GF_DIM: 48
+    Z_DIM: 100
+    R_NUM: 3
+
+TEXT:
+    EMBEDDING_DIM: 256
+    CAPTIONS_PER_IMAGE: 5
+    WORDS_NUM: 12
