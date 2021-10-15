@@ -1,7 +1,7 @@
 CONFIG_NAME: "eval-coco"
 
 DATASET_NAME: "coco"
-DATA_DIR: "/home/nakachi/data/coco/"
+DATA_DIR: "/home/nakachi/DM-GAN/data/coco"
 GPU_ID: 3
 WORKERS: 1
 
@@ -13,7 +13,7 @@ TRAIN:
   FLAG: False
   NET_G: "/home/nakachi/data/models/coco_AttnGAN2.pth"
   B_NET_D: False
-  BATCH_SIZE: 12
+  BATCH_SIZE: 8
   NET_E: "/home/nakachi/data/models/coco/text_encoder100.pth"
 
 GAN:
