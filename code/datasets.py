@@ -244,7 +244,7 @@ class TextDataset(data.Dataset):
         if '_ja' in data_dir:
             filepath = '/home/nakachi/data/stair/captions.pickle'
         elif '_en' in data_dir:
-            filepath = '/home/nakachi/data/coco/captions.pickle'
+            filepath = '/home/nakachi/DM-GAN/data/coco/captions.pickle'
         else:
             print('ERROR: no captions.pickle')
             exit()
@@ -419,6 +419,8 @@ class TextDataset(data.Dataset):
                         bbox, self.transform, normalize=self.norm)
         # random select a sentence
         sent_ix = random.randint(0, self.embeddings_num)
+        # 評価時は特定の文章を使いたいので指定
+        # sent_ix = 2
         new_sent_ix = index * self.embeddings_num + sent_ix
         caps, cap_len = self.get_caption(new_sent_ix)
         return imgs, caps, cap_len, cls_id, key
