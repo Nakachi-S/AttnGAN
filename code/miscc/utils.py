@@ -57,8 +57,10 @@ def build_super_images(real_imgs, captions, ixtoword,
     nvis = 8
     real_imgs = real_imgs[:nvis]
     if lr_imgs is not None:
+        # ここの処理は通らない
         lr_imgs = lr_imgs[:nvis]
     if att_sze == 17:
+        # ここの処理は通る
         vis_size = att_sze * 16
     else:
         vis_size = real_imgs.size(2)
@@ -73,11 +75,11 @@ def build_super_images(real_imgs, captions, ixtoword,
         iend = (i + 3) * (vis_size + 2)
         text_convas[:, istart:iend, :] = COLOR_DIC[i]
 
-
+    # 本当はreal_imgs=torch.Size([3, 299, 299])だがreal_imgs torch.Size([3, 272, 272])に直す
     real_imgs = \
         nn.functional.interpolate(real_imgs,size=(vis_size, vis_size),
                                   mode='bilinear', align_corners=False)
-    # [-1, 1] --> [0, 1]
+    # [-1, 1] --> [0, 1]: この処理は多分、画像は-1からスタートできないから0からに直している
     real_imgs.add_(1).div_(2).mul_(255)
     real_imgs = real_imgs.data.numpy()
     # b x c x h x w --> b x h x w x c
@@ -86,6 +88,7 @@ def build_super_images(real_imgs, captions, ixtoword,
     middle_pad = np.zeros([pad_sze[2], 2, 3])
     post_pad = np.zeros([pad_sze[1], pad_sze[2], 3])
     if lr_imgs is not None:
+        # ここの処理は通らない
         lr_imgs = \
             nn.functional.interpolate(lr_imgs,size=(vis_size, vis_size),
                                   mode='bilinear', align_corners=False)
@@ -97,6 +100,7 @@ def build_super_images(real_imgs, captions, ixtoword,
 
     # batch x seq_len x 17 x 17 --> batch x 1 x 17 x 17
     seq_len = max_word_num
+    # -> ここは18. predict_stair.ymlに記述がない場合、configから読まれるから
     img_set = []
     num = nvis  # len(attn_maps)
 
@@ -106,16 +110,23 @@ def build_super_images(real_imgs, captions, ixtoword,
 
     bUpdate = 1
     for i in range(num):
+        # 一文ごとのloop
+        print('---------------------------------------')
         attn = attn_maps[i].cpu().view(1, -1, att_sze, att_sze)
-        # --> 1 x 1 x 17 x 17
+        print('attn_maps=', attn_maps[i].shape)
+        print('attn=', attn.shape)
+        # -> attn_maps= torch.Size([1, 8(単語数？), 17, 17])
+        # --> 1 x 1 x 17 x 17 : と書かれているが実際はtorch.Size([1, 8(単語数？), 17, 17])
         attn_max = attn.max(dim=1, keepdim=True)
         attn = torch.cat([attn_max[0], attn], 1)
-        #
+        # -> torch.Size([1, 9(単語数？ + 1), 17, 17])
         attn = attn.view(-1, 1, att_sze, att_sze)
         attn = attn.repeat(1, 3, 1, 1).data.numpy()
         # n x c x h x w --> n x h x w x c
         attn = np.transpose(attn, (0, 2, 3, 1))
         num_attn = attn.shape[0]
+        print('num_attn=', num_attn)
+        print('captions len=', len(captions[i]))
         #
         img = real_imgs[i]
         if lr_imgs is None:
@@ -129,10 +140,12 @@ def build_super_images(real_imgs, captions, ixtoword,
         for j in range(num_attn):
             one_map = attn[j]
             if (vis_size // att_sze) > 1:
+                # この処理は通る
                 one_map = \
                     skimage.transform.pyramid_expand(one_map, sigma=20,
                                                      upscale=vis_size // att_sze,
                                                      multichannel=True)
+                # -> この時点ではone_map= (272, 272, 3)
             row_beforeNorm.append(one_map)
             minV = one_map.min()
             maxV = one_map.max()
@@ -141,11 +154,28 @@ def build_super_images(real_imgs, captions, ixtoword,
             if maxVglobal < maxV:
                 maxVglobal = maxV
         for j in range(seq_len + 1):
+            # 単語ごとのloop
             if j < num_attn:
                 one_map = row_beforeNorm[j]
                 one_map = (one_map - minVglobal) / (maxVglobal - minVglobal)
                 one_map *= 255
-                #
+                # -> この時点でもone_map= (272, 272, 3)
+
+                # attentionよりbboxを決める
+                gray_one_map = one_map[:,:,1]
+                median =  np.mean(one_map)
+                over_median_index = np.where(gray_one_map > median + (median / 2))
+                if over_median_index[0].any():
+                    y_min_bbox = np.min(over_median_index[0])
+                    y_max_bbox = np.max(over_median_index[0])
+                    x_min_bbox = np.min(over_median_index[1])
+                    x_max_bbox = np.max(over_median_index[1])
+                else:
+                    x_min_bbox = 0
+                    x_max_bbox = 1
+                    y_min_bbox = 0
+                    y_max_bbox = 1
+
                 PIL_im = Image.fromarray(np.uint8(img))
                 PIL_att = Image.fromarray(np.uint8(one_map))
                 merged = \
@@ -153,6 +183,9 @@ def build_super_images(real_imgs, captions, ixtoword,
                 mask = Image.new('L', (vis_size, vis_size), (210))
                 merged.paste(PIL_im, (0, 0))
                 merged.paste(PIL_att, (0, 0), mask)
+                # bboxの描画
+                bbox_draw = ImageDraw.Draw(merged)
+                bbox_draw.rectangle([x_min_bbox, y_min_bbox, x_max_bbox, y_max_bbox], outline=(255, 0, 0), width=3)
                 merged = np.array(merged)[:, :, :3]
             else:
                 one_map = post_pad
