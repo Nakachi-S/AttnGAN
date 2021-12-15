@@ -26,7 +26,7 @@ import sys
 
 # ################# Text to image task############################ #
 class condGANTrainer(object):
-    def __init__(self, output_dir, data_loader, n_words, ixtoword):
+    def __init__(self, output_dir, data_loader, n_words, ixtoword, dataset):
         if cfg.TRAIN.FLAG:
             self.model_dir = os.path.join(output_dir, 'Model')
             self.image_dir = os.path.join(output_dir, 'Image')
@@ -43,6 +43,7 @@ class condGANTrainer(object):
         self.n_words = n_words
         self.ixtoword = ixtoword
         self.data_loader = data_loader
+        self.dataset = dataset
         self.num_batches = len(self.data_loader)
 
     def build_models(self):
@@ -359,7 +360,8 @@ class condGANTrainer(object):
             netG.apply(weights_init)
             netG.cuda()
             netG.eval()
-            #
+
+            # load text encoder
             text_encoder = RNN_ENCODER(self.n_words, nhidden=cfg.TEXT.EMBEDDING_DIM)
             state_dict = \
                 torch.load(cfg.TRAIN.NET_E, map_location=lambda storage, loc: storage)
@@ -367,6 +369,15 @@ class condGANTrainer(object):
             print('Load text encoder from:', cfg.TRAIN.NET_E)
             text_encoder = text_encoder.cuda()
             text_encoder.eval()
+
+            #load image encoder
+            image_encoder = CNN_ENCODER(cfg.TEXT.EMBEDDING_DIM)
+            img_encoder_path = cfg.TRAIN.NET_E.replace('text_encoder', 'image_encoder')
+            state_dict = torch.load(img_encoder_path, map_location=lambda storage, loc: storage)
+            image_encoder.load_state_dict(state_dict)
+            print('Load image encoder from:', img_encoder_path)
+            image_encoder = image_encoder.cuda()
+            image_encoder.eval()
 
             batch_size = self.batch_size
             nz = cfg.GAN.Z_DIM
@@ -376,8 +387,7 @@ class condGANTrainer(object):
                 noise = noise.cuda()
 
             model_dir = cfg.TRAIN.NET_G
-            state_dict = \
-                torch.load(model_dir, map_location=lambda storage, loc: storage)
+            state_dict = torch.load(model_dir, map_location=lambda storage, loc: storage)
             # state_dict = torch.load(cfg.TRAIN.NET_G)
             netG.load_state_dict(state_dict)
             print('Load G from: ', model_dir)
@@ -388,6 +398,8 @@ class condGANTrainer(object):
             mkdir_p(save_dir)
 
             cnt = 0
+            R_count = 0
+            R = np.zeros(30000)
 
             for _ in range(1):  # (cfg.TEXT.CAPTIONS_PER_IMAGE):
                 for step, data in enumerate(self.data_loader, 0):
@@ -430,6 +442,34 @@ class condGANTrainer(object):
                         im = Image.fromarray(im)
                         fullpath = '%s_s%d.png' % (s_tmp, k)
                         im.save(fullpath)
+
+                    _, cnn_code = image_encoder(fake_imgs[-1])
+
+                    for i in range(batch_size):
+                        mis_captions, mis_captions_len = self.dataset.get_mis_caption(class_ids[i])
+                        hidden = text_encoder.init_hidden(99)
+                        _, sent_emb_t = text_encoder(mis_captions, mis_captions_len, hidden)
+                        rnn_code = torch.cat((sent_emb[i, :].unsqueeze(0), sent_emb_t), 0)
+                        ### cnn_code = 1 * nef
+                        ### rnn_code = 100 * nef
+                        scores = torch.mm(cnn_code[i].unsqueeze(0), rnn_code.transpose(0, 1))  # 1* 100
+                        cnn_code_norm = torch.norm(cnn_code[i].unsqueeze(0), 2, dim=1, keepdim=True)
+                        rnn_code_norm = torch.norm(rnn_code, 2, dim=1, keepdim=True)
+                        norm = torch.mm(cnn_code_norm, rnn_code_norm.transpose(0, 1))
+                        scores0 = scores / norm.clamp(min=1e-8)
+                        if torch.argmax(scores0) == 0:
+                            R[R_count] = 1
+                        R_count += 1
+
+                    if R_count >= 30000:
+                        sum = np.zeros(10)
+                        np.random.shuffle(R)
+                        for i in range(10):
+                            sum[i] = np.average(R[i * 3000:(i + 1) * 3000 - 1])
+                        R_mean = np.average(sum)
+                        R_std = np.std(sum)
+                        print("R mean:{:.4f} std:{:.4f}".format(R_mean, R_std))
+                        cont = False
 
     def gen_example(self, data_dic):
         if cfg.TRAIN.NET_G == '':
