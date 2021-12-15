@@ -113,8 +113,7 @@ def build_super_images(real_imgs, captions, ixtoword,
         # 一文ごとのloop
         print('---------------------------------------')
         attn = attn_maps[i].cpu().view(1, -1, att_sze, att_sze)
-        print('attn_maps=', attn_maps[i].shape)
-        print('attn=', attn.shape)
+
         # -> attn_maps= torch.Size([1, 8(単語数？), 17, 17])
         # --> 1 x 1 x 17 x 17 : と書かれているが実際はtorch.Size([1, 8(単語数？), 17, 17])
         attn_max = attn.max(dim=1, keepdim=True)
@@ -125,8 +124,6 @@ def build_super_images(real_imgs, captions, ixtoword,
         # n x c x h x w --> n x h x w x c
         attn = np.transpose(attn, (0, 2, 3, 1))
         num_attn = attn.shape[0]
-        print('num_attn=', num_attn)
-        print('captions len=', len(captions[i]))
         #
         img = real_imgs[i]
         if lr_imgs is None:
