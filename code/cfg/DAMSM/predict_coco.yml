@@ -1,9 +1,9 @@
 CONFIG_NAME: 'DAMSM'
 
-DATASET_NAME: 'stair'
-DATA_DIR: '/data/Users/nakachi/stair/'
-GPU_ID: 4
-WORKERS: 2
+DATASET_NAME: 'coco_tv'
+DATA_DIR: '/home/nakachi/data/category_split/tv_en/'
+GPU_ID: 1
+WORKERS: 1
 
 
 TREE:
@@ -13,11 +13,11 @@ TREE:
 
 TRAIN:
     FLAG: True
-    NET_E: ''
-    BATCH_SIZE: 48
-    MAX_EPOCH: 400
+    NET_E: '/home/nakachi/data/models/coco/text_encoder100.pth'  # '../DAMSMencoders/coco/text_encoder100.pth'
+    BATCH_SIZE: 8
+    MAX_EPOCH: 600
     SNAPSHOT_INTERVAL: 5
-    ENCODER_LR: 0.002  # 0.0002best; 0.002good; scott: 0.0007 with 0.98decay
+    ENCODER_LR: 0.002  # 0.0002best; 0.002good
     RNN_GRAD_CLIP: 0.25
     SMOOTH:
         GAMMA1: 4.0  # 1,2,5 good 4 best  10&100bad
@@ -25,7 +25,7 @@ TRAIN:
         GAMMA3: 10.0  # 10good 1&100bad
 
 
-
 TEXT:
     EMBEDDING_DIM: 256
     CAPTIONS_PER_IMAGE: 5
+    WORDS_NUM: 15
