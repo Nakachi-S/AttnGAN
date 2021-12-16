@@ -152,37 +152,47 @@ def build_super_images(real_imgs, captions, ixtoword,
                 maxVglobal = maxV
         for j in range(seq_len + 1):
             # 単語ごとのloop
+            MODE = 'polygon' # bbox or polygon
             if j < num_attn:
                 one_map = row_beforeNorm[j]
                 one_map = (one_map - minVglobal) / (maxVglobal - minVglobal)
                 one_map *= 255
                 # -> この時点でもone_map= (272, 272, 3)
 
-                # attentionよりbboxを決める
-                gray_one_map = one_map[:,:,1]
-                median =  np.mean(one_map)
-                over_median_index = np.where(gray_one_map > median + (median / 2))
-                if over_median_index[0].any():
-                    y_min_bbox = np.min(over_median_index[0])
-                    y_max_bbox = np.max(over_median_index[0])
-                    x_min_bbox = np.min(over_median_index[1])
-                    x_max_bbox = np.max(over_median_index[1])
-                else:
-                    x_min_bbox = 0
-                    x_max_bbox = 1
-                    y_min_bbox = 0
-                    y_max_bbox = 1
+                if MODE == 'bbox':
+                    # attentionよりbboxを決める
+                    gray_one_map = one_map[:,:,1]
+                    mean =  np.mean(one_map)
+                    over_mean_index = np.where(gray_one_map > mean + (mean / 2))
+                    if over_mean_index[0].any():
+                        y_min_bbox = np.min(over_mean_index[0])
+                        y_max_bbox = np.max(over_mean_index[0])
+                        x_min_bbox = np.min(over_mean_index[1])
+                        x_max_bbox = np.max(over_mean_index[1])
+                    else:
+                        x_min_bbox = 0
+                        x_max_bbox = 1
+                        y_min_bbox = 0
+                        y_max_bbox = 1
+                elif MODE == 'polygon':
+                    gray_one_map = one_map[:,:,1]
+                    mean =  np.mean(one_map)
+                    over_mean_bi_map = np.where(gray_one_map > mean + (mean / 2), 255, 0)
 
                 PIL_im = Image.fromarray(np.uint8(img))
-                PIL_att = Image.fromarray(np.uint8(one_map))
+                if MODE == 'polygon':
+                    PIL_att = PIL_att = Image.fromarray(np.uint8(over_mean_bi_map))
+                else:
+                    PIL_att = Image.fromarray(np.uint8(one_map))
                 merged = \
                     Image.new('RGBA', (vis_size, vis_size), (0, 0, 0, 0))
                 mask = Image.new('L', (vis_size, vis_size), (210))
                 merged.paste(PIL_im, (0, 0))
                 merged.paste(PIL_att, (0, 0), mask)
-                # bboxの描画
-                bbox_draw = ImageDraw.Draw(merged)
-                bbox_draw.rectangle([x_min_bbox, y_min_bbox, x_max_bbox, y_max_bbox], outline=(255, 0, 0), width=3)
+                if MODE == 'bbox':
+                    # bboxの描画
+                    bbox_draw = ImageDraw.Draw(merged)
+                    bbox_draw.rectangle([x_min_bbox, y_min_bbox, x_max_bbox, y_max_bbox], outline=(255, 0, 0), width=3)
                 merged = np.array(merged)[:, :, :3]
             else:
                 one_map = post_pad
