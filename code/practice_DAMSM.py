@@ -170,7 +170,7 @@ if __name__ == "__main__":
     batch_size = cfg.TRAIN.BATCH_SIZE
     # bboxのためにresizeのみにする
     image_transform = transforms.Compose([
-        transforms.Resize((int(imsize * 76 / 64), int(imsize * 76 / 64)))
+        transforms.Resize((imsize, imsize))
         ])
 
     dataset = TextDataset(cfg.DATA_DIR, 'train',
