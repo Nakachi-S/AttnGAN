@@ -111,7 +111,6 @@ def build_super_images(real_imgs, captions, ixtoword,
     bUpdate = 1
     for i in range(num):
         # 一文ごとのloop
-        print('---------------------------------------')
         attn = attn_maps[i].cpu().view(1, -1, att_sze, att_sze)
 
         # -> attn_maps= torch.Size([1, 8(単語数？), 17, 17])

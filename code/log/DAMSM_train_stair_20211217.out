@@ -1,0 +1,1275 @@
+Using config:
+{'B_VALIDATION': False,
+ 'CONFIG_NAME': 'DAMSM',
+ 'CUDA': True,
+ 'DATASET_NAME': 'stair',
+ 'DATA_DIR': '/data/Users/nakachi/stair/',
+ 'GAN': {'B_ATTENTION': True,
+         'B_DCGAN': False,
+         'CONDITION_DIM': 100,
+         'DF_DIM': 64,
+         'GF_DIM': 128,
+         'R_NUM': 2,
+         'Z_DIM': 100},
+ 'GPU_ID': 1,
+ 'RNN_TYPE': 'LSTM',
+ 'TEXT': {'CAPTIONS_PER_IMAGE': 5, 'EMBEDDING_DIM': 256, 'WORDS_NUM': 18},
+ 'TRAIN': {'BATCH_SIZE': 48,
+           'B_NET_D': True,
+           'DISCRIMINATOR_LR': 0.0002,
+           'ENCODER_LR': 0.002,
+           'FLAG': True,
+           'GENERATOR_LR': 0.0002,
+           'MAX_EPOCH': 100,
+           'NET_E': '',
+           'NET_G': '',
+           'RNN_GRAD_CLIP': 0.25,
+           'SMOOTH': {'GAMMA1': 4.0,
+                      'GAMMA2': 5.0,
+                      'GAMMA3': 10.0,
+                      'LAMBDA': 1.0},
+           'SNAPSHOT_INTERVAL': 5},
+ 'TREE': {'BASE_SIZE': 299, 'BRANCH_NUM': 1},
+ 'WORKERS': 2}
+Load filenames from: /data/Users/nakachi/stair//train_filenames.pickle (82783)
+Load filenames from: /data/Users/nakachi/stair//val_filenames.pickle (40504)
+Load from:  /data/Users/nakachi/stair/captions.pickle
+31605 5
+Load filenames from: /data/Users/nakachi/stair//train_filenames.pickle (82783)
+Load filenames from: /data/Users/nakachi/stair//val_filenames.pickle (40504)
+Load from:  /data/Users/nakachi/stair/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+/home/nakachi/AttnGAN/code/miscc/config.py:103: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+/home/nakachi/miniconda3/envs/env/lib/python3.6/site-packages/torch/nn/modules/rnn.py:60: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
+/home/nakachi/miniconda3/envs/env/lib/python3.6/site-packages/torchvision/models/inception.py:77: FutureWarning: The default weight initialization of inception_v3 will be changed in future releases of torchvision. If you wish to keep the old behavior (which leads to long initialization times due to scipy/scipy#11299), please set init_weights=True.
+  ' due to scipy/scipy#11299), please set init_weights=True.', FutureWarning)
+| epoch   0 |     0/ 1724 batches | ms/batch  9.60 | s_loss  0.02  0.02 | w_loss  0.03  0.02
+| epoch   0 |   200/ 1724 batches | ms/batch 357.55 | s_loss  2.87  2.88 | w_loss  3.02  2.87
+| epoch   0 |   400/ 1724 batches | ms/batch 350.78 | s_loss  1.89  1.90 | w_loss  1.93  1.85
+| epoch   0 |   600/ 1724 batches | ms/batch 347.46 | s_loss  1.60  1.62 | w_loss  1.59  1.54
+| epoch   0 |   800/ 1724 batches | ms/batch 353.42 | s_loss  1.45  1.47 | w_loss  1.42  1.39
+| epoch   0 |  1000/ 1724 batches | ms/batch 359.50 | s_loss  1.33  1.35 | w_loss  1.30  1.27
+| epoch   0 |  1200/ 1724 batches | ms/batch 354.18 | s_loss  1.29  1.31 | w_loss  1.23  1.23
+| epoch   0 |  1400/ 1724 batches | ms/batch 350.82 | s_loss  1.20  1.23 | w_loss  1.14  1.14
+| epoch   0 |  1600/ 1724 batches | ms/batch 352.03 | s_loss  1.17  1.19 | w_loss  1.12  1.10
+-----------------------------------------------------------------------------------------
+/home/nakachi/AttnGAN/code/miscc/losses.py:125: UserWarning: masked_fill_ received a mask with dtype torch.uint8, this behavior is now deprecated,please use a mask with dtype torch.bool instead. (Triggered internally at  /opt/conda/conda-bld/pytorch_1595629427286/work/aten/src/ATen/native/cuda/LegacyDefinitions.cpp:19.)
+  similarities.data.masked_fill_(masks, -float('inf'))
+/home/nakachi/AttnGAN/code/miscc/losses.py:52: UserWarning: masked_fill_ received a mask with dtype torch.uint8, this behavior is now deprecated,please use a mask with dtype torch.bool instead. (Triggered internally at  /opt/conda/conda-bld/pytorch_1595629427286/work/aten/src/ATen/native/cuda/LegacyDefinitions.cpp:19.)
+  scores0.data.masked_fill_(masks, -float('inf'))
+pretrain_DAMSM.py:102: UserWarning: torch.nn.utils.clip_grad_norm is now deprecated in favor of torch.nn.utils.clip_grad_norm_.
+  cfg.TRAIN.RNN_GRAD_CLIP)
+| end epoch   0 | valid loss  2.22  1.95 | lr 0.00200|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch   1 |     0/ 1724 batches | ms/batch  4.95 | s_loss  0.01  0.01 | w_loss  0.01  0.01
+| epoch   1 |   200/ 1724 batches | ms/batch 354.63 | s_loss  1.06  1.09 | w_loss  0.97  0.97
+| epoch   1 |   400/ 1724 batches | ms/batch 351.64 | s_loss  1.06  1.08 | w_loss  0.98  0.98
+| epoch   1 |   600/ 1724 batches | ms/batch 350.90 | s_loss  1.04  1.07 | w_loss  0.94  0.95
+| epoch   1 |   800/ 1724 batches | ms/batch 352.15 | s_loss  1.04  1.07 | w_loss  0.98  0.97
+| epoch   1 |  1000/ 1724 batches | ms/batch 353.74 | s_loss  1.02  1.05 | w_loss  0.93  0.94
+| epoch   1 |  1200/ 1724 batches | ms/batch 350.23 | s_loss  1.00  1.02 | w_loss  0.89  0.89
+| epoch   1 |  1400/ 1724 batches | ms/batch 355.93 | s_loss  0.98  1.01 | w_loss  0.88  0.89
+| epoch   1 |  1600/ 1724 batches | ms/batch 351.75 | s_loss  0.99  1.02 | w_loss  0.88  0.88
+-----------------------------------------------------------------------------------------
+| end epoch   1 | valid loss  2.05  1.86 | lr 0.00196|
+-----------------------------------------------------------------------------------------
+| epoch   2 |     0/ 1724 batches | ms/batch  5.52 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch   2 |   200/ 1724 batches | ms/batch 355.28 | s_loss  0.93  0.96 | w_loss  0.81  0.82
+| epoch   2 |   400/ 1724 batches | ms/batch 346.63 | s_loss  0.92  0.95 | w_loss  0.80  0.80
+| epoch   2 |   600/ 1724 batches | ms/batch 350.00 | s_loss  0.92  0.95 | w_loss  0.80  0.81
+| epoch   2 |   800/ 1724 batches | ms/batch 348.69 | s_loss  0.92  0.94 | w_loss  0.80  0.80
+| epoch   2 |  1000/ 1724 batches | ms/batch 348.12 | s_loss  0.92  0.95 | w_loss  0.81  0.81
+| epoch   2 |  1200/ 1724 batches | ms/batch 348.87 | s_loss  0.91  0.93 | w_loss  0.79  0.79
+| epoch   2 |  1400/ 1724 batches | ms/batch 354.30 | s_loss  0.92  0.94 | w_loss  0.79  0.79
+| epoch   2 |  1600/ 1724 batches | ms/batch 376.90 | s_loss  0.92  0.94 | w_loss  0.78  0.79
+-----------------------------------------------------------------------------------------
+| end epoch   2 | valid loss  1.87  1.53 | lr 0.00192|
+-----------------------------------------------------------------------------------------
+| epoch   3 |     0/ 1724 batches | ms/batch  5.18 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch   3 |   200/ 1724 batches | ms/batch 351.54 | s_loss  0.84  0.86 | w_loss  0.71  0.71
+| epoch   3 |   400/ 1724 batches | ms/batch 349.82 | s_loss  0.87  0.90 | w_loss  0.72  0.73
+| epoch   3 |   600/ 1724 batches | ms/batch 344.69 | s_loss  0.86  0.89 | w_loss  0.73  0.73
+| epoch   3 |   800/ 1724 batches | ms/batch 351.01 | s_loss  0.85  0.88 | w_loss  0.72  0.72
+| epoch   3 |  1000/ 1724 batches | ms/batch 347.13 | s_loss  0.85  0.88 | w_loss  0.72  0.73
+| epoch   3 |  1200/ 1724 batches | ms/batch 351.05 | s_loss  0.86  0.88 | w_loss  0.74  0.74
+| epoch   3 |  1400/ 1724 batches | ms/batch 348.93 | s_loss  0.87  0.89 | w_loss  0.72  0.74
+| epoch   3 |  1600/ 1724 batches | ms/batch 349.45 | s_loss  0.86  0.88 | w_loss  0.71  0.72
+-----------------------------------------------------------------------------------------
+| end epoch   3 | valid loss  1.82  1.56 | lr 0.00188|
+-----------------------------------------------------------------------------------------
+| epoch   4 |     0/ 1724 batches | ms/batch  4.98 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch   4 |   200/ 1724 batches | ms/batch 368.81 | s_loss  0.84  0.86 | w_loss  0.69  0.70
+| epoch   4 |   400/ 1724 batches | ms/batch 354.67 | s_loss  0.83  0.85 | w_loss  0.68  0.70
+| epoch   4 |   600/ 1724 batches | ms/batch 352.15 | s_loss  0.83  0.86 | w_loss  0.69  0.71
+| epoch   4 |   800/ 1724 batches | ms/batch 356.53 | s_loss  0.83  0.85 | w_loss  0.68  0.69
+| epoch   4 |  1000/ 1724 batches | ms/batch 359.37 | s_loss  0.82  0.84 | w_loss  0.66  0.67
+| epoch   4 |  1200/ 1724 batches | ms/batch 352.55 | s_loss  0.83  0.85 | w_loss  0.68  0.68
+| epoch   4 |  1400/ 1724 batches | ms/batch 353.73 | s_loss  0.84  0.86 | w_loss  0.68  0.69
+| epoch   4 |  1600/ 1724 batches | ms/batch 350.30 | s_loss  0.84  0.87 | w_loss  0.68  0.69
+-----------------------------------------------------------------------------------------
+| end epoch   4 | valid loss  1.77  1.48 | lr 0.00184|
+-----------------------------------------------------------------------------------------
+| epoch   5 |     0/ 1724 batches | ms/batch  5.36 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch   5 |   200/ 1724 batches | ms/batch 370.44 | s_loss  0.81  0.83 | w_loss  0.65  0.66
+| epoch   5 |   400/ 1724 batches | ms/batch 378.97 | s_loss  0.81  0.83 | w_loss  0.65  0.65
+| epoch   5 |   600/ 1724 batches | ms/batch 371.16 | s_loss  0.80  0.82 | w_loss  0.64  0.65
+| epoch   5 |   800/ 1724 batches | ms/batch 366.02 | s_loss  0.81  0.84 | w_loss  0.65  0.66
+| epoch   5 |  1000/ 1724 batches | ms/batch 366.46 | s_loss  0.82  0.84 | w_loss  0.67  0.67
+| epoch   5 |  1200/ 1724 batches | ms/batch 365.34 | s_loss  0.80  0.82 | w_loss  0.63  0.65
+| epoch   5 |  1400/ 1724 batches | ms/batch 366.81 | s_loss  0.81  0.83 | w_loss  0.65  0.66
+| epoch   5 |  1600/ 1724 batches | ms/batch 368.27 | s_loss  0.80  0.83 | w_loss  0.64  0.66
+-----------------------------------------------------------------------------------------
+| end epoch   5 | valid loss  1.65  1.34 | lr 0.00181|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+pretrain_DAMSM.py:235: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  plt.figure()
+| epoch   6 |     0/ 1724 batches | ms/batch  5.39 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch   6 |   200/ 1724 batches | ms/batch 368.93 | s_loss  0.77  0.80 | w_loss  0.62  0.62
+| epoch   6 |   400/ 1724 batches | ms/batch 366.79 | s_loss  0.77  0.80 | w_loss  0.61  0.62
+| epoch   6 |   600/ 1724 batches | ms/batch 366.02 | s_loss  0.78  0.81 | w_loss  0.61  0.62
+| epoch   6 |   800/ 1724 batches | ms/batch 367.59 | s_loss  0.79  0.81 | w_loss  0.61  0.62
+| epoch   6 |  1000/ 1724 batches | ms/batch 365.28 | s_loss  0.78  0.80 | w_loss  0.61  0.62
+| epoch   6 |  1200/ 1724 batches | ms/batch 365.22 | s_loss  0.80  0.82 | w_loss  0.63  0.65
+| epoch   6 |  1400/ 1724 batches | ms/batch 366.18 | s_loss  0.80  0.82 | w_loss  0.63  0.65
+| epoch   6 |  1600/ 1724 batches | ms/batch 368.11 | s_loss  0.78  0.81 | w_loss  0.61  0.62
+-----------------------------------------------------------------------------------------
+| end epoch   6 | valid loss  1.75  1.40 | lr 0.00177|
+-----------------------------------------------------------------------------------------
+| epoch   7 |     0/ 1724 batches | ms/batch  5.40 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch   7 |   200/ 1724 batches | ms/batch 393.28 | s_loss  0.77  0.79 | w_loss  0.61  0.62
+| epoch   7 |   400/ 1724 batches | ms/batch 387.78 | s_loss  0.78  0.80 | w_loss  0.60  0.61
+| epoch   7 |   600/ 1724 batches | ms/batch 370.92 | s_loss  0.77  0.79 | w_loss  0.58  0.60
+| epoch   7 |   800/ 1724 batches | ms/batch 377.63 | s_loss  0.76  0.78 | w_loss  0.59  0.60
+| epoch   7 |  1000/ 1724 batches | ms/batch 366.86 | s_loss  0.77  0.79 | w_loss  0.59  0.61
+| epoch   7 |  1200/ 1724 batches | ms/batch 368.02 | s_loss  0.77  0.79 | w_loss  0.59  0.62
+| epoch   7 |  1400/ 1724 batches | ms/batch 367.85 | s_loss  0.76  0.78 | w_loss  0.60  0.61
+| epoch   7 |  1600/ 1724 batches | ms/batch 370.52 | s_loss  0.78  0.80 | w_loss  0.61  0.62
+-----------------------------------------------------------------------------------------
+| end epoch   7 | valid loss  1.69  1.35 | lr 0.00174|
+-----------------------------------------------------------------------------------------
+| epoch   8 |     0/ 1724 batches | ms/batch  5.24 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch   8 |   200/ 1724 batches | ms/batch 372.04 | s_loss  0.74  0.77 | w_loss  0.58  0.58
+| epoch   8 |   400/ 1724 batches | ms/batch 370.72 | s_loss  0.76  0.78 | w_loss  0.58  0.59
+| epoch   8 |   600/ 1724 batches | ms/batch 374.95 | s_loss  0.75  0.76 | w_loss  0.59  0.59
+| epoch   8 |   800/ 1724 batches | ms/batch 378.72 | s_loss  0.76  0.79 | w_loss  0.58  0.59
+| epoch   8 |  1000/ 1724 batches | ms/batch 363.41 | s_loss  0.76  0.79 | w_loss  0.60  0.61
+| epoch   8 |  1200/ 1724 batches | ms/batch 370.14 | s_loss  0.77  0.80 | w_loss  0.61  0.61
+| epoch   8 |  1400/ 1724 batches | ms/batch 376.58 | s_loss  0.77  0.80 | w_loss  0.58  0.61
+| epoch   8 |  1600/ 1724 batches | ms/batch 376.48 | s_loss  0.76  0.79 | w_loss  0.58  0.60
+-----------------------------------------------------------------------------------------
+| end epoch   8 | valid loss  1.65  1.34 | lr 0.00170|
+-----------------------------------------------------------------------------------------
+| epoch   9 |     0/ 1724 batches | ms/batch  5.17 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch   9 |   200/ 1724 batches | ms/batch 371.53 | s_loss  0.74  0.76 | w_loss  0.56  0.57
+| epoch   9 |   400/ 1724 batches | ms/batch 376.06 | s_loss  0.75  0.78 | w_loss  0.58  0.60
+| epoch   9 |   600/ 1724 batches | ms/batch 369.92 | s_loss  0.74  0.76 | w_loss  0.55  0.57
+| epoch   9 |   800/ 1724 batches | ms/batch 371.55 | s_loss  0.75  0.77 | w_loss  0.56  0.57
+| epoch   9 |  1000/ 1724 batches | ms/batch 370.80 | s_loss  0.74  0.76 | w_loss  0.55  0.56
+| epoch   9 |  1200/ 1724 batches | ms/batch 373.16 | s_loss  0.76  0.78 | w_loss  0.59  0.60
+| epoch   9 |  1400/ 1724 batches | ms/batch 375.81 | s_loss  0.74  0.76 | w_loss  0.56  0.57
+| epoch   9 |  1600/ 1724 batches | ms/batch 371.30 | s_loss  0.74  0.77 | w_loss  0.57  0.59
+-----------------------------------------------------------------------------------------
+| end epoch   9 | valid loss  1.64  1.30 | lr 0.00167|
+-----------------------------------------------------------------------------------------
+| epoch  10 |     0/ 1724 batches | ms/batch  5.32 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  10 |   200/ 1724 batches | ms/batch 400.44 | s_loss  0.73  0.76 | w_loss  0.55  0.57
+| epoch  10 |   400/ 1724 batches | ms/batch 396.53 | s_loss  0.74  0.76 | w_loss  0.56  0.57
+| epoch  10 |   600/ 1724 batches | ms/batch 400.69 | s_loss  0.73  0.75 | w_loss  0.55  0.55
+| epoch  10 |   800/ 1724 batches | ms/batch 401.26 | s_loss  0.75  0.77 | w_loss  0.56  0.58
+| epoch  10 |  1000/ 1724 batches | ms/batch 400.60 | s_loss  0.73  0.75 | w_loss  0.56  0.57
+| epoch  10 |  1200/ 1724 batches | ms/batch 396.99 | s_loss  0.74  0.77 | w_loss  0.56  0.58
+| epoch  10 |  1400/ 1724 batches | ms/batch 387.65 | s_loss  0.73  0.75 | w_loss  0.54  0.55
+| epoch  10 |  1600/ 1724 batches | ms/batch 386.06 | s_loss  0.75  0.77 | w_loss  0.57  0.59
+-----------------------------------------------------------------------------------------
+| end epoch  10 | valid loss  1.71  1.33 | lr 0.00163|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  11 |     0/ 1724 batches | ms/batch  5.25 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  11 |   200/ 1724 batches | ms/batch 366.63 | s_loss  0.72  0.74 | w_loss  0.54  0.55
+| epoch  11 |   400/ 1724 batches | ms/batch 361.41 | s_loss  0.72  0.74 | w_loss  0.53  0.56
+| epoch  11 |   600/ 1724 batches | ms/batch 366.85 | s_loss  0.72  0.75 | w_loss  0.54  0.55
+| epoch  11 |   800/ 1724 batches | ms/batch 364.11 | s_loss  0.73  0.76 | w_loss  0.56  0.57
+| epoch  11 |  1000/ 1724 batches | ms/batch 365.96 | s_loss  0.72  0.74 | w_loss  0.54  0.55
+| epoch  11 |  1200/ 1724 batches | ms/batch 368.18 | s_loss  0.75  0.77 | w_loss  0.56  0.58
+| epoch  11 |  1400/ 1724 batches | ms/batch 370.66 | s_loss  0.73  0.76 | w_loss  0.56  0.57
+| epoch  11 |  1600/ 1724 batches | ms/batch 364.99 | s_loss  0.75  0.77 | w_loss  0.57  0.59
+-----------------------------------------------------------------------------------------
+| end epoch  11 | valid loss  1.71  1.39 | lr 0.00160|
+-----------------------------------------------------------------------------------------
+| epoch  12 |     0/ 1724 batches | ms/batch  5.62 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  12 |   200/ 1724 batches | ms/batch 369.62 | s_loss  0.71  0.74 | w_loss  0.53  0.54
+| epoch  12 |   400/ 1724 batches | ms/batch 363.68 | s_loss  0.72  0.74 | w_loss  0.54  0.54
+| epoch  12 |   600/ 1724 batches | ms/batch 362.61 | s_loss  0.72  0.75 | w_loss  0.54  0.55
+| epoch  12 |   800/ 1724 batches | ms/batch 372.26 | s_loss  0.70  0.73 | w_loss  0.51  0.52
+| epoch  12 |  1000/ 1724 batches | ms/batch 371.20 | s_loss  0.72  0.74 | w_loss  0.53  0.55
+| epoch  12 |  1200/ 1724 batches | ms/batch 366.65 | s_loss  0.73  0.75 | w_loss  0.54  0.55
+| epoch  12 |  1400/ 1724 batches | ms/batch 359.98 | s_loss  0.72  0.75 | w_loss  0.54  0.55
+| epoch  12 |  1600/ 1724 batches | ms/batch 365.36 | s_loss  0.74  0.77 | w_loss  0.55  0.57
+-----------------------------------------------------------------------------------------
+| end epoch  12 | valid loss  1.59  1.24 | lr 0.00157|
+-----------------------------------------------------------------------------------------
+| epoch  13 |     0/ 1724 batches | ms/batch  5.38 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  13 |   200/ 1724 batches | ms/batch 384.37 | s_loss  0.70  0.72 | w_loss  0.51  0.52
+| epoch  13 |   400/ 1724 batches | ms/batch 366.68 | s_loss  0.72  0.74 | w_loss  0.54  0.56
+| epoch  13 |   600/ 1724 batches | ms/batch 364.84 | s_loss  0.70  0.72 | w_loss  0.51  0.53
+| epoch  13 |   800/ 1724 batches | ms/batch 365.53 | s_loss  0.71  0.73 | w_loss  0.52  0.54
+| epoch  13 |  1000/ 1724 batches | ms/batch 364.02 | s_loss  0.72  0.74 | w_loss  0.53  0.54
+| epoch  13 |  1200/ 1724 batches | ms/batch 367.90 | s_loss  0.72  0.74 | w_loss  0.53  0.54
+| epoch  13 |  1400/ 1724 batches | ms/batch 369.30 | s_loss  0.72  0.75 | w_loss  0.52  0.55
+| epoch  13 |  1600/ 1724 batches | ms/batch 362.91 | s_loss  0.74  0.76 | w_loss  0.54  0.56
+-----------------------------------------------------------------------------------------
+| end epoch  13 | valid loss  1.59  1.22 | lr 0.00154|
+-----------------------------------------------------------------------------------------
+| epoch  14 |     0/ 1724 batches | ms/batch  6.01 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  14 |   200/ 1724 batches | ms/batch 377.69 | s_loss  0.68  0.70 | w_loss  0.49  0.50
+| epoch  14 |   400/ 1724 batches | ms/batch 385.28 | s_loss  0.70  0.72 | w_loss  0.52  0.53
+| epoch  14 |   600/ 1724 batches | ms/batch 376.25 | s_loss  0.70  0.72 | w_loss  0.52  0.54
+| epoch  14 |   800/ 1724 batches | ms/batch 371.38 | s_loss  0.71  0.73 | w_loss  0.52  0.53
+| epoch  14 |  1000/ 1724 batches | ms/batch 365.79 | s_loss  0.72  0.75 | w_loss  0.54  0.55
+| epoch  14 |  1200/ 1724 batches | ms/batch 361.59 | s_loss  0.72  0.75 | w_loss  0.53  0.55
+| epoch  14 |  1400/ 1724 batches | ms/batch 360.63 | s_loss  0.71  0.73 | w_loss  0.52  0.54
+| epoch  14 |  1600/ 1724 batches | ms/batch 366.04 | s_loss  0.72  0.74 | w_loss  0.51  0.54
+-----------------------------------------------------------------------------------------
+| end epoch  14 | valid loss  1.61  1.27 | lr 0.00151|
+-----------------------------------------------------------------------------------------
+| epoch  15 |     0/ 1724 batches | ms/batch  5.01 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  15 |   200/ 1724 batches | ms/batch 365.32 | s_loss  0.69  0.71 | w_loss  0.49  0.51
+| epoch  15 |   400/ 1724 batches | ms/batch 367.16 | s_loss  0.70  0.73 | w_loss  0.51  0.53
+| epoch  15 |   600/ 1724 batches | ms/batch 362.70 | s_loss  0.70  0.72 | w_loss  0.49  0.51
+| epoch  15 |   800/ 1724 batches | ms/batch 368.20 | s_loss  0.71  0.74 | w_loss  0.52  0.55
+| epoch  15 |  1000/ 1724 batches | ms/batch 369.46 | s_loss  0.70  0.72 | w_loss  0.50  0.52
+| epoch  15 |  1200/ 1724 batches | ms/batch 372.55 | s_loss  0.72  0.74 | w_loss  0.52  0.54
+| epoch  15 |  1400/ 1724 batches | ms/batch 372.19 | s_loss  0.70  0.72 | w_loss  0.51  0.52
+| epoch  15 |  1600/ 1724 batches | ms/batch 370.80 | s_loss  0.71  0.73 | w_loss  0.51  0.54
+-----------------------------------------------------------------------------------------
+| end epoch  15 | valid loss  1.73  1.36 | lr 0.00148|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  16 |     0/ 1724 batches | ms/batch  5.50 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  16 |   200/ 1724 batches | ms/batch 371.73 | s_loss  0.70  0.73 | w_loss  0.50  0.52
+| epoch  16 |   400/ 1724 batches | ms/batch 374.18 | s_loss  0.70  0.72 | w_loss  0.49  0.51
+| epoch  16 |   600/ 1724 batches | ms/batch 371.78 | s_loss  0.69  0.71 | w_loss  0.49  0.51
+| epoch  16 |   800/ 1724 batches | ms/batch 370.21 | s_loss  0.70  0.72 | w_loss  0.51  0.53
+| epoch  16 |  1000/ 1724 batches | ms/batch 368.85 | s_loss  0.70  0.72 | w_loss  0.50  0.52
+| epoch  16 |  1200/ 1724 batches | ms/batch 369.34 | s_loss  0.69  0.72 | w_loss  0.50  0.53
+| epoch  16 |  1400/ 1724 batches | ms/batch 370.82 | s_loss  0.70  0.73 | w_loss  0.51  0.53
+| epoch  16 |  1600/ 1724 batches | ms/batch 374.42 | s_loss  0.69  0.71 | w_loss  0.50  0.52
+-----------------------------------------------------------------------------------------
+| end epoch  16 | valid loss  1.58  1.16 | lr 0.00145|
+-----------------------------------------------------------------------------------------
+| epoch  17 |     0/ 1724 batches | ms/batch  5.46 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  17 |   200/ 1724 batches | ms/batch 364.09 | s_loss  0.68  0.70 | w_loss  0.47  0.49
+| epoch  17 |   400/ 1724 batches | ms/batch 362.22 | s_loss  0.68  0.70 | w_loss  0.49  0.50
+| epoch  17 |   600/ 1724 batches | ms/batch 357.07 | s_loss  0.68  0.71 | w_loss  0.49  0.51
+| epoch  17 |   800/ 1724 batches | ms/batch 363.82 | s_loss  0.70  0.72 | w_loss  0.51  0.52
+| epoch  17 |  1000/ 1724 batches | ms/batch 361.96 | s_loss  0.68  0.71 | w_loss  0.48  0.50
+| epoch  17 |  1200/ 1724 batches | ms/batch 362.63 | s_loss  0.70  0.73 | w_loss  0.51  0.54
+| epoch  17 |  1400/ 1724 batches | ms/batch 361.37 | s_loss  0.69  0.72 | w_loss  0.51  0.52
+| epoch  17 |  1600/ 1724 batches | ms/batch 359.09 | s_loss  0.70  0.72 | w_loss  0.52  0.52
+-----------------------------------------------------------------------------------------
+| end epoch  17 | valid loss  1.61  1.27 | lr 0.00142|
+-----------------------------------------------------------------------------------------
+| epoch  18 |     0/ 1724 batches | ms/batch  5.31 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  18 |   200/ 1724 batches | ms/batch 368.21 | s_loss  0.68  0.70 | w_loss  0.48  0.50
+| epoch  18 |   400/ 1724 batches | ms/batch 364.79 | s_loss  0.69  0.71 | w_loss  0.49  0.51
+| epoch  18 |   600/ 1724 batches | ms/batch 363.59 | s_loss  0.68  0.71 | w_loss  0.48  0.50
+| epoch  18 |   800/ 1724 batches | ms/batch 364.89 | s_loss  0.69  0.72 | w_loss  0.50  0.52
+| epoch  18 |  1000/ 1724 batches | ms/batch 360.79 | s_loss  0.69  0.71 | w_loss  0.49  0.51
+| epoch  18 |  1200/ 1724 batches | ms/batch 362.64 | s_loss  0.69  0.71 | w_loss  0.50  0.51
+| epoch  18 |  1400/ 1724 batches | ms/batch 364.21 | s_loss  0.70  0.73 | w_loss  0.51  0.53
+| epoch  18 |  1600/ 1724 batches | ms/batch 361.48 | s_loss  0.68  0.71 | w_loss  0.49  0.51
+-----------------------------------------------------------------------------------------
+| end epoch  18 | valid loss  1.69  1.36 | lr 0.00139|
+-----------------------------------------------------------------------------------------
+| epoch  19 |     0/ 1724 batches | ms/batch  5.01 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  19 |   200/ 1724 batches | ms/batch 369.53 | s_loss  0.68  0.71 | w_loss  0.49  0.51
+| epoch  19 |   400/ 1724 batches | ms/batch 366.75 | s_loss  0.67  0.68 | w_loss  0.48  0.49
+| epoch  19 |   600/ 1724 batches | ms/batch 364.21 | s_loss  0.67  0.70 | w_loss  0.49  0.51
+| epoch  19 |   800/ 1724 batches | ms/batch 368.07 | s_loss  0.69  0.71 | w_loss  0.50  0.51
+| epoch  19 |  1000/ 1724 batches | ms/batch 365.11 | s_loss  0.69  0.71 | w_loss  0.48  0.51
+| epoch  19 |  1200/ 1724 batches | ms/batch 358.95 | s_loss  0.69  0.72 | w_loss  0.50  0.51
+| epoch  19 |  1400/ 1724 batches | ms/batch 364.45 | s_loss  0.69  0.71 | w_loss  0.49  0.51
+| epoch  19 |  1600/ 1724 batches | ms/batch 362.28 | s_loss  0.67  0.70 | w_loss  0.47  0.49
+-----------------------------------------------------------------------------------------
+| end epoch  19 | valid loss  1.63  1.29 | lr 0.00136|
+-----------------------------------------------------------------------------------------
+| epoch  20 |     0/ 1724 batches | ms/batch  5.34 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  20 |   200/ 1724 batches | ms/batch 367.90 | s_loss  0.67  0.69 | w_loss  0.48  0.50
+| epoch  20 |   400/ 1724 batches | ms/batch 361.85 | s_loss  0.68  0.70 | w_loss  0.48  0.49
+| epoch  20 |   600/ 1724 batches | ms/batch 362.60 | s_loss  0.67  0.69 | w_loss  0.48  0.49
+| epoch  20 |   800/ 1724 batches | ms/batch 362.88 | s_loss  0.68  0.70 | w_loss  0.49  0.50
+| epoch  20 |  1000/ 1724 batches | ms/batch 361.01 | s_loss  0.67  0.69 | w_loss  0.47  0.48
+| epoch  20 |  1200/ 1724 batches | ms/batch 360.91 | s_loss  0.68  0.71 | w_loss  0.48  0.50
+| epoch  20 |  1400/ 1724 batches | ms/batch 363.76 | s_loss  0.68  0.71 | w_loss  0.48  0.50
+| epoch  20 |  1600/ 1724 batches | ms/batch 361.22 | s_loss  0.68  0.70 | w_loss  0.48  0.50
+-----------------------------------------------------------------------------------------
+| end epoch  20 | valid loss  1.62  1.23 | lr 0.00134|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  21 |     0/ 1724 batches | ms/batch  5.03 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  21 |   200/ 1724 batches | ms/batch 363.42 | s_loss  0.67  0.69 | w_loss  0.48  0.51
+| epoch  21 |   400/ 1724 batches | ms/batch 364.32 | s_loss  0.65  0.67 | w_loss  0.45  0.47
+| epoch  21 |   600/ 1724 batches | ms/batch 358.17 | s_loss  0.66  0.68 | w_loss  0.46  0.48
+| epoch  21 |   800/ 1724 batches | ms/batch 362.74 | s_loss  0.66  0.68 | w_loss  0.47  0.48
+| epoch  21 |  1000/ 1724 batches | ms/batch 362.34 | s_loss  0.67  0.70 | w_loss  0.48  0.49
+| epoch  21 |  1200/ 1724 batches | ms/batch 358.70 | s_loss  0.67  0.69 | w_loss  0.47  0.48
+| epoch  21 |  1400/ 1724 batches | ms/batch 360.91 | s_loss  0.68  0.70 | w_loss  0.48  0.50
+| epoch  21 |  1600/ 1724 batches | ms/batch 359.93 | s_loss  0.68  0.70 | w_loss  0.46  0.49
+-----------------------------------------------------------------------------------------
+| end epoch  21 | valid loss  1.60  1.23 | lr 0.00131|
+-----------------------------------------------------------------------------------------
+| epoch  22 |     0/ 1724 batches | ms/batch  4.97 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  22 |   200/ 1724 batches | ms/batch 364.21 | s_loss  0.66  0.68 | w_loss  0.48  0.49
+| epoch  22 |   400/ 1724 batches | ms/batch 363.51 | s_loss  0.66  0.69 | w_loss  0.47  0.49
+| epoch  22 |   600/ 1724 batches | ms/batch 363.40 | s_loss  0.66  0.68 | w_loss  0.46  0.48
+| epoch  22 |   800/ 1724 batches | ms/batch 362.04 | s_loss  0.67  0.69 | w_loss  0.48  0.50
+| epoch  22 |  1000/ 1724 batches | ms/batch 363.61 | s_loss  0.65  0.67 | w_loss  0.46  0.48
+| epoch  22 |  1200/ 1724 batches | ms/batch 357.99 | s_loss  0.67  0.69 | w_loss  0.47  0.48
+| epoch  22 |  1400/ 1724 batches | ms/batch 361.42 | s_loss  0.67  0.69 | w_loss  0.46  0.48
+| epoch  22 |  1600/ 1724 batches | ms/batch 362.00 | s_loss  0.68  0.70 | w_loss  0.48  0.50
+-----------------------------------------------------------------------------------------
+| end epoch  22 | valid loss  1.60  1.19 | lr 0.00128|
+-----------------------------------------------------------------------------------------
+| epoch  23 |     0/ 1724 batches | ms/batch  5.11 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  23 |   200/ 1724 batches | ms/batch 366.47 | s_loss  0.65  0.67 | w_loss  0.44  0.46
+| epoch  23 |   400/ 1724 batches | ms/batch 364.21 | s_loss  0.65  0.68 | w_loss  0.45  0.47
+| epoch  23 |   600/ 1724 batches | ms/batch 358.08 | s_loss  0.65  0.68 | w_loss  0.45  0.48
+| epoch  23 |   800/ 1724 batches | ms/batch 364.26 | s_loss  0.66  0.68 | w_loss  0.45  0.48
+| epoch  23 |  1000/ 1724 batches | ms/batch 361.83 | s_loss  0.69  0.71 | w_loss  0.49  0.52
+| epoch  23 |  1200/ 1724 batches | ms/batch 365.83 | s_loss  0.66  0.69 | w_loss  0.46  0.48
+| epoch  23 |  1400/ 1724 batches | ms/batch 358.13 | s_loss  0.66  0.69 | w_loss  0.47  0.48
+| epoch  23 |  1600/ 1724 batches | ms/batch 362.99 | s_loss  0.66  0.69 | w_loss  0.46  0.48
+-----------------------------------------------------------------------------------------
+| end epoch  23 | valid loss  1.62  1.22 | lr 0.00126|
+-----------------------------------------------------------------------------------------
+| epoch  24 |     0/ 1724 batches | ms/batch  5.02 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  24 |   200/ 1724 batches | ms/batch 364.56 | s_loss  0.66  0.68 | w_loss  0.46  0.49
+| epoch  24 |   400/ 1724 batches | ms/batch 363.03 | s_loss  0.64  0.67 | w_loss  0.45  0.46
+| epoch  24 |   600/ 1724 batches | ms/batch 359.79 | s_loss  0.66  0.68 | w_loss  0.46  0.48
+| epoch  24 |   800/ 1724 batches | ms/batch 364.37 | s_loss  0.66  0.68 | w_loss  0.46  0.47
+| epoch  24 |  1000/ 1724 batches | ms/batch 363.10 | s_loss  0.67  0.70 | w_loss  0.46  0.48
+| epoch  24 |  1200/ 1724 batches | ms/batch 362.09 | s_loss  0.66  0.68 | w_loss  0.46  0.47
+| epoch  24 |  1400/ 1724 batches | ms/batch 359.72 | s_loss  0.68  0.70 | w_loss  0.48  0.50
+| epoch  24 |  1600/ 1724 batches | ms/batch 360.42 | s_loss  0.67  0.69 | w_loss  0.46  0.49
+-----------------------------------------------------------------------------------------
+| end epoch  24 | valid loss  1.57  1.21 | lr 0.00123|
+-----------------------------------------------------------------------------------------
+| epoch  25 |     0/ 1724 batches | ms/batch  4.97 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  25 |   200/ 1724 batches | ms/batch 369.40 | s_loss  0.64  0.66 | w_loss  0.44  0.46
+| epoch  25 |   400/ 1724 batches | ms/batch 360.69 | s_loss  0.64  0.67 | w_loss  0.44  0.46
+| epoch  25 |   600/ 1724 batches | ms/batch 361.22 | s_loss  0.66  0.68 | w_loss  0.45  0.47
+| epoch  25 |   800/ 1724 batches | ms/batch 360.60 | s_loss  0.66  0.68 | w_loss  0.46  0.48
+| epoch  25 |  1000/ 1724 batches | ms/batch 362.26 | s_loss  0.66  0.68 | w_loss  0.45  0.47
+| epoch  25 |  1200/ 1724 batches | ms/batch 365.42 | s_loss  0.65  0.68 | w_loss  0.45  0.47
+| epoch  25 |  1400/ 1724 batches | ms/batch 363.21 | s_loss  0.64  0.67 | w_loss  0.45  0.48
+| epoch  25 |  1600/ 1724 batches | ms/batch 363.04 | s_loss  0.66  0.68 | w_loss  0.45  0.46
+-----------------------------------------------------------------------------------------
+| end epoch  25 | valid loss  1.58  1.19 | lr 0.00121|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  26 |     0/ 1724 batches | ms/batch  5.17 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  26 |   200/ 1724 batches | ms/batch 364.03 | s_loss  0.66  0.68 | w_loss  0.45  0.48
+| epoch  26 |   400/ 1724 batches | ms/batch 361.42 | s_loss  0.66  0.68 | w_loss  0.45  0.48
+| epoch  26 |   600/ 1724 batches | ms/batch 364.17 | s_loss  0.65  0.67 | w_loss  0.44  0.46
+| epoch  26 |   800/ 1724 batches | ms/batch 358.86 | s_loss  0.65  0.67 | w_loss  0.44  0.46
+| epoch  26 |  1000/ 1724 batches | ms/batch 360.82 | s_loss  0.65  0.68 | w_loss  0.46  0.48
+| epoch  26 |  1200/ 1724 batches | ms/batch 363.84 | s_loss  0.66  0.68 | w_loss  0.44  0.47
+| epoch  26 |  1400/ 1724 batches | ms/batch 360.39 | s_loss  0.66  0.68 | w_loss  0.46  0.48
+| epoch  26 |  1600/ 1724 batches | ms/batch 361.21 | s_loss  0.65  0.67 | w_loss  0.45  0.47
+-----------------------------------------------------------------------------------------
+| end epoch  26 | valid loss  1.56  1.15 | lr 0.00118|
+-----------------------------------------------------------------------------------------
+| epoch  27 |     0/ 1724 batches | ms/batch  5.67 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  27 |   200/ 1724 batches | ms/batch 347.67 | s_loss  0.65  0.67 | w_loss  0.45  0.47
+| epoch  27 |   400/ 1724 batches | ms/batch 347.30 | s_loss  0.64  0.67 | w_loss  0.44  0.45
+| epoch  27 |   600/ 1724 batches | ms/batch 345.26 | s_loss  0.65  0.67 | w_loss  0.44  0.45
+| epoch  27 |   800/ 1724 batches | ms/batch 349.27 | s_loss  0.65  0.67 | w_loss  0.44  0.46
+| epoch  27 |  1000/ 1724 batches | ms/batch 349.90 | s_loss  0.64  0.67 | w_loss  0.44  0.46
+| epoch  27 |  1200/ 1724 batches | ms/batch 350.85 | s_loss  0.65  0.67 | w_loss  0.45  0.47
+| epoch  27 |  1400/ 1724 batches | ms/batch 348.58 | s_loss  0.65  0.67 | w_loss  0.45  0.47
+| epoch  27 |  1600/ 1724 batches | ms/batch 347.16 | s_loss  0.66  0.68 | w_loss  0.46  0.48
+-----------------------------------------------------------------------------------------
+| end epoch  27 | valid loss  1.57  1.19 | lr 0.00116|
+-----------------------------------------------------------------------------------------
+| epoch  28 |     0/ 1724 batches | ms/batch  5.16 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  28 |   200/ 1724 batches | ms/batch 365.13 | s_loss  0.65  0.67 | w_loss  0.44  0.47
+| epoch  28 |   400/ 1724 batches | ms/batch 362.74 | s_loss  0.64  0.66 | w_loss  0.44  0.46
+| epoch  28 |   600/ 1724 batches | ms/batch 357.99 | s_loss  0.64  0.67 | w_loss  0.44  0.46
+| epoch  28 |   800/ 1724 batches | ms/batch 362.96 | s_loss  0.65  0.68 | w_loss  0.46  0.49
+| epoch  28 |  1000/ 1724 batches | ms/batch 364.62 | s_loss  0.64  0.66 | w_loss  0.44  0.46
+| epoch  28 |  1200/ 1724 batches | ms/batch 363.20 | s_loss  0.65  0.68 | w_loss  0.45  0.47
+| epoch  28 |  1400/ 1724 batches | ms/batch 361.25 | s_loss  0.65  0.68 | w_loss  0.45  0.47
+| epoch  28 |  1600/ 1724 batches | ms/batch 363.25 | s_loss  0.65  0.67 | w_loss  0.44  0.47
+-----------------------------------------------------------------------------------------
+| end epoch  28 | valid loss  1.56  1.19 | lr 0.00114|
+-----------------------------------------------------------------------------------------
+| epoch  29 |     0/ 1724 batches | ms/batch  5.07 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  29 |   200/ 1724 batches | ms/batch 363.68 | s_loss  0.64  0.66 | w_loss  0.44  0.46
+| epoch  29 |   400/ 1724 batches | ms/batch 363.75 | s_loss  0.65  0.67 | w_loss  0.45  0.47
+| epoch  29 |   600/ 1724 batches | ms/batch 361.29 | s_loss  0.64  0.66 | w_loss  0.43  0.45
+| epoch  29 |   800/ 1724 batches | ms/batch 362.59 | s_loss  0.65  0.68 | w_loss  0.44  0.47
+| epoch  29 |  1000/ 1724 batches | ms/batch 361.63 | s_loss  0.63  0.66 | w_loss  0.43  0.46
+| epoch  29 |  1200/ 1724 batches | ms/batch 363.93 | s_loss  0.65  0.67 | w_loss  0.44  0.46
+| epoch  29 |  1400/ 1724 batches | ms/batch 363.76 | s_loss  0.65  0.67 | w_loss  0.45  0.46
+| epoch  29 |  1600/ 1724 batches | ms/batch 362.17 | s_loss  0.67  0.69 | w_loss  0.47  0.49
+-----------------------------------------------------------------------------------------
+| end epoch  29 | valid loss  1.59  1.21 | lr 0.00111|
+-----------------------------------------------------------------------------------------
+| epoch  30 |     0/ 1724 batches | ms/batch  5.17 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  30 |   200/ 1724 batches | ms/batch 366.50 | s_loss  0.64  0.67 | w_loss  0.44  0.47
+| epoch  30 |   400/ 1724 batches | ms/batch 366.36 | s_loss  0.63  0.65 | w_loss  0.42  0.44
+| epoch  30 |   600/ 1724 batches | ms/batch 363.07 | s_loss  0.64  0.67 | w_loss  0.43  0.45
+| epoch  30 |   800/ 1724 batches | ms/batch 364.85 | s_loss  0.65  0.67 | w_loss  0.44  0.46
+| epoch  30 |  1000/ 1724 batches | ms/batch 360.71 | s_loss  0.65  0.67 | w_loss  0.44  0.46
+| epoch  30 |  1200/ 1724 batches | ms/batch 359.72 | s_loss  0.65  0.68 | w_loss  0.45  0.47
+| epoch  30 |  1400/ 1724 batches | ms/batch 364.04 | s_loss  0.64  0.66 | w_loss  0.43  0.45
+| epoch  30 |  1600/ 1724 batches | ms/batch 361.36 | s_loss  0.65  0.67 | w_loss  0.45  0.47
+-----------------------------------------------------------------------------------------
+| end epoch  30 | valid loss  1.54  1.22 | lr 0.00109|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  31 |     0/ 1724 batches | ms/batch  5.27 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  31 |   200/ 1724 batches | ms/batch 358.76 | s_loss  0.64  0.66 | w_loss  0.44  0.45
+| epoch  31 |   400/ 1724 batches | ms/batch 362.23 | s_loss  0.64  0.66 | w_loss  0.44  0.46
+| epoch  31 |   600/ 1724 batches | ms/batch 363.23 | s_loss  0.63  0.66 | w_loss  0.43  0.45
+| epoch  31 |   800/ 1724 batches | ms/batch 362.34 | s_loss  0.63  0.66 | w_loss  0.43  0.45
+| epoch  31 |  1000/ 1724 batches | ms/batch 363.77 | s_loss  0.64  0.66 | w_loss  0.43  0.46
+| epoch  31 |  1200/ 1724 batches | ms/batch 362.52 | s_loss  0.66  0.68 | w_loss  0.45  0.47
+| epoch  31 |  1400/ 1724 batches | ms/batch 364.59 | s_loss  0.64  0.66 | w_loss  0.43  0.45
+| epoch  31 |  1600/ 1724 batches | ms/batch 364.71 | s_loss  0.64  0.67 | w_loss  0.44  0.47
+-----------------------------------------------------------------------------------------
+| end epoch  31 | valid loss  1.61  1.19 | lr 0.00107|
+-----------------------------------------------------------------------------------------
+| epoch  32 |     0/ 1724 batches | ms/batch  4.98 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  32 |   200/ 1724 batches | ms/batch 364.94 | s_loss  0.63  0.66 | w_loss  0.42  0.45
+| epoch  32 |   400/ 1724 batches | ms/batch 362.18 | s_loss  0.64  0.66 | w_loss  0.43  0.45
+| epoch  32 |   600/ 1724 batches | ms/batch 363.17 | s_loss  0.63  0.65 | w_loss  0.42  0.45
+| epoch  32 |   800/ 1724 batches | ms/batch 363.98 | s_loss  0.64  0.66 | w_loss  0.43  0.46
+| epoch  32 |  1000/ 1724 batches | ms/batch 360.95 | s_loss  0.65  0.67 | w_loss  0.44  0.47
+| epoch  32 |  1200/ 1724 batches | ms/batch 363.60 | s_loss  0.64  0.66 | w_loss  0.45  0.47
+| epoch  32 |  1400/ 1724 batches | ms/batch 361.75 | s_loss  0.66  0.68 | w_loss  0.45  0.47
+| epoch  32 |  1600/ 1724 batches | ms/batch 359.86 | s_loss  0.65  0.68 | w_loss  0.44  0.47
+-----------------------------------------------------------------------------------------
+| end epoch  32 | valid loss  1.59  1.25 | lr 0.00105|
+-----------------------------------------------------------------------------------------
+| epoch  33 |     0/ 1724 batches | ms/batch  4.98 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  33 |   200/ 1724 batches | ms/batch 365.36 | s_loss  0.63  0.65 | w_loss  0.43  0.45
+| epoch  33 |   400/ 1724 batches | ms/batch 358.91 | s_loss  0.64  0.66 | w_loss  0.43  0.45
+| epoch  33 |   600/ 1724 batches | ms/batch 363.29 | s_loss  0.65  0.67 | w_loss  0.44  0.45
+| epoch  33 |   800/ 1724 batches | ms/batch 357.18 | s_loss  0.64  0.67 | w_loss  0.43  0.46
+| epoch  33 |  1000/ 1724 batches | ms/batch 360.92 | s_loss  0.64  0.67 | w_loss  0.43  0.45
+| epoch  33 |  1200/ 1724 batches | ms/batch 361.10 | s_loss  0.64  0.66 | w_loss  0.43  0.45
+| epoch  33 |  1400/ 1724 batches | ms/batch 359.02 | s_loss  0.63  0.65 | w_loss  0.42  0.44
+| epoch  33 |  1600/ 1724 batches | ms/batch 359.38 | s_loss  0.63  0.65 | w_loss  0.42  0.45
+-----------------------------------------------------------------------------------------
+| end epoch  33 | valid loss  1.56  1.21 | lr 0.00103|
+-----------------------------------------------------------------------------------------
+| epoch  34 |     0/ 1724 batches | ms/batch  4.87 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  34 |   200/ 1724 batches | ms/batch 362.23 | s_loss  0.64  0.66 | w_loss  0.43  0.45
+| epoch  34 |   400/ 1724 batches | ms/batch 362.96 | s_loss  0.62  0.65 | w_loss  0.41  0.44
+| epoch  34 |   600/ 1724 batches | ms/batch 363.96 | s_loss  0.62  0.64 | w_loss  0.41  0.43
+| epoch  34 |   800/ 1724 batches | ms/batch 363.85 | s_loss  0.62  0.65 | w_loss  0.42  0.43
+| epoch  34 |  1000/ 1724 batches | ms/batch 367.00 | s_loss  0.62  0.65 | w_loss  0.43  0.45
+| epoch  34 |  1200/ 1724 batches | ms/batch 365.82 | s_loss  0.64  0.66 | w_loss  0.42  0.45
+| epoch  34 |  1400/ 1724 batches | ms/batch 361.96 | s_loss  0.63  0.65 | w_loss  0.43  0.46
+| epoch  34 |  1600/ 1724 batches | ms/batch 364.54 | s_loss  0.63  0.65 | w_loss  0.42  0.44
+-----------------------------------------------------------------------------------------
+| end epoch  34 | valid loss  1.54  1.18 | lr 0.00101|
+-----------------------------------------------------------------------------------------
+| epoch  35 |     0/ 1724 batches | ms/batch  5.30 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  35 |   200/ 1724 batches | ms/batch 366.81 | s_loss  0.63  0.65 | w_loss  0.42  0.45
+| epoch  35 |   400/ 1724 batches | ms/batch 367.21 | s_loss  0.63  0.65 | w_loss  0.42  0.45
+| epoch  35 |   600/ 1724 batches | ms/batch 363.20 | s_loss  0.63  0.65 | w_loss  0.42  0.44
+| epoch  35 |   800/ 1724 batches | ms/batch 362.16 | s_loss  0.62  0.65 | w_loss  0.41  0.44
+| epoch  35 |  1000/ 1724 batches | ms/batch 361.29 | s_loss  0.63  0.65 | w_loss  0.43  0.44
+| epoch  35 |  1200/ 1724 batches | ms/batch 363.90 | s_loss  0.63  0.66 | w_loss  0.42  0.44
+| epoch  35 |  1400/ 1724 batches | ms/batch 365.84 | s_loss  0.63  0.65 | w_loss  0.43  0.45
+| epoch  35 |  1600/ 1724 batches | ms/batch 367.10 | s_loss  0.63  0.65 | w_loss  0.42  0.44
+-----------------------------------------------------------------------------------------
+| end epoch  35 | valid loss  1.65  1.30 | lr 0.00099|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  36 |     0/ 1724 batches | ms/batch  5.03 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  36 |   200/ 1724 batches | ms/batch 368.12 | s_loss  0.62  0.64 | w_loss  0.41  0.44
+| epoch  36 |   400/ 1724 batches | ms/batch 367.93 | s_loss  0.62  0.64 | w_loss  0.42  0.44
+| epoch  36 |   600/ 1724 batches | ms/batch 359.97 | s_loss  0.63  0.65 | w_loss  0.42  0.44
+| epoch  36 |   800/ 1724 batches | ms/batch 364.64 | s_loss  0.61  0.64 | w_loss  0.41  0.44
+| epoch  36 |  1000/ 1724 batches | ms/batch 357.96 | s_loss  0.62  0.65 | w_loss  0.40  0.43
+| epoch  36 |  1200/ 1724 batches | ms/batch 360.23 | s_loss  0.63  0.66 | w_loss  0.43  0.46
+| epoch  36 |  1400/ 1724 batches | ms/batch 361.89 | s_loss  0.63  0.65 | w_loss  0.42  0.44
+| epoch  36 |  1600/ 1724 batches | ms/batch 365.56 | s_loss  0.62  0.64 | w_loss  0.42  0.44
+-----------------------------------------------------------------------------------------
+| end epoch  36 | valid loss  1.55  1.21 | lr 0.00097|
+-----------------------------------------------------------------------------------------
+| epoch  37 |     0/ 1724 batches | ms/batch  4.93 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  37 |   200/ 1724 batches | ms/batch 363.23 | s_loss  0.63  0.66 | w_loss  0.42  0.44
+| epoch  37 |   400/ 1724 batches | ms/batch 366.87 | s_loss  0.63  0.66 | w_loss  0.42  0.45
+| epoch  37 |   600/ 1724 batches | ms/batch 364.01 | s_loss  0.62  0.64 | w_loss  0.41  0.43
+| epoch  37 |   800/ 1724 batches | ms/batch 362.23 | s_loss  0.63  0.65 | w_loss  0.41  0.44
+| epoch  37 |  1000/ 1724 batches | ms/batch 360.99 | s_loss  0.62  0.65 | w_loss  0.41  0.43
+| epoch  37 |  1200/ 1724 batches | ms/batch 365.09 | s_loss  0.63  0.65 | w_loss  0.41  0.45
+| epoch  37 |  1400/ 1724 batches | ms/batch 363.20 | s_loss  0.63  0.65 | w_loss  0.41  0.44
+| epoch  37 |  1600/ 1724 batches | ms/batch 362.51 | s_loss  0.63  0.66 | w_loss  0.41  0.43
+-----------------------------------------------------------------------------------------
+| end epoch  37 | valid loss  1.60  1.23 | lr 0.00095|
+-----------------------------------------------------------------------------------------
+| epoch  38 |     0/ 1724 batches | ms/batch  5.33 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  38 |   200/ 1724 batches | ms/batch 354.30 | s_loss  0.61  0.63 | w_loss  0.41  0.44
+| epoch  38 |   400/ 1724 batches | ms/batch 347.07 | s_loss  0.60  0.63 | w_loss  0.40  0.42
+| epoch  38 |   600/ 1724 batches | ms/batch 352.28 | s_loss  0.62  0.65 | w_loss  0.41  0.44
+| epoch  38 |   800/ 1724 batches | ms/batch 347.94 | s_loss  0.61  0.63 | w_loss  0.41  0.43
+| epoch  38 |  1000/ 1724 batches | ms/batch 350.39 | s_loss  0.61  0.63 | w_loss  0.40  0.42
+| epoch  38 |  1200/ 1724 batches | ms/batch 346.86 | s_loss  0.63  0.65 | w_loss  0.42  0.45
+| epoch  38 |  1400/ 1724 batches | ms/batch 349.42 | s_loss  0.63  0.66 | w_loss  0.42  0.44
+| epoch  38 |  1600/ 1724 batches | ms/batch 347.86 | s_loss  0.62  0.64 | w_loss  0.42  0.44
+-----------------------------------------------------------------------------------------
+| end epoch  38 | valid loss  1.62  1.22 | lr 0.00093|
+-----------------------------------------------------------------------------------------
+| epoch  39 |     0/ 1724 batches | ms/batch  4.90 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  39 |   200/ 1724 batches | ms/batch 365.12 | s_loss  0.62  0.64 | w_loss  0.42  0.44
+| epoch  39 |   400/ 1724 batches | ms/batch 364.41 | s_loss  0.62  0.64 | w_loss  0.41  0.43
+| epoch  39 |   600/ 1724 batches | ms/batch 363.52 | s_loss  0.61  0.63 | w_loss  0.40  0.42
+| epoch  39 |   800/ 1724 batches | ms/batch 361.24 | s_loss  0.61  0.63 | w_loss  0.41  0.43
+| epoch  39 |  1000/ 1724 batches | ms/batch 362.17 | s_loss  0.62  0.64 | w_loss  0.40  0.43
+| epoch  39 |  1200/ 1724 batches | ms/batch 360.96 | s_loss  0.62  0.65 | w_loss  0.41  0.43
+| epoch  39 |  1400/ 1724 batches | ms/batch 362.91 | s_loss  0.62  0.65 | w_loss  0.41  0.44
+| epoch  39 |  1600/ 1724 batches | ms/batch 359.81 | s_loss  0.62  0.64 | w_loss  0.42  0.44
+-----------------------------------------------------------------------------------------
+| end epoch  39 | valid loss  1.60  1.23 | lr 0.00091|
+-----------------------------------------------------------------------------------------
+| epoch  40 |     0/ 1724 batches | ms/batch  5.19 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  40 |   200/ 1724 batches | ms/batch 364.53 | s_loss  0.62  0.65 | w_loss  0.41  0.44
+| epoch  40 |   400/ 1724 batches | ms/batch 361.43 | s_loss  0.61  0.63 | w_loss  0.40  0.42
+| epoch  40 |   600/ 1724 batches | ms/batch 361.92 | s_loss  0.61  0.64 | w_loss  0.41  0.44
+| epoch  40 |   800/ 1724 batches | ms/batch 363.12 | s_loss  0.62  0.64 | w_loss  0.41  0.44
+| epoch  40 |  1000/ 1724 batches | ms/batch 366.78 | s_loss  0.61  0.64 | w_loss  0.40  0.43
+| epoch  40 |  1200/ 1724 batches | ms/batch 370.62 | s_loss  0.62  0.65 | w_loss  0.40  0.44
+| epoch  40 |  1400/ 1724 batches | ms/batch 363.76 | s_loss  0.63  0.65 | w_loss  0.41  0.44
+| epoch  40 |  1600/ 1724 batches | ms/batch 363.18 | s_loss  0.61  0.64 | w_loss  0.41  0.43
+-----------------------------------------------------------------------------------------
+| end epoch  40 | valid loss  1.61  1.23 | lr 0.00089|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  41 |     0/ 1724 batches | ms/batch  5.55 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  41 |   200/ 1724 batches | ms/batch 366.64 | s_loss  0.61  0.63 | w_loss  0.40  0.42
+| epoch  41 |   400/ 1724 batches | ms/batch 363.36 | s_loss  0.61  0.63 | w_loss  0.40  0.43
+| epoch  41 |   600/ 1724 batches | ms/batch 363.51 | s_loss  0.60  0.63 | w_loss  0.39  0.41
+| epoch  41 |   800/ 1724 batches | ms/batch 364.80 | s_loss  0.62  0.64 | w_loss  0.41  0.44
+| epoch  41 |  1000/ 1724 batches | ms/batch 367.54 | s_loss  0.62  0.64 | w_loss  0.41  0.45
+| epoch  41 |  1200/ 1724 batches | ms/batch 364.38 | s_loss  0.61  0.63 | w_loss  0.41  0.43
+| epoch  41 |  1400/ 1724 batches | ms/batch 370.77 | s_loss  0.62  0.64 | w_loss  0.42  0.44
+| epoch  41 |  1600/ 1724 batches | ms/batch 366.04 | s_loss  0.62  0.65 | w_loss  0.42  0.45
+-----------------------------------------------------------------------------------------
+| end epoch  41 | valid loss  1.57  1.13 | lr 0.00087|
+-----------------------------------------------------------------------------------------
+| epoch  42 |     0/ 1724 batches | ms/batch  5.48 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  42 |   200/ 1724 batches | ms/batch 354.91 | s_loss  0.60  0.62 | w_loss  0.40  0.42
+| epoch  42 |   400/ 1724 batches | ms/batch 352.90 | s_loss  0.62  0.64 | w_loss  0.41  0.44
+| epoch  42 |   600/ 1724 batches | ms/batch 355.84 | s_loss  0.61  0.63 | w_loss  0.41  0.43
+| epoch  42 |   800/ 1724 batches | ms/batch 356.71 | s_loss  0.60  0.63 | w_loss  0.39  0.43
+| epoch  42 |  1000/ 1724 batches | ms/batch 355.04 | s_loss  0.62  0.64 | w_loss  0.40  0.43
+| epoch  42 |  1200/ 1724 batches | ms/batch 354.17 | s_loss  0.62  0.64 | w_loss  0.40  0.43
+| epoch  42 |  1400/ 1724 batches | ms/batch 353.00 | s_loss  0.62  0.65 | w_loss  0.41  0.43
+| epoch  42 |  1600/ 1724 batches | ms/batch 354.78 | s_loss  0.62  0.65 | w_loss  0.41  0.44
+-----------------------------------------------------------------------------------------
+| end epoch  42 | valid loss  1.56  1.21 | lr 0.00086|
+-----------------------------------------------------------------------------------------
+| epoch  43 |     0/ 1724 batches | ms/batch  5.53 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  43 |   200/ 1724 batches | ms/batch 369.43 | s_loss  0.59  0.62 | w_loss  0.38  0.42
+| epoch  43 |   400/ 1724 batches | ms/batch 366.95 | s_loss  0.61  0.63 | w_loss  0.39  0.42
+| epoch  43 |   600/ 1724 batches | ms/batch 371.16 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  43 |   800/ 1724 batches | ms/batch 364.46 | s_loss  0.60  0.62 | w_loss  0.39  0.41
+| epoch  43 |  1000/ 1724 batches | ms/batch 365.74 | s_loss  0.61  0.64 | w_loss  0.41  0.44
+| epoch  43 |  1200/ 1724 batches | ms/batch 381.30 | s_loss  0.60  0.63 | w_loss  0.40  0.43
+| epoch  43 |  1400/ 1724 batches | ms/batch 379.81 | s_loss  0.61  0.63 | w_loss  0.40  0.43
+| epoch  43 |  1600/ 1724 batches | ms/batch 382.42 | s_loss  0.61  0.63 | w_loss  0.40  0.43
+-----------------------------------------------------------------------------------------
+| end epoch  43 | valid loss  1.49  1.13 | lr 0.00084|
+-----------------------------------------------------------------------------------------
+| epoch  44 |     0/ 1724 batches | ms/batch  6.12 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  44 |   200/ 1724 batches | ms/batch 385.70 | s_loss  0.60  0.62 | w_loss  0.39  0.42
+| epoch  44 |   400/ 1724 batches | ms/batch 391.07 | s_loss  0.60  0.63 | w_loss  0.40  0.43
+| epoch  44 |   600/ 1724 batches | ms/batch 389.42 | s_loss  0.60  0.63 | w_loss  0.40  0.42
+| epoch  44 |   800/ 1724 batches | ms/batch 385.22 | s_loss  0.62  0.64 | w_loss  0.41  0.44
+| epoch  44 |  1000/ 1724 batches | ms/batch 387.02 | s_loss  0.61  0.63 | w_loss  0.40  0.42
+| epoch  44 |  1200/ 1724 batches | ms/batch 391.37 | s_loss  0.61  0.64 | w_loss  0.40  0.43
+| epoch  44 |  1400/ 1724 batches | ms/batch 389.03 | s_loss  0.62  0.64 | w_loss  0.41  0.43
+| epoch  44 |  1600/ 1724 batches | ms/batch 388.66 | s_loss  0.60  0.62 | w_loss  0.40  0.42
+-----------------------------------------------------------------------------------------
+| end epoch  44 | valid loss  1.59  1.24 | lr 0.00082|
+-----------------------------------------------------------------------------------------
+| epoch  45 |     0/ 1724 batches | ms/batch  5.76 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  45 |   200/ 1724 batches | ms/batch 391.14 | s_loss  0.59  0.61 | w_loss  0.40  0.42
+| epoch  45 |   400/ 1724 batches | ms/batch 390.83 | s_loss  0.61  0.63 | w_loss  0.40  0.43
+| epoch  45 |   600/ 1724 batches | ms/batch 391.50 | s_loss  0.61  0.63 | w_loss  0.40  0.42
+| epoch  45 |   800/ 1724 batches | ms/batch 389.79 | s_loss  0.62  0.64 | w_loss  0.40  0.43
+| epoch  45 |  1000/ 1724 batches | ms/batch 399.06 | s_loss  0.62  0.65 | w_loss  0.41  0.44
+| epoch  45 |  1200/ 1724 batches | ms/batch 400.49 | s_loss  0.61  0.63 | w_loss  0.40  0.43
+| epoch  45 |  1400/ 1724 batches | ms/batch 389.66 | s_loss  0.61  0.63 | w_loss  0.40  0.42
+| epoch  45 |  1600/ 1724 batches | ms/batch 393.01 | s_loss  0.61  0.64 | w_loss  0.41  0.44
+-----------------------------------------------------------------------------------------
+| end epoch  45 | valid loss  1.56  1.14 | lr 0.00081|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  46 |     0/ 1724 batches | ms/batch  4.92 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  46 |   200/ 1724 batches | ms/batch 362.69 | s_loss  0.61  0.63 | w_loss  0.40  0.43
+| epoch  46 |   400/ 1724 batches | ms/batch 364.81 | s_loss  0.60  0.62 | w_loss  0.39  0.42
+| epoch  46 |   600/ 1724 batches | ms/batch 367.40 | s_loss  0.60  0.63 | w_loss  0.40  0.42
+| epoch  46 |   800/ 1724 batches | ms/batch 368.57 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  46 |  1000/ 1724 batches | ms/batch 367.89 | s_loss  0.60  0.63 | w_loss  0.38  0.41
+| epoch  46 |  1200/ 1724 batches | ms/batch 365.91 | s_loss  0.61  0.64 | w_loss  0.41  0.43
+| epoch  46 |  1400/ 1724 batches | ms/batch 365.80 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  46 |  1600/ 1724 batches | ms/batch 366.64 | s_loss  0.62  0.64 | w_loss  0.40  0.43
+-----------------------------------------------------------------------------------------
+| end epoch  46 | valid loss  1.61  1.21 | lr 0.00079|
+-----------------------------------------------------------------------------------------
+| epoch  47 |     0/ 1724 batches | ms/batch  5.68 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  47 |   200/ 1724 batches | ms/batch 366.10 | s_loss  0.61  0.63 | w_loss  0.39  0.42
+| epoch  47 |   400/ 1724 batches | ms/batch 368.05 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  47 |   600/ 1724 batches | ms/batch 365.48 | s_loss  0.62  0.65 | w_loss  0.40  0.44
+| epoch  47 |   800/ 1724 batches | ms/batch 370.71 | s_loss  0.61  0.64 | w_loss  0.39  0.42
+| epoch  47 |  1000/ 1724 batches | ms/batch 369.47 | s_loss  0.60  0.63 | w_loss  0.38  0.41
+| epoch  47 |  1200/ 1724 batches | ms/batch 367.98 | s_loss  0.61  0.63 | w_loss  0.39  0.42
+| epoch  47 |  1400/ 1724 batches | ms/batch 366.17 | s_loss  0.60  0.63 | w_loss  0.39  0.43
+| epoch  47 |  1600/ 1724 batches | ms/batch 370.04 | s_loss  0.60  0.62 | w_loss  0.39  0.41
+-----------------------------------------------------------------------------------------
+| end epoch  47 | valid loss  1.50  1.10 | lr 0.00077|
+-----------------------------------------------------------------------------------------
+| epoch  48 |     0/ 1724 batches | ms/batch  5.34 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  48 |   200/ 1724 batches | ms/batch 372.33 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+| epoch  48 |   400/ 1724 batches | ms/batch 361.86 | s_loss  0.62  0.64 | w_loss  0.40  0.43
+| epoch  48 |   600/ 1724 batches | ms/batch 364.39 | s_loss  0.60  0.63 | w_loss  0.39  0.43
+| epoch  48 |   800/ 1724 batches | ms/batch 368.87 | s_loss  0.60  0.62 | w_loss  0.39  0.40
+| epoch  48 |  1000/ 1724 batches | ms/batch 379.10 | s_loss  0.61  0.64 | w_loss  0.40  0.43
+| epoch  48 |  1200/ 1724 batches | ms/batch 376.96 | s_loss  0.61  0.63 | w_loss  0.39  0.41
+| epoch  48 |  1400/ 1724 batches | ms/batch 376.41 | s_loss  0.61  0.63 | w_loss  0.40  0.42
+| epoch  48 |  1600/ 1724 batches | ms/batch 375.90 | s_loss  0.60  0.63 | w_loss  0.38  0.41
+-----------------------------------------------------------------------------------------
+| end epoch  48 | valid loss  1.54  1.18 | lr 0.00076|
+-----------------------------------------------------------------------------------------
+| epoch  49 |     0/ 1724 batches | ms/batch  6.17 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  49 |   200/ 1724 batches | ms/batch 410.91 | s_loss  0.60  0.62 | w_loss  0.38  0.41
+| epoch  49 |   400/ 1724 batches | ms/batch 392.59 | s_loss  0.60  0.62 | w_loss  0.39  0.41
+| epoch  49 |   600/ 1724 batches | ms/batch 392.70 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  49 |   800/ 1724 batches | ms/batch 393.45 | s_loss  0.60  0.62 | w_loss  0.38  0.41
+| epoch  49 |  1000/ 1724 batches | ms/batch 394.03 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+| epoch  49 |  1200/ 1724 batches | ms/batch 397.83 | s_loss  0.61  0.63 | w_loss  0.39  0.42
+| epoch  49 |  1400/ 1724 batches | ms/batch 392.43 | s_loss  0.59  0.62 | w_loss  0.39  0.43
+| epoch  49 |  1600/ 1724 batches | ms/batch 396.86 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+-----------------------------------------------------------------------------------------
+| end epoch  49 | valid loss  1.61  1.23 | lr 0.00074|
+-----------------------------------------------------------------------------------------
+| epoch  50 |     0/ 1724 batches | ms/batch  5.69 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  50 |   200/ 1724 batches | ms/batch 388.54 | s_loss  0.59  0.62 | w_loss  0.38  0.42
+| epoch  50 |   400/ 1724 batches | ms/batch 382.28 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  50 |   600/ 1724 batches | ms/batch 377.74 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  50 |   800/ 1724 batches | ms/batch 378.02 | s_loss  0.59  0.62 | w_loss  0.38  0.42
+| epoch  50 |  1000/ 1724 batches | ms/batch 376.88 | s_loss  0.59  0.61 | w_loss  0.37  0.40
+| epoch  50 |  1200/ 1724 batches | ms/batch 381.03 | s_loss  0.60  0.62 | w_loss  0.39  0.41
+| epoch  50 |  1400/ 1724 batches | ms/batch 372.17 | s_loss  0.59  0.61 | w_loss  0.38  0.40
+| epoch  50 |  1600/ 1724 batches | ms/batch 374.55 | s_loss  0.61  0.64 | w_loss  0.40  0.43
+-----------------------------------------------------------------------------------------
+| end epoch  50 | valid loss  1.53  1.16 | lr 0.00073|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  51 |     0/ 1724 batches | ms/batch  5.97 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  51 |   200/ 1724 batches | ms/batch 367.94 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+| epoch  51 |   400/ 1724 batches | ms/batch 370.73 | s_loss  0.59  0.62 | w_loss  0.37  0.41
+| epoch  51 |   600/ 1724 batches | ms/batch 375.04 | s_loss  0.60  0.63 | w_loss  0.40  0.43
+| epoch  51 |   800/ 1724 batches | ms/batch 376.41 | s_loss  0.61  0.64 | w_loss  0.39  0.43
+| epoch  51 |  1000/ 1724 batches | ms/batch 369.55 | s_loss  0.59  0.61 | w_loss  0.37  0.40
+| epoch  51 |  1200/ 1724 batches | ms/batch 378.10 | s_loss  0.60  0.62 | w_loss  0.39  0.41
+| epoch  51 |  1400/ 1724 batches | ms/batch 374.96 | s_loss  0.61  0.64 | w_loss  0.39  0.43
+| epoch  51 |  1600/ 1724 batches | ms/batch 370.34 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+-----------------------------------------------------------------------------------------
+| end epoch  51 | valid loss  1.52  1.21 | lr 0.00071|
+-----------------------------------------------------------------------------------------
+| epoch  52 |     0/ 1724 batches | ms/batch  5.35 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  52 |   200/ 1724 batches | ms/batch 375.16 | s_loss  0.59  0.62 | w_loss  0.39  0.43
+| epoch  52 |   400/ 1724 batches | ms/batch 372.42 | s_loss  0.59  0.61 | w_loss  0.37  0.40
+| epoch  52 |   600/ 1724 batches | ms/batch 374.67 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+| epoch  52 |   800/ 1724 batches | ms/batch 372.63 | s_loss  0.59  0.62 | w_loss  0.38  0.40
+| epoch  52 |  1000/ 1724 batches | ms/batch 374.84 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  52 |  1200/ 1724 batches | ms/batch 376.07 | s_loss  0.60  0.62 | w_loss  0.38  0.41
+| epoch  52 |  1400/ 1724 batches | ms/batch 377.79 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  52 |  1600/ 1724 batches | ms/batch 371.08 | s_loss  0.60  0.63 | w_loss  0.39  0.41
+-----------------------------------------------------------------------------------------
+| end epoch  52 | valid loss  1.60  1.21 | lr 0.00070|
+-----------------------------------------------------------------------------------------
+| epoch  53 |     0/ 1724 batches | ms/batch  5.23 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  53 |   200/ 1724 batches | ms/batch 380.39 | s_loss  0.59  0.62 | w_loss  0.37  0.41
+| epoch  53 |   400/ 1724 batches | ms/batch 375.99 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+| epoch  53 |   600/ 1724 batches | ms/batch 373.89 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  53 |   800/ 1724 batches | ms/batch 373.28 | s_loss  0.60  0.62 | w_loss  0.38  0.41
+| epoch  53 |  1000/ 1724 batches | ms/batch 371.25 | s_loss  0.59  0.61 | w_loss  0.37  0.40
+| epoch  53 |  1200/ 1724 batches | ms/batch 373.25 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  53 |  1400/ 1724 batches | ms/batch 372.59 | s_loss  0.62  0.64 | w_loss  0.40  0.43
+| epoch  53 |  1600/ 1724 batches | ms/batch 373.13 | s_loss  0.59  0.62 | w_loss  0.38  0.40
+-----------------------------------------------------------------------------------------
+| end epoch  53 | valid loss  1.53  1.16 | lr 0.00069|
+-----------------------------------------------------------------------------------------
+| epoch  54 |     0/ 1724 batches | ms/batch  5.60 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  54 |   200/ 1724 batches | ms/batch 406.49 | s_loss  0.58  0.61 | w_loss  0.37  0.41
+| epoch  54 |   400/ 1724 batches | ms/batch 388.69 | s_loss  0.59  0.61 | w_loss  0.37  0.41
+| epoch  54 |   600/ 1724 batches | ms/batch 376.58 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+| epoch  54 |   800/ 1724 batches | ms/batch 371.23 | s_loss  0.59  0.61 | w_loss  0.37  0.39
+| epoch  54 |  1000/ 1724 batches | ms/batch 383.98 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+| epoch  54 |  1200/ 1724 batches | ms/batch 394.36 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  54 |  1400/ 1724 batches | ms/batch 393.50 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+| epoch  54 |  1600/ 1724 batches | ms/batch 390.83 | s_loss  0.60  0.63 | w_loss  0.38  0.42
+-----------------------------------------------------------------------------------------
+| end epoch  54 | valid loss  1.55  1.17 | lr 0.00067|
+-----------------------------------------------------------------------------------------
+| epoch  55 |     0/ 1724 batches | ms/batch  5.44 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  55 |   200/ 1724 batches | ms/batch 372.27 | s_loss  0.59  0.62 | w_loss  0.39  0.41
+| epoch  55 |   400/ 1724 batches | ms/batch 367.21 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  55 |   600/ 1724 batches | ms/batch 367.70 | s_loss  0.59  0.62 | w_loss  0.39  0.42
+| epoch  55 |   800/ 1724 batches | ms/batch 367.47 | s_loss  0.59  0.61 | w_loss  0.37  0.41
+| epoch  55 |  1000/ 1724 batches | ms/batch 368.47 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  55 |  1200/ 1724 batches | ms/batch 369.09 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+| epoch  55 |  1400/ 1724 batches | ms/batch 364.06 | s_loss  0.60  0.63 | w_loss  0.38  0.41
+| epoch  55 |  1600/ 1724 batches | ms/batch 365.61 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+-----------------------------------------------------------------------------------------
+| end epoch  55 | valid loss  1.54  1.16 | lr 0.00066|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  56 |     0/ 1724 batches | ms/batch  5.99 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  56 |   200/ 1724 batches | ms/batch 395.80 | s_loss  0.58  0.61 | w_loss  0.37  0.39
+| epoch  56 |   400/ 1724 batches | ms/batch 388.12 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+| epoch  56 |   600/ 1724 batches | ms/batch 391.39 | s_loss  0.59  0.61 | w_loss  0.37  0.40
+| epoch  56 |   800/ 1724 batches | ms/batch 390.74 | s_loss  0.57  0.60 | w_loss  0.36  0.38
+| epoch  56 |  1000/ 1724 batches | ms/batch 393.33 | s_loss  0.60  0.62 | w_loss  0.39  0.42
+| epoch  56 |  1200/ 1724 batches | ms/batch 391.79 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+| epoch  56 |  1400/ 1724 batches | ms/batch 388.60 | s_loss  0.60  0.62 | w_loss  0.38  0.42
+| epoch  56 |  1600/ 1724 batches | ms/batch 389.23 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+-----------------------------------------------------------------------------------------
+| end epoch  56 | valid loss  1.51  1.15 | lr 0.00065|
+-----------------------------------------------------------------------------------------
+| epoch  57 |     0/ 1724 batches | ms/batch  5.56 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  57 |   200/ 1724 batches | ms/batch 373.19 | s_loss  0.60  0.62 | w_loss  0.38  0.41
+| epoch  57 |   400/ 1724 batches | ms/batch 369.92 | s_loss  0.59  0.62 | w_loss  0.37  0.41
+| epoch  57 |   600/ 1724 batches | ms/batch 369.49 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  57 |   800/ 1724 batches | ms/batch 370.91 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+| epoch  57 |  1000/ 1724 batches | ms/batch 366.98 | s_loss  0.59  0.61 | w_loss  0.37  0.39
+| epoch  57 |  1200/ 1724 batches | ms/batch 371.24 | s_loss  0.59  0.62 | w_loss  0.38  0.42
+| epoch  57 |  1400/ 1724 batches | ms/batch 369.84 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  57 |  1600/ 1724 batches | ms/batch 368.56 | s_loss  0.59  0.62 | w_loss  0.37  0.41
+-----------------------------------------------------------------------------------------
+| end epoch  57 | valid loss  1.49  1.07 | lr 0.00063|
+-----------------------------------------------------------------------------------------
+| epoch  58 |     0/ 1724 batches | ms/batch  5.81 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  58 |   200/ 1724 batches | ms/batch 370.75 | s_loss  0.58  0.60 | w_loss  0.37  0.39
+| epoch  58 |   400/ 1724 batches | ms/batch 366.21 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  58 |   600/ 1724 batches | ms/batch 362.70 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  58 |   800/ 1724 batches | ms/batch 363.76 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+| epoch  58 |  1000/ 1724 batches | ms/batch 370.55 | s_loss  0.59  0.61 | w_loss  0.37  0.41
+| epoch  58 |  1200/ 1724 batches | ms/batch 369.28 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+| epoch  58 |  1400/ 1724 batches | ms/batch 361.13 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  58 |  1600/ 1724 batches | ms/batch 367.73 | s_loss  0.59  0.61 | w_loss  0.37  0.40
+-----------------------------------------------------------------------------------------
+| end epoch  58 | valid loss  1.57  1.17 | lr 0.00062|
+-----------------------------------------------------------------------------------------
+| epoch  59 |     0/ 1724 batches | ms/batch  5.57 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  59 |   200/ 1724 batches | ms/batch 372.67 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  59 |   400/ 1724 batches | ms/batch 371.29 | s_loss  0.59  0.61 | w_loss  0.37  0.40
+| epoch  59 |   600/ 1724 batches | ms/batch 367.38 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  59 |   800/ 1724 batches | ms/batch 368.85 | s_loss  0.58  0.60 | w_loss  0.38  0.40
+| epoch  59 |  1000/ 1724 batches | ms/batch 368.85 | s_loss  0.59  0.61 | w_loss  0.37  0.41
+| epoch  59 |  1200/ 1724 batches | ms/batch 368.67 | s_loss  0.57  0.60 | w_loss  0.36  0.40
+| epoch  59 |  1400/ 1724 batches | ms/batch 367.68 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+| epoch  59 |  1600/ 1724 batches | ms/batch 370.43 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+-----------------------------------------------------------------------------------------
+| end epoch  59 | valid loss  1.55  1.19 | lr 0.00061|
+-----------------------------------------------------------------------------------------
+| epoch  60 |     0/ 1724 batches | ms/batch  5.81 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  60 |   200/ 1724 batches | ms/batch 364.11 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  60 |   400/ 1724 batches | ms/batch 360.77 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+| epoch  60 |   600/ 1724 batches | ms/batch 364.17 | s_loss  0.59  0.61 | w_loss  0.37  0.39
+| epoch  60 |   800/ 1724 batches | ms/batch 362.55 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  60 |  1000/ 1724 batches | ms/batch 362.89 | s_loss  0.58  0.61 | w_loss  0.36  0.40
+| epoch  60 |  1200/ 1724 batches | ms/batch 363.91 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  60 |  1400/ 1724 batches | ms/batch 360.90 | s_loss  0.58  0.61 | w_loss  0.36  0.40
+| epoch  60 |  1600/ 1724 batches | ms/batch 361.16 | s_loss  0.58  0.60 | w_loss  0.37  0.39
+-----------------------------------------------------------------------------------------
+| end epoch  60 | valid loss  1.54  1.18 | lr 0.00060|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  61 |     0/ 1724 batches | ms/batch  5.39 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  61 |   200/ 1724 batches | ms/batch 372.01 | s_loss  0.57  0.60 | w_loss  0.37  0.40
+| epoch  61 |   400/ 1724 batches | ms/batch 362.72 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  61 |   600/ 1724 batches | ms/batch 360.83 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+| epoch  61 |   800/ 1724 batches | ms/batch 355.15 | s_loss  0.59  0.61 | w_loss  0.37  0.38
+| epoch  61 |  1000/ 1724 batches | ms/batch 361.12 | s_loss  0.58  0.61 | w_loss  0.36  0.40
+| epoch  61 |  1200/ 1724 batches | ms/batch 353.64 | s_loss  0.59  0.61 | w_loss  0.38  0.41
+| epoch  61 |  1400/ 1724 batches | ms/batch 355.00 | s_loss  0.58  0.60 | w_loss  0.36  0.40
+| epoch  61 |  1600/ 1724 batches | ms/batch 351.91 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+-----------------------------------------------------------------------------------------
+| end epoch  61 | valid loss  1.47  1.06 | lr 0.00058|
+-----------------------------------------------------------------------------------------
+| epoch  62 |     0/ 1724 batches | ms/batch  5.23 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  62 |   200/ 1724 batches | ms/batch 350.25 | s_loss  0.57  0.59 | w_loss  0.35  0.37
+| epoch  62 |   400/ 1724 batches | ms/batch 347.78 | s_loss  0.58  0.61 | w_loss  0.36  0.40
+| epoch  62 |   600/ 1724 batches | ms/batch 348.52 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+| epoch  62 |   800/ 1724 batches | ms/batch 349.54 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  62 |  1000/ 1724 batches | ms/batch 349.95 | s_loss  0.58  0.61 | w_loss  0.36  0.39
+| epoch  62 |  1200/ 1724 batches | ms/batch 350.32 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  62 |  1400/ 1724 batches | ms/batch 346.56 | s_loss  0.58  0.60 | w_loss  0.37  0.40
+| epoch  62 |  1600/ 1724 batches | ms/batch 351.24 | s_loss  0.60  0.63 | w_loss  0.39  0.42
+-----------------------------------------------------------------------------------------
+| end epoch  62 | valid loss  1.53  1.16 | lr 0.00057|
+-----------------------------------------------------------------------------------------
+| epoch  63 |     0/ 1724 batches | ms/batch  5.27 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  63 |   200/ 1724 batches | ms/batch 352.67 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  63 |   400/ 1724 batches | ms/batch 344.48 | s_loss  0.57  0.59 | w_loss  0.36  0.38
+| epoch  63 |   600/ 1724 batches | ms/batch 349.41 | s_loss  0.58  0.61 | w_loss  0.36  0.40
+| epoch  63 |   800/ 1724 batches | ms/batch 348.00 | s_loss  0.57  0.60 | w_loss  0.36  0.38
+| epoch  63 |  1000/ 1724 batches | ms/batch 346.43 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  63 |  1200/ 1724 batches | ms/batch 351.40 | s_loss  0.58  0.61 | w_loss  0.36  0.39
+| epoch  63 |  1400/ 1724 batches | ms/batch 347.41 | s_loss  0.58  0.60 | w_loss  0.36  0.40
+| epoch  63 |  1600/ 1724 batches | ms/batch 347.38 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+-----------------------------------------------------------------------------------------
+| end epoch  63 | valid loss  1.53  1.16 | lr 0.00056|
+-----------------------------------------------------------------------------------------
+| epoch  64 |     0/ 1724 batches | ms/batch  5.81 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  64 |   200/ 1724 batches | ms/batch 362.17 | s_loss  0.57  0.60 | w_loss  0.35  0.39
+| epoch  64 |   400/ 1724 batches | ms/batch 353.97 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  64 |   600/ 1724 batches | ms/batch 354.51 | s_loss  0.58  0.61 | w_loss  0.36  0.40
+| epoch  64 |   800/ 1724 batches | ms/batch 351.88 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+| epoch  64 |  1000/ 1724 batches | ms/batch 353.27 | s_loss  0.56  0.59 | w_loss  0.35  0.39
+| epoch  64 |  1200/ 1724 batches | ms/batch 354.83 | s_loss  0.58  0.60 | w_loss  0.36  0.38
+| epoch  64 |  1400/ 1724 batches | ms/batch 350.81 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+| epoch  64 |  1600/ 1724 batches | ms/batch 349.66 | s_loss  0.57  0.60 | w_loss  0.36  0.40
+-----------------------------------------------------------------------------------------
+| end epoch  64 | valid loss  1.56  1.12 | lr 0.00055|
+-----------------------------------------------------------------------------------------
+| epoch  65 |     0/ 1724 batches | ms/batch  5.08 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  65 |   200/ 1724 batches | ms/batch 357.86 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+| epoch  65 |   400/ 1724 batches | ms/batch 358.62 | s_loss  0.58  0.61 | w_loss  0.36  0.39
+| epoch  65 |   600/ 1724 batches | ms/batch 352.97 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  65 |   800/ 1724 batches | ms/batch 354.17 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  65 |  1000/ 1724 batches | ms/batch 355.88 | s_loss  0.58  0.60 | w_loss  0.37  0.40
+| epoch  65 |  1200/ 1724 batches | ms/batch 351.40 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  65 |  1400/ 1724 batches | ms/batch 349.51 | s_loss  0.58  0.60 | w_loss  0.36  0.40
+| epoch  65 |  1600/ 1724 batches | ms/batch 355.11 | s_loss  0.59  0.62 | w_loss  0.38  0.41
+-----------------------------------------------------------------------------------------
+| end epoch  65 | valid loss  1.57  1.19 | lr 0.00054|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  66 |     0/ 1724 batches | ms/batch  5.61 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  66 |   200/ 1724 batches | ms/batch 349.78 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  66 |   400/ 1724 batches | ms/batch 346.82 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+| epoch  66 |   600/ 1724 batches | ms/batch 350.66 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  66 |   800/ 1724 batches | ms/batch 345.03 | s_loss  0.58  0.61 | w_loss  0.37  0.41
+| epoch  66 |  1000/ 1724 batches | ms/batch 348.00 | s_loss  0.57  0.59 | w_loss  0.37  0.39
+| epoch  66 |  1200/ 1724 batches | ms/batch 348.90 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  66 |  1400/ 1724 batches | ms/batch 351.02 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  66 |  1600/ 1724 batches | ms/batch 349.52 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+-----------------------------------------------------------------------------------------
+| end epoch  66 | valid loss  1.54  1.13 | lr 0.00053|
+-----------------------------------------------------------------------------------------
+| epoch  67 |     0/ 1724 batches | ms/batch  5.08 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  67 |   200/ 1724 batches | ms/batch 368.02 | s_loss  0.56  0.59 | w_loss  0.34  0.38
+| epoch  67 |   400/ 1724 batches | ms/batch 363.71 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  67 |   600/ 1724 batches | ms/batch 359.68 | s_loss  0.57  0.60 | w_loss  0.34  0.38
+| epoch  67 |   800/ 1724 batches | ms/batch 361.06 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  67 |  1000/ 1724 batches | ms/batch 363.24 | s_loss  0.58  0.61 | w_loss  0.37  0.41
+| epoch  67 |  1200/ 1724 batches | ms/batch 361.24 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  67 |  1400/ 1724 batches | ms/batch 362.24 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  67 |  1600/ 1724 batches | ms/batch 361.04 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+-----------------------------------------------------------------------------------------
+| end epoch  67 | valid loss  1.50  1.14 | lr 0.00052|
+-----------------------------------------------------------------------------------------
+| epoch  68 |     0/ 1724 batches | ms/batch  5.19 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  68 |   200/ 1724 batches | ms/batch 364.87 | s_loss  0.57  0.59 | w_loss  0.36  0.38
+| epoch  68 |   400/ 1724 batches | ms/batch 360.69 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  68 |   600/ 1724 batches | ms/batch 360.86 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  68 |   800/ 1724 batches | ms/batch 357.83 | s_loss  0.57  0.60 | w_loss  0.36  0.38
+| epoch  68 |  1000/ 1724 batches | ms/batch 352.22 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  68 |  1200/ 1724 batches | ms/batch 358.38 | s_loss  0.58  0.60 | w_loss  0.36  0.40
+| epoch  68 |  1400/ 1724 batches | ms/batch 357.07 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  68 |  1600/ 1724 batches | ms/batch 356.90 | s_loss  0.58  0.61 | w_loss  0.37  0.40
+-----------------------------------------------------------------------------------------
+| end epoch  68 | valid loss  1.53  1.16 | lr 0.00051|
+-----------------------------------------------------------------------------------------
+| epoch  69 |     0/ 1724 batches | ms/batch  5.17 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  69 |   200/ 1724 batches | ms/batch 364.76 | s_loss  0.58  0.61 | w_loss  0.37  0.39
+| epoch  69 |   400/ 1724 batches | ms/batch 363.32 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+| epoch  69 |   600/ 1724 batches | ms/batch 363.57 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+| epoch  69 |   800/ 1724 batches | ms/batch 360.29 | s_loss  0.59  0.61 | w_loss  0.36  0.39
+| epoch  69 |  1000/ 1724 batches | ms/batch 363.26 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  69 |  1200/ 1724 batches | ms/batch 360.91 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  69 |  1400/ 1724 batches | ms/batch 366.38 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  69 |  1600/ 1724 batches | ms/batch 361.50 | s_loss  0.57  0.60 | w_loss  0.35  0.39
+-----------------------------------------------------------------------------------------
+| end epoch  69 | valid loss  1.60  1.25 | lr 0.00050|
+-----------------------------------------------------------------------------------------
+| epoch  70 |     0/ 1724 batches | ms/batch  5.13 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  70 |   200/ 1724 batches | ms/batch 363.36 | s_loss  0.56  0.58 | w_loss  0.35  0.37
+| epoch  70 |   400/ 1724 batches | ms/batch 360.65 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  70 |   600/ 1724 batches | ms/batch 366.17 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  70 |   800/ 1724 batches | ms/batch 360.52 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  70 |  1000/ 1724 batches | ms/batch 359.30 | s_loss  0.57  0.59 | w_loss  0.35  0.39
+| epoch  70 |  1200/ 1724 batches | ms/batch 361.06 | s_loss  0.58  0.60 | w_loss  0.36  0.38
+| epoch  70 |  1400/ 1724 batches | ms/batch 363.81 | s_loss  0.57  0.60 | w_loss  0.36  0.40
+| epoch  70 |  1600/ 1724 batches | ms/batch 359.37 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+-----------------------------------------------------------------------------------------
+| end epoch  70 | valid loss  1.55  1.17 | lr 0.00049|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  71 |     0/ 1724 batches | ms/batch  4.98 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  71 |   200/ 1724 batches | ms/batch 367.30 | s_loss  0.57  0.60 | w_loss  0.35  0.38
+| epoch  71 |   400/ 1724 batches | ms/batch 360.83 | s_loss  0.57  0.59 | w_loss  0.35  0.37
+| epoch  71 |   600/ 1724 batches | ms/batch 362.18 | s_loss  0.56  0.59 | w_loss  0.34  0.38
+| epoch  71 |   800/ 1724 batches | ms/batch 359.50 | s_loss  0.58  0.60 | w_loss  0.35  0.38
+| epoch  71 |  1000/ 1724 batches | ms/batch 362.49 | s_loss  0.57  0.60 | w_loss  0.35  0.39
+| epoch  71 |  1200/ 1724 batches | ms/batch 360.18 | s_loss  0.57  0.59 | w_loss  0.35  0.39
+| epoch  71 |  1400/ 1724 batches | ms/batch 359.12 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  71 |  1600/ 1724 batches | ms/batch 361.36 | s_loss  0.58  0.60 | w_loss  0.36  0.40
+-----------------------------------------------------------------------------------------
+| end epoch  71 | valid loss  1.54  1.16 | lr 0.00048|
+-----------------------------------------------------------------------------------------
+| epoch  72 |     0/ 1724 batches | ms/batch  5.34 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  72 |   200/ 1724 batches | ms/batch 375.79 | s_loss  0.57  0.60 | w_loss  0.36  0.40
+| epoch  72 |   400/ 1724 batches | ms/batch 366.03 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  72 |   600/ 1724 batches | ms/batch 365.56 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  72 |   800/ 1724 batches | ms/batch 366.59 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+| epoch  72 |  1000/ 1724 batches | ms/batch 368.64 | s_loss  0.57  0.60 | w_loss  0.35  0.39
+| epoch  72 |  1200/ 1724 batches | ms/batch 368.77 | s_loss  0.57  0.60 | w_loss  0.36  0.38
+| epoch  72 |  1400/ 1724 batches | ms/batch 367.73 | s_loss  0.56  0.58 | w_loss  0.35  0.37
+| epoch  72 |  1600/ 1724 batches | ms/batch 365.99 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+-----------------------------------------------------------------------------------------
+| end epoch  72 | valid loss  1.56  1.15 | lr 0.00047|
+-----------------------------------------------------------------------------------------
+| epoch  73 |     0/ 1724 batches | ms/batch  4.87 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  73 |   200/ 1724 batches | ms/batch 365.74 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  73 |   400/ 1724 batches | ms/batch 365.56 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  73 |   600/ 1724 batches | ms/batch 362.87 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  73 |   800/ 1724 batches | ms/batch 360.40 | s_loss  0.57  0.59 | w_loss  0.35  0.39
+| epoch  73 |  1000/ 1724 batches | ms/batch 366.00 | s_loss  0.58  0.60 | w_loss  0.36  0.40
+| epoch  73 |  1200/ 1724 batches | ms/batch 359.99 | s_loss  0.56  0.58 | w_loss  0.35  0.37
+| epoch  73 |  1400/ 1724 batches | ms/batch 365.04 | s_loss  0.57  0.60 | w_loss  0.35  0.38
+| epoch  73 |  1600/ 1724 batches | ms/batch 364.19 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+-----------------------------------------------------------------------------------------
+| end epoch  73 | valid loss  1.50  1.12 | lr 0.00046|
+-----------------------------------------------------------------------------------------
+| epoch  74 |     0/ 1724 batches | ms/batch  4.85 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  74 |   200/ 1724 batches | ms/batch 354.49 | s_loss  0.57  0.59 | w_loss  0.36  0.38
+| epoch  74 |   400/ 1724 batches | ms/batch 344.97 | s_loss  0.56  0.58 | w_loss  0.35  0.38
+| epoch  74 |   600/ 1724 batches | ms/batch 349.91 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  74 |   800/ 1724 batches | ms/batch 348.65 | s_loss  0.56  0.58 | w_loss  0.35  0.37
+| epoch  74 |  1000/ 1724 batches | ms/batch 347.84 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  74 |  1200/ 1724 batches | ms/batch 349.27 | s_loss  0.57  0.59 | w_loss  0.35  0.39
+| epoch  74 |  1400/ 1724 batches | ms/batch 348.05 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  74 |  1600/ 1724 batches | ms/batch 351.70 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+-----------------------------------------------------------------------------------------
+| end epoch  74 | valid loss  1.54  1.15 | lr 0.00045|
+-----------------------------------------------------------------------------------------
+| epoch  75 |     0/ 1724 batches | ms/batch  5.44 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  75 |   200/ 1724 batches | ms/batch 366.15 | s_loss  0.56  0.59 | w_loss  0.34  0.37
+| epoch  75 |   400/ 1724 batches | ms/batch 360.03 | s_loss  0.56  0.58 | w_loss  0.34  0.38
+| epoch  75 |   600/ 1724 batches | ms/batch 365.40 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  75 |   800/ 1724 batches | ms/batch 358.96 | s_loss  0.56  0.59 | w_loss  0.34  0.37
+| epoch  75 |  1000/ 1724 batches | ms/batch 362.08 | s_loss  0.58  0.60 | w_loss  0.35  0.40
+| epoch  75 |  1200/ 1724 batches | ms/batch 364.11 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  75 |  1400/ 1724 batches | ms/batch 363.07 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  75 |  1600/ 1724 batches | ms/batch 359.71 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  75 | valid loss  1.53  1.12 | lr 0.00044|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  76 |     0/ 1724 batches | ms/batch  5.61 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  76 |   200/ 1724 batches | ms/batch 369.20 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  76 |   400/ 1724 batches | ms/batch 364.09 | s_loss  0.57  0.59 | w_loss  0.34  0.38
+| epoch  76 |   600/ 1724 batches | ms/batch 365.63 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  76 |   800/ 1724 batches | ms/batch 366.96 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+| epoch  76 |  1000/ 1724 batches | ms/batch 363.98 | s_loss  0.57  0.60 | w_loss  0.35  0.38
+| epoch  76 |  1200/ 1724 batches | ms/batch 362.76 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  76 |  1400/ 1724 batches | ms/batch 364.48 | s_loss  0.56  0.59 | w_loss  0.34  0.38
+| epoch  76 |  1600/ 1724 batches | ms/batch 365.12 | s_loss  0.55  0.57 | w_loss  0.34  0.36
+-----------------------------------------------------------------------------------------
+| end epoch  76 | valid loss  1.54  1.15 | lr 0.00043|
+-----------------------------------------------------------------------------------------
+| epoch  77 |     0/ 1724 batches | ms/batch  5.51 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  77 |   200/ 1724 batches | ms/batch 367.25 | s_loss  0.54  0.57 | w_loss  0.33  0.37
+| epoch  77 |   400/ 1724 batches | ms/batch 363.22 | s_loss  0.57  0.59 | w_loss  0.36  0.39
+| epoch  77 |   600/ 1724 batches | ms/batch 364.70 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+| epoch  77 |   800/ 1724 batches | ms/batch 359.01 | s_loss  0.55  0.58 | w_loss  0.35  0.38
+| epoch  77 |  1000/ 1724 batches | ms/batch 370.00 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  77 |  1200/ 1724 batches | ms/batch 362.59 | s_loss  0.58  0.60 | w_loss  0.36  0.39
+| epoch  77 |  1400/ 1724 batches | ms/batch 366.86 | s_loss  0.57  0.60 | w_loss  0.34  0.38
+| epoch  77 |  1600/ 1724 batches | ms/batch 363.28 | s_loss  0.57  0.60 | w_loss  0.35  0.38
+-----------------------------------------------------------------------------------------
+| end epoch  77 | valid loss  1.54  1.11 | lr 0.00042|
+-----------------------------------------------------------------------------------------
+| epoch  78 |     0/ 1724 batches | ms/batch  5.07 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  78 |   200/ 1724 batches | ms/batch 365.72 | s_loss  0.56  0.58 | w_loss  0.34  0.38
+| epoch  78 |   400/ 1724 batches | ms/batch 362.82 | s_loss  0.57  0.60 | w_loss  0.35  0.38
+| epoch  78 |   600/ 1724 batches | ms/batch 365.97 | s_loss  0.57  0.60 | w_loss  0.35  0.38
+| epoch  78 |   800/ 1724 batches | ms/batch 364.97 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  78 |  1000/ 1724 batches | ms/batch 367.74 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  78 |  1200/ 1724 batches | ms/batch 365.93 | s_loss  0.56  0.59 | w_loss  0.34  0.38
+| epoch  78 |  1400/ 1724 batches | ms/batch 364.20 | s_loss  0.55  0.58 | w_loss  0.33  0.36
+| epoch  78 |  1600/ 1724 batches | ms/batch 367.36 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+-----------------------------------------------------------------------------------------
+| end epoch  78 | valid loss  1.55  1.21 | lr 0.00041|
+-----------------------------------------------------------------------------------------
+| epoch  79 |     0/ 1724 batches | ms/batch  5.66 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  79 |   200/ 1724 batches | ms/batch 365.74 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  79 |   400/ 1724 batches | ms/batch 365.11 | s_loss  0.56  0.58 | w_loss  0.34  0.36
+| epoch  79 |   600/ 1724 batches | ms/batch 361.39 | s_loss  0.56  0.58 | w_loss  0.35  0.37
+| epoch  79 |   800/ 1724 batches | ms/batch 360.93 | s_loss  0.56  0.59 | w_loss  0.35  0.39
+| epoch  79 |  1000/ 1724 batches | ms/batch 365.87 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  79 |  1200/ 1724 batches | ms/batch 364.29 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  79 |  1400/ 1724 batches | ms/batch 365.79 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  79 |  1600/ 1724 batches | ms/batch 366.70 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  79 | valid loss  1.54  1.11 | lr 0.00041|
+-----------------------------------------------------------------------------------------
+| epoch  80 |     0/ 1724 batches | ms/batch  5.03 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  80 |   200/ 1724 batches | ms/batch 366.71 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  80 |   400/ 1724 batches | ms/batch 364.25 | s_loss  0.55  0.58 | w_loss  0.34  0.38
+| epoch  80 |   600/ 1724 batches | ms/batch 362.92 | s_loss  0.56  0.59 | w_loss  0.34  0.37
+| epoch  80 |   800/ 1724 batches | ms/batch 369.77 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  80 |  1000/ 1724 batches | ms/batch 366.42 | s_loss  0.56  0.59 | w_loss  0.34  0.38
+| epoch  80 |  1200/ 1724 batches | ms/batch 367.84 | s_loss  0.56  0.58 | w_loss  0.35  0.38
+| epoch  80 |  1400/ 1724 batches | ms/batch 367.48 | s_loss  0.56  0.59 | w_loss  0.34  0.37
+| epoch  80 |  1600/ 1724 batches | ms/batch 365.67 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  80 | valid loss  1.56  1.20 | lr 0.00040|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  81 |     0/ 1724 batches | ms/batch  5.33 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  81 |   200/ 1724 batches | ms/batch 364.19 | s_loss  0.56  0.58 | w_loss  0.35  0.38
+| epoch  81 |   400/ 1724 batches | ms/batch 364.08 | s_loss  0.57  0.60 | w_loss  0.36  0.39
+| epoch  81 |   600/ 1724 batches | ms/batch 368.32 | s_loss  0.55  0.57 | w_loss  0.34  0.37
+| epoch  81 |   800/ 1724 batches | ms/batch 366.35 | s_loss  0.55  0.57 | w_loss  0.33  0.37
+| epoch  81 |  1000/ 1724 batches | ms/batch 364.54 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  81 |  1200/ 1724 batches | ms/batch 364.04 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  81 |  1400/ 1724 batches | ms/batch 363.10 | s_loss  0.56  0.59 | w_loss  0.34  0.38
+| epoch  81 |  1600/ 1724 batches | ms/batch 362.95 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+-----------------------------------------------------------------------------------------
+| end epoch  81 | valid loss  1.49  1.13 | lr 0.00039|
+-----------------------------------------------------------------------------------------
+| epoch  82 |     0/ 1724 batches | ms/batch  5.25 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  82 |   200/ 1724 batches | ms/batch 368.40 | s_loss  0.55  0.58 | w_loss  0.33  0.36
+| epoch  82 |   400/ 1724 batches | ms/batch 367.84 | s_loss  0.56  0.58 | w_loss  0.34  0.38
+| epoch  82 |   600/ 1724 batches | ms/batch 365.40 | s_loss  0.56  0.58 | w_loss  0.33  0.37
+| epoch  82 |   800/ 1724 batches | ms/batch 366.96 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+| epoch  82 |  1000/ 1724 batches | ms/batch 361.57 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  82 |  1200/ 1724 batches | ms/batch 366.99 | s_loss  0.56  0.59 | w_loss  0.34  0.37
+| epoch  82 |  1400/ 1724 batches | ms/batch 365.53 | s_loss  0.54  0.56 | w_loss  0.33  0.36
+| epoch  82 |  1600/ 1724 batches | ms/batch 364.10 | s_loss  0.56  0.59 | w_loss  0.34  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  82 | valid loss  1.51  1.15 | lr 0.00038|
+-----------------------------------------------------------------------------------------
+| epoch  83 |     0/ 1724 batches | ms/batch  5.08 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  83 |   200/ 1724 batches | ms/batch 367.54 | s_loss  0.57  0.60 | w_loss  0.35  0.38
+| epoch  83 |   400/ 1724 batches | ms/batch 361.02 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  83 |   600/ 1724 batches | ms/batch 360.08 | s_loss  0.55  0.57 | w_loss  0.33  0.37
+| epoch  83 |   800/ 1724 batches | ms/batch 366.04 | s_loss  0.56  0.58 | w_loss  0.35  0.39
+| epoch  83 |  1000/ 1724 batches | ms/batch 359.62 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  83 |  1200/ 1724 batches | ms/batch 364.99 | s_loss  0.55  0.57 | w_loss  0.34  0.37
+| epoch  83 |  1400/ 1724 batches | ms/batch 365.08 | s_loss  0.57  0.59 | w_loss  0.34  0.38
+| epoch  83 |  1600/ 1724 batches | ms/batch 363.57 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+-----------------------------------------------------------------------------------------
+| end epoch  83 | valid loss  1.54  1.14 | lr 0.00037|
+-----------------------------------------------------------------------------------------
+| epoch  84 |     0/ 1724 batches | ms/batch  5.47 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  84 |   200/ 1724 batches | ms/batch 364.54 | s_loss  0.55  0.58 | w_loss  0.35  0.37
+| epoch  84 |   400/ 1724 batches | ms/batch 368.54 | s_loss  0.56  0.58 | w_loss  0.34  0.38
+| epoch  84 |   600/ 1724 batches | ms/batch 367.35 | s_loss  0.56  0.58 | w_loss  0.34  0.38
+| epoch  84 |   800/ 1724 batches | ms/batch 364.13 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  84 |  1000/ 1724 batches | ms/batch 366.42 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  84 |  1200/ 1724 batches | ms/batch 361.72 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  84 |  1400/ 1724 batches | ms/batch 366.55 | s_loss  0.55  0.58 | w_loss  0.34  0.38
+| epoch  84 |  1600/ 1724 batches | ms/batch 362.35 | s_loss  0.56  0.58 | w_loss  0.34  0.38
+-----------------------------------------------------------------------------------------
+| end epoch  84 | valid loss  1.51  1.17 | lr 0.00037|
+-----------------------------------------------------------------------------------------
+| epoch  85 |     0/ 1724 batches | ms/batch  5.31 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  85 |   200/ 1724 batches | ms/batch 368.50 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  85 |   400/ 1724 batches | ms/batch 366.42 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  85 |   600/ 1724 batches | ms/batch 363.37 | s_loss  0.56  0.58 | w_loss  0.33  0.36
+| epoch  85 |   800/ 1724 batches | ms/batch 363.76 | s_loss  0.56  0.58 | w_loss  0.33  0.36
+| epoch  85 |  1000/ 1724 batches | ms/batch 364.87 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  85 |  1200/ 1724 batches | ms/batch 365.07 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  85 |  1400/ 1724 batches | ms/batch 363.13 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  85 |  1600/ 1724 batches | ms/batch 365.12 | s_loss  0.57  0.59 | w_loss  0.35  0.38
+-----------------------------------------------------------------------------------------
+| end epoch  85 | valid loss  1.58  1.21 | lr 0.00036|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  86 |     0/ 1724 batches | ms/batch  5.64 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  86 |   200/ 1724 batches | ms/batch 368.78 | s_loss  0.54  0.56 | w_loss  0.32  0.36
+| epoch  86 |   400/ 1724 batches | ms/batch 362.06 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  86 |   600/ 1724 batches | ms/batch 361.23 | s_loss  0.55  0.58 | w_loss  0.33  0.36
+| epoch  86 |   800/ 1724 batches | ms/batch 363.98 | s_loss  0.55  0.58 | w_loss  0.34  0.38
+| epoch  86 |  1000/ 1724 batches | ms/batch 364.01 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  86 |  1200/ 1724 batches | ms/batch 367.10 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  86 |  1400/ 1724 batches | ms/batch 362.50 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  86 |  1600/ 1724 batches | ms/batch 364.18 | s_loss  0.56  0.59 | w_loss  0.34  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  86 | valid loss  1.54  1.12 | lr 0.00035|
+-----------------------------------------------------------------------------------------
+| epoch  87 |     0/ 1724 batches | ms/batch  5.35 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  87 |   200/ 1724 batches | ms/batch 370.38 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  87 |   400/ 1724 batches | ms/batch 364.19 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  87 |   600/ 1724 batches | ms/batch 360.90 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  87 |   800/ 1724 batches | ms/batch 363.43 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  87 |  1000/ 1724 batches | ms/batch 362.89 | s_loss  0.54  0.57 | w_loss  0.32  0.35
+| epoch  87 |  1200/ 1724 batches | ms/batch 366.93 | s_loss  0.57  0.59 | w_loss  0.34  0.38
+| epoch  87 |  1400/ 1724 batches | ms/batch 365.10 | s_loss  0.55  0.57 | w_loss  0.34  0.37
+| epoch  87 |  1600/ 1724 batches | ms/batch 363.32 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+-----------------------------------------------------------------------------------------
+| end epoch  87 | valid loss  1.49  1.17 | lr 0.00034|
+-----------------------------------------------------------------------------------------
+| epoch  88 |     0/ 1724 batches | ms/batch  5.50 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  88 |   200/ 1724 batches | ms/batch 365.34 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  88 |   400/ 1724 batches | ms/batch 359.26 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  88 |   600/ 1724 batches | ms/batch 362.68 | s_loss  0.55  0.57 | w_loss  0.34  0.36
+| epoch  88 |   800/ 1724 batches | ms/batch 364.76 | s_loss  0.56  0.59 | w_loss  0.34  0.38
+| epoch  88 |  1000/ 1724 batches | ms/batch 364.07 | s_loss  0.55  0.58 | w_loss  0.33  0.35
+| epoch  88 |  1200/ 1724 batches | ms/batch 363.64 | s_loss  0.56  0.58 | w_loss  0.34  0.38
+| epoch  88 |  1400/ 1724 batches | ms/batch 365.24 | s_loss  0.55  0.58 | w_loss  0.33  0.36
+| epoch  88 |  1600/ 1724 batches | ms/batch 366.16 | s_loss  0.55  0.57 | w_loss  0.34  0.36
+-----------------------------------------------------------------------------------------
+| end epoch  88 | valid loss  1.54  1.16 | lr 0.00034|
+-----------------------------------------------------------------------------------------
+| epoch  89 |     0/ 1724 batches | ms/batch  5.24 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  89 |   200/ 1724 batches | ms/batch 366.75 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  89 |   400/ 1724 batches | ms/batch 365.32 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  89 |   600/ 1724 batches | ms/batch 360.72 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  89 |   800/ 1724 batches | ms/batch 363.46 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  89 |  1000/ 1724 batches | ms/batch 362.40 | s_loss  0.56  0.59 | w_loss  0.34  0.38
+| epoch  89 |  1200/ 1724 batches | ms/batch 364.59 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  89 |  1400/ 1724 batches | ms/batch 359.61 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  89 |  1600/ 1724 batches | ms/batch 360.34 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  89 | valid loss  1.54  1.16 | lr 0.00033|
+-----------------------------------------------------------------------------------------
+| epoch  90 |     0/ 1724 batches | ms/batch  5.36 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  90 |   200/ 1724 batches | ms/batch 367.02 | s_loss  0.54  0.56 | w_loss  0.31  0.35
+| epoch  90 |   400/ 1724 batches | ms/batch 363.23 | s_loss  0.56  0.58 | w_loss  0.33  0.37
+| epoch  90 |   600/ 1724 batches | ms/batch 362.68 | s_loss  0.53  0.56 | w_loss  0.32  0.35
+| epoch  90 |   800/ 1724 batches | ms/batch 359.63 | s_loss  0.55  0.57 | w_loss  0.34  0.37
+| epoch  90 |  1000/ 1724 batches | ms/batch 363.64 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  90 |  1200/ 1724 batches | ms/batch 365.58 | s_loss  0.55  0.58 | w_loss  0.34  0.38
+| epoch  90 |  1400/ 1724 batches | ms/batch 364.99 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  90 |  1600/ 1724 batches | ms/batch 362.55 | s_loss  0.56  0.59 | w_loss  0.34  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  90 | valid loss  1.51  1.10 | lr 0.00032|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  91 |     0/ 1724 batches | ms/batch  5.32 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  91 |   200/ 1724 batches | ms/batch 352.53 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  91 |   400/ 1724 batches | ms/batch 349.78 | s_loss  0.54  0.56 | w_loss  0.32  0.35
+| epoch  91 |   600/ 1724 batches | ms/batch 348.17 | s_loss  0.54  0.56 | w_loss  0.32  0.35
+| epoch  91 |   800/ 1724 batches | ms/batch 350.21 | s_loss  0.55  0.57 | w_loss  0.34  0.37
+| epoch  91 |  1000/ 1724 batches | ms/batch 352.88 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  91 |  1200/ 1724 batches | ms/batch 351.88 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  91 |  1400/ 1724 batches | ms/batch 351.11 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  91 |  1600/ 1724 batches | ms/batch 348.62 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  91 | valid loss  1.54  1.20 | lr 0.00032|
+-----------------------------------------------------------------------------------------
+| epoch  92 |     0/ 1724 batches | ms/batch  5.36 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  92 |   200/ 1724 batches | ms/batch 353.76 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  92 |   400/ 1724 batches | ms/batch 350.51 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  92 |   600/ 1724 batches | ms/batch 350.02 | s_loss  0.55  0.57 | w_loss  0.33  0.37
+| epoch  92 |   800/ 1724 batches | ms/batch 351.58 | s_loss  0.55  0.58 | w_loss  0.33  0.38
+| epoch  92 |  1000/ 1724 batches | ms/batch 348.83 | s_loss  0.55  0.58 | w_loss  0.33  0.36
+| epoch  92 |  1200/ 1724 batches | ms/batch 348.42 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  92 |  1400/ 1724 batches | ms/batch 351.13 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  92 |  1600/ 1724 batches | ms/batch 352.67 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  92 | valid loss  1.56  1.20 | lr 0.00031|
+-----------------------------------------------------------------------------------------
+| epoch  93 |     0/ 1724 batches | ms/batch  5.49 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  93 |   200/ 1724 batches | ms/batch 355.05 | s_loss  0.56  0.58 | w_loss  0.34  0.38
+| epoch  93 |   400/ 1724 batches | ms/batch 359.00 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  93 |   600/ 1724 batches | ms/batch 354.52 | s_loss  0.55  0.57 | w_loss  0.33  0.37
+| epoch  93 |   800/ 1724 batches | ms/batch 353.52 | s_loss  0.56  0.58 | w_loss  0.34  0.38
+| epoch  93 |  1000/ 1724 batches | ms/batch 355.76 | s_loss  0.56  0.59 | w_loss  0.35  0.38
+| epoch  93 |  1200/ 1724 batches | ms/batch 350.88 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  93 |  1400/ 1724 batches | ms/batch 352.27 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  93 |  1600/ 1724 batches | ms/batch 352.37 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  93 | valid loss  1.50  1.08 | lr 0.00031|
+-----------------------------------------------------------------------------------------
+| epoch  94 |     0/ 1724 batches | ms/batch  5.30 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  94 |   200/ 1724 batches | ms/batch 354.74 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  94 |   400/ 1724 batches | ms/batch 352.31 | s_loss  0.54  0.57 | w_loss  0.34  0.37
+| epoch  94 |   600/ 1724 batches | ms/batch 346.59 | s_loss  0.56  0.58 | w_loss  0.34  0.36
+| epoch  94 |   800/ 1724 batches | ms/batch 352.66 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  94 |  1000/ 1724 batches | ms/batch 351.35 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  94 |  1200/ 1724 batches | ms/batch 348.94 | s_loss  0.55  0.57 | w_loss  0.32  0.37
+| epoch  94 |  1400/ 1724 batches | ms/batch 349.29 | s_loss  0.55  0.57 | w_loss  0.32  0.35
+| epoch  94 |  1600/ 1724 batches | ms/batch 346.67 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  94 | valid loss  1.50  1.13 | lr 0.00030|
+-----------------------------------------------------------------------------------------
+| epoch  95 |     0/ 1724 batches | ms/batch  5.12 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  95 |   200/ 1724 batches | ms/batch 365.49 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  95 |   400/ 1724 batches | ms/batch 360.86 | s_loss  0.54  0.56 | w_loss  0.32  0.35
+| epoch  95 |   600/ 1724 batches | ms/batch 348.75 | s_loss  0.56  0.59 | w_loss  0.33  0.37
+| epoch  95 |   800/ 1724 batches | ms/batch 351.54 | s_loss  0.54  0.57 | w_loss  0.33  0.35
+| epoch  95 |  1000/ 1724 batches | ms/batch 355.10 | s_loss  0.54  0.57 | w_loss  0.34  0.36
+| epoch  95 |  1200/ 1724 batches | ms/batch 358.60 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  95 |  1400/ 1724 batches | ms/batch 349.12 | s_loss  0.55  0.58 | w_loss  0.33  0.36
+| epoch  95 |  1600/ 1724 batches | ms/batch 354.04 | s_loss  0.56  0.58 | w_loss  0.33  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  95 | valid loss  1.55  1.12 | lr 0.00029|
+-----------------------------------------------------------------------------------------
+Save G/Ds models.
+| epoch  96 |     0/ 1724 batches | ms/batch  5.10 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  96 |   200/ 1724 batches | ms/batch 367.38 | s_loss  0.55  0.57 | w_loss  0.33  0.37
+| epoch  96 |   400/ 1724 batches | ms/batch 366.93 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  96 |   600/ 1724 batches | ms/batch 363.87 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  96 |   800/ 1724 batches | ms/batch 364.11 | s_loss  0.54  0.56 | w_loss  0.33  0.36
+| epoch  96 |  1000/ 1724 batches | ms/batch 364.45 | s_loss  0.55  0.58 | w_loss  0.33  0.36
+| epoch  96 |  1200/ 1724 batches | ms/batch 361.95 | s_loss  0.55  0.57 | w_loss  0.32  0.35
+| epoch  96 |  1400/ 1724 batches | ms/batch 363.19 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  96 |  1600/ 1724 batches | ms/batch 360.78 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  96 | valid loss  1.47  1.13 | lr 0.00029|
+-----------------------------------------------------------------------------------------
+| epoch  97 |     0/ 1724 batches | ms/batch  5.48 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  97 |   200/ 1724 batches | ms/batch 355.93 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  97 |   400/ 1724 batches | ms/batch 355.99 | s_loss  0.55  0.57 | w_loss  0.33  0.37
+| epoch  97 |   600/ 1724 batches | ms/batch 357.44 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  97 |   800/ 1724 batches | ms/batch 354.76 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  97 |  1000/ 1724 batches | ms/batch 358.52 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  97 |  1200/ 1724 batches | ms/batch 355.29 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  97 |  1400/ 1724 batches | ms/batch 357.63 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  97 |  1600/ 1724 batches | ms/batch 353.00 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+-----------------------------------------------------------------------------------------
+| end epoch  97 | valid loss  1.50  1.11 | lr 0.00028|
+-----------------------------------------------------------------------------------------
+| epoch  98 |     0/ 1724 batches | ms/batch  5.12 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  98 |   200/ 1724 batches | ms/batch 370.27 | s_loss  0.53  0.56 | w_loss  0.31  0.35
+| epoch  98 |   400/ 1724 batches | ms/batch 363.22 | s_loss  0.55  0.57 | w_loss  0.32  0.36
+| epoch  98 |   600/ 1724 batches | ms/batch 365.88 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  98 |   800/ 1724 batches | ms/batch 362.82 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  98 |  1000/ 1724 batches | ms/batch 366.65 | s_loss  0.54  0.57 | w_loss  0.32  0.36
+| epoch  98 |  1200/ 1724 batches | ms/batch 367.84 | s_loss  0.55  0.57 | w_loss  0.33  0.36
+| epoch  98 |  1400/ 1724 batches | ms/batch 365.68 | s_loss  0.56  0.58 | w_loss  0.34  0.37
+| epoch  98 |  1600/ 1724 batches | ms/batch 363.73 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+-----------------------------------------------------------------------------------------
+| end epoch  98 | valid loss  1.55  1.14 | lr 0.00028|
+-----------------------------------------------------------------------------------------
+| epoch  99 |     0/ 1724 batches | ms/batch  4.95 | s_loss  0.00  0.00 | w_loss  0.00  0.00
+| epoch  99 |   200/ 1724 batches | ms/batch 353.89 | s_loss  0.55  0.58 | w_loss  0.33  0.37
+| epoch  99 |   400/ 1724 batches | ms/batch 350.17 | s_loss  0.55  0.58 | w_loss  0.34  0.37
+| epoch  99 |   600/ 1724 batches | ms/batch 351.52 | s_loss  0.53  0.55 | w_loss  0.32  0.35
+| epoch  99 |   800/ 1724 batches | ms/batch 349.32 | s_loss  0.54  0.56 | w_loss  0.32  0.35
+| epoch  99 |  1000/ 1724 batches | ms/batch 350.30 | s_loss  0.55  0.57 | w_loss  0.34  0.36
+| epoch  99 |  1200/ 1724 batches | ms/batch 352.21 | s_loss  0.54  0.57 | w_loss  0.33  0.36
+| epoch  99 |  1400/ 1724 batches | ms/batch 351.39 | s_loss  0.55  0.57 | w_loss  0.34  0.37
+| epoch  99 |  1600/ 1724 batches | ms/batch 351.42 | s_loss  0.56  0.58 | w_loss  0.34  0.36
+-----------------------------------------------------------------------------------------
+| end epoch  99 | valid loss  1.57  1.19 | lr 0.00027|
+-----------------------------------------------------------------------------------------

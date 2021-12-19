@@ -28,6 +28,7 @@ from torch.autograd import Variable
 import torch.backends.cudnn as cudnn
 import torchvision.transforms as transforms
 
+import matplotlib.pyplot as plt
 
 dir_path = (os.path.abspath(os.path.join(os.path.realpath(__file__), './.')))
 sys.path.append(dir_path)
@@ -55,6 +56,10 @@ def train(dataloader, cnn_model, rnn_model, batch_size,
     w_total_loss0 = 0
     w_total_loss1 = 0
     count = (epoch + 1) * len(dataloader)
+    epoch_s_loss0 = []
+    epoch_s_loss1 = []
+    epoch_w_loss0 = []
+    epoch_w_loss1 = []
     start_time = time.time()
     for step, data in enumerate(dataloader, 0):
         # print('step', step)
@@ -121,6 +126,10 @@ def train(dataloader, cnn_model, rnn_model, batch_size,
                           elapsed * 1000. / UPDATE_INTERVAL,
                           s_cur_loss0, s_cur_loss1,
                           w_cur_loss0, w_cur_loss1))
+            epoch_s_loss0.append(s_cur_loss0)
+            epoch_s_loss1.append(s_cur_loss1)
+            epoch_w_loss0.append(w_cur_loss0)
+            epoch_w_loss1.append(w_cur_loss1)
             s_total_loss0 = 0
             s_total_loss1 = 0
             w_total_loss0 = 0
@@ -134,12 +143,21 @@ def train(dataloader, cnn_model, rnn_model, batch_size,
                 im = Image.fromarray(img_set)
                 fullpath = '%s/attention_maps%d.png' % (image_dir, step)
                 im.save(fullpath)
-    return count
+
+    epoch_s_loss0 = np.mean(epoch_s_loss0)
+    epoch_s_loss1 = np.mean(epoch_s_loss1)
+    epoch_w_loss0 = np.mean(epoch_w_loss0)
+    epoch_w_loss1 = np.mean(epoch_w_loss1)
+    return count, epoch_s_loss0, epoch_s_loss1, epoch_w_loss0, epoch_w_loss1
 
 
 def evaluate(dataloader, cnn_model, rnn_model, batch_size):
     cnn_model.eval()
     rnn_model.eval()
+    val_s_loss0 = []
+    val_s_loss1 = []
+    val_w_loss0 = []
+    val_w_loss1 = []
     s_total_loss = 0
     w_total_loss = 0
     for step, data in enumerate(dataloader, 0):
@@ -155,10 +173,14 @@ def evaluate(dataloader, cnn_model, rnn_model, batch_size):
 
         w_loss0, w_loss1, attn = words_loss(words_features, words_emb, labels,
                                             cap_lens, class_ids, batch_size)
+        val_w_loss0.append(w_loss0.item())
+        val_w_loss1.append(w_loss1.item())
         w_total_loss += (w_loss0 + w_loss1).data
 
         s_loss0, s_loss1 = \
             sent_loss(sent_code, sent_emb, labels, class_ids, batch_size)
+        val_s_loss0.append(s_loss0.item())
+        val_s_loss1.append(s_loss1.item())
         s_total_loss += (s_loss0 + s_loss1).data
 
         if step == 50:
@@ -170,7 +192,12 @@ def evaluate(dataloader, cnn_model, rnn_model, batch_size):
     s_cur_loss = s_total_loss.item() / step
     w_cur_loss = w_total_loss.item() / step
 
-    return s_cur_loss, w_cur_loss
+    val_s_loss0 = np.mean(val_s_loss0)
+    val_s_loss1 = np.mean(val_s_loss1)
+    val_w_loss0 = np.mean(val_w_loss0)
+    val_w_loss1 = np.mean(val_w_loss1)
+
+    return s_cur_loss, w_cur_loss, val_s_loss0, val_s_loss1, val_w_loss0, val_w_loss1
 
 
 def build_models():
@@ -200,6 +227,20 @@ def build_models():
         labels = labels.cuda()
 
     return text_encoder, image_encoder, labels, start_epoch
+
+
+def plot_loss(train_loss, val_loss, max_epoch, model_dir):
+    plt_list = ['s_loss0', 's_loss1', 'w_loss0', 'w_loss1']
+    for name in plt_list:
+        plt.figure()
+        plt.plot(range(len(train_loss[name])), train_loss[name], 'b-', label='train_loss')
+        plt.plot(range(len(val_loss[name])), val_loss[name], 'r-', label='val_loss')
+        plt.legend()
+        plt.xlabel('epoch')
+        plt.ylabel('loss')
+        plt.grid()
+        plt.xlim(0, max_epoch)
+        plt.savefig('%s/%s.png' % (model_dir, name))
 
 
 if __name__ == "__main__":
@@ -276,18 +317,31 @@ if __name__ == "__main__":
             para.append(v)
     # optimizer = optim.Adam(para, lr=cfg.TRAIN.ENCODER_LR, betas=(0.5, 0.999))
     # At any point you can hit Ctrl + C to break out of training early.
+    train_loss = {'s_loss0': [], 's_loss1': [], 'w_loss0': [], 'w_loss1': []}
+    val_loss = {'s_loss0': [], 's_loss1': [], 'w_loss0': [], 'w_loss1': []}
+
     try:
         lr = cfg.TRAIN.ENCODER_LR
         for epoch in range(start_epoch, cfg.TRAIN.MAX_EPOCH):
             optimizer = optim.Adam(para, lr=lr, betas=(0.5, 0.999))
             epoch_start_time = time.time()
-            count = train(dataloader, image_encoder, text_encoder,
+            count, epoch_s_loss0, epoch_s_loss1, epoch_w_loss0, epoch_w_loss1 = train(dataloader, image_encoder, text_encoder,
                           batch_size, labels, optimizer, epoch,
                           dataset.ixtoword, image_dir)
             print('-' * 89)
             if len(dataloader_val) > 0:
-                s_loss, w_loss = evaluate(dataloader_val, image_encoder,
+                s_loss, w_loss, val_s_loss0, val_s_loss1, val_w_loss0, val_w_loss1 = evaluate(dataloader_val, image_encoder,
                                           text_encoder, batch_size)
+                train_loss['s_loss0'].append(epoch_s_loss0)
+                train_loss['s_loss1'].append(epoch_s_loss1)
+                train_loss['w_loss0'].append(epoch_w_loss0)
+                train_loss['w_loss1'].append(epoch_w_loss1)
+                val_loss['s_loss0'].append(val_s_loss0)
+                val_loss['s_loss1'].append(val_s_loss1)
+                val_loss['w_loss0'].append(val_w_loss0)
+                val_loss['w_loss1'].append(val_w_loss1)
+                # NOTE: 今のままだとstart_epochが途中からの場合、ズレる。
+                plot_loss(train_loss, val_loss, cfg.TRAIN.MAX_EPOCH, model_dir)
                 print('| end epoch {:3d} | valid loss '
                       '{:5.2f} {:5.2f} | lr {:.5f}|'
                       .format(epoch, s_loss, w_loss, lr))
