@@ -180,7 +180,7 @@ def build_super_images(real_imgs, captions, ixtoword,
 
                 PIL_im = Image.fromarray(np.uint8(img))
                 if MODE == 'polygon':
-                    PIL_att = PIL_att = Image.fromarray(np.uint8(over_mean_bi_map))
+                    PIL_att = Image.fromarray(np.uint8(over_mean_bi_map))
                 else:
                     PIL_att = Image.fromarray(np.uint8(one_map))
                 merged = \
