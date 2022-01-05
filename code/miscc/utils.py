@@ -53,7 +53,8 @@ def drawCaption(convas, captions, ixtoword, vis_size, off1=2, off2=2):
 def build_super_images(real_imgs, captions, ixtoword,
                        attn_maps, att_sze, lr_imgs=None,
                        batch_size=cfg.TRAIN.BATCH_SIZE,
-                       max_word_num=cfg.TEXT.WORDS_NUM):
+                       max_word_num=cfg.TEXT.WORDS_NUM,
+                       category_words_ix=None, real_polygons_list=None):
     nvis = 8
     real_imgs = real_imgs[:nvis]
     if lr_imgs is not None:
@@ -112,6 +113,7 @@ def build_super_images(real_imgs, captions, ixtoword,
     for i in range(num):
         # 一文ごとのloop
         attn = attn_maps[i].cpu().view(1, -1, att_sze, att_sze)
+        cap = captions[i].data.cpu().numpy()
 
         # -> attn_maps= torch.Size([1, 8(単語数？), 17, 17])
         # --> 1 x 1 x 17 x 17 : と書かれているが実際はtorch.Size([1, 8(単語数？), 17, 17])
@@ -174,8 +176,8 @@ def build_super_images(real_imgs, captions, ixtoword,
                         y_min_bbox = 0
                         y_max_bbox = 1
                 elif MODE == 'polygon':
-                    gray_one_map = one_map[:,:,1]
-                    mean =  np.mean(one_map)
+                    gray_one_map = one_map[:,:,1]   # one_mapには同じ値が入っているので一つだけ取り出す
+                    mean = np.mean(one_map)
                     over_mean_bi_map = np.where(gray_one_map > mean + (mean / 2), 255, 0)
 
                 PIL_im = Image.fromarray(np.uint8(img))
@@ -192,6 +194,17 @@ def build_super_images(real_imgs, captions, ixtoword,
                     # bboxの描画
                     bbox_draw = ImageDraw.Draw(merged)
                     bbox_draw.rectangle([x_min_bbox, y_min_bbox, x_max_bbox, y_max_bbox], outline=(255, 0, 0), width=3)
+                elif MODE == 'polygon':
+                    # 正解ポリゴンの描画
+                    if j < len(cap)-1:
+                        if cap[j-1] in category_words_ix:
+                            print(ixtoword[cap[j-1]].encode('utf-8', 'ignore').decode('utf-8'))
+                            polygon_draw = ImageDraw.Draw(merged)
+                            for polygon in real_polygons_list[i]:
+                                polygon_draw.line(polygon, fill=(255, 0, 0), width=4)
+                                polygon_draw.polygon(polygon, outline=(255, 0, 0))
+                    else:
+                        print('exceed cap len')
                 merged = np.array(merged)[:, :, :3]
             else:
                 one_map = post_pad

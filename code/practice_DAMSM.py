@@ -10,6 +10,7 @@ from miscc.config import cfg, cfg_from_file
 
 from datasets import TextDataset
 from datasets import prepare_data
+from datasets import get_real_polygons
 
 from model import RNN_ENCODER, CNN_ENCODER
 
@@ -49,7 +50,7 @@ def parse_args():
     return args
 
 
-def evaluate(dataloader, cnn_model, rnn_model, batch_size, image_dir, ixtoword):
+def evaluate(dataloader, cnn_model, rnn_model, batch_size, image_dir, ixtoword, category_words_ix, category_real_polygons):
     MAX_GEN = 20
     cnn_model.eval()
     rnn_model.eval()
@@ -89,9 +90,17 @@ def evaluate(dataloader, cnn_model, rnn_model, batch_size, image_dir, ixtoword):
         attn[0] shape= torch.Size([1, 15, 17, 17])
         '''
 
-        img_set, sentences = \
-            build_super_images(imgs[-1].cpu(), captions,
-                                ixtoword, attn, att_sze)
+        if category_words_ix:
+            # categoryがある場合は正解ポリゴンの描画
+            real_polygons_list = get_real_polygons(keys, category_real_polygons)
+            img_set, sentences = \
+                build_super_images(imgs[-1].cpu(), captions,
+                                    ixtoword, attn, att_sze,
+                                    category_words_ix=category_words_ix, real_polygons_list=real_polygons_list)
+        else:
+            img_set, sentences = \
+                build_super_images(imgs[-1].cpu(), captions,
+                                    ixtoword, attn, att_sze)
 
         if img_set is not None:
             im = Image.fromarray(img_set)
@@ -186,7 +195,7 @@ if __name__ == "__main__":
     # # validation data #
     dataset_val = TextDataset(cfg.DATA_DIR, 'val', # stair用。本来はtest
                               base_size=cfg.TREE.BASE_SIZE,
-                              transform=image_transform)
+                              transform=image_transform, category='tv')
 
     dataloader_val = torch.utils.data.DataLoader(
         dataset_val, batch_size=batch_size, drop_last=True,
@@ -196,7 +205,7 @@ if __name__ == "__main__":
 
 
     try:
-        s_loss, w_loss = evaluate(dataloader_val, image_encoder, text_encoder, batch_size, image_dir, dataset_val.ixtoword)
+        s_loss, w_loss = evaluate(dataloader_val, image_encoder, text_encoder, batch_size, image_dir, dataset_val.ixtoword, dataset_val.category_words_ix, dataset_val.category_real_polygons)
 
     except KeyboardInterrupt:
         print('-' * 89)

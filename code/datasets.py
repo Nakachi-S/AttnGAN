@@ -23,6 +23,7 @@ if sys.version_info[0] == 2:
     import cPickle as pickle
 else:
     import pickle
+import json
 
 
 def prepare_data(data):
@@ -91,7 +92,7 @@ def get_imgs(img_path, imsize, bbox=None,
 class TextDataset(data.Dataset):
     def __init__(self, data_dir, split='train',
                  base_size=64,
-                 transform=None, target_transform=None):
+                 transform=None, target_transform=None, category=None):
         self.transform = transform
         self.norm = transforms.Compose([
             transforms.ToTensor(),
@@ -121,6 +122,13 @@ class TextDataset(data.Dataset):
 
         self.class_id = self.load_class_id(split_dir, len(self.filenames))
         self.number_example = len(self.filenames)
+
+        # TEA-IoUのための追加
+        if category is not None:
+            self.category = category
+            self.category_words, self.category_words_ix, self.category_real_polygons = self.load_category(category)
+        else:
+            self.category = self.category_words = self.category_words_ix = self.category_real_polygons = None
 
     def load_bbox(self):
         data_dir = self.data_dir
@@ -378,6 +386,27 @@ class TextDataset(data.Dataset):
             filenames = []
         return filenames
 
+    def load_category(self, category):
+        # category_words, words_ix
+        category_words_dic_path = '/home/nakachi/data/category_split/category_word_dic.json'
+        with open(category_words_dic_path) as f:
+            category_words_dic = json.load(f)
+
+        category_words = category_words_dic[category]
+
+        words_ix = []
+        for word in category_words:
+            words_ix.append(self.wordtoix[word])
+
+        # polygon
+        POLYGONS_DIR = '/home/nakachi/data/real_polygons_rescale_272/'
+        real_polygons_path = os.path.join(POLYGONS_DIR, category + '.pickle')
+        with open(real_polygons_path, 'rb') as f:
+            category_real_polygons = pickle.load(f)
+
+        return category_words, words_ix, category_real_polygons
+
+
     def get_caption(self, sent_ix):
         # a list of indices for a sentence
         sent_caption = np.asarray(self.captions[sent_ix]).astype('int64')
@@ -450,3 +479,11 @@ class TextDataset(data.Dataset):
 
     def __len__(self):
         return len(self.filenames)
+
+def get_real_polygons(keys, category_real_polygons):
+    real_polygons_list = []
+    
+    for key in keys:
+        real_polygons_list.append(category_real_polygons[key])
+
+    return real_polygons_list
