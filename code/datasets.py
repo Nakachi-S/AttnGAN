@@ -388,7 +388,7 @@ class TextDataset(data.Dataset):
 
     def load_category(self, category):
         # category_words, words_ix
-        category_words_dic_path = '/home/nakachi/data/category_split/category_word_dic.json'
+        category_words_dic_path = '/home/nakachi/data/category_split/category_words_en_dic.json'
         with open(category_words_dic_path) as f:
             category_words_dic = json.load(f)
 
@@ -447,9 +447,9 @@ class TextDataset(data.Dataset):
         imgs = get_imgs(img_name, self.imsize,
                         bbox, self.transform, normalize=self.norm)
         # random select a sentence
-        sent_ix = random.randint(0, self.embeddings_num)
+        # sent_ix = random.randint(0, self.embeddings_num)
         # 評価時は特定の文章を使いたいので指定
-        # sent_ix = 2
+        sent_ix = 2
         new_sent_ix = index * self.embeddings_num + sent_ix
         caps, cap_len = self.get_caption(new_sent_ix)
         return imgs, caps, cap_len, cls_id, key
