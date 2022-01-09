@@ -5,6 +5,7 @@ from __future__ import print_function
 
 from miscc.utils import mkdir_p
 from miscc.utils import build_super_images
+from miscc.utils import calc_tea_iou
 from miscc.losses import sent_loss, words_loss
 from miscc.config import cfg, cfg_from_file
 
@@ -51,10 +52,14 @@ def parse_args():
 
 
 def evaluate(dataloader, cnn_model, rnn_model, batch_size, image_dir, ixtoword, category_words_ix, category_real_polygons):
-    MAX_GEN = 20
+    MAX_GEN = 2000
     cnn_model.eval()
     rnn_model.eval()
 
+    mean_iou_list = []
+    # 実際にiouの計算が行われた文の数
+    num_calc_iou = 0
+    num_sentence = 0
     for step, data in enumerate(dataloader, 0):
         print(f'{step} / {len(dataloader)}')
 
@@ -91,21 +96,34 @@ def evaluate(dataloader, cnn_model, rnn_model, batch_size, image_dir, ixtoword, 
         '''
 
         if category_words_ix:
-            # categoryがある場合は正解ポリゴンの描画
             real_polygons_list = get_real_polygons(keys, category_real_polygons)
-            img_set, sentences = \
-                build_super_images(imgs[-1].cpu(), captions,
-                                    ixtoword, attn, att_sze,
-                                    category_words_ix=category_words_ix, real_polygons_list=real_polygons_list)
+            mean_iou, num_calc_iou_batch = calc_tea_iou(imgs[-1].cpu(), captions, ixtoword, attn, att_sze, category_words_ix, real_polygons_list)
+
+            # categoryがある場合は正解ポリゴンの描画
+            # img_set, sentences = \
+            #     build_super_images(imgs[-1].cpu(), captions,
+            #                         ixtoword, attn, att_sze,
+            #                         category_words_ix=category_words_ix, real_polygons_list=real_polygons_list)
+
+            print(f'one batch mean tea-iou: {mean_iou}')
+            print(f'one batch num_calc_iou: {num_calc_iou_batch}')
+            mean_iou_list.append(mean_iou)
+            num_sentence += len(keys)
+            num_calc_iou += num_calc_iou_batch
+
         else:
             img_set, sentences = \
                 build_super_images(imgs[-1].cpu(), captions,
                                     ixtoword, attn, att_sze)
 
-        if img_set is not None:
-            im = Image.fromarray(img_set)
-            fullpath = '%s/attention_maps%d.png' % (image_dir, step)
-            im.save(fullpath)
+        # if img_set is not None:
+        #     im = Image.fromarray(img_set)
+        #     fullpath = '%s/attention_maps%d.png' % (image_dir, step)
+        #     im.save(fullpath)
+
+    print(f'実際にIoUの計算が行われた文の数: {num_calc_iou} / {num_sentence}')
+    print(f'mean IoU: {sum(mean_iou_list) / len(mean_iou_list)}')
+
 
     return
 
@@ -205,7 +223,7 @@ if __name__ == "__main__":
 
 
     try:
-        s_loss, w_loss = evaluate(dataloader_val, image_encoder, text_encoder, batch_size, image_dir, dataset_val.ixtoword, dataset_val.category_words_ix, dataset_val.category_real_polygons)
+        evaluate(dataloader_val, image_encoder, text_encoder, batch_size, image_dir, dataset_val.ixtoword, dataset_val.category_words_ix, dataset_val.category_real_polygons)
 
     except KeyboardInterrupt:
         print('-' * 89)

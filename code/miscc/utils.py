@@ -9,6 +9,9 @@ import torch.nn as nn
 from PIL import Image, ImageDraw, ImageFont
 from copy import deepcopy
 import skimage.transform
+import cv2
+from shapely.geometry import Polygon
+
 
 from miscc.config import cfg
 
@@ -195,16 +198,28 @@ def build_super_images(real_imgs, captions, ixtoword,
                     bbox_draw = ImageDraw.Draw(merged)
                     bbox_draw.rectangle([x_min_bbox, y_min_bbox, x_max_bbox, y_max_bbox], outline=(255, 0, 0), width=3)
                 elif MODE == 'polygon':
-                    # 正解ポリゴンの描画
                     if j < len(cap)-1:
                         if cap[j-1] in category_words_ix:
+                            # 正解ポリゴンの描画
                             print(ixtoword[cap[j-1]].encode('utf-8', 'ignore').decode('utf-8'))
-                            polygon_draw = ImageDraw.Draw(merged)
+                            ref_polygon_draw = ImageDraw.Draw(merged)
                             for polygon in real_polygons_list[i]:
-                                polygon_draw.line(polygon, fill=(255, 0, 0), width=4)
-                                polygon_draw.polygon(polygon, outline=(255, 0, 0))
+                                ref_polygon_draw.line(polygon, fill=(255, 0, 0), width=4)
+                                ref_polygon_draw.polygon(polygon, outline=(255, 0, 0))
+
+                            # over_mean_bi_mapからオブジェクトの輪郭を検出する
+                            contours, _ = cv2.findContours(pil2cv(PIL_att), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                            # 小さい輪郭は誤検出として削除する
+                            contours = list(filter(lambda x: cv2.contourArea(x) > 100, contours))
+                            attn_polygon_draw = ImageDraw.Draw(merged)
+                            for cnt in contours:
+                                flatten_cnt = cnt.flatten().tolist()
+                                attn_polygon_draw.line(flatten_cnt, fill=(255, 255, 0), width=4)
+                                attn_polygon_draw.polygon(flatten_cnt, outline=(255, 255,0))
+
                     else:
                         print('exceed cap len')
+
                 merged = np.array(merged)[:, :, :3]
             else:
                 one_map = post_pad
@@ -371,3 +386,127 @@ def mkdir_p(path):
             pass
         else:
             raise
+
+####################################################################
+def pil2cv(image):
+    ''' PIL型 -> OpenCV型 '''
+    new_image = np.array(image, dtype=np.uint8)
+    if new_image.ndim == 2:  # モノクロ
+        pass
+    elif new_image.shape[2] == 3:  # カラー
+        new_image = cv2.cvtColor(new_image, cv2.COLOR_RGB2BGR)
+    elif new_image.shape[2] == 4:  # 透過
+        new_image = cv2.cvtColor(new_image, cv2.COLOR_RGBA2BGRA)
+    return new_image
+
+def calc_tea_iou(real_imgs, captions, ixtoword, attn_maps, att_sze, category_words_ix, real_polygons_list):
+    '''
+    Text Embedding Attention-IoU
+    前処理はbuild_super_images関数と一緒
+    '''
+    seq_len = 18
+    vis_size = att_sze * 16
+    # 本当はreal_imgs=torch.Size([3, 299, 299])だがreal_imgs torch.Size([3, 272, 272])に直す
+    real_imgs = \
+        nn.functional.interpolate(real_imgs,size=(vis_size, vis_size),
+                                  mode='bilinear', align_corners=False)
+
+    # [-1, 1] --> [0, 1]: この処理は多分、画像は-1からスタートできないから0からに直している
+    real_imgs.add_(1).div_(2).mul_(255)
+    real_imgs = real_imgs.data.numpy()
+    # b x c x h x w --> b x h x w x c
+    real_imgs = np.transpose(real_imgs, (0, 2, 3, 1))
+
+    all_iou_list = []
+    num_calc_iou_batch = 0
+    for i in range(len(captions)):
+        # 一文ごとのloop
+        attn = attn_maps[i].cpu().view(1, -1, att_sze, att_sze)
+        cap = captions[i].data.cpu().numpy()
+
+        # この文の何かしらの単語で、実際にIoUが行われたか？
+        is_calc_iou = False
+
+        # -> attn_maps= torch.Size([1, 8(単語数？), 17, 17])
+        # --> 1 x 1 x 17 x 17 : と書かれているが実際はtorch.Size([1, 8(単語数？), 17, 17])
+        attn_max = attn.max(dim=1, keepdim=True)
+        attn = torch.cat([attn_max[0], attn], 1)
+        # -> torch.Size([1, 9(単語数？ + 1), 17, 17])
+        attn = attn.view(-1, 1, att_sze, att_sze)
+        attn = attn.repeat(1, 3, 1, 1).data.numpy()
+        # n x c x h x w --> n x h x w x c
+        attn = np.transpose(attn, (0, 2, 3, 1))
+        num_attn = attn.shape[0]
+
+        row_beforeNorm = []
+        minVglobal, maxVglobal = 1, 0
+        for j in range(num_attn):
+            one_map = attn[j]
+            if (vis_size // att_sze) > 1:
+                # この処理は通る
+                one_map = \
+                    skimage.transform.pyramid_expand(one_map, sigma=20,
+                                                     upscale=vis_size // att_sze,
+                                                     multichannel=True)
+                # -> この時点ではone_map= (272, 272, 3)
+            row_beforeNorm.append(one_map)
+            minV = one_map.min()
+            maxV = one_map.max()
+            if minVglobal > minV:
+                minVglobal = minV
+            if maxVglobal < maxV:
+                maxVglobal = maxV
+        for j in range(seq_len + 1):
+            # 単語ごとのloop
+            if j < num_attn:
+                one_map = row_beforeNorm[j]
+                one_map = (one_map - minVglobal) / (maxVglobal - minVglobal)
+                one_map *= 255
+
+                gray_one_map = one_map[:,:,1]
+                mean = np.mean(one_map)
+                over_mean_bi_map = np.where(gray_one_map > mean + (mean / 2), 255, 0)
+                PIL_att = Image.fromarray(np.uint8(over_mean_bi_map))
+
+                if j < len(cap)-1:
+                    if cap[j-1] in category_words_ix:
+                        is_calc_iou = True
+                        # print(ixtoword[cap[j-1]].encode('utf-8', 'ignore').decode('utf-8'))
+                        # over_mean_bi_mapからオブジェクトの輪郭を検出する
+                        contours, _ = cv2.findContours(pil2cv(PIL_att), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                        # 小さい輪郭は誤検出として削除する
+                        contours = list(filter(lambda x: cv2.contourArea(x) > 100, contours))
+
+                        # 正解のpolygon数だけ入る
+                        ious = []
+                        for real_polygon in real_polygons_list[i]:
+                            # 正解ポリゴンの描画
+                            attn_map_ious = []
+                            ref_polygon = Polygon(np.array(real_polygon).reshape(-1, 2).tolist())
+                            if not ref_polygon.is_valid:
+                                print('ref polygon is invalid')
+                                continue
+                            for cnt in contours:
+                                # attentionごとのloop
+                                attn_polygon = Polygon(np.array(cnt).reshape(-1, 2).tolist())
+                                if not attn_polygon.is_valid:
+                                    print('attn polygon is invalid')
+                                    continue
+
+                                intersect = ref_polygon.intersection(attn_polygon).area
+                                union = ref_polygon.union(attn_polygon).area
+                                iou = intersect / union
+                                attn_map_ious.append(iou)
+
+                            # maxのiouを入れる
+                            if attn_map_ious:
+                                ious.append(max(attn_map_ious))
+
+                        all_iou_list.extend(ious)
+        if is_calc_iou:
+            num_calc_iou_batch += 1
+
+    # 全てのiouの平均を返す
+    mean_iou = sum(all_iou_list) / len(all_iou_list) if len(all_iou_list) > 0 else 0
+    return mean_iou, num_calc_iou_batch
+
