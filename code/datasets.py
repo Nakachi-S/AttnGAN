@@ -126,7 +126,7 @@ class TextDataset(data.Dataset):
         # TEA-IoUのための追加
         if category is not None:
             self.category = category
-            self.category_words, self.category_words_ix, self.category_real_polygons = self.load_category(category)
+            self.category_words, self.category_words_ix, self.category_real_polygons = self.load_category(data_dir, category)
         else:
             self.category = self.category_words = self.category_words_ix = self.category_real_polygons = None
 
@@ -386,9 +386,12 @@ class TextDataset(data.Dataset):
             filenames = []
         return filenames
 
-    def load_category(self, category):
+    def load_category(self, data_dir, category):
         # category_words, words_ix
-        category_words_dic_path = '/home/nakachi/data/category_split/category_words_en_dic.json'
+        if '_ja' in data_dir:
+            category_words_dic_path = '/home/nakachi/data/category_split/category_words_ja_dic.json'
+        elif '_en' in data_dir:
+            category_words_dic_path = '/home/nakachi/data/category_split/category_words_en_dic.json'
         with open(category_words_dic_path) as f:
             category_words_dic = json.load(f)
 

@@ -1,6 +1,8 @@
 import os
 import errno
 import numpy as np
+from statistics import mean as sta_mean
+from statistics import stdev as sta_stdev
 from torch.nn import init
 
 import torch
@@ -507,6 +509,6 @@ def calc_tea_iou(real_imgs, captions, ixtoword, attn_maps, att_sze, category_wor
             num_calc_iou_batch += 1
 
     # 全てのiouの平均を返す
-    mean_iou = sum(all_iou_list) / len(all_iou_list) if len(all_iou_list) > 0 else 0
-    return mean_iou, num_calc_iou_batch
-
+    mean_iou = sta_mean(all_iou_list) if len(all_iou_list) > 0 else 0
+    std_iou = sta_stdev(all_iou_list) if len(all_iou_list) > 1 else 0
+    return mean_iou, std_iou, num_calc_iou_batch
