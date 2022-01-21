@@ -165,64 +165,72 @@ def build_super_images(real_imgs, captions, ixtoword,
                 one_map *= 255
                 # -> この時点でもone_map= (272, 272, 3)
 
-                if MODE == 'bbox':
-                    # attentionよりbboxを決める
-                    gray_one_map = one_map[:,:,1]
-                    mean =  np.mean(one_map)
-                    over_mean_index = np.where(gray_one_map > mean + (mean / 2))
-                    if over_mean_index[0].any():
-                        y_min_bbox = np.min(over_mean_index[0])
-                        y_max_bbox = np.max(over_mean_index[0])
-                        x_min_bbox = np.min(over_mean_index[1])
-                        x_max_bbox = np.max(over_mean_index[1])
-                    else:
-                        x_min_bbox = 0
-                        x_max_bbox = 1
-                        y_min_bbox = 0
-                        y_max_bbox = 1
-                elif MODE == 'polygon':
-                    gray_one_map = one_map[:,:,1]   # one_mapには同じ値が入っているので一つだけ取り出す
-                    mean = np.mean(one_map)
-                    over_mean_bi_map = np.where(gray_one_map > mean + (mean / 2), 255, 0)
-
                 PIL_im = Image.fromarray(np.uint8(img))
-                if MODE == 'polygon':
-                    PIL_att = Image.fromarray(np.uint8(over_mean_bi_map))
-                else:
-                    PIL_att = Image.fromarray(np.uint8(one_map))
+                PIL_att = Image.fromarray(np.uint8(one_map))
                 merged = \
                     Image.new('RGBA', (vis_size, vis_size), (0, 0, 0, 0))
                 mask = Image.new('L', (vis_size, vis_size), (210))
                 merged.paste(PIL_im, (0, 0))
                 merged.paste(PIL_att, (0, 0), mask)
-                if MODE == 'bbox':
-                    # bboxの描画
-                    bbox_draw = ImageDraw.Draw(merged)
-                    bbox_draw.rectangle([x_min_bbox, y_min_bbox, x_max_bbox, y_max_bbox], outline=(255, 0, 0), width=3)
-                elif MODE == 'polygon':
-                    if j < len(cap)-1:
-                        if cap[j-1] in category_words_ix:
-                            # 正解ポリゴンの描画
-                            print(ixtoword[cap[j-1]].encode('utf-8', 'ignore').decode('utf-8'))
-                            ref_polygon_draw = ImageDraw.Draw(merged)
-                            for polygon in real_polygons_list[i]:
-                                ref_polygon_draw.line(polygon, fill=(255, 0, 0), width=4)
-                                ref_polygon_draw.polygon(polygon, outline=(255, 0, 0))
-
-                            # over_mean_bi_mapからオブジェクトの輪郭を検出する
-                            contours, _ = cv2.findContours(pil2cv(PIL_att), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-                            # 小さい輪郭は誤検出として削除する
-                            contours = list(filter(lambda x: cv2.contourArea(x) > 100, contours))
-                            attn_polygon_draw = ImageDraw.Draw(merged)
-                            for cnt in contours:
-                                flatten_cnt = cnt.flatten().tolist()
-                                attn_polygon_draw.line(flatten_cnt, fill=(255, 255, 0), width=4)
-                                attn_polygon_draw.polygon(flatten_cnt, outline=(255, 255,0))
-
-                    else:
-                        print('exceed cap len')
-
                 merged = np.array(merged)[:, :, :3]
+                # if MODE == 'bbox':
+                #     # attentionよりbboxを決める
+                #     gray_one_map = one_map[:,:,1]
+                #     mean =  np.mean(one_map)
+                #     over_mean_index = np.where(gray_one_map > mean + (mean / 2))
+                #     if over_mean_index[0].any():
+                #         y_min_bbox = np.min(over_mean_index[0])
+                #         y_max_bbox = np.max(over_mean_index[0])
+                #         x_min_bbox = np.min(over_mean_index[1])
+                #         x_max_bbox = np.max(over_mean_index[1])
+                #     else:
+                #         x_min_bbox = 0
+                #         x_max_bbox = 1
+                #         y_min_bbox = 0
+                #         y_max_bbox = 1
+                # elif MODE == 'polygon':
+                #     gray_one_map = one_map[:,:,1]   # one_mapには同じ値が入っているので一つだけ取り出す
+                #     mean = np.mean(one_map)
+                #     over_mean_bi_map = np.where(gray_one_map > mean + (mean / 2), 255, 0)
+
+                # PIL_im = Image.fromarray(np.uint8(img))
+                # if MODE == 'polygon':
+                #     PIL_att = Image.fromarray(np.uint8(over_mean_bi_map))
+                # else:
+                #     PIL_att = Image.fromarray(np.uint8(one_map))
+                # merged = \
+                #     Image.new('RGBA', (vis_size, vis_size), (0, 0, 0, 0))
+                # mask = Image.new('L', (vis_size, vis_size), (210))
+                # merged.paste(PIL_im, (0, 0))
+                # merged.paste(PIL_att, (0, 0), mask)
+                # if MODE == 'bbox':
+                #     # bboxの描画
+                #     bbox_draw = ImageDraw.Draw(merged)
+                #     bbox_draw.rectangle([x_min_bbox, y_min_bbox, x_max_bbox, y_max_bbox], outline=(255, 0, 0), width=3)
+                # elif MODE == 'polygon':
+                #     if j < len(cap)-1:
+                #         if cap[j-1] in category_words_ix:
+                #             # 正解ポリゴンの描画
+                #             print(ixtoword[cap[j-1]].encode('utf-8', 'ignore').decode('utf-8'))
+                #             ref_polygon_draw = ImageDraw.Draw(merged)
+                #             for polygon in real_polygons_list[i]:
+                #                 ref_polygon_draw.line(polygon, fill=(255, 0, 0), width=4)
+                #                 ref_polygon_draw.polygon(polygon, outline=(255, 0, 0))
+
+                #             # over_mean_bi_mapからオブジェクトの輪郭を検出する
+                #             contours, _ = cv2.findContours(pil2cv(PIL_att), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                #             # 小さい輪郭は誤検出として削除する
+                #             contours = list(filter(lambda x: cv2.contourArea(x) > 100, contours))
+                #             attn_polygon_draw = ImageDraw.Draw(merged)
+                #             for cnt in contours:
+                #                 flatten_cnt = cnt.flatten().tolist()
+                #                 attn_polygon_draw.line(flatten_cnt, fill=(255, 255, 0), width=4)
+                #                 attn_polygon_draw.polygon(flatten_cnt, outline=(255, 255,0))
+
+                #     else:
+                #         print('exceed cap len')
+
+                # merged = np.array(merged)[:, :, :3]
             else:
                 one_map = post_pad
                 merged = post_pad
