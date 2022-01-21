@@ -1,0 +1,8745 @@
+Using config:
+{'B_VALIDATION': False,
+ 'CONFIG_NAME': 'DAMSM',
+ 'CUDA': True,
+ 'DATASET_NAME': 'stair_tv',
+ 'DATA_DIR': '/home/nakachi/data/category_split/tv_ja/',
+ 'GAN': {'B_ATTENTION': True,
+         'B_DCGAN': False,
+         'CONDITION_DIM': 100,
+         'DF_DIM': 64,
+         'GF_DIM': 128,
+         'R_NUM': 2,
+         'Z_DIM': 100},
+ 'GPU_ID': 0,
+ 'RNN_TYPE': 'LSTM',
+ 'TEXT': {'CAPTIONS_PER_IMAGE': 5, 'EMBEDDING_DIM': 256, 'WORDS_NUM': 18},
+ 'TRAIN': {'BATCH_SIZE': 16,
+           'B_NET_D': True,
+           'DISCRIMINATOR_LR': 0.0002,
+           'ENCODER_LR': 0.002,
+           'FLAG': True,
+           'GENERATOR_LR': 0.0002,
+           'MAX_EPOCH': 600,
+           'NET_E': '/data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth',
+           'NET_G': '',
+           'RNN_GRAD_CLIP': 0.25,
+           'SMOOTH': {'GAMMA1': 4.0,
+                      'GAMMA2': 5.0,
+                      'GAMMA3': 10.0,
+                      'LAMBDA': 1.0},
+           'SNAPSHOT_INTERVAL': 5},
+ 'TREE': {'BASE_SIZE': 299, 'BRANCH_NUM': 1},
+ 'WORKERS': 1}
+Load filenames from: /home/nakachi/data/category_split/tv_ja//train_filenames.pickle (3191)
+Load filenames from: /home/nakachi/data/category_split/tv_ja//val_filenames.pickle (1577)
+Load from:  /home/nakachi/data/category_split/tv_ja/captions.pickle
+31605 5
+person process...
+/home/nakachi/data/category_split/person_ja/
+Load filenames from: /home/nakachi/data/category_split/person_ja//train_filenames.pickle (45174)
+Load filenames from: /home/nakachi/data/category_split/person_ja//val_filenames.pickle (21634)
+Load from:  /home/nakachi/data/category_split/person_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+/home/nakachi/AttnGAN/code/miscc/config.py:103: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+/home/nakachi/miniconda3/envs/env/lib/python3.6/site-packages/torch/nn/modules/rnn.py:60: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.5 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
+/home/nakachi/miniconda3/envs/env/lib/python3.6/site-packages/torchvision/models/inception.py:77: FutureWarning: The default weight initialization of inception_v3 will be changed in future releases of torchvision. If you wish to keep the old behavior (which leads to long initialization times due to scipy/scipy#11299), please set init_weights=True.
+  ' due to scipy/scipy#11299), please set init_weights=True.', FutureWarning)
+0 / 1352
+ref polygon is invalid
+1 / 1352
+2 / 1352
+ref polygon is invalid
+3 / 1352
+4 / 1352
+5 / 1352
+6 / 1352
+7 / 1352
+ref polygon is invalid
+8 / 1352
+9 / 1352
+ref polygon is invalid
+ref polygon is invalid
+10 / 1352
+11 / 1352
+12 / 1352
+13 / 1352
+14 / 1352
+15 / 1352
+16 / 1352
+17 / 1352
+18 / 1352
+19 / 1352
+20 / 1352
+21 / 1352
+22 / 1352
+23 / 1352
+ref polygon is invalid
+24 / 1352
+25 / 1352
+26 / 1352
+27 / 1352
+28 / 1352
+29 / 1352
+30 / 1352
+31 / 1352
+32 / 1352
+33 / 1352
+34 / 1352
+35 / 1352
+ref polygon is invalid
+36 / 1352
+37 / 1352
+38 / 1352
+39 / 1352
+40 / 1352
+41 / 1352
+42 / 1352
+ref polygon is invalid
+43 / 1352
+44 / 1352
+45 / 1352
+46 / 1352
+ref polygon is invalid
+47 / 1352
+48 / 1352
+49 / 1352
+50 / 1352
+ref polygon is invalid
+51 / 1352
+52 / 1352
+53 / 1352
+54 / 1352
+55 / 1352
+56 / 1352
+57 / 1352
+58 / 1352
+ref polygon is invalid
+59 / 1352
+60 / 1352
+61 / 1352
+62 / 1352
+63 / 1352
+64 / 1352
+65 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+66 / 1352
+67 / 1352
+68 / 1352
+ref polygon is invalid
+69 / 1352
+ref polygon is invalid
+ref polygon is invalid
+70 / 1352
+ref polygon is invalid
+71 / 1352
+72 / 1352
+73 / 1352
+ref polygon is invalid
+ref polygon is invalid
+74 / 1352
+75 / 1352
+76 / 1352
+77 / 1352
+78 / 1352
+79 / 1352
+80 / 1352
+81 / 1352
+82 / 1352
+83 / 1352
+ref polygon is invalid
+84 / 1352
+85 / 1352
+86 / 1352
+ref polygon is invalid
+ref polygon is invalid
+87 / 1352
+88 / 1352
+89 / 1352
+90 / 1352
+ref polygon is invalid
+91 / 1352
+92 / 1352
+93 / 1352
+94 / 1352
+95 / 1352
+96 / 1352
+ref polygon is invalid
+97 / 1352
+98 / 1352
+99 / 1352
+100 / 1352
+101 / 1352
+102 / 1352
+103 / 1352
+104 / 1352
+ref polygon is invalid
+ref polygon is invalid
+105 / 1352
+106 / 1352
+107 / 1352
+ref polygon is invalid
+ref polygon is invalid
+108 / 1352
+109 / 1352
+110 / 1352
+111 / 1352
+112 / 1352
+113 / 1352
+ref polygon is invalid
+114 / 1352
+115 / 1352
+116 / 1352
+117 / 1352
+ref polygon is invalid
+118 / 1352
+119 / 1352
+120 / 1352
+121 / 1352
+122 / 1352
+123 / 1352
+ref polygon is invalid
+124 / 1352
+125 / 1352
+126 / 1352
+127 / 1352
+128 / 1352
+ref polygon is invalid
+129 / 1352
+ref polygon is invalid
+130 / 1352
+131 / 1352
+ref polygon is invalid
+ref polygon is invalid
+132 / 1352
+133 / 1352
+134 / 1352
+135 / 1352
+136 / 1352
+137 / 1352
+138 / 1352
+139 / 1352
+140 / 1352
+141 / 1352
+142 / 1352
+ref polygon is invalid
+143 / 1352
+144 / 1352
+ref polygon is invalid
+145 / 1352
+146 / 1352
+147 / 1352
+ref polygon is invalid
+148 / 1352
+149 / 1352
+150 / 1352
+151 / 1352
+152 / 1352
+153 / 1352
+ref polygon is invalid
+154 / 1352
+155 / 1352
+ref polygon is invalid
+156 / 1352
+157 / 1352
+ref polygon is invalid
+158 / 1352
+159 / 1352
+ref polygon is invalid
+160 / 1352
+ref polygon is invalid
+161 / 1352
+ref polygon is invalid
+ref polygon is invalid
+162 / 1352
+163 / 1352
+164 / 1352
+165 / 1352
+166 / 1352
+167 / 1352
+168 / 1352
+169 / 1352
+170 / 1352
+171 / 1352
+172 / 1352
+ref polygon is invalid
+173 / 1352
+174 / 1352
+175 / 1352
+176 / 1352
+177 / 1352
+178 / 1352
+179 / 1352
+180 / 1352
+181 / 1352
+182 / 1352
+ref polygon is invalid
+183 / 1352
+184 / 1352
+185 / 1352
+ref polygon is invalid
+attn polygon is invalid
+attn polygon is invalid
+186 / 1352
+187 / 1352
+188 / 1352
+189 / 1352
+190 / 1352
+191 / 1352
+192 / 1352
+ref polygon is invalid
+193 / 1352
+194 / 1352
+195 / 1352
+196 / 1352
+197 / 1352
+198 / 1352
+199 / 1352
+200 / 1352
+ref polygon is invalid
+201 / 1352
+202 / 1352
+203 / 1352
+204 / 1352
+205 / 1352
+206 / 1352
+207 / 1352
+208 / 1352
+209 / 1352
+ref polygon is invalid
+210 / 1352
+211 / 1352
+212 / 1352
+213 / 1352
+214 / 1352
+215 / 1352
+ref polygon is invalid
+216 / 1352
+217 / 1352
+218 / 1352
+219 / 1352
+220 / 1352
+221 / 1352
+222 / 1352
+223 / 1352
+224 / 1352
+225 / 1352
+226 / 1352
+227 / 1352
+ref polygon is invalid
+228 / 1352
+229 / 1352
+230 / 1352
+231 / 1352
+232 / 1352
+233 / 1352
+ref polygon is invalid
+ref polygon is invalid
+234 / 1352
+235 / 1352
+ref polygon is invalid
+236 / 1352
+237 / 1352
+ref polygon is invalid
+ref polygon is invalid
+238 / 1352
+239 / 1352
+ref polygon is invalid
+240 / 1352
+241 / 1352
+ref polygon is invalid
+242 / 1352
+243 / 1352
+244 / 1352
+ref polygon is invalid
+245 / 1352
+246 / 1352
+247 / 1352
+248 / 1352
+249 / 1352
+ref polygon is invalid
+250 / 1352
+251 / 1352
+ref polygon is invalid
+252 / 1352
+ref polygon is invalid
+253 / 1352
+254 / 1352
+ref polygon is invalid
+255 / 1352
+ref polygon is invalid
+256 / 1352
+257 / 1352
+258 / 1352
+259 / 1352
+ref polygon is invalid
+260 / 1352
+261 / 1352
+262 / 1352
+263 / 1352
+264 / 1352
+265 / 1352
+ref polygon is invalid
+266 / 1352
+267 / 1352
+268 / 1352
+269 / 1352
+ref polygon is invalid
+270 / 1352
+271 / 1352
+272 / 1352
+273 / 1352
+274 / 1352
+275 / 1352
+276 / 1352
+277 / 1352
+278 / 1352
+ref polygon is invalid
+279 / 1352
+280 / 1352
+281 / 1352
+ref polygon is invalid
+282 / 1352
+283 / 1352
+284 / 1352
+285 / 1352
+286 / 1352
+287 / 1352
+288 / 1352
+289 / 1352
+290 / 1352
+291 / 1352
+292 / 1352
+ref polygon is invalid
+293 / 1352
+294 / 1352
+295 / 1352
+296 / 1352
+297 / 1352
+298 / 1352
+299 / 1352
+ref polygon is invalid
+300 / 1352
+301 / 1352
+302 / 1352
+303 / 1352
+304 / 1352
+ref polygon is invalid
+305 / 1352
+ref polygon is invalid
+306 / 1352
+307 / 1352
+ref polygon is invalid
+308 / 1352
+309 / 1352
+310 / 1352
+311 / 1352
+ref polygon is invalid
+312 / 1352
+313 / 1352
+ref polygon is invalid
+314 / 1352
+315 / 1352
+ref polygon is invalid
+316 / 1352
+317 / 1352
+318 / 1352
+319 / 1352
+320 / 1352
+321 / 1352
+322 / 1352
+323 / 1352
+324 / 1352
+325 / 1352
+326 / 1352
+327 / 1352
+328 / 1352
+ref polygon is invalid
+ref polygon is invalid
+329 / 1352
+330 / 1352
+331 / 1352
+332 / 1352
+ref polygon is invalid
+333 / 1352
+ref polygon is invalid
+334 / 1352
+335 / 1352
+ref polygon is invalid
+336 / 1352
+337 / 1352
+338 / 1352
+339 / 1352
+340 / 1352
+341 / 1352
+342 / 1352
+343 / 1352
+344 / 1352
+345 / 1352
+346 / 1352
+347 / 1352
+348 / 1352
+349 / 1352
+350 / 1352
+351 / 1352
+352 / 1352
+353 / 1352
+354 / 1352
+355 / 1352
+356 / 1352
+ref polygon is invalid
+357 / 1352
+ref polygon is invalid
+358 / 1352
+359 / 1352
+360 / 1352
+361 / 1352
+362 / 1352
+363 / 1352
+364 / 1352
+365 / 1352
+366 / 1352
+367 / 1352
+368 / 1352
+ref polygon is invalid
+369 / 1352
+ref polygon is invalid
+ref polygon is invalid
+370 / 1352
+371 / 1352
+372 / 1352
+373 / 1352
+374 / 1352
+375 / 1352
+376 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+377 / 1352
+378 / 1352
+379 / 1352
+380 / 1352
+381 / 1352
+382 / 1352
+383 / 1352
+384 / 1352
+385 / 1352
+386 / 1352
+387 / 1352
+388 / 1352
+389 / 1352
+390 / 1352
+391 / 1352
+392 / 1352
+ref polygon is invalid
+ref polygon is invalid
+393 / 1352
+394 / 1352
+395 / 1352
+396 / 1352
+397 / 1352
+398 / 1352
+ref polygon is invalid
+399 / 1352
+ref polygon is invalid
+400 / 1352
+401 / 1352
+402 / 1352
+403 / 1352
+404 / 1352
+405 / 1352
+ref polygon is invalid
+406 / 1352
+407 / 1352
+408 / 1352
+409 / 1352
+410 / 1352
+411 / 1352
+412 / 1352
+413 / 1352
+414 / 1352
+415 / 1352
+416 / 1352
+417 / 1352
+418 / 1352
+419 / 1352
+420 / 1352
+421 / 1352
+422 / 1352
+423 / 1352
+ref polygon is invalid
+424 / 1352
+425 / 1352
+426 / 1352
+427 / 1352
+ref polygon is invalid
+ref polygon is invalid
+428 / 1352
+429 / 1352
+430 / 1352
+431 / 1352
+432 / 1352
+433 / 1352
+434 / 1352
+435 / 1352
+436 / 1352
+437 / 1352
+438 / 1352
+439 / 1352
+440 / 1352
+441 / 1352
+442 / 1352
+443 / 1352
+444 / 1352
+445 / 1352
+ref polygon is invalid
+446 / 1352
+447 / 1352
+448 / 1352
+449 / 1352
+450 / 1352
+451 / 1352
+452 / 1352
+453 / 1352
+ref polygon is invalid
+454 / 1352
+455 / 1352
+456 / 1352
+457 / 1352
+458 / 1352
+459 / 1352
+460 / 1352
+461 / 1352
+462 / 1352
+463 / 1352
+464 / 1352
+ref polygon is invalid
+465 / 1352
+466 / 1352
+467 / 1352
+468 / 1352
+469 / 1352
+470 / 1352
+471 / 1352
+472 / 1352
+473 / 1352
+474 / 1352
+475 / 1352
+476 / 1352
+477 / 1352
+ref polygon is invalid
+478 / 1352
+479 / 1352
+480 / 1352
+481 / 1352
+482 / 1352
+483 / 1352
+484 / 1352
+ref polygon is invalid
+485 / 1352
+486 / 1352
+487 / 1352
+488 / 1352
+489 / 1352
+490 / 1352
+491 / 1352
+492 / 1352
+493 / 1352
+ref polygon is invalid
+494 / 1352
+ref polygon is invalid
+495 / 1352
+ref polygon is invalid
+496 / 1352
+497 / 1352
+498 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+499 / 1352
+ref polygon is invalid
+500 / 1352
+501 / 1352
+ref polygon is invalid
+502 / 1352
+503 / 1352
+ref polygon is invalid
+504 / 1352
+ref polygon is invalid
+505 / 1352
+ref polygon is invalid
+506 / 1352
+507 / 1352
+508 / 1352
+509 / 1352
+510 / 1352
+511 / 1352
+512 / 1352
+513 / 1352
+514 / 1352
+515 / 1352
+516 / 1352
+517 / 1352
+ref polygon is invalid
+518 / 1352
+519 / 1352
+ref polygon is invalid
+520 / 1352
+521 / 1352
+522 / 1352
+523 / 1352
+524 / 1352
+525 / 1352
+526 / 1352
+527 / 1352
+528 / 1352
+529 / 1352
+530 / 1352
+531 / 1352
+532 / 1352
+533 / 1352
+534 / 1352
+535 / 1352
+536 / 1352
+ref polygon is invalid
+ref polygon is invalid
+537 / 1352
+ref polygon is invalid
+538 / 1352
+539 / 1352
+540 / 1352
+541 / 1352
+ref polygon is invalid
+ref polygon is invalid
+542 / 1352
+543 / 1352
+544 / 1352
+545 / 1352
+546 / 1352
+547 / 1352
+548 / 1352
+549 / 1352
+550 / 1352
+551 / 1352
+552 / 1352
+ref polygon is invalid
+ref polygon is invalid
+553 / 1352
+554 / 1352
+ref polygon is invalid
+555 / 1352
+ref polygon is invalid
+ref polygon is invalid
+556 / 1352
+ref polygon is invalid
+557 / 1352
+558 / 1352
+559 / 1352
+ref polygon is invalid
+560 / 1352
+561 / 1352
+562 / 1352
+563 / 1352
+564 / 1352
+ref polygon is invalid
+ref polygon is invalid
+565 / 1352
+566 / 1352
+567 / 1352
+568 / 1352
+569 / 1352
+ref polygon is invalid
+570 / 1352
+571 / 1352
+572 / 1352
+573 / 1352
+574 / 1352
+575 / 1352
+ref polygon is invalid
+576 / 1352
+577 / 1352
+578 / 1352
+579 / 1352
+580 / 1352
+581 / 1352
+582 / 1352
+583 / 1352
+ref polygon is invalid
+ref polygon is invalid
+584 / 1352
+585 / 1352
+ref polygon is invalid
+586 / 1352
+587 / 1352
+588 / 1352
+589 / 1352
+590 / 1352
+591 / 1352
+592 / 1352
+ref polygon is invalid
+593 / 1352
+594 / 1352
+595 / 1352
+596 / 1352
+ref polygon is invalid
+597 / 1352
+ref polygon is invalid
+598 / 1352
+ref polygon is invalid
+599 / 1352
+600 / 1352
+601 / 1352
+602 / 1352
+603 / 1352
+604 / 1352
+605 / 1352
+606 / 1352
+607 / 1352
+608 / 1352
+609 / 1352
+610 / 1352
+611 / 1352
+612 / 1352
+613 / 1352
+614 / 1352
+615 / 1352
+616 / 1352
+617 / 1352
+618 / 1352
+619 / 1352
+ref polygon is invalid
+ref polygon is invalid
+620 / 1352
+621 / 1352
+622 / 1352
+623 / 1352
+624 / 1352
+625 / 1352
+626 / 1352
+627 / 1352
+628 / 1352
+629 / 1352
+ref polygon is invalid
+630 / 1352
+631 / 1352
+632 / 1352
+633 / 1352
+634 / 1352
+635 / 1352
+636 / 1352
+637 / 1352
+638 / 1352
+639 / 1352
+ref polygon is invalid
+640 / 1352
+641 / 1352
+642 / 1352
+643 / 1352
+644 / 1352
+645 / 1352
+646 / 1352
+647 / 1352
+648 / 1352
+649 / 1352
+650 / 1352
+651 / 1352
+652 / 1352
+653 / 1352
+654 / 1352
+655 / 1352
+656 / 1352
+ref polygon is invalid
+657 / 1352
+658 / 1352
+ref polygon is invalid
+659 / 1352
+660 / 1352
+661 / 1352
+662 / 1352
+663 / 1352
+664 / 1352
+665 / 1352
+666 / 1352
+667 / 1352
+668 / 1352
+669 / 1352
+670 / 1352
+ref polygon is invalid
+671 / 1352
+672 / 1352
+ref polygon is invalid
+673 / 1352
+674 / 1352
+ref polygon is invalid
+ref polygon is invalid
+675 / 1352
+ref polygon is invalid
+676 / 1352
+677 / 1352
+678 / 1352
+679 / 1352
+680 / 1352
+681 / 1352
+682 / 1352
+683 / 1352
+684 / 1352
+685 / 1352
+686 / 1352
+687 / 1352
+688 / 1352
+689 / 1352
+690 / 1352
+691 / 1352
+692 / 1352
+ref polygon is invalid
+693 / 1352
+694 / 1352
+695 / 1352
+696 / 1352
+697 / 1352
+698 / 1352
+699 / 1352
+700 / 1352
+701 / 1352
+ref polygon is invalid
+ref polygon is invalid
+702 / 1352
+703 / 1352
+704 / 1352
+705 / 1352
+706 / 1352
+707 / 1352
+708 / 1352
+709 / 1352
+ref polygon is invalid
+710 / 1352
+711 / 1352
+712 / 1352
+713 / 1352
+714 / 1352
+715 / 1352
+716 / 1352
+ref polygon is invalid
+717 / 1352
+718 / 1352
+719 / 1352
+ref polygon is invalid
+ref polygon is invalid
+720 / 1352
+721 / 1352
+ref polygon is invalid
+722 / 1352
+723 / 1352
+ref polygon is invalid
+ref polygon is invalid
+724 / 1352
+ref polygon is invalid
+725 / 1352
+726 / 1352
+ref polygon is invalid
+ref polygon is invalid
+727 / 1352
+728 / 1352
+729 / 1352
+730 / 1352
+731 / 1352
+732 / 1352
+733 / 1352
+734 / 1352
+735 / 1352
+736 / 1352
+737 / 1352
+738 / 1352
+ref polygon is invalid
+739 / 1352
+740 / 1352
+741 / 1352
+ref polygon is invalid
+742 / 1352
+743 / 1352
+744 / 1352
+745 / 1352
+ref polygon is invalid
+746 / 1352
+747 / 1352
+748 / 1352
+749 / 1352
+ref polygon is invalid
+750 / 1352
+751 / 1352
+752 / 1352
+753 / 1352
+754 / 1352
+755 / 1352
+756 / 1352
+757 / 1352
+758 / 1352
+759 / 1352
+760 / 1352
+761 / 1352
+762 / 1352
+763 / 1352
+764 / 1352
+765 / 1352
+766 / 1352
+ref polygon is invalid
+767 / 1352
+768 / 1352
+769 / 1352
+770 / 1352
+771 / 1352
+ref polygon is invalid
+772 / 1352
+773 / 1352
+774 / 1352
+775 / 1352
+ref polygon is invalid
+776 / 1352
+ref polygon is invalid
+777 / 1352
+778 / 1352
+779 / 1352
+780 / 1352
+781 / 1352
+782 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+783 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+784 / 1352
+785 / 1352
+786 / 1352
+787 / 1352
+788 / 1352
+789 / 1352
+790 / 1352
+791 / 1352
+792 / 1352
+793 / 1352
+794 / 1352
+795 / 1352
+796 / 1352
+797 / 1352
+798 / 1352
+799 / 1352
+800 / 1352
+801 / 1352
+802 / 1352
+ref polygon is invalid
+803 / 1352
+804 / 1352
+805 / 1352
+806 / 1352
+ref polygon is invalid
+ref polygon is invalid
+807 / 1352
+808 / 1352
+ref polygon is invalid
+ref polygon is invalid
+809 / 1352
+810 / 1352
+811 / 1352
+ref polygon is invalid
+812 / 1352
+813 / 1352
+814 / 1352
+ref polygon is invalid
+815 / 1352
+816 / 1352
+817 / 1352
+818 / 1352
+819 / 1352
+820 / 1352
+821 / 1352
+822 / 1352
+823 / 1352
+824 / 1352
+825 / 1352
+826 / 1352
+827 / 1352
+828 / 1352
+829 / 1352
+830 / 1352
+831 / 1352
+832 / 1352
+833 / 1352
+834 / 1352
+ref polygon is invalid
+ref polygon is invalid
+835 / 1352
+836 / 1352
+837 / 1352
+838 / 1352
+ref polygon is invalid
+839 / 1352
+840 / 1352
+ref polygon is invalid
+841 / 1352
+842 / 1352
+843 / 1352
+844 / 1352
+845 / 1352
+846 / 1352
+847 / 1352
+848 / 1352
+849 / 1352
+850 / 1352
+851 / 1352
+852 / 1352
+853 / 1352
+854 / 1352
+855 / 1352
+856 / 1352
+ref polygon is invalid
+857 / 1352
+858 / 1352
+859 / 1352
+860 / 1352
+861 / 1352
+862 / 1352
+863 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+864 / 1352
+865 / 1352
+866 / 1352
+867 / 1352
+868 / 1352
+869 / 1352
+870 / 1352
+871 / 1352
+872 / 1352
+873 / 1352
+874 / 1352
+875 / 1352
+876 / 1352
+877 / 1352
+878 / 1352
+ref polygon is invalid
+879 / 1352
+880 / 1352
+881 / 1352
+882 / 1352
+883 / 1352
+884 / 1352
+885 / 1352
+886 / 1352
+887 / 1352
+888 / 1352
+889 / 1352
+890 / 1352
+891 / 1352
+ref polygon is invalid
+892 / 1352
+ref polygon is invalid
+893 / 1352
+894 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+895 / 1352
+896 / 1352
+ref polygon is invalid
+ref polygon is invalid
+897 / 1352
+898 / 1352
+899 / 1352
+ref polygon is invalid
+900 / 1352
+901 / 1352
+902 / 1352
+ref polygon is invalid
+903 / 1352
+904 / 1352
+905 / 1352
+906 / 1352
+907 / 1352
+908 / 1352
+909 / 1352
+910 / 1352
+911 / 1352
+912 / 1352
+913 / 1352
+914 / 1352
+915 / 1352
+916 / 1352
+917 / 1352
+ref polygon is invalid
+918 / 1352
+919 / 1352
+920 / 1352
+921 / 1352
+922 / 1352
+923 / 1352
+924 / 1352
+925 / 1352
+926 / 1352
+927 / 1352
+ref polygon is invalid
+928 / 1352
+929 / 1352
+930 / 1352
+931 / 1352
+932 / 1352
+933 / 1352
+934 / 1352
+ref polygon is invalid
+935 / 1352
+936 / 1352
+937 / 1352
+938 / 1352
+939 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+940 / 1352
+941 / 1352
+942 / 1352
+943 / 1352
+944 / 1352
+945 / 1352
+946 / 1352
+947 / 1352
+948 / 1352
+949 / 1352
+950 / 1352
+951 / 1352
+952 / 1352
+953 / 1352
+954 / 1352
+955 / 1352
+956 / 1352
+957 / 1352
+958 / 1352
+ref polygon is invalid
+959 / 1352
+960 / 1352
+961 / 1352
+962 / 1352
+963 / 1352
+964 / 1352
+965 / 1352
+ref polygon is invalid
+ref polygon is invalid
+966 / 1352
+ref polygon is invalid
+967 / 1352
+968 / 1352
+969 / 1352
+970 / 1352
+971 / 1352
+972 / 1352
+973 / 1352
+974 / 1352
+975 / 1352
+976 / 1352
+ref polygon is invalid
+977 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+978 / 1352
+979 / 1352
+980 / 1352
+ref polygon is invalid
+981 / 1352
+982 / 1352
+983 / 1352
+984 / 1352
+ref polygon is invalid
+985 / 1352
+986 / 1352
+987 / 1352
+988 / 1352
+989 / 1352
+990 / 1352
+991 / 1352
+992 / 1352
+993 / 1352
+994 / 1352
+995 / 1352
+ref polygon is invalid
+ref polygon is invalid
+996 / 1352
+ref polygon is invalid
+ref polygon is invalid
+997 / 1352
+998 / 1352
+999 / 1352
+1000 / 1352
+1001 / 1352
+1002 / 1352
+1003 / 1352
+ref polygon is invalid
+1004 / 1352
+ref polygon is invalid
+1005 / 1352
+1006 / 1352
+1007 / 1352
+ref polygon is invalid
+1008 / 1352
+1009 / 1352
+1010 / 1352
+1011 / 1352
+1012 / 1352
+1013 / 1352
+1014 / 1352
+1015 / 1352
+1016 / 1352
+1017 / 1352
+1018 / 1352
+1019 / 1352
+1020 / 1352
+1021 / 1352
+1022 / 1352
+1023 / 1352
+ref polygon is invalid
+1024 / 1352
+ref polygon is invalid
+1025 / 1352
+1026 / 1352
+1027 / 1352
+1028 / 1352
+1029 / 1352
+1030 / 1352
+1031 / 1352
+1032 / 1352
+1033 / 1352
+1034 / 1352
+1035 / 1352
+ref polygon is invalid
+1036 / 1352
+ref polygon is invalid
+1037 / 1352
+1038 / 1352
+ref polygon is invalid
+1039 / 1352
+1040 / 1352
+1041 / 1352
+1042 / 1352
+1043 / 1352
+1044 / 1352
+1045 / 1352
+1046 / 1352
+1047 / 1352
+1048 / 1352
+ref polygon is invalid
+1049 / 1352
+1050 / 1352
+1051 / 1352
+1052 / 1352
+ref polygon is invalid
+1053 / 1352
+1054 / 1352
+1055 / 1352
+1056 / 1352
+1057 / 1352
+1058 / 1352
+ref polygon is invalid
+1059 / 1352
+ref polygon is invalid
+1060 / 1352
+1061 / 1352
+1062 / 1352
+ref polygon is invalid
+1063 / 1352
+1064 / 1352
+1065 / 1352
+1066 / 1352
+1067 / 1352
+1068 / 1352
+1069 / 1352
+ref polygon is invalid
+1070 / 1352
+ref polygon is invalid
+1071 / 1352
+1072 / 1352
+1073 / 1352
+1074 / 1352
+1075 / 1352
+1076 / 1352
+1077 / 1352
+1078 / 1352
+1079 / 1352
+1080 / 1352
+1081 / 1352
+1082 / 1352
+1083 / 1352
+1084 / 1352
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+1085 / 1352
+1086 / 1352
+1087 / 1352
+1088 / 1352
+1089 / 1352
+1090 / 1352
+1091 / 1352
+1092 / 1352
+1093 / 1352
+1094 / 1352
+1095 / 1352
+1096 / 1352
+1097 / 1352
+1098 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1099 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1100 / 1352
+1101 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1102 / 1352
+1103 / 1352
+1104 / 1352
+1105 / 1352
+1106 / 1352
+ref polygon is invalid
+1107 / 1352
+1108 / 1352
+1109 / 1352
+1110 / 1352
+1111 / 1352
+1112 / 1352
+1113 / 1352
+1114 / 1352
+1115 / 1352
+1116 / 1352
+1117 / 1352
+1118 / 1352
+1119 / 1352
+1120 / 1352
+1121 / 1352
+1122 / 1352
+ref polygon is invalid
+1123 / 1352
+ref polygon is invalid
+1124 / 1352
+1125 / 1352
+1126 / 1352
+1127 / 1352
+1128 / 1352
+1129 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1130 / 1352
+1131 / 1352
+ref polygon is invalid
+1132 / 1352
+ref polygon is invalid
+1133 / 1352
+ref polygon is invalid
+1134 / 1352
+1135 / 1352
+1136 / 1352
+1137 / 1352
+1138 / 1352
+1139 / 1352
+ref polygon is invalid
+1140 / 1352
+1141 / 1352
+ref polygon is invalid
+1142 / 1352
+1143 / 1352
+1144 / 1352
+1145 / 1352
+1146 / 1352
+1147 / 1352
+ref polygon is invalid
+1148 / 1352
+1149 / 1352
+1150 / 1352
+1151 / 1352
+1152 / 1352
+1153 / 1352
+ref polygon is invalid
+1154 / 1352
+1155 / 1352
+1156 / 1352
+1157 / 1352
+1158 / 1352
+1159 / 1352
+1160 / 1352
+1161 / 1352
+1162 / 1352
+1163 / 1352
+1164 / 1352
+1165 / 1352
+ref polygon is invalid
+1166 / 1352
+1167 / 1352
+1168 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1169 / 1352
+1170 / 1352
+1171 / 1352
+1172 / 1352
+1173 / 1352
+1174 / 1352
+1175 / 1352
+1176 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1177 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1178 / 1352
+1179 / 1352
+1180 / 1352
+1181 / 1352
+ref polygon is invalid
+1182 / 1352
+1183 / 1352
+1184 / 1352
+1185 / 1352
+1186 / 1352
+1187 / 1352
+1188 / 1352
+1189 / 1352
+1190 / 1352
+1191 / 1352
+1192 / 1352
+1193 / 1352
+1194 / 1352
+1195 / 1352
+1196 / 1352
+1197 / 1352
+1198 / 1352
+1199 / 1352
+1200 / 1352
+1201 / 1352
+attn polygon is invalid
+1202 / 1352
+ref polygon is invalid
+1203 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1204 / 1352
+1205 / 1352
+1206 / 1352
+1207 / 1352
+1208 / 1352
+ref polygon is invalid
+1209 / 1352
+1210 / 1352
+1211 / 1352
+1212 / 1352
+1213 / 1352
+1214 / 1352
+1215 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1216 / 1352
+1217 / 1352
+1218 / 1352
+1219 / 1352
+1220 / 1352
+1221 / 1352
+1222 / 1352
+1223 / 1352
+ref polygon is invalid
+1224 / 1352
+1225 / 1352
+1226 / 1352
+ref polygon is invalid
+1227 / 1352
+1228 / 1352
+1229 / 1352
+1230 / 1352
+1231 / 1352
+1232 / 1352
+1233 / 1352
+1234 / 1352
+1235 / 1352
+1236 / 1352
+ref polygon is invalid
+1237 / 1352
+1238 / 1352
+1239 / 1352
+1240 / 1352
+1241 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1242 / 1352
+1243 / 1352
+1244 / 1352
+ref polygon is invalid
+1245 / 1352
+1246 / 1352
+1247 / 1352
+1248 / 1352
+1249 / 1352
+1250 / 1352
+ref polygon is invalid
+1251 / 1352
+1252 / 1352
+1253 / 1352
+ref polygon is invalid
+1254 / 1352
+1255 / 1352
+1256 / 1352
+1257 / 1352
+1258 / 1352
+1259 / 1352
+1260 / 1352
+1261 / 1352
+1262 / 1352
+1263 / 1352
+1264 / 1352
+1265 / 1352
+ref polygon is invalid
+1266 / 1352
+1267 / 1352
+1268 / 1352
+1269 / 1352
+1270 / 1352
+1271 / 1352
+1272 / 1352
+1273 / 1352
+1274 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1275 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1276 / 1352
+1277 / 1352
+1278 / 1352
+1279 / 1352
+1280 / 1352
+1281 / 1352
+1282 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1283 / 1352
+1284 / 1352
+1285 / 1352
+ref polygon is invalid
+1286 / 1352
+1287 / 1352
+1288 / 1352
+ref polygon is invalid
+1289 / 1352
+1290 / 1352
+1291 / 1352
+1292 / 1352
+1293 / 1352
+1294 / 1352
+1295 / 1352
+1296 / 1352
+1297 / 1352
+ref polygon is invalid
+1298 / 1352
+1299 / 1352
+1300 / 1352
+1301 / 1352
+1302 / 1352
+1303 / 1352
+ref polygon is invalid
+1304 / 1352
+ref polygon is invalid
+1305 / 1352
+1306 / 1352
+1307 / 1352
+ref polygon is invalid
+1308 / 1352
+ref polygon is invalid
+1309 / 1352
+1310 / 1352
+1311 / 1352
+1312 / 1352
+1313 / 1352
+1314 / 1352
+1315 / 1352
+1316 / 1352
+1317 / 1352
+ref polygon is invalid
+1318 / 1352
+ref polygon is invalid
+1319 / 1352
+ref polygon is invalid
+1320 / 1352
+1321 / 1352
+1322 / 1352
+1323 / 1352
+1324 / 1352
+1325 / 1352
+1326 / 1352
+1327 / 1352
+1328 / 1352
+1329 / 1352
+1330 / 1352
+1331 / 1352
+1332 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1333 / 1352
+1334 / 1352
+1335 / 1352
+1336 / 1352
+ref polygon is invalid
+ref polygon is invalid
+1337 / 1352
+1338 / 1352
+ref polygon is invalid
+1339 / 1352
+1340 / 1352
+ref polygon is invalid
+1341 / 1352
+1342 / 1352
+1343 / 1352
+1344 / 1352
+1345 / 1352
+ref polygon is invalid
+1346 / 1352
+1347 / 1352
+ref polygon is invalid
+1348 / 1352
+1349 / 1352
+1350 / 1352
+ref polygon is invalid
+1351 / 1352
+bicycle process...
+/home/nakachi/data/category_split/bicycle_ja/
+Load filenames from: /home/nakachi/data/category_split/bicycle_ja//train_filenames.pickle (2287)
+Load filenames from: /home/nakachi/data/category_split/bicycle_ja//val_filenames.pickle (1114)
+Load from:  /home/nakachi/data/category_split/bicycle_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+/home/nakachi/AttnGAN/code/miscc/losses.py:125: UserWarning: masked_fill_ received a mask with dtype torch.uint8, this behavior is now deprecated,please use a mask with dtype torch.bool instead. (Triggered internally at  /opt/conda/conda-bld/pytorch_1595629427286/work/aten/src/ATen/native/cuda/LegacyDefinitions.cpp:19.)
+  similarities.data.masked_fill_(masks, -float('inf'))
+/home/nakachi/AttnGAN/code/miscc/utils.py:465: RuntimeWarning: invalid value encountered in true_divide
+  one_map = (one_map - minVglobal) / (maxVglobal - minVglobal)
+0 / 69
+1 / 69
+2 / 69
+3 / 69
+ref polygon is invalid
+4 / 69
+5 / 69
+6 / 69
+7 / 69
+8 / 69
+9 / 69
+10 / 69
+11 / 69
+ref polygon is invalid
+12 / 69
+13 / 69
+14 / 69
+15 / 69
+16 / 69
+17 / 69
+ref polygon is invalid
+18 / 69
+19 / 69
+ref polygon is invalid
+20 / 69
+21 / 69
+22 / 69
+23 / 69
+24 / 69
+ref polygon is invalid
+25 / 69
+ref polygon is invalid
+26 / 69
+27 / 69
+28 / 69
+29 / 69
+ref polygon is invalid
+30 / 69
+31 / 69
+32 / 69
+33 / 69
+34 / 69
+35 / 69
+36 / 69
+37 / 69
+38 / 69
+39 / 69
+ref polygon is invalid
+40 / 69
+41 / 69
+42 / 69
+43 / 69
+44 / 69
+45 / 69
+46 / 69
+47 / 69
+48 / 69
+49 / 69
+50 / 69
+51 / 69
+52 / 69
+53 / 69
+54 / 69
+55 / 69
+56 / 69
+57 / 69
+58 / 69
+59 / 69
+60 / 69
+61 / 69
+62 / 69
+ref polygon is invalid
+63 / 69
+64 / 69
+65 / 69
+66 / 69
+67 / 69
+68 / 69
+ref polygon is invalid
+ref polygon is invalid
+car process...
+/home/nakachi/data/category_split/car_ja/
+Load filenames from: /home/nakachi/data/category_split/car_ja//train_filenames.pickle (8606)
+Load filenames from: /home/nakachi/data/category_split/car_ja//val_filenames.pickle (4180)
+Load from:  /home/nakachi/data/category_split/car_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 261
+1 / 261
+2 / 261
+3 / 261
+4 / 261
+5 / 261
+6 / 261
+7 / 261
+8 / 261
+9 / 261
+10 / 261
+11 / 261
+12 / 261
+13 / 261
+14 / 261
+15 / 261
+16 / 261
+17 / 261
+18 / 261
+19 / 261
+20 / 261
+21 / 261
+22 / 261
+23 / 261
+24 / 261
+25 / 261
+26 / 261
+27 / 261
+28 / 261
+29 / 261
+30 / 261
+31 / 261
+32 / 261
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+33 / 261
+34 / 261
+35 / 261
+36 / 261
+37 / 261
+38 / 261
+39 / 261
+40 / 261
+41 / 261
+42 / 261
+43 / 261
+44 / 261
+45 / 261
+46 / 261
+47 / 261
+48 / 261
+49 / 261
+50 / 261
+ref polygon is invalid
+51 / 261
+52 / 261
+53 / 261
+54 / 261
+55 / 261
+56 / 261
+57 / 261
+58 / 261
+59 / 261
+60 / 261
+61 / 261
+62 / 261
+63 / 261
+64 / 261
+65 / 261
+66 / 261
+67 / 261
+68 / 261
+69 / 261
+70 / 261
+71 / 261
+72 / 261
+73 / 261
+74 / 261
+75 / 261
+76 / 261
+77 / 261
+ref polygon is invalid
+78 / 261
+79 / 261
+80 / 261
+81 / 261
+82 / 261
+83 / 261
+ref polygon is invalid
+84 / 261
+85 / 261
+86 / 261
+87 / 261
+88 / 261
+89 / 261
+90 / 261
+91 / 261
+ref polygon is invalid
+ref polygon is invalid
+92 / 261
+93 / 261
+94 / 261
+95 / 261
+96 / 261
+97 / 261
+98 / 261
+99 / 261
+100 / 261
+101 / 261
+102 / 261
+103 / 261
+104 / 261
+105 / 261
+106 / 261
+107 / 261
+108 / 261
+109 / 261
+110 / 261
+111 / 261
+112 / 261
+113 / 261
+114 / 261
+115 / 261
+ref polygon is invalid
+116 / 261
+117 / 261
+118 / 261
+119 / 261
+120 / 261
+121 / 261
+122 / 261
+123 / 261
+124 / 261
+125 / 261
+126 / 261
+127 / 261
+128 / 261
+129 / 261
+130 / 261
+131 / 261
+132 / 261
+133 / 261
+134 / 261
+135 / 261
+136 / 261
+137 / 261
+138 / 261
+139 / 261
+140 / 261
+ref polygon is invalid
+141 / 261
+142 / 261
+143 / 261
+144 / 261
+145 / 261
+146 / 261
+147 / 261
+148 / 261
+149 / 261
+150 / 261
+151 / 261
+152 / 261
+153 / 261
+154 / 261
+155 / 261
+156 / 261
+157 / 261
+158 / 261
+159 / 261
+160 / 261
+161 / 261
+162 / 261
+163 / 261
+164 / 261
+165 / 261
+166 / 261
+167 / 261
+168 / 261
+169 / 261
+170 / 261
+171 / 261
+172 / 261
+ref polygon is invalid
+173 / 261
+174 / 261
+175 / 261
+176 / 261
+177 / 261
+178 / 261
+179 / 261
+180 / 261
+ref polygon is invalid
+181 / 261
+182 / 261
+183 / 261
+184 / 261
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+185 / 261
+186 / 261
+187 / 261
+188 / 261
+189 / 261
+190 / 261
+191 / 261
+192 / 261
+193 / 261
+194 / 261
+195 / 261
+196 / 261
+197 / 261
+198 / 261
+199 / 261
+200 / 261
+ref polygon is invalid
+201 / 261
+202 / 261
+203 / 261
+204 / 261
+205 / 261
+206 / 261
+207 / 261
+208 / 261
+209 / 261
+210 / 261
+211 / 261
+212 / 261
+ref polygon is invalid
+213 / 261
+214 / 261
+215 / 261
+216 / 261
+217 / 261
+218 / 261
+219 / 261
+220 / 261
+221 / 261
+222 / 261
+223 / 261
+224 / 261
+225 / 261
+226 / 261
+227 / 261
+228 / 261
+229 / 261
+230 / 261
+231 / 261
+232 / 261
+233 / 261
+234 / 261
+235 / 261
+236 / 261
+237 / 261
+238 / 261
+239 / 261
+240 / 261
+241 / 261
+ref polygon is invalid
+242 / 261
+243 / 261
+244 / 261
+245 / 261
+246 / 261
+247 / 261
+248 / 261
+249 / 261
+250 / 261
+251 / 261
+252 / 261
+253 / 261
+254 / 261
+255 / 261
+256 / 261
+257 / 261
+258 / 261
+259 / 261
+260 / 261
+motorcycle process...
+/home/nakachi/data/category_split/motorcycle_ja/
+Load filenames from: /home/nakachi/data/category_split/motorcycle_ja//train_filenames.pickle (2442)
+Load filenames from: /home/nakachi/data/category_split/motorcycle_ja//val_filenames.pickle (1219)
+Load from:  /home/nakachi/data/category_split/motorcycle_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 76
+ref polygon is invalid
+1 / 76
+2 / 76
+ref polygon is invalid
+3 / 76
+4 / 76
+5 / 76
+6 / 76
+ref polygon is invalid
+ref polygon is invalid
+7 / 76
+8 / 76
+9 / 76
+10 / 76
+11 / 76
+12 / 76
+13 / 76
+ref polygon is invalid
+14 / 76
+15 / 76
+16 / 76
+17 / 76
+18 / 76
+19 / 76
+20 / 76
+21 / 76
+22 / 76
+23 / 76
+ref polygon is invalid
+24 / 76
+25 / 76
+26 / 76
+ref polygon is invalid
+27 / 76
+28 / 76
+29 / 76
+30 / 76
+31 / 76
+32 / 76
+33 / 76
+34 / 76
+35 / 76
+36 / 76
+37 / 76
+38 / 76
+39 / 76
+40 / 76
+41 / 76
+42 / 76
+43 / 76
+ref polygon is invalid
+44 / 76
+45 / 76
+46 / 76
+ref polygon is invalid
+47 / 76
+48 / 76
+49 / 76
+50 / 76
+51 / 76
+52 / 76
+53 / 76
+54 / 76
+ref polygon is invalid
+55 / 76
+56 / 76
+ref polygon is invalid
+ref polygon is invalid
+57 / 76
+ref polygon is invalid
+58 / 76
+59 / 76
+60 / 76
+61 / 76
+62 / 76
+63 / 76
+64 / 76
+65 / 76
+66 / 76
+67 / 76
+68 / 76
+69 / 76
+70 / 76
+71 / 76
+72 / 76
+73 / 76
+74 / 76
+75 / 76
+airplane process...
+/home/nakachi/data/category_split/airplane_ja/
+Load filenames from: /home/nakachi/data/category_split/airplane_ja//train_filenames.pickle (2243)
+Load filenames from: /home/nakachi/data/category_split/airplane_ja//val_filenames.pickle (840)
+Load from:  /home/nakachi/data/category_split/airplane_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 52
+1 / 52
+2 / 52
+3 / 52
+4 / 52
+5 / 52
+6 / 52
+7 / 52
+8 / 52
+9 / 52
+ref polygon is invalid
+10 / 52
+11 / 52
+12 / 52
+13 / 52
+14 / 52
+15 / 52
+16 / 52
+17 / 52
+18 / 52
+19 / 52
+20 / 52
+21 / 52
+22 / 52
+23 / 52
+ref polygon is invalid
+ref polygon is invalid
+24 / 52
+25 / 52
+26 / 52
+27 / 52
+28 / 52
+29 / 52
+30 / 52
+31 / 52
+32 / 52
+33 / 52
+34 / 52
+35 / 52
+36 / 52
+37 / 52
+38 / 52
+39 / 52
+40 / 52
+41 / 52
+42 / 52
+43 / 52
+44 / 52
+45 / 52
+46 / 52
+47 / 52
+ref polygon is invalid
+48 / 52
+49 / 52
+50 / 52
+51 / 52
+bus process...
+/home/nakachi/data/category_split/bus_ja/
+Load filenames from: /home/nakachi/data/category_split/bus_ja//train_filenames.pickle (2791)
+Load filenames from: /home/nakachi/data/category_split/bus_ja//val_filenames.pickle (1350)
+Load from:  /home/nakachi/data/category_split/bus_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 84
+1 / 84
+attn polygon is invalid
+2 / 84
+ref polygon is invalid
+ref polygon is invalid
+3 / 84
+4 / 84
+ref polygon is invalid
+5 / 84
+6 / 84
+7 / 84
+8 / 84
+9 / 84
+10 / 84
+11 / 84
+12 / 84
+13 / 84
+14 / 84
+15 / 84
+16 / 84
+17 / 84
+18 / 84
+19 / 84
+20 / 84
+21 / 84
+22 / 84
+23 / 84
+24 / 84
+25 / 84
+26 / 84
+27 / 84
+28 / 84
+29 / 84
+30 / 84
+31 / 84
+32 / 84
+33 / 84
+34 / 84
+35 / 84
+36 / 84
+37 / 84
+38 / 84
+39 / 84
+40 / 84
+41 / 84
+42 / 84
+43 / 84
+ref polygon is invalid
+44 / 84
+45 / 84
+ref polygon is invalid
+46 / 84
+47 / 84
+48 / 84
+49 / 84
+50 / 84
+51 / 84
+ref polygon is invalid
+52 / 84
+53 / 84
+ref polygon is invalid
+54 / 84
+55 / 84
+56 / 84
+57 / 84
+58 / 84
+59 / 84
+60 / 84
+61 / 84
+62 / 84
+63 / 84
+64 / 84
+65 / 84
+66 / 84
+67 / 84
+68 / 84
+ref polygon is invalid
+69 / 84
+70 / 84
+71 / 84
+72 / 84
+73 / 84
+74 / 84
+75 / 84
+76 / 84
+77 / 84
+ref polygon is invalid
+78 / 84
+79 / 84
+80 / 84
+81 / 84
+82 / 84
+83 / 84
+train process...
+/home/nakachi/data/category_split/train_ja/
+Load filenames from: /home/nakachi/data/category_split/train_ja//train_filenames.pickle (2464)
+Load filenames from: /home/nakachi/data/category_split/train_ja//val_filenames.pickle (1281)
+Load from:  /home/nakachi/data/category_split/train_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 80
+1 / 80
+2 / 80
+3 / 80
+4 / 80
+5 / 80
+6 / 80
+7 / 80
+8 / 80
+9 / 80
+10 / 80
+11 / 80
+12 / 80
+13 / 80
+14 / 80
+15 / 80
+16 / 80
+17 / 80
+18 / 80
+19 / 80
+20 / 80
+21 / 80
+22 / 80
+23 / 80
+24 / 80
+25 / 80
+26 / 80
+27 / 80
+28 / 80
+29 / 80
+30 / 80
+31 / 80
+32 / 80
+33 / 80
+34 / 80
+35 / 80
+36 / 80
+37 / 80
+38 / 80
+39 / 80
+40 / 80
+41 / 80
+42 / 80
+43 / 80
+44 / 80
+45 / 80
+46 / 80
+47 / 80
+48 / 80
+49 / 80
+ref polygon is invalid
+50 / 80
+51 / 80
+52 / 80
+53 / 80
+54 / 80
+55 / 80
+56 / 80
+57 / 80
+58 / 80
+59 / 80
+60 / 80
+61 / 80
+62 / 80
+63 / 80
+64 / 80
+65 / 80
+66 / 80
+67 / 80
+68 / 80
+ref polygon is invalid
+69 / 80
+70 / 80
+71 / 80
+72 / 80
+73 / 80
+ref polygon is invalid
+74 / 80
+75 / 80
+76 / 80
+77 / 80
+78 / 80
+79 / 80
+truck process...
+/home/nakachi/data/category_split/truck_ja/
+Load filenames from: /home/nakachi/data/category_split/truck_ja//train_filenames.pickle (4321)
+Load filenames from: /home/nakachi/data/category_split/truck_ja//val_filenames.pickle (2056)
+Load from:  /home/nakachi/data/category_split/truck_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 128
+1 / 128
+2 / 128
+3 / 128
+4 / 128
+5 / 128
+6 / 128
+7 / 128
+8 / 128
+9 / 128
+10 / 128
+11 / 128
+12 / 128
+13 / 128
+14 / 128
+15 / 128
+16 / 128
+17 / 128
+18 / 128
+19 / 128
+20 / 128
+21 / 128
+22 / 128
+23 / 128
+24 / 128
+25 / 128
+26 / 128
+27 / 128
+28 / 128
+29 / 128
+30 / 128
+31 / 128
+32 / 128
+33 / 128
+34 / 128
+35 / 128
+36 / 128
+37 / 128
+38 / 128
+39 / 128
+40 / 128
+41 / 128
+42 / 128
+43 / 128
+44 / 128
+45 / 128
+46 / 128
+47 / 128
+48 / 128
+49 / 128
+50 / 128
+51 / 128
+52 / 128
+53 / 128
+54 / 128
+55 / 128
+56 / 128
+57 / 128
+58 / 128
+59 / 128
+60 / 128
+61 / 128
+62 / 128
+63 / 128
+64 / 128
+65 / 128
+66 / 128
+67 / 128
+68 / 128
+69 / 128
+70 / 128
+71 / 128
+72 / 128
+73 / 128
+74 / 128
+75 / 128
+76 / 128
+77 / 128
+78 / 128
+79 / 128
+80 / 128
+81 / 128
+82 / 128
+83 / 128
+84 / 128
+85 / 128
+86 / 128
+87 / 128
+88 / 128
+89 / 128
+90 / 128
+91 / 128
+92 / 128
+93 / 128
+94 / 128
+95 / 128
+96 / 128
+97 / 128
+98 / 128
+99 / 128
+100 / 128
+101 / 128
+102 / 128
+103 / 128
+104 / 128
+105 / 128
+106 / 128
+107 / 128
+ref polygon is invalid
+108 / 128
+109 / 128
+110 / 128
+111 / 128
+112 / 128
+113 / 128
+114 / 128
+115 / 128
+116 / 128
+117 / 128
+118 / 128
+119 / 128
+120 / 128
+121 / 128
+122 / 128
+123 / 128
+124 / 128
+125 / 128
+126 / 128
+127 / 128
+boat process...
+/home/nakachi/data/category_split/boat_ja/
+Load filenames from: /home/nakachi/data/category_split/boat_ja//train_filenames.pickle (2098)
+Load filenames from: /home/nakachi/data/category_split/boat_ja//val_filenames.pickle (1048)
+Load from:  /home/nakachi/data/category_split/boat_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 65
+1 / 65
+2 / 65
+3 / 65
+ref polygon is invalid
+4 / 65
+5 / 65
+6 / 65
+7 / 65
+8 / 65
+9 / 65
+10 / 65
+ref polygon is invalid
+11 / 65
+12 / 65
+ref polygon is invalid
+ref polygon is invalid
+13 / 65
+14 / 65
+15 / 65
+16 / 65
+17 / 65
+18 / 65
+19 / 65
+20 / 65
+21 / 65
+22 / 65
+23 / 65
+24 / 65
+ref polygon is invalid
+25 / 65
+26 / 65
+27 / 65
+28 / 65
+29 / 65
+30 / 65
+31 / 65
+32 / 65
+33 / 65
+34 / 65
+35 / 65
+36 / 65
+37 / 65
+38 / 65
+39 / 65
+ref polygon is invalid
+40 / 65
+41 / 65
+ref polygon is invalid
+42 / 65
+ref polygon is invalid
+43 / 65
+44 / 65
+45 / 65
+46 / 65
+47 / 65
+48 / 65
+49 / 65
+50 / 65
+51 / 65
+52 / 65
+53 / 65
+54 / 65
+55 / 65
+56 / 65
+57 / 65
+58 / 65
+59 / 65
+60 / 65
+61 / 65
+62 / 65
+ref polygon is invalid
+63 / 65
+64 / 65
+traffic light process...
+/home/nakachi/data/category_split/traffic light_ja/
+Load filenames from: /home/nakachi/data/category_split/traffic light_ja//train_filenames.pickle (2893)
+Load filenames from: /home/nakachi/data/category_split/traffic light_ja//val_filenames.pickle (1437)
+Load from:  /home/nakachi/data/category_split/traffic light_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 89
+1 / 89
+2 / 89
+3 / 89
+4 / 89
+5 / 89
+6 / 89
+7 / 89
+8 / 89
+9 / 89
+10 / 89
+11 / 89
+12 / 89
+13 / 89
+14 / 89
+15 / 89
+16 / 89
+17 / 89
+18 / 89
+19 / 89
+20 / 89
+21 / 89
+22 / 89
+23 / 89
+24 / 89
+25 / 89
+26 / 89
+27 / 89
+28 / 89
+29 / 89
+30 / 89
+31 / 89
+32 / 89
+33 / 89
+34 / 89
+35 / 89
+36 / 89
+37 / 89
+38 / 89
+39 / 89
+40 / 89
+ref polygon is invalid
+41 / 89
+42 / 89
+43 / 89
+44 / 89
+45 / 89
+46 / 89
+47 / 89
+48 / 89
+49 / 89
+50 / 89
+51 / 89
+52 / 89
+53 / 89
+54 / 89
+55 / 89
+56 / 89
+57 / 89
+58 / 89
+59 / 89
+60 / 89
+61 / 89
+62 / 89
+63 / 89
+64 / 89
+65 / 89
+66 / 89
+67 / 89
+68 / 89
+69 / 89
+70 / 89
+71 / 89
+72 / 89
+73 / 89
+74 / 89
+75 / 89
+76 / 89
+77 / 89
+78 / 89
+79 / 89
+80 / 89
+81 / 89
+82 / 89
+83 / 89
+84 / 89
+85 / 89
+86 / 89
+87 / 89
+88 / 89
+fire hydrant process...
+/home/nakachi/data/category_split/fire hydrant_ja/
+Load filenames from: /home/nakachi/data/category_split/fire hydrant_ja//train_filenames.pickle (1205)
+Load filenames from: /home/nakachi/data/category_split/fire hydrant_ja//val_filenames.pickle (592)
+Load from:  /home/nakachi/data/category_split/fire hydrant_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 37
+1 / 37
+2 / 37
+3 / 37
+4 / 37
+5 / 37
+6 / 37
+7 / 37
+8 / 37
+9 / 37
+10 / 37
+11 / 37
+12 / 37
+13 / 37
+14 / 37
+15 / 37
+16 / 37
+17 / 37
+18 / 37
+19 / 37
+20 / 37
+21 / 37
+22 / 37
+23 / 37
+24 / 37
+25 / 37
+26 / 37
+27 / 37
+28 / 37
+29 / 37
+30 / 37
+31 / 37
+attn polygon is invalid
+32 / 37
+33 / 37
+34 / 37
+35 / 37
+36 / 37
+stop sign process...
+/home/nakachi/data/category_split/stop sign_ja/
+Load filenames from: /home/nakachi/data/category_split/stop sign_ja//train_filenames.pickle (1214)
+Load filenames from: /home/nakachi/data/category_split/stop sign_ja//val_filenames.pickle (589)
+Load from:  /home/nakachi/data/category_split/stop sign_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 36
+1 / 36
+2 / 36
+3 / 36
+4 / 36
+5 / 36
+6 / 36
+7 / 36
+8 / 36
+9 / 36
+10 / 36
+11 / 36
+12 / 36
+13 / 36
+14 / 36
+15 / 36
+16 / 36
+17 / 36
+18 / 36
+19 / 36
+20 / 36
+ref polygon is invalid
+21 / 36
+22 / 36
+23 / 36
+24 / 36
+25 / 36
+26 / 36
+27 / 36
+28 / 36
+29 / 36
+30 / 36
+31 / 36
+32 / 36
+33 / 36
+34 / 36
+35 / 36
+parking meter process...
+/home/nakachi/data/category_split/parking meter_ja/
+Load filenames from: /home/nakachi/data/category_split/parking meter_ja//train_filenames.pickle (481)
+Load filenames from: /home/nakachi/data/category_split/parking meter_ja//val_filenames.pickle (261)
+Load from:  /home/nakachi/data/category_split/parking meter_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 16
+1 / 16
+2 / 16
+3 / 16
+4 / 16
+5 / 16
+6 / 16
+7 / 16
+8 / 16
+9 / 16
+10 / 16
+11 / 16
+12 / 16
+13 / 16
+14 / 16
+15 / 16
+bench process...
+/home/nakachi/data/category_split/bench_ja/
+Load filenames from: /home/nakachi/data/category_split/bench_ja//train_filenames.pickle (3844)
+Load filenames from: /home/nakachi/data/category_split/bench_ja//val_filenames.pickle (1961)
+Load from:  /home/nakachi/data/category_split/bench_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 122
+1 / 122
+2 / 122
+3 / 122
+4 / 122
+5 / 122
+6 / 122
+7 / 122
+8 / 122
+9 / 122
+10 / 122
+11 / 122
+12 / 122
+ref polygon is invalid
+ref polygon is invalid
+13 / 122
+14 / 122
+15 / 122
+16 / 122
+17 / 122
+18 / 122
+19 / 122
+20 / 122
+21 / 122
+22 / 122
+23 / 122
+24 / 122
+25 / 122
+26 / 122
+27 / 122
+28 / 122
+29 / 122
+30 / 122
+31 / 122
+32 / 122
+33 / 122
+34 / 122
+35 / 122
+36 / 122
+37 / 122
+38 / 122
+39 / 122
+40 / 122
+ref polygon is invalid
+41 / 122
+42 / 122
+43 / 122
+44 / 122
+45 / 122
+46 / 122
+47 / 122
+48 / 122
+49 / 122
+50 / 122
+51 / 122
+52 / 122
+53 / 122
+54 / 122
+55 / 122
+56 / 122
+57 / 122
+58 / 122
+59 / 122
+60 / 122
+61 / 122
+62 / 122
+63 / 122
+64 / 122
+65 / 122
+66 / 122
+67 / 122
+68 / 122
+69 / 122
+70 / 122
+71 / 122
+72 / 122
+73 / 122
+74 / 122
+75 / 122
+76 / 122
+77 / 122
+78 / 122
+79 / 122
+80 / 122
+81 / 122
+82 / 122
+83 / 122
+84 / 122
+85 / 122
+86 / 122
+87 / 122
+88 / 122
+89 / 122
+90 / 122
+91 / 122
+92 / 122
+93 / 122
+94 / 122
+95 / 122
+96 / 122
+97 / 122
+98 / 122
+99 / 122
+100 / 122
+101 / 122
+102 / 122
+103 / 122
+104 / 122
+105 / 122
+106 / 122
+107 / 122
+108 / 122
+109 / 122
+110 / 122
+111 / 122
+112 / 122
+113 / 122
+114 / 122
+115 / 122
+116 / 122
+117 / 122
+attn polygon is invalid
+attn polygon is invalid
+attn polygon is invalid
+attn polygon is invalid
+attn polygon is invalid
+118 / 122
+119 / 122
+120 / 122
+121 / 122
+bird process...
+/home/nakachi/data/category_split/bird_ja/
+Load filenames from: /home/nakachi/data/category_split/bird_ja//train_filenames.pickle (2241)
+Load filenames from: /home/nakachi/data/category_split/bird_ja//val_filenames.pickle (1121)
+Load from:  /home/nakachi/data/category_split/bird_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 70
+1 / 70
+ref polygon is invalid
+2 / 70
+3 / 70
+4 / 70
+ref polygon is invalid
+ref polygon is invalid
+5 / 70
+6 / 70
+7 / 70
+8 / 70
+9 / 70
+10 / 70
+11 / 70
+12 / 70
+13 / 70
+14 / 70
+15 / 70
+16 / 70
+17 / 70
+18 / 70
+19 / 70
+20 / 70
+21 / 70
+ref polygon is invalid
+22 / 70
+23 / 70
+24 / 70
+25 / 70
+ref polygon is invalid
+26 / 70
+27 / 70
+ref polygon is invalid
+28 / 70
+29 / 70
+ref polygon is invalid
+30 / 70
+31 / 70
+32 / 70
+33 / 70
+34 / 70
+35 / 70
+36 / 70
+37 / 70
+38 / 70
+39 / 70
+ref polygon is invalid
+ref polygon is invalid
+40 / 70
+41 / 70
+42 / 70
+43 / 70
+44 / 70
+ref polygon is invalid
+45 / 70
+46 / 70
+47 / 70
+ref polygon is invalid
+48 / 70
+49 / 70
+50 / 70
+51 / 70
+52 / 70
+53 / 70
+54 / 70
+55 / 70
+56 / 70
+57 / 70
+58 / 70
+ref polygon is invalid
+59 / 70
+60 / 70
+61 / 70
+62 / 70
+63 / 70
+64 / 70
+65 / 70
+66 / 70
+67 / 70
+68 / 70
+69 / 70
+cat process...
+/home/nakachi/data/category_split/cat_ja/
+Load filenames from: /home/nakachi/data/category_split/cat_ja//train_filenames.pickle (2818)
+Load filenames from: /home/nakachi/data/category_split/cat_ja//val_filenames.pickle (1480)
+Load from:  /home/nakachi/data/category_split/cat_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 92
+1 / 92
+2 / 92
+3 / 92
+4 / 92
+ref polygon is invalid
+ref polygon is invalid
+5 / 92
+6 / 92
+7 / 92
+ref polygon is invalid
+8 / 92
+9 / 92
+10 / 92
+ref polygon is invalid
+11 / 92
+12 / 92
+ref polygon is invalid
+13 / 92
+14 / 92
+15 / 92
+16 / 92
+17 / 92
+18 / 92
+19 / 92
+ref polygon is invalid
+20 / 92
+21 / 92
+22 / 92
+23 / 92
+24 / 92
+25 / 92
+26 / 92
+ref polygon is invalid
+27 / 92
+28 / 92
+ref polygon is invalid
+29 / 92
+30 / 92
+31 / 92
+32 / 92
+33 / 92
+34 / 92
+35 / 92
+36 / 92
+37 / 92
+38 / 92
+39 / 92
+40 / 92
+41 / 92
+ref polygon is invalid
+42 / 92
+43 / 92
+44 / 92
+45 / 92
+ref polygon is invalid
+46 / 92
+47 / 92
+48 / 92
+49 / 92
+ref polygon is invalid
+50 / 92
+ref polygon is invalid
+51 / 92
+52 / 92
+53 / 92
+54 / 92
+55 / 92
+56 / 92
+57 / 92
+58 / 92
+59 / 92
+60 / 92
+61 / 92
+62 / 92
+63 / 92
+64 / 92
+65 / 92
+66 / 92
+67 / 92
+68 / 92
+69 / 92
+70 / 92
+71 / 92
+72 / 92
+73 / 92
+74 / 92
+ref polygon is invalid
+ref polygon is invalid
+75 / 92
+76 / 92
+77 / 92
+78 / 92
+79 / 92
+80 / 92
+81 / 92
+82 / 92
+83 / 92
+84 / 92
+ref polygon is invalid
+85 / 92
+86 / 92
+87 / 92
+88 / 92
+89 / 92
+90 / 92
+91 / 92
+dog process...
+/home/nakachi/data/category_split/dog_ja/
+Load filenames from: /home/nakachi/data/category_split/dog_ja//train_filenames.pickle (3041)
+Load filenames from: /home/nakachi/data/category_split/dog_ja//val_filenames.pickle (1521)
+Load from:  /home/nakachi/data/category_split/dog_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 95
+1 / 95
+ref polygon is invalid
+ref polygon is invalid
+2 / 95
+3 / 95
+ref polygon is invalid
+4 / 95
+ref polygon is invalid
+5 / 95
+6 / 95
+7 / 95
+8 / 95
+ref polygon is invalid
+9 / 95
+10 / 95
+11 / 95
+12 / 95
+13 / 95
+14 / 95
+15 / 95
+16 / 95
+17 / 95
+ref polygon is invalid
+18 / 95
+19 / 95
+20 / 95
+21 / 95
+22 / 95
+23 / 95
+24 / 95
+25 / 95
+26 / 95
+ref polygon is invalid
+27 / 95
+28 / 95
+29 / 95
+30 / 95
+31 / 95
+32 / 95
+33 / 95
+ref polygon is invalid
+ref polygon is invalid
+34 / 95
+ref polygon is invalid
+35 / 95
+36 / 95
+37 / 95
+38 / 95
+39 / 95
+40 / 95
+41 / 95
+42 / 95
+43 / 95
+44 / 95
+ref polygon is invalid
+45 / 95
+46 / 95
+47 / 95
+48 / 95
+49 / 95
+50 / 95
+51 / 95
+ref polygon is invalid
+52 / 95
+53 / 95
+54 / 95
+55 / 95
+56 / 95
+57 / 95
+58 / 95
+59 / 95
+60 / 95
+61 / 95
+62 / 95
+63 / 95
+64 / 95
+65 / 95
+66 / 95
+ref polygon is invalid
+67 / 95
+68 / 95
+69 / 95
+70 / 95
+71 / 95
+72 / 95
+73 / 95
+74 / 95
+75 / 95
+76 / 95
+77 / 95
+78 / 95
+79 / 95
+80 / 95
+81 / 95
+82 / 95
+83 / 95
+84 / 95
+85 / 95
+86 / 95
+87 / 95
+ref polygon is invalid
+88 / 95
+89 / 95
+90 / 95
+ref polygon is invalid
+91 / 95
+92 / 95
+93 / 95
+94 / 95
+horse process...
+/home/nakachi/data/category_split/horse_ja/
+Load filenames from: /home/nakachi/data/category_split/horse_ja//train_filenames.pickle (2068)
+Load filenames from: /home/nakachi/data/category_split/horse_ja//val_filenames.pickle (1001)
+Load from:  /home/nakachi/data/category_split/horse_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 62
+1 / 62
+2 / 62
+ref polygon is invalid
+ref polygon is invalid
+3 / 62
+4 / 62
+ref polygon is invalid
+ref polygon is invalid
+5 / 62
+ref polygon is invalid
+ref polygon is invalid
+6 / 62
+7 / 62
+8 / 62
+9 / 62
+10 / 62
+11 / 62
+12 / 62
+13 / 62
+14 / 62
+15 / 62
+16 / 62
+17 / 62
+18 / 62
+ref polygon is invalid
+19 / 62
+20 / 62
+ref polygon is invalid
+21 / 62
+22 / 62
+23 / 62
+24 / 62
+ref polygon is invalid
+25 / 62
+26 / 62
+27 / 62
+28 / 62
+ref polygon is invalid
+29 / 62
+30 / 62
+31 / 62
+32 / 62
+33 / 62
+34 / 62
+35 / 62
+36 / 62
+37 / 62
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+38 / 62
+39 / 62
+40 / 62
+ref polygon is invalid
+41 / 62
+42 / 62
+ref polygon is invalid
+43 / 62
+44 / 62
+45 / 62
+46 / 62
+ref polygon is invalid
+ref polygon is invalid
+47 / 62
+48 / 62
+49 / 62
+50 / 62
+51 / 62
+52 / 62
+53 / 62
+ref polygon is invalid
+54 / 62
+55 / 62
+56 / 62
+57 / 62
+ref polygon is invalid
+58 / 62
+59 / 62
+60 / 62
+61 / 62
+sheep process...
+/home/nakachi/data/category_split/sheep_ja/
+Load filenames from: /home/nakachi/data/category_split/sheep_ja//train_filenames.pickle (1105)
+Load filenames from: /home/nakachi/data/category_split/sheep_ja//val_filenames.pickle (489)
+Load from:  /home/nakachi/data/category_split/sheep_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 30
+1 / 30
+ref polygon is invalid
+2 / 30
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+3 / 30
+4 / 30
+ref polygon is invalid
+5 / 30
+6 / 30
+ref polygon is invalid
+7 / 30
+ref polygon is invalid
+ref polygon is invalid
+8 / 30
+ref polygon is invalid
+9 / 30
+ref polygon is invalid
+10 / 30
+11 / 30
+ref polygon is invalid
+12 / 30
+13 / 30
+14 / 30
+15 / 30
+16 / 30
+17 / 30
+18 / 30
+19 / 30
+20 / 30
+21 / 30
+22 / 30
+ref polygon is invalid
+23 / 30
+ref polygon is invalid
+24 / 30
+25 / 30
+ref polygon is invalid
+26 / 30
+ref polygon is invalid
+27 / 30
+ref polygon is invalid
+ref polygon is invalid
+28 / 30
+29 / 30
+cow process...
+/home/nakachi/data/category_split/cow_ja/
+Load filenames from: /home/nakachi/data/category_split/cow_ja//train_filenames.pickle (1389)
+Load filenames from: /home/nakachi/data/category_split/cow_ja//val_filenames.pickle (666)
+Load from:  /home/nakachi/data/category_split/cow_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 41
+ref polygon is invalid
+1 / 41
+2 / 41
+ref polygon is invalid
+ref polygon is invalid
+3 / 41
+ref polygon is invalid
+4 / 41
+5 / 41
+6 / 41
+ref polygon is invalid
+ref polygon is invalid
+7 / 41
+8 / 41
+9 / 41
+10 / 41
+11 / 41
+12 / 41
+13 / 41
+14 / 41
+15 / 41
+16 / 41
+ref polygon is invalid
+ref polygon is invalid
+17 / 41
+18 / 41
+19 / 41
+20 / 41
+21 / 41
+22 / 41
+ref polygon is invalid
+ref polygon is invalid
+23 / 41
+ref polygon is invalid
+24 / 41
+ref polygon is invalid
+25 / 41
+ref polygon is invalid
+26 / 41
+ref polygon is invalid
+27 / 41
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+28 / 41
+29 / 41
+ref polygon is invalid
+30 / 41
+ref polygon is invalid
+31 / 41
+ref polygon is invalid
+32 / 41
+33 / 41
+34 / 41
+ref polygon is invalid
+35 / 41
+ref polygon is invalid
+36 / 41
+ref polygon is invalid
+ref polygon is invalid
+37 / 41
+ref polygon is invalid
+38 / 41
+39 / 41
+40 / 41
+elephant process...
+/home/nakachi/data/category_split/elephant_ja/
+Load filenames from: /home/nakachi/data/category_split/elephant_ja//train_filenames.pickle (1518)
+Load filenames from: /home/nakachi/data/category_split/elephant_ja//val_filenames.pickle (714)
+Load from:  /home/nakachi/data/category_split/elephant_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 44
+1 / 44
+ref polygon is invalid
+2 / 44
+ref polygon is invalid
+3 / 44
+4 / 44
+ref polygon is invalid
+5 / 44
+6 / 44
+7 / 44
+8 / 44
+9 / 44
+10 / 44
+11 / 44
+12 / 44
+ref polygon is invalid
+13 / 44
+14 / 44
+attn polygon is invalid
+attn polygon is invalid
+15 / 44
+16 / 44
+ref polygon is invalid
+ref polygon is invalid
+17 / 44
+18 / 44
+ref polygon is invalid
+19 / 44
+20 / 44
+21 / 44
+ref polygon is invalid
+ref polygon is invalid
+22 / 44
+23 / 44
+ref polygon is invalid
+ref polygon is invalid
+24 / 44
+25 / 44
+26 / 44
+ref polygon is invalid
+ref polygon is invalid
+27 / 44
+28 / 44
+29 / 44
+30 / 44
+ref polygon is invalid
+31 / 44
+32 / 44
+33 / 44
+34 / 44
+ref polygon is invalid
+35 / 44
+36 / 44
+37 / 44
+38 / 44
+39 / 44
+ref polygon is invalid
+40 / 44
+ref polygon is invalid
+41 / 44
+ref polygon is invalid
+42 / 44
+43 / 44
+bear process...
+/home/nakachi/data/category_split/bear_ja/
+Load filenames from: /home/nakachi/data/category_split/bear_ja//train_filenames.pickle (668)
+Load filenames from: /home/nakachi/data/category_split/bear_ja//val_filenames.pickle (341)
+Load from:  /home/nakachi/data/category_split/bear_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 21
+1 / 21
+2 / 21
+3 / 21
+4 / 21
+5 / 21
+6 / 21
+7 / 21
+8 / 21
+ref polygon is invalid
+9 / 21
+10 / 21
+11 / 21
+12 / 21
+13 / 21
+14 / 21
+15 / 21
+16 / 21
+17 / 21
+18 / 21
+19 / 21
+20 / 21
+zebra process...
+/home/nakachi/data/category_split/zebra_ja/
+Load filenames from: /home/nakachi/data/category_split/zebra_ja//train_filenames.pickle (1324)
+Load filenames from: /home/nakachi/data/category_split/zebra_ja//val_filenames.pickle (677)
+Load from:  /home/nakachi/data/category_split/zebra_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 42
+1 / 42
+2 / 42
+3 / 42
+4 / 42
+attn polygon is invalid
+attn polygon is invalid
+attn polygon is invalid
+attn polygon is invalid
+attn polygon is invalid
+attn polygon is invalid
+attn polygon is invalid
+5 / 42
+6 / 42
+7 / 42
+8 / 42
+ref polygon is invalid
+9 / 42
+10 / 42
+11 / 42
+12 / 42
+ref polygon is invalid
+13 / 42
+ref polygon is invalid
+14 / 42
+ref polygon is invalid
+15 / 42
+16 / 42
+ref polygon is invalid
+17 / 42
+18 / 42
+19 / 42
+ref polygon is invalid
+20 / 42
+21 / 42
+ref polygon is invalid
+22 / 42
+23 / 42
+24 / 42
+25 / 42
+26 / 42
+27 / 42
+28 / 42
+ref polygon is invalid
+29 / 42
+30 / 42
+31 / 42
+32 / 42
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+33 / 42
+ref polygon is invalid
+34 / 42
+35 / 42
+36 / 42
+37 / 42
+38 / 42
+ref polygon is invalid
+39 / 42
+40 / 42
+ref polygon is invalid
+41 / 42
+giraffe process...
+/home/nakachi/data/category_split/giraffe_ja/
+Load filenames from: /home/nakachi/data/category_split/giraffe_ja//train_filenames.pickle (1798)
+Load filenames from: /home/nakachi/data/category_split/giraffe_ja//val_filenames.pickle (849)
+Load from:  /home/nakachi/data/category_split/giraffe_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 53
+1 / 53
+2 / 53
+3 / 53
+4 / 53
+5 / 53
+6 / 53
+7 / 53
+8 / 53
+9 / 53
+10 / 53
+11 / 53
+12 / 53
+13 / 53
+ref polygon is invalid
+14 / 53
+15 / 53
+16 / 53
+17 / 53
+ref polygon is invalid
+18 / 53
+ref polygon is invalid
+19 / 53
+20 / 53
+21 / 53
+22 / 53
+23 / 53
+ref polygon is invalid
+24 / 53
+25 / 53
+26 / 53
+27 / 53
+ref polygon is invalid
+28 / 53
+ref polygon is invalid
+29 / 53
+ref polygon is invalid
+30 / 53
+31 / 53
+32 / 53
+33 / 53
+34 / 53
+35 / 53
+36 / 53
+ref polygon is invalid
+37 / 53
+38 / 53
+39 / 53
+40 / 53
+41 / 53
+42 / 53
+43 / 53
+44 / 53
+45 / 53
+ref polygon is invalid
+ref polygon is invalid
+46 / 53
+47 / 53
+48 / 53
+49 / 53
+ref polygon is invalid
+50 / 53
+51 / 53
+52 / 53
+backpack process...
+/home/nakachi/data/category_split/backpack_ja/
+Load filenames from: /home/nakachi/data/category_split/backpack_ja//train_filenames.pickle (3924)
+Load filenames from: /home/nakachi/data/category_split/backpack_ja//val_filenames.pickle (1832)
+Load from:  /home/nakachi/data/category_split/backpack_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 114
+1 / 114
+2 / 114
+3 / 114
+4 / 114
+5 / 114
+6 / 114
+7 / 114
+8 / 114
+9 / 114
+10 / 114
+11 / 114
+12 / 114
+13 / 114
+14 / 114
+15 / 114
+16 / 114
+17 / 114
+18 / 114
+19 / 114
+20 / 114
+21 / 114
+22 / 114
+23 / 114
+24 / 114
+25 / 114
+26 / 114
+27 / 114
+28 / 114
+29 / 114
+30 / 114
+31 / 114
+32 / 114
+33 / 114
+34 / 114
+35 / 114
+36 / 114
+37 / 114
+38 / 114
+39 / 114
+40 / 114
+41 / 114
+42 / 114
+43 / 114
+44 / 114
+45 / 114
+46 / 114
+47 / 114
+48 / 114
+49 / 114
+50 / 114
+51 / 114
+52 / 114
+53 / 114
+54 / 114
+55 / 114
+56 / 114
+57 / 114
+58 / 114
+59 / 114
+60 / 114
+61 / 114
+62 / 114
+63 / 114
+64 / 114
+65 / 114
+66 / 114
+67 / 114
+68 / 114
+69 / 114
+70 / 114
+71 / 114
+72 / 114
+73 / 114
+74 / 114
+75 / 114
+76 / 114
+77 / 114
+78 / 114
+79 / 114
+80 / 114
+81 / 114
+82 / 114
+83 / 114
+84 / 114
+85 / 114
+86 / 114
+87 / 114
+88 / 114
+89 / 114
+90 / 114
+91 / 114
+92 / 114
+93 / 114
+94 / 114
+95 / 114
+96 / 114
+97 / 114
+98 / 114
+99 / 114
+100 / 114
+101 / 114
+102 / 114
+103 / 114
+104 / 114
+105 / 114
+106 / 114
+107 / 114
+108 / 114
+109 / 114
+110 / 114
+111 / 114
+112 / 114
+113 / 114
+umbrella process...
+/home/nakachi/data/category_split/umbrella_ja/
+Load filenames from: /home/nakachi/data/category_split/umbrella_ja//train_filenames.pickle (2749)
+Load filenames from: /home/nakachi/data/category_split/umbrella_ja//val_filenames.pickle (1393)
+Load from:  /home/nakachi/data/category_split/umbrella_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 87
+1 / 87
+2 / 87
+3 / 87
+ref polygon is invalid
+4 / 87
+5 / 87
+6 / 87
+7 / 87
+8 / 87
+ref polygon is invalid
+9 / 87
+10 / 87
+11 / 87
+12 / 87
+13 / 87
+14 / 87
+ref polygon is invalid
+15 / 87
+16 / 87
+17 / 87
+18 / 87
+19 / 87
+20 / 87
+21 / 87
+22 / 87
+23 / 87
+24 / 87
+25 / 87
+26 / 87
+27 / 87
+28 / 87
+29 / 87
+30 / 87
+31 / 87
+32 / 87
+ref polygon is invalid
+33 / 87
+34 / 87
+ref polygon is invalid
+35 / 87
+36 / 87
+37 / 87
+38 / 87
+39 / 87
+40 / 87
+41 / 87
+42 / 87
+43 / 87
+44 / 87
+45 / 87
+46 / 87
+47 / 87
+48 / 87
+49 / 87
+50 / 87
+51 / 87
+52 / 87
+53 / 87
+54 / 87
+55 / 87
+56 / 87
+57 / 87
+58 / 87
+59 / 87
+60 / 87
+61 / 87
+62 / 87
+63 / 87
+64 / 87
+65 / 87
+66 / 87
+67 / 87
+68 / 87
+69 / 87
+70 / 87
+71 / 87
+72 / 87
+73 / 87
+74 / 87
+75 / 87
+76 / 87
+77 / 87
+78 / 87
+79 / 87
+80 / 87
+81 / 87
+82 / 87
+83 / 87
+84 / 87
+85 / 87
+86 / 87
+handbag process...
+/home/nakachi/data/category_split/handbag_ja/
+Load filenames from: /home/nakachi/data/category_split/handbag_ja//train_filenames.pickle (4861)
+Load filenames from: /home/nakachi/data/category_split/handbag_ja//val_filenames.pickle (2272)
+Load from:  /home/nakachi/data/category_split/handbag_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 142
+1 / 142
+2 / 142
+3 / 142
+4 / 142
+5 / 142
+6 / 142
+7 / 142
+8 / 142
+9 / 142
+10 / 142
+11 / 142
+12 / 142
+13 / 142
+14 / 142
+15 / 142
+16 / 142
+17 / 142
+18 / 142
+19 / 142
+20 / 142
+21 / 142
+22 / 142
+23 / 142
+24 / 142
+25 / 142
+26 / 142
+27 / 142
+28 / 142
+29 / 142
+30 / 142
+31 / 142
+32 / 142
+33 / 142
+34 / 142
+35 / 142
+36 / 142
+37 / 142
+38 / 142
+39 / 142
+40 / 142
+41 / 142
+42 / 142
+43 / 142
+44 / 142
+45 / 142
+46 / 142
+47 / 142
+48 / 142
+49 / 142
+50 / 142
+51 / 142
+52 / 142
+53 / 142
+54 / 142
+55 / 142
+56 / 142
+ref polygon is invalid
+57 / 142
+58 / 142
+59 / 142
+60 / 142
+61 / 142
+62 / 142
+63 / 142
+64 / 142
+65 / 142
+66 / 142
+67 / 142
+68 / 142
+69 / 142
+70 / 142
+71 / 142
+72 / 142
+73 / 142
+74 / 142
+75 / 142
+76 / 142
+77 / 142
+78 / 142
+79 / 142
+80 / 142
+81 / 142
+82 / 142
+83 / 142
+84 / 142
+85 / 142
+86 / 142
+87 / 142
+88 / 142
+89 / 142
+90 / 142
+91 / 142
+92 / 142
+93 / 142
+94 / 142
+95 / 142
+96 / 142
+97 / 142
+98 / 142
+99 / 142
+100 / 142
+101 / 142
+102 / 142
+103 / 142
+104 / 142
+105 / 142
+106 / 142
+107 / 142
+108 / 142
+109 / 142
+110 / 142
+111 / 142
+112 / 142
+113 / 142
+114 / 142
+115 / 142
+116 / 142
+117 / 142
+118 / 142
+119 / 142
+120 / 142
+121 / 142
+122 / 142
+123 / 142
+124 / 142
+125 / 142
+126 / 142
+127 / 142
+128 / 142
+129 / 142
+130 / 142
+131 / 142
+132 / 142
+133 / 142
+134 / 142
+135 / 142
+136 / 142
+137 / 142
+138 / 142
+139 / 142
+140 / 142
+141 / 142
+tie process...
+/home/nakachi/data/category_split/tie_ja/
+Load filenames from: /home/nakachi/data/category_split/tie_ja//train_filenames.pickle (2667)
+Load filenames from: /home/nakachi/data/category_split/tie_ja//val_filenames.pickle (1288)
+Load from:  /home/nakachi/data/category_split/tie_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 80
+1 / 80
+2 / 80
+3 / 80
+4 / 80
+5 / 80
+6 / 80
+7 / 80
+8 / 80
+9 / 80
+10 / 80
+11 / 80
+12 / 80
+13 / 80
+14 / 80
+15 / 80
+16 / 80
+17 / 80
+18 / 80
+19 / 80
+20 / 80
+21 / 80
+22 / 80
+23 / 80
+24 / 80
+25 / 80
+ref polygon is invalid
+26 / 80
+27 / 80
+28 / 80
+29 / 80
+30 / 80
+31 / 80
+32 / 80
+33 / 80
+34 / 80
+35 / 80
+36 / 80
+37 / 80
+38 / 80
+39 / 80
+40 / 80
+41 / 80
+42 / 80
+43 / 80
+44 / 80
+45 / 80
+46 / 80
+47 / 80
+48 / 80
+49 / 80
+50 / 80
+51 / 80
+52 / 80
+53 / 80
+54 / 80
+55 / 80
+56 / 80
+57 / 80
+58 / 80
+59 / 80
+60 / 80
+61 / 80
+62 / 80
+63 / 80
+64 / 80
+65 / 80
+66 / 80
+67 / 80
+68 / 80
+69 / 80
+70 / 80
+71 / 80
+72 / 80
+73 / 80
+74 / 80
+75 / 80
+76 / 80
+77 / 80
+78 / 80
+79 / 80
+suitcase process...
+/home/nakachi/data/category_split/suitcase_ja/
+Load filenames from: /home/nakachi/data/category_split/suitcase_ja//train_filenames.pickle (1631)
+Load filenames from: /home/nakachi/data/category_split/suitcase_ja//val_filenames.pickle (876)
+Load from:  /home/nakachi/data/category_split/suitcase_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 54
+1 / 54
+2 / 54
+3 / 54
+4 / 54
+5 / 54
+6 / 54
+7 / 54
+ref polygon is invalid
+8 / 54
+9 / 54
+10 / 54
+11 / 54
+12 / 54
+13 / 54
+14 / 54
+15 / 54
+16 / 54
+17 / 54
+18 / 54
+19 / 54
+20 / 54
+21 / 54
+22 / 54
+23 / 54
+24 / 54
+25 / 54
+26 / 54
+27 / 54
+28 / 54
+29 / 54
+30 / 54
+31 / 54
+32 / 54
+33 / 54
+34 / 54
+35 / 54
+36 / 54
+37 / 54
+38 / 54
+39 / 54
+40 / 54
+41 / 54
+42 / 54
+43 / 54
+44 / 54
+45 / 54
+46 / 54
+47 / 54
+48 / 54
+49 / 54
+50 / 54
+51 / 54
+52 / 54
+ref polygon is invalid
+53 / 54
+frisbee process...
+/home/nakachi/data/category_split/frisbee_ja/
+Load filenames from: /home/nakachi/data/category_split/frisbee_ja//train_filenames.pickle (1511)
+Load filenames from: /home/nakachi/data/category_split/frisbee_ja//val_filenames.pickle (757)
+Load from:  /home/nakachi/data/category_split/frisbee_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 47
+1 / 47
+2 / 47
+3 / 47
+ref polygon is invalid
+4 / 47
+5 / 47
+6 / 47
+7 / 47
+8 / 47
+9 / 47
+10 / 47
+11 / 47
+12 / 47
+13 / 47
+14 / 47
+15 / 47
+16 / 47
+17 / 47
+18 / 47
+19 / 47
+20 / 47
+21 / 47
+22 / 47
+23 / 47
+24 / 47
+25 / 47
+26 / 47
+27 / 47
+28 / 47
+29 / 47
+30 / 47
+31 / 47
+32 / 47
+33 / 47
+34 / 47
+35 / 47
+36 / 47
+37 / 47
+38 / 47
+39 / 47
+40 / 47
+41 / 47
+42 / 47
+43 / 47
+ref polygon is invalid
+44 / 47
+45 / 47
+46 / 47
+skis process...
+/home/nakachi/data/category_split/skis_ja/
+Load filenames from: /home/nakachi/data/category_split/skis_ja//train_filenames.pickle (2209)
+Load filenames from: /home/nakachi/data/category_split/skis_ja//val_filenames.pickle (993)
+Load from:  /home/nakachi/data/category_split/skis_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 62
+1 / 62
+2 / 62
+3 / 62
+4 / 62
+5 / 62
+6 / 62
+7 / 62
+8 / 62
+9 / 62
+10 / 62
+11 / 62
+12 / 62
+ref polygon is invalid
+13 / 62
+14 / 62
+15 / 62
+ref polygon is invalid
+16 / 62
+17 / 62
+18 / 62
+ref polygon is invalid
+19 / 62
+20 / 62
+21 / 62
+22 / 62
+23 / 62
+24 / 62
+25 / 62
+26 / 62
+ref polygon is invalid
+27 / 62
+28 / 62
+29 / 62
+30 / 62
+31 / 62
+32 / 62
+33 / 62
+34 / 62
+35 / 62
+36 / 62
+37 / 62
+38 / 62
+39 / 62
+40 / 62
+41 / 62
+42 / 62
+43 / 62
+ref polygon is invalid
+44 / 62
+45 / 62
+46 / 62
+47 / 62
+48 / 62
+49 / 62
+50 / 62
+51 / 62
+ref polygon is invalid
+52 / 62
+53 / 62
+ref polygon is invalid
+54 / 62
+55 / 62
+56 / 62
+ref polygon is invalid
+57 / 62
+58 / 62
+59 / 62
+60 / 62
+61 / 62
+snowboard process...
+/home/nakachi/data/category_split/snowboard_ja/
+Load filenames from: /home/nakachi/data/category_split/snowboard_ja//train_filenames.pickle (1170)
+Load filenames from: /home/nakachi/data/category_split/snowboard_ja//val_filenames.pickle (533)
+Load from:  /home/nakachi/data/category_split/snowboard_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 33
+1 / 33
+2 / 33
+3 / 33
+4 / 33
+5 / 33
+6 / 33
+7 / 33
+8 / 33
+9 / 33
+10 / 33
+11 / 33
+12 / 33
+ref polygon is invalid
+13 / 33
+14 / 33
+15 / 33
+16 / 33
+17 / 33
+ref polygon is invalid
+18 / 33
+19 / 33
+20 / 33
+21 / 33
+22 / 33
+23 / 33
+24 / 33
+25 / 33
+26 / 33
+27 / 33
+28 / 33
+29 / 33
+30 / 33
+31 / 33
+32 / 33
+sports ball process...
+/home/nakachi/data/category_split/sports ball_ja/
+Load filenames from: /home/nakachi/data/category_split/sports ball_ja//train_filenames.pickle (2986)
+Load filenames from: /home/nakachi/data/category_split/sports ball_ja//val_filenames.pickle (1445)
+Load from:  /home/nakachi/data/category_split/sports ball_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 90
+1 / 90
+2 / 90
+3 / 90
+4 / 90
+5 / 90
+6 / 90
+7 / 90
+8 / 90
+9 / 90
+10 / 90
+11 / 90
+12 / 90
+13 / 90
+14 / 90
+15 / 90
+16 / 90
+17 / 90
+18 / 90
+19 / 90
+20 / 90
+21 / 90
+22 / 90
+23 / 90
+24 / 90
+25 / 90
+26 / 90
+27 / 90
+28 / 90
+29 / 90
+30 / 90
+31 / 90
+32 / 90
+33 / 90
+34 / 90
+35 / 90
+36 / 90
+37 / 90
+38 / 90
+39 / 90
+40 / 90
+41 / 90
+42 / 90
+43 / 90
+44 / 90
+45 / 90
+46 / 90
+47 / 90
+48 / 90
+49 / 90
+50 / 90
+51 / 90
+52 / 90
+53 / 90
+54 / 90
+55 / 90
+56 / 90
+57 / 90
+58 / 90
+59 / 90
+60 / 90
+61 / 90
+62 / 90
+63 / 90
+64 / 90
+ref polygon is invalid
+65 / 90
+66 / 90
+67 / 90
+68 / 90
+69 / 90
+70 / 90
+71 / 90
+72 / 90
+73 / 90
+74 / 90
+75 / 90
+76 / 90
+77 / 90
+78 / 90
+79 / 90
+80 / 90
+81 / 90
+82 / 90
+83 / 90
+84 / 90
+ref polygon is invalid
+85 / 90
+86 / 90
+87 / 90
+88 / 90
+89 / 90
+kite process...
+/home/nakachi/data/category_split/kite_ja/
+Load filenames from: /home/nakachi/data/category_split/kite_ja//train_filenames.pickle (1625)
+Load filenames from: /home/nakachi/data/category_split/kite_ja//val_filenames.pickle (727)
+Load from:  /home/nakachi/data/category_split/kite_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 45
+1 / 45
+2 / 45
+3 / 45
+4 / 45
+5 / 45
+ref polygon is invalid
+6 / 45
+7 / 45
+8 / 45
+9 / 45
+10 / 45
+11 / 45
+12 / 45
+13 / 45
+14 / 45
+15 / 45
+16 / 45
+17 / 45
+ref polygon is invalid
+18 / 45
+19 / 45
+20 / 45
+21 / 45
+22 / 45
+23 / 45
+24 / 45
+25 / 45
+26 / 45
+27 / 45
+28 / 45
+29 / 45
+30 / 45
+ref polygon is invalid
+31 / 45
+32 / 45
+33 / 45
+34 / 45
+35 / 45
+36 / 45
+37 / 45
+38 / 45
+39 / 45
+40 / 45
+41 / 45
+42 / 45
+43 / 45
+44 / 45
+baseball bat process...
+/home/nakachi/data/category_split/baseball bat_ja/
+Load filenames from: /home/nakachi/data/category_split/baseball bat_ja//train_filenames.pickle (1804)
+Load filenames from: /home/nakachi/data/category_split/baseball bat_ja//val_filenames.pickle (799)
+Load from:  /home/nakachi/data/category_split/baseball bat_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 49
+1 / 49
+2 / 49
+3 / 49
+4 / 49
+5 / 49
+6 / 49
+7 / 49
+8 / 49
+9 / 49
+10 / 49
+11 / 49
+12 / 49
+13 / 49
+14 / 49
+15 / 49
+16 / 49
+17 / 49
+18 / 49
+19 / 49
+20 / 49
+21 / 49
+22 / 49
+23 / 49
+24 / 49
+25 / 49
+26 / 49
+27 / 49
+28 / 49
+29 / 49
+30 / 49
+31 / 49
+ref polygon is invalid
+32 / 49
+33 / 49
+34 / 49
+35 / 49
+36 / 49
+37 / 49
+38 / 49
+39 / 49
+40 / 49
+41 / 49
+42 / 49
+43 / 49
+44 / 49
+45 / 49
+46 / 49
+47 / 49
+48 / 49
+baseball glove process...
+/home/nakachi/data/category_split/baseball glove_ja/
+Load filenames from: /home/nakachi/data/category_split/baseball glove_ja//train_filenames.pickle (1884)
+Load filenames from: /home/nakachi/data/category_split/baseball glove_ja//val_filenames.pickle (845)
+Load from:  /home/nakachi/data/category_split/baseball glove_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 52
+1 / 52
+2 / 52
+3 / 52
+4 / 52
+5 / 52
+6 / 52
+7 / 52
+8 / 52
+9 / 52
+10 / 52
+11 / 52
+12 / 52
+13 / 52
+14 / 52
+15 / 52
+16 / 52
+17 / 52
+18 / 52
+19 / 52
+20 / 52
+21 / 52
+22 / 52
+23 / 52
+24 / 52
+25 / 52
+26 / 52
+27 / 52
+28 / 52
+29 / 52
+30 / 52
+31 / 52
+32 / 52
+33 / 52
+34 / 52
+35 / 52
+36 / 52
+37 / 52
+38 / 52
+39 / 52
+40 / 52
+41 / 52
+42 / 52
+43 / 52
+44 / 52
+45 / 52
+46 / 52
+47 / 52
+48 / 52
+49 / 52
+50 / 52
+51 / 52
+skateboard process...
+/home/nakachi/data/category_split/skateboard_ja/
+Load filenames from: /home/nakachi/data/category_split/skateboard_ja//train_filenames.pickle (2511)
+Load filenames from: /home/nakachi/data/category_split/skateboard_ja//val_filenames.pickle (1092)
+Load from:  /home/nakachi/data/category_split/skateboard_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 68
+1 / 68
+ref polygon is invalid
+2 / 68
+3 / 68
+attn polygon is invalid
+4 / 68
+5 / 68
+6 / 68
+ref polygon is invalid
+ref polygon is invalid
+7 / 68
+8 / 68
+9 / 68
+10 / 68
+11 / 68
+12 / 68
+13 / 68
+attn polygon is invalid
+14 / 68
+ref polygon is invalid
+ref polygon is invalid
+15 / 68
+16 / 68
+ref polygon is invalid
+ref polygon is invalid
+17 / 68
+18 / 68
+ref polygon is invalid
+19 / 68
+20 / 68
+ref polygon is invalid
+ref polygon is invalid
+21 / 68
+22 / 68
+23 / 68
+24 / 68
+25 / 68
+26 / 68
+27 / 68
+28 / 68
+29 / 68
+30 / 68
+31 / 68
+32 / 68
+33 / 68
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+ref polygon is invalid
+34 / 68
+35 / 68
+36 / 68
+37 / 68
+ref polygon is invalid
+ref polygon is invalid
+38 / 68
+ref polygon is invalid
+39 / 68
+40 / 68
+attn polygon is invalid
+41 / 68
+42 / 68
+43 / 68
+ref polygon is invalid
+44 / 68
+45 / 68
+46 / 68
+47 / 68
+48 / 68
+49 / 68
+50 / 68
+51 / 68
+52 / 68
+53 / 68
+54 / 68
+55 / 68
+56 / 68
+57 / 68
+58 / 68
+59 / 68
+ref polygon is invalid
+ref polygon is invalid
+60 / 68
+61 / 68
+62 / 68
+63 / 68
+64 / 68
+65 / 68
+66 / 68
+67 / 68
+surfboard process...
+/home/nakachi/data/category_split/surfboard_ja/
+Load filenames from: /home/nakachi/data/category_split/surfboard_ja//train_filenames.pickle (2343)
+Load filenames from: /home/nakachi/data/category_split/surfboard_ja//val_filenames.pickle (1292)
+Load from:  /home/nakachi/data/category_split/surfboard_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 80
+ref polygon is invalid
+1 / 80
+2 / 80
+3 / 80
+4 / 80
+5 / 80
+6 / 80
+7 / 80
+8 / 80
+9 / 80
+10 / 80
+11 / 80
+12 / 80
+13 / 80
+14 / 80
+15 / 80
+16 / 80
+17 / 80
+18 / 80
+19 / 80
+20 / 80
+21 / 80
+22 / 80
+23 / 80
+24 / 80
+25 / 80
+26 / 80
+27 / 80
+28 / 80
+29 / 80
+ref polygon is invalid
+30 / 80
+31 / 80
+32 / 80
+33 / 80
+ref polygon is invalid
+34 / 80
+35 / 80
+36 / 80
+37 / 80
+38 / 80
+39 / 80
+ref polygon is invalid
+40 / 80
+41 / 80
+42 / 80
+43 / 80
+ref polygon is invalid
+44 / 80
+45 / 80
+ref polygon is invalid
+46 / 80
+47 / 80
+48 / 80
+49 / 80
+50 / 80
+51 / 80
+52 / 80
+ref polygon is invalid
+53 / 80
+54 / 80
+55 / 80
+56 / 80
+57 / 80
+58 / 80
+59 / 80
+60 / 80
+ref polygon is invalid
+61 / 80
+62 / 80
+63 / 80
+64 / 80
+65 / 80
+66 / 80
+67 / 80
+68 / 80
+ref polygon is invalid
+ref polygon is invalid
+69 / 80
+70 / 80
+71 / 80
+72 / 80
+73 / 80
+74 / 80
+75 / 80
+76 / 80
+ref polygon is invalid
+77 / 80
+78 / 80
+79 / 80
+tennis racket process...
+/home/nakachi/data/category_split/tennis racket_ja/
+Load filenames from: /home/nakachi/data/category_split/tennis racket_ja//train_filenames.pickle (2368)
+Load filenames from: /home/nakachi/data/category_split/tennis racket_ja//val_filenames.pickle (1193)
+Load from:  /home/nakachi/data/category_split/tennis racket_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 74
+1 / 74
+2 / 74
+3 / 74
+4 / 74
+5 / 74
+6 / 74
+7 / 74
+8 / 74
+9 / 74
+10 / 74
+11 / 74
+12 / 74
+13 / 74
+14 / 74
+15 / 74
+16 / 74
+ref polygon is invalid
+17 / 74
+18 / 74
+19 / 74
+20 / 74
+21 / 74
+22 / 74
+23 / 74
+24 / 74
+25 / 74
+26 / 74
+27 / 74
+28 / 74
+29 / 74
+30 / 74
+31 / 74
+32 / 74
+33 / 74
+34 / 74
+35 / 74
+36 / 74
+37 / 74
+38 / 74
+39 / 74
+40 / 74
+41 / 74
+42 / 74
+43 / 74
+44 / 74
+45 / 74
+46 / 74
+47 / 74
+48 / 74
+49 / 74
+50 / 74
+51 / 74
+52 / 74
+attn polygon is invalid
+attn polygon is invalid
+53 / 74
+54 / 74
+55 / 74
+56 / 74
+57 / 74
+58 / 74
+59 / 74
+60 / 74
+61 / 74
+62 / 74
+63 / 74
+64 / 74
+65 / 74
+66 / 74
+67 / 74
+68 / 74
+69 / 74
+70 / 74
+71 / 74
+72 / 74
+73 / 74
+bottle process...
+/home/nakachi/data/category_split/bottle_ja/
+Load filenames from: /home/nakachi/data/category_split/bottle_ja//train_filenames.pickle (5968)
+Load filenames from: /home/nakachi/data/category_split/bottle_ja//val_filenames.pickle (2912)
+Load from:  /home/nakachi/data/category_split/bottle_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 182
+1 / 182
+2 / 182
+3 / 182
+4 / 182
+5 / 182
+6 / 182
+7 / 182
+8 / 182
+9 / 182
+10 / 182
+11 / 182
+12 / 182
+13 / 182
+14 / 182
+15 / 182
+16 / 182
+17 / 182
+18 / 182
+19 / 182
+20 / 182
+21 / 182
+22 / 182
+23 / 182
+24 / 182
+25 / 182
+26 / 182
+27 / 182
+28 / 182
+29 / 182
+30 / 182
+31 / 182
+32 / 182
+33 / 182
+34 / 182
+35 / 182
+36 / 182
+37 / 182
+38 / 182
+39 / 182
+40 / 182
+41 / 182
+42 / 182
+43 / 182
+44 / 182
+45 / 182
+46 / 182
+47 / 182
+48 / 182
+49 / 182
+50 / 182
+51 / 182
+52 / 182
+53 / 182
+54 / 182
+55 / 182
+56 / 182
+57 / 182
+58 / 182
+59 / 182
+60 / 182
+61 / 182
+62 / 182
+63 / 182
+64 / 182
+65 / 182
+66 / 182
+67 / 182
+68 / 182
+69 / 182
+70 / 182
+71 / 182
+72 / 182
+73 / 182
+ref polygon is invalid
+74 / 182
+75 / 182
+76 / 182
+77 / 182
+78 / 182
+79 / 182
+80 / 182
+81 / 182
+82 / 182
+83 / 182
+84 / 182
+85 / 182
+86 / 182
+87 / 182
+88 / 182
+89 / 182
+90 / 182
+91 / 182
+92 / 182
+93 / 182
+94 / 182
+95 / 182
+96 / 182
+97 / 182
+98 / 182
+99 / 182
+100 / 182
+101 / 182
+102 / 182
+103 / 182
+104 / 182
+105 / 182
+106 / 182
+107 / 182
+108 / 182
+109 / 182
+110 / 182
+111 / 182
+112 / 182
+113 / 182
+114 / 182
+115 / 182
+116 / 182
+117 / 182
+118 / 182
+119 / 182
+120 / 182
+121 / 182
+122 / 182
+123 / 182
+124 / 182
+125 / 182
+126 / 182
+127 / 182
+128 / 182
+129 / 182
+130 / 182
+131 / 182
+132 / 182
+133 / 182
+134 / 182
+135 / 182
+136 / 182
+137 / 182
+138 / 182
+139 / 182
+140 / 182
+141 / 182
+142 / 182
+143 / 182
+144 / 182
+145 / 182
+146 / 182
+147 / 182
+148 / 182
+149 / 182
+150 / 182
+151 / 182
+152 / 182
+153 / 182
+154 / 182
+155 / 182
+156 / 182
+157 / 182
+158 / 182
+159 / 182
+160 / 182
+161 / 182
+162 / 182
+163 / 182
+164 / 182
+165 / 182
+166 / 182
+167 / 182
+168 / 182
+169 / 182
+170 / 182
+171 / 182
+172 / 182
+173 / 182
+174 / 182
+175 / 182
+176 / 182
+177 / 182
+178 / 182
+179 / 182
+180 / 182
+181 / 182
+wine glass process...
+/home/nakachi/data/category_split/wine glass_ja/
+Load filenames from: /home/nakachi/data/category_split/wine glass_ja//train_filenames.pickle (1771)
+Load filenames from: /home/nakachi/data/category_split/wine glass_ja//val_filenames.pickle (872)
+Load from:  /home/nakachi/data/category_split/wine glass_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 54
+1 / 54
+2 / 54
+3 / 54
+4 / 54
+5 / 54
+6 / 54
+7 / 54
+8 / 54
+9 / 54
+10 / 54
+11 / 54
+12 / 54
+13 / 54
+14 / 54
+15 / 54
+16 / 54
+17 / 54
+18 / 54
+19 / 54
+20 / 54
+21 / 54
+22 / 54
+23 / 54
+24 / 54
+25 / 54
+26 / 54
+27 / 54
+28 / 54
+29 / 54
+30 / 54
+31 / 54
+32 / 54
+33 / 54
+ref polygon is invalid
+34 / 54
+35 / 54
+36 / 54
+37 / 54
+38 / 54
+39 / 54
+40 / 54
+attn polygon is invalid
+41 / 54
+42 / 54
+ref polygon is invalid
+ref polygon is invalid
+43 / 54
+44 / 54
+45 / 54
+46 / 54
+47 / 54
+48 / 54
+49 / 54
+50 / 54
+51 / 54
+52 / 54
+53 / 54
+cup process...
+/home/nakachi/data/category_split/cup_ja/
+Load filenames from: /home/nakachi/data/category_split/cup_ja//train_filenames.pickle (6518)
+Load filenames from: /home/nakachi/data/category_split/cup_ja//val_filenames.pickle (3061)
+Load from:  /home/nakachi/data/category_split/cup_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 191
+1 / 191
+2 / 191
+3 / 191
+4 / 191
+5 / 191
+6 / 191
+7 / 191
+8 / 191
+9 / 191
+10 / 191
+11 / 191
+12 / 191
+13 / 191
+14 / 191
+15 / 191
+16 / 191
+17 / 191
+18 / 191
+19 / 191
+20 / 191
+21 / 191
+22 / 191
+23 / 191
+24 / 191
+25 / 191
+26 / 191
+27 / 191
+28 / 191
+29 / 191
+30 / 191
+31 / 191
+32 / 191
+33 / 191
+34 / 191
+35 / 191
+36 / 191
+37 / 191
+38 / 191
+39 / 191
+40 / 191
+41 / 191
+42 / 191
+43 / 191
+44 / 191
+45 / 191
+46 / 191
+47 / 191
+48 / 191
+49 / 191
+50 / 191
+51 / 191
+52 / 191
+53 / 191
+54 / 191
+55 / 191
+56 / 191
+57 / 191
+58 / 191
+59 / 191
+60 / 191
+61 / 191
+62 / 191
+63 / 191
+64 / 191
+65 / 191
+66 / 191
+67 / 191
+68 / 191
+69 / 191
+70 / 191
+71 / 191
+72 / 191
+73 / 191
+74 / 191
+75 / 191
+76 / 191
+77 / 191
+78 / 191
+79 / 191
+80 / 191
+81 / 191
+82 / 191
+83 / 191
+84 / 191
+85 / 191
+86 / 191
+87 / 191
+88 / 191
+89 / 191
+ref polygon is invalid
+90 / 191
+91 / 191
+92 / 191
+93 / 191
+94 / 191
+95 / 191
+96 / 191
+97 / 191
+98 / 191
+99 / 191
+100 / 191
+101 / 191
+102 / 191
+103 / 191
+104 / 191
+105 / 191
+106 / 191
+107 / 191
+108 / 191
+109 / 191
+110 / 191
+111 / 191
+112 / 191
+113 / 191
+114 / 191
+115 / 191
+116 / 191
+117 / 191
+118 / 191
+119 / 191
+120 / 191
+121 / 191
+122 / 191
+123 / 191
+124 / 191
+125 / 191
+126 / 191
+127 / 191
+128 / 191
+129 / 191
+130 / 191
+131 / 191
+132 / 191
+133 / 191
+134 / 191
+135 / 191
+136 / 191
+137 / 191
+138 / 191
+139 / 191
+140 / 191
+141 / 191
+142 / 191
+143 / 191
+144 / 191
+145 / 191
+146 / 191
+147 / 191
+148 / 191
+149 / 191
+150 / 191
+151 / 191
+152 / 191
+153 / 191
+154 / 191
+155 / 191
+156 / 191
+157 / 191
+158 / 191
+159 / 191
+160 / 191
+161 / 191
+162 / 191
+163 / 191
+164 / 191
+165 / 191
+166 / 191
+167 / 191
+168 / 191
+169 / 191
+170 / 191
+171 / 191
+172 / 191
+173 / 191
+174 / 191
+175 / 191
+176 / 191
+177 / 191
+178 / 191
+179 / 191
+180 / 191
+181 / 191
+182 / 191
+183 / 191
+184 / 191
+185 / 191
+186 / 191
+187 / 191
+188 / 191
+189 / 191
+190 / 191
+fork process...
+/home/nakachi/data/category_split/fork_ja/
+Load filenames from: /home/nakachi/data/category_split/fork_ja//train_filenames.pickle (2537)
+Load filenames from: /home/nakachi/data/category_split/fork_ja//val_filenames.pickle (1173)
+Load from:  /home/nakachi/data/category_split/fork_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 73
+1 / 73
+2 / 73
+3 / 73
+4 / 73
+5 / 73
+6 / 73
+7 / 73
+8 / 73
+9 / 73
+10 / 73
+11 / 73
+12 / 73
+13 / 73
+14 / 73
+15 / 73
+16 / 73
+17 / 73
+18 / 73
+19 / 73
+20 / 73
+21 / 73
+22 / 73
+23 / 73
+24 / 73
+ref polygon is invalid
+25 / 73
+26 / 73
+27 / 73
+28 / 73
+29 / 73
+30 / 73
+31 / 73
+32 / 73
+33 / 73
+34 / 73
+35 / 73
+36 / 73
+37 / 73
+38 / 73
+39 / 73
+40 / 73
+41 / 73
+42 / 73
+43 / 73
+44 / 73
+45 / 73
+46 / 73
+47 / 73
+48 / 73
+49 / 73
+50 / 73
+51 / 73
+ref polygon is invalid
+52 / 73
+53 / 73
+54 / 73
+55 / 73
+56 / 73
+57 / 73
+58 / 73
+59 / 73
+60 / 73
+61 / 73
+62 / 73
+63 / 73
+64 / 73
+65 / 73
+66 / 73
+67 / 73
+68 / 73
+69 / 73
+70 / 73
+71 / 73
+72 / 73
+knife process...
+/home/nakachi/data/category_split/knife_ja/
+Load filenames from: /home/nakachi/data/category_split/knife_ja//train_filenames.pickle (3097)
+Load filenames from: /home/nakachi/data/category_split/knife_ja//val_filenames.pickle (1410)
+Load from:  /home/nakachi/data/category_split/knife_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 88
+1 / 88
+2 / 88
+3 / 88
+4 / 88
+5 / 88
+6 / 88
+7 / 88
+8 / 88
+9 / 88
+10 / 88
+11 / 88
+12 / 88
+13 / 88
+14 / 88
+15 / 88
+16 / 88
+17 / 88
+18 / 88
+19 / 88
+20 / 88
+21 / 88
+22 / 88
+23 / 88
+24 / 88
+25 / 88
+26 / 88
+27 / 88
+28 / 88
+29 / 88
+30 / 88
+31 / 88
+ref polygon is invalid
+32 / 88
+33 / 88
+34 / 88
+35 / 88
+36 / 88
+37 / 88
+38 / 88
+39 / 88
+40 / 88
+41 / 88
+42 / 88
+43 / 88
+44 / 88
+45 / 88
+46 / 88
+47 / 88
+48 / 88
+49 / 88
+50 / 88
+51 / 88
+52 / 88
+53 / 88
+54 / 88
+55 / 88
+ref polygon is invalid
+56 / 88
+57 / 88
+58 / 88
+59 / 88
+60 / 88
+61 / 88
+62 / 88
+63 / 88
+64 / 88
+65 / 88
+66 / 88
+67 / 88
+68 / 88
+69 / 88
+70 / 88
+71 / 88
+72 / 88
+73 / 88
+74 / 88
+75 / 88
+76 / 88
+77 / 88
+78 / 88
+79 / 88
+80 / 88
+81 / 88
+82 / 88
+83 / 88
+84 / 88
+85 / 88
+86 / 88
+87 / 88
+spoon process...
+/home/nakachi/data/category_split/spoon_ja/
+Load filenames from: /home/nakachi/data/category_split/spoon_ja//train_filenames.pickle (2493)
+Load filenames from: /home/nakachi/data/category_split/spoon_ja//val_filenames.pickle (1189)
+Load from:  /home/nakachi/data/category_split/spoon_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 74
+1 / 74
+2 / 74
+3 / 74
+4 / 74
+5 / 74
+6 / 74
+7 / 74
+8 / 74
+9 / 74
+10 / 74
+11 / 74
+12 / 74
+13 / 74
+14 / 74
+15 / 74
+16 / 74
+17 / 74
+18 / 74
+19 / 74
+20 / 74
+21 / 74
+22 / 74
+23 / 74
+24 / 74
+25 / 74
+26 / 74
+27 / 74
+28 / 74
+29 / 74
+30 / 74
+31 / 74
+32 / 74
+33 / 74
+34 / 74
+35 / 74
+36 / 74
+37 / 74
+38 / 74
+39 / 74
+40 / 74
+attn polygon is invalid
+41 / 74
+42 / 74
+43 / 74
+44 / 74
+45 / 74
+46 / 74
+47 / 74
+48 / 74
+49 / 74
+50 / 74
+51 / 74
+52 / 74
+53 / 74
+54 / 74
+55 / 74
+56 / 74
+57 / 74
+58 / 74
+59 / 74
+60 / 74
+61 / 74
+62 / 74
+63 / 74
+64 / 74
+65 / 74
+66 / 74
+67 / 74
+68 / 74
+69 / 74
+70 / 74
+71 / 74
+72 / 74
+73 / 74
+bowl process...
+/home/nakachi/data/category_split/bowl_ja/
+Load filenames from: /home/nakachi/data/category_split/bowl_ja//train_filenames.pickle (5028)
+Load filenames from: /home/nakachi/data/category_split/bowl_ja//val_filenames.pickle (2397)
+Load from:  /home/nakachi/data/category_split/bowl_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 149
+1 / 149
+2 / 149
+3 / 149
+4 / 149
+5 / 149
+6 / 149
+7 / 149
+8 / 149
+9 / 149
+10 / 149
+11 / 149
+12 / 149
+13 / 149
+14 / 149
+15 / 149
+16 / 149
+17 / 149
+18 / 149
+19 / 149
+20 / 149
+21 / 149
+22 / 149
+23 / 149
+24 / 149
+25 / 149
+26 / 149
+27 / 149
+28 / 149
+29 / 149
+30 / 149
+31 / 149
+32 / 149
+33 / 149
+34 / 149
+35 / 149
+36 / 149
+37 / 149
+38 / 149
+39 / 149
+40 / 149
+41 / 149
+42 / 149
+43 / 149
+44 / 149
+45 / 149
+46 / 149
+47 / 149
+48 / 149
+49 / 149
+50 / 149
+ref polygon is invalid
+attn polygon is invalid
+51 / 149
+52 / 149
+53 / 149
+54 / 149
+55 / 149
+56 / 149
+57 / 149
+58 / 149
+59 / 149
+60 / 149
+61 / 149
+62 / 149
+63 / 149
+64 / 149
+65 / 149
+66 / 149
+67 / 149
+68 / 149
+69 / 149
+70 / 149
+71 / 149
+72 / 149
+73 / 149
+74 / 149
+75 / 149
+76 / 149
+77 / 149
+78 / 149
+79 / 149
+80 / 149
+81 / 149
+82 / 149
+83 / 149
+84 / 149
+85 / 149
+86 / 149
+87 / 149
+88 / 149
+89 / 149
+90 / 149
+91 / 149
+92 / 149
+93 / 149
+94 / 149
+95 / 149
+96 / 149
+97 / 149
+98 / 149
+99 / 149
+100 / 149
+101 / 149
+102 / 149
+103 / 149
+104 / 149
+105 / 149
+106 / 149
+107 / 149
+108 / 149
+109 / 149
+110 / 149
+111 / 149
+112 / 149
+113 / 149
+114 / 149
+115 / 149
+116 / 149
+117 / 149
+118 / 149
+119 / 149
+120 / 149
+121 / 149
+122 / 149
+123 / 149
+124 / 149
+125 / 149
+126 / 149
+127 / 149
+128 / 149
+129 / 149
+130 / 149
+131 / 149
+132 / 149
+133 / 149
+134 / 149
+135 / 149
+136 / 149
+137 / 149
+138 / 149
+139 / 149
+140 / 149
+141 / 149
+142 / 149
+143 / 149
+144 / 149
+145 / 149
+146 / 149
+147 / 149
+148 / 149
+banana process...
+/home/nakachi/data/category_split/banana_ja/
+Load filenames from: /home/nakachi/data/category_split/banana_ja//train_filenames.pickle (1618)
+Load filenames from: /home/nakachi/data/category_split/banana_ja//val_filenames.pickle (728)
+Load from:  /home/nakachi/data/category_split/banana_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 45
+ref polygon is invalid
+1 / 45
+2 / 45
+3 / 45
+4 / 45
+5 / 45
+6 / 45
+7 / 45
+ref polygon is invalid
+8 / 45
+9 / 45
+10 / 45
+11 / 45
+12 / 45
+13 / 45
+14 / 45
+15 / 45
+16 / 45
+17 / 45
+18 / 45
+19 / 45
+20 / 45
+21 / 45
+22 / 45
+23 / 45
+24 / 45
+25 / 45
+26 / 45
+ref polygon is invalid
+27 / 45
+28 / 45
+29 / 45
+30 / 45
+31 / 45
+32 / 45
+33 / 45
+ref polygon is invalid
+34 / 45
+35 / 45
+36 / 45
+37 / 45
+38 / 45
+ref polygon is invalid
+39 / 45
+40 / 45
+41 / 45
+42 / 45
+43 / 45
+44 / 45
+apple process...
+/home/nakachi/data/category_split/apple_ja/
+Load filenames from: /home/nakachi/data/category_split/apple_ja//train_filenames.pickle (1171)
+Load filenames from: /home/nakachi/data/category_split/apple_ja//val_filenames.pickle (491)
+Load from:  /home/nakachi/data/category_split/apple_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 30
+1 / 30
+2 / 30
+3 / 30
+4 / 30
+5 / 30
+6 / 30
+7 / 30
+8 / 30
+9 / 30
+10 / 30
+11 / 30
+12 / 30
+13 / 30
+14 / 30
+15 / 30
+16 / 30
+17 / 30
+18 / 30
+19 / 30
+20 / 30
+21 / 30
+22 / 30
+23 / 30
+24 / 30
+25 / 30
+26 / 30
+27 / 30
+28 / 30
+29 / 30
+sandwich process...
+/home/nakachi/data/category_split/sandwich_ja/
+Load filenames from: /home/nakachi/data/category_split/sandwich_ja//train_filenames.pickle (1645)
+Load filenames from: /home/nakachi/data/category_split/sandwich_ja//val_filenames.pickle (818)
+Load from:  /home/nakachi/data/category_split/sandwich_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 51
+1 / 51
+2 / 51
+3 / 51
+4 / 51
+ref polygon is invalid
+5 / 51
+6 / 51
+7 / 51
+8 / 51
+9 / 51
+10 / 51
+11 / 51
+12 / 51
+13 / 51
+14 / 51
+15 / 51
+16 / 51
+17 / 51
+18 / 51
+19 / 51
+20 / 51
+21 / 51
+22 / 51
+23 / 51
+24 / 51
+25 / 51
+26 / 51
+27 / 51
+28 / 51
+29 / 51
+30 / 51
+31 / 51
+32 / 51
+33 / 51
+34 / 51
+35 / 51
+36 / 51
+37 / 51
+38 / 51
+39 / 51
+40 / 51
+41 / 51
+42 / 51
+43 / 51
+44 / 51
+45 / 51
+46 / 51
+47 / 51
+48 / 51
+49 / 51
+50 / 51
+orange process...
+/home/nakachi/data/category_split/orange_ja/
+Load filenames from: /home/nakachi/data/category_split/orange_ja//train_filenames.pickle (1216)
+Load filenames from: /home/nakachi/data/category_split/orange_ja//val_filenames.pickle (568)
+Load from:  /home/nakachi/data/category_split/orange_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 35
+1 / 35
+ref polygon is invalid
+2 / 35
+3 / 35
+4 / 35
+5 / 35
+6 / 35
+7 / 35
+8 / 35
+9 / 35
+10 / 35
+11 / 35
+12 / 35
+13 / 35
+14 / 35
+15 / 35
+16 / 35
+17 / 35
+18 / 35
+19 / 35
+20 / 35
+21 / 35
+22 / 35
+23 / 35
+24 / 35
+25 / 35
+26 / 35
+27 / 35
+28 / 35
+29 / 35
+30 / 35
+31 / 35
+32 / 35
+33 / 35
+34 / 35
+broccoli process...
+/home/nakachi/data/category_split/broccoli_ja/
+Load filenames from: /home/nakachi/data/category_split/broccoli_ja//train_filenames.pickle (1340)
+Load filenames from: /home/nakachi/data/category_split/broccoli_ja//val_filenames.pickle (670)
+Load from:  /home/nakachi/data/category_split/broccoli_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 41
+1 / 41
+2 / 41
+3 / 41
+4 / 41
+ref polygon is invalid
+5 / 41
+6 / 41
+7 / 41
+8 / 41
+9 / 41
+ref polygon is invalid
+10 / 41
+ref polygon is invalid
+11 / 41
+ref polygon is invalid
+12 / 41
+13 / 41
+14 / 41
+15 / 41
+16 / 41
+17 / 41
+18 / 41
+19 / 41
+20 / 41
+21 / 41
+22 / 41
+23 / 41
+24 / 41
+ref polygon is invalid
+ref polygon is invalid
+25 / 41
+26 / 41
+27 / 41
+28 / 41
+29 / 41
+30 / 41
+31 / 41
+32 / 41
+33 / 41
+34 / 41
+35 / 41
+36 / 41
+37 / 41
+ref polygon is invalid
+38 / 41
+39 / 41
+40 / 41
+carrot process...
+/home/nakachi/data/category_split/carrot_ja/
+Load filenames from: /home/nakachi/data/category_split/carrot_ja//train_filenames.pickle (1186)
+Load filenames from: /home/nakachi/data/category_split/carrot_ja//val_filenames.pickle (578)
+Load from:  /home/nakachi/data/category_split/carrot_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 36
+1 / 36
+2 / 36
+3 / 36
+4 / 36
+5 / 36
+6 / 36
+7 / 36
+8 / 36
+9 / 36
+10 / 36
+11 / 36
+12 / 36
+13 / 36
+14 / 36
+15 / 36
+16 / 36
+17 / 36
+18 / 36
+19 / 36
+20 / 36
+21 / 36
+22 / 36
+23 / 36
+24 / 36
+25 / 36
+26 / 36
+27 / 36
+28 / 36
+29 / 36
+30 / 36
+31 / 36
+32 / 36
+33 / 36
+34 / 36
+35 / 36
+hot dog process...
+/home/nakachi/data/category_split/hot dog_ja/
+Load filenames from: /home/nakachi/data/category_split/hot dog_ja//train_filenames.pickle (821)
+Load filenames from: /home/nakachi/data/category_split/hot dog_ja//val_filenames.pickle (452)
+Load from:  /home/nakachi/data/category_split/hot dog_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 28
+1 / 28
+2 / 28
+3 / 28
+4 / 28
+5 / 28
+6 / 28
+ref polygon is invalid
+7 / 28
+8 / 28
+9 / 28
+10 / 28
+11 / 28
+12 / 28
+13 / 28
+14 / 28
+15 / 28
+16 / 28
+17 / 28
+18 / 28
+19 / 28
+20 / 28
+21 / 28
+22 / 28
+23 / 28
+24 / 28
+25 / 28
+26 / 28
+27 / 28
+pizza process...
+/home/nakachi/data/category_split/pizza_ja/
+Load filenames from: /home/nakachi/data/category_split/pizza_ja//train_filenames.pickle (2202)
+Load filenames from: /home/nakachi/data/category_split/pizza_ja//val_filenames.pickle (1117)
+Load from:  /home/nakachi/data/category_split/pizza_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 69
+1 / 69
+2 / 69
+3 / 69
+4 / 69
+5 / 69
+6 / 69
+7 / 69
+8 / 69
+9 / 69
+ref polygon is invalid
+10 / 69
+11 / 69
+12 / 69
+13 / 69
+ref polygon is invalid
+14 / 69
+15 / 69
+16 / 69
+17 / 69
+ref polygon is invalid
+18 / 69
+19 / 69
+20 / 69
+21 / 69
+22 / 69
+23 / 69
+24 / 69
+25 / 69
+26 / 69
+27 / 69
+28 / 69
+29 / 69
+30 / 69
+ref polygon is invalid
+31 / 69
+32 / 69
+33 / 69
+34 / 69
+ref polygon is invalid
+35 / 69
+attn polygon is invalid
+attn polygon is invalid
+36 / 69
+37 / 69
+38 / 69
+39 / 69
+40 / 69
+41 / 69
+42 / 69
+43 / 69
+44 / 69
+45 / 69
+ref polygon is invalid
+ref polygon is invalid
+46 / 69
+47 / 69
+48 / 69
+49 / 69
+50 / 69
+51 / 69
+52 / 69
+53 / 69
+54 / 69
+55 / 69
+56 / 69
+57 / 69
+58 / 69
+ref polygon is invalid
+59 / 69
+60 / 69
+61 / 69
+62 / 69
+63 / 69
+64 / 69
+65 / 69
+66 / 69
+67 / 69
+68 / 69
+ref polygon is invalid
+donut process...
+/home/nakachi/data/category_split/donut_ja/
+Load filenames from: /home/nakachi/data/category_split/donut_ja//train_filenames.pickle (1062)
+Load filenames from: /home/nakachi/data/category_split/donut_ja//val_filenames.pickle (523)
+Load from:  /home/nakachi/data/category_split/donut_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 32
+1 / 32
+2 / 32
+3 / 32
+4 / 32
+5 / 32
+6 / 32
+7 / 32
+8 / 32
+9 / 32
+10 / 32
+11 / 32
+12 / 32
+13 / 32
+14 / 32
+15 / 32
+16 / 32
+ref polygon is invalid
+17 / 32
+18 / 32
+19 / 32
+20 / 32
+21 / 32
+22 / 32
+23 / 32
+24 / 32
+25 / 32
+26 / 32
+27 / 32
+28 / 32
+29 / 32
+30 / 32
+31 / 32
+cake process...
+/home/nakachi/data/category_split/cake_ja/
+Load filenames from: /home/nakachi/data/category_split/cake_ja//train_filenames.pickle (2080)
+Load filenames from: /home/nakachi/data/category_split/cake_ja//val_filenames.pickle (969)
+Load from:  /home/nakachi/data/category_split/cake_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 60
+ref polygon is invalid
+1 / 60
+2 / 60
+3 / 60
+4 / 60
+5 / 60
+6 / 60
+7 / 60
+8 / 60
+9 / 60
+10 / 60
+11 / 60
+12 / 60
+ref polygon is invalid
+13 / 60
+14 / 60
+15 / 60
+16 / 60
+ref polygon is invalid
+17 / 60
+18 / 60
+19 / 60
+20 / 60
+21 / 60
+22 / 60
+23 / 60
+24 / 60
+25 / 60
+26 / 60
+27 / 60
+28 / 60
+29 / 60
+30 / 60
+31 / 60
+32 / 60
+33 / 60
+ref polygon is invalid
+34 / 60
+35 / 60
+36 / 60
+37 / 60
+38 / 60
+39 / 60
+ref polygon is invalid
+40 / 60
+41 / 60
+ref polygon is invalid
+42 / 60
+attn polygon is invalid
+attn polygon is invalid
+43 / 60
+44 / 60
+45 / 60
+46 / 60
+47 / 60
+48 / 60
+49 / 60
+50 / 60
+51 / 60
+52 / 60
+53 / 60
+54 / 60
+55 / 60
+56 / 60
+ref polygon is invalid
+57 / 60
+58 / 60
+59 / 60
+chair process...
+/home/nakachi/data/category_split/chair_ja/
+Load filenames from: /home/nakachi/data/category_split/chair_ja//train_filenames.pickle (8950)
+Load filenames from: /home/nakachi/data/category_split/chair_ja//val_filenames.pickle (4404)
+Load from:  /home/nakachi/data/category_split/chair_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 275
+1 / 275
+2 / 275
+3 / 275
+4 / 275
+5 / 275
+6 / 275
+7 / 275
+8 / 275
+9 / 275
+10 / 275
+11 / 275
+12 / 275
+13 / 275
+14 / 275
+15 / 275
+16 / 275
+17 / 275
+18 / 275
+19 / 275
+20 / 275
+21 / 275
+22 / 275
+23 / 275
+24 / 275
+25 / 275
+26 / 275
+27 / 275
+28 / 275
+29 / 275
+30 / 275
+31 / 275
+32 / 275
+33 / 275
+34 / 275
+35 / 275
+36 / 275
+37 / 275
+38 / 275
+39 / 275
+40 / 275
+41 / 275
+42 / 275
+43 / 275
+44 / 275
+45 / 275
+46 / 275
+47 / 275
+48 / 275
+49 / 275
+50 / 275
+51 / 275
+52 / 275
+53 / 275
+54 / 275
+55 / 275
+56 / 275
+57 / 275
+58 / 275
+59 / 275
+60 / 275
+61 / 275
+62 / 275
+63 / 275
+64 / 275
+65 / 275
+66 / 275
+67 / 275
+68 / 275
+69 / 275
+70 / 275
+71 / 275
+72 / 275
+73 / 275
+74 / 275
+75 / 275
+76 / 275
+77 / 275
+78 / 275
+79 / 275
+80 / 275
+81 / 275
+82 / 275
+83 / 275
+ref polygon is invalid
+84 / 275
+85 / 275
+86 / 275
+87 / 275
+88 / 275
+89 / 275
+90 / 275
+91 / 275
+92 / 275
+93 / 275
+94 / 275
+95 / 275
+96 / 275
+97 / 275
+98 / 275
+99 / 275
+100 / 275
+101 / 275
+102 / 275
+103 / 275
+104 / 275
+105 / 275
+106 / 275
+107 / 275
+108 / 275
+109 / 275
+110 / 275
+111 / 275
+112 / 275
+113 / 275
+114 / 275
+115 / 275
+116 / 275
+117 / 275
+118 / 275
+119 / 275
+120 / 275
+121 / 275
+122 / 275
+123 / 275
+124 / 275
+125 / 275
+126 / 275
+127 / 275
+128 / 275
+129 / 275
+130 / 275
+131 / 275
+132 / 275
+133 / 275
+134 / 275
+135 / 275
+136 / 275
+137 / 275
+138 / 275
+139 / 275
+140 / 275
+141 / 275
+142 / 275
+143 / 275
+144 / 275
+145 / 275
+146 / 275
+147 / 275
+148 / 275
+149 / 275
+150 / 275
+151 / 275
+152 / 275
+153 / 275
+154 / 275
+155 / 275
+156 / 275
+157 / 275
+158 / 275
+159 / 275
+160 / 275
+161 / 275
+162 / 275
+163 / 275
+164 / 275
+165 / 275
+166 / 275
+167 / 275
+168 / 275
+169 / 275
+170 / 275
+171 / 275
+172 / 275
+173 / 275
+174 / 275
+175 / 275
+ref polygon is invalid
+176 / 275
+177 / 275
+178 / 275
+179 / 275
+180 / 275
+181 / 275
+182 / 275
+183 / 275
+184 / 275
+185 / 275
+186 / 275
+187 / 275
+188 / 275
+189 / 275
+190 / 275
+191 / 275
+192 / 275
+193 / 275
+194 / 275
+195 / 275
+196 / 275
+197 / 275
+198 / 275
+199 / 275
+200 / 275
+201 / 275
+202 / 275
+203 / 275
+ref polygon is invalid
+204 / 275
+205 / 275
+206 / 275
+207 / 275
+208 / 275
+209 / 275
+210 / 275
+211 / 275
+212 / 275
+213 / 275
+214 / 275
+215 / 275
+216 / 275
+217 / 275
+218 / 275
+219 / 275
+220 / 275
+221 / 275
+222 / 275
+223 / 275
+224 / 275
+225 / 275
+226 / 275
+227 / 275
+228 / 275
+229 / 275
+230 / 275
+231 / 275
+232 / 275
+233 / 275
+234 / 275
+235 / 275
+236 / 275
+237 / 275
+238 / 275
+239 / 275
+240 / 275
+241 / 275
+242 / 275
+243 / 275
+244 / 275
+245 / 275
+246 / 275
+247 / 275
+248 / 275
+249 / 275
+250 / 275
+251 / 275
+252 / 275
+253 / 275
+254 / 275
+255 / 275
+256 / 275
+257 / 275
+258 / 275
+259 / 275
+260 / 275
+261 / 275
+262 / 275
+263 / 275
+264 / 275
+265 / 275
+266 / 275
+267 / 275
+268 / 275
+269 / 275
+270 / 275
+271 / 275
+272 / 275
+273 / 275
+274 / 275
+couch process...
+/home/nakachi/data/category_split/couch_ja/
+Load filenames from: /home/nakachi/data/category_split/couch_ja//train_filenames.pickle (3170)
+Load filenames from: /home/nakachi/data/category_split/couch_ja//val_filenames.pickle (1448)
+Load from:  /home/nakachi/data/category_split/couch_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 90
+1 / 90
+2 / 90
+3 / 90
+ref polygon is invalid
+4 / 90
+5 / 90
+6 / 90
+7 / 90
+8 / 90
+9 / 90
+10 / 90
+11 / 90
+12 / 90
+13 / 90
+14 / 90
+15 / 90
+16 / 90
+17 / 90
+18 / 90
+19 / 90
+20 / 90
+21 / 90
+22 / 90
+23 / 90
+24 / 90
+25 / 90
+26 / 90
+27 / 90
+28 / 90
+29 / 90
+30 / 90
+31 / 90
+32 / 90
+33 / 90
+34 / 90
+35 / 90
+36 / 90
+attn polygon is invalid
+attn polygon is invalid
+37 / 90
+ref polygon is invalid
+38 / 90
+39 / 90
+40 / 90
+41 / 90
+42 / 90
+43 / 90
+ref polygon is invalid
+44 / 90
+45 / 90
+46 / 90
+47 / 90
+48 / 90
+49 / 90
+50 / 90
+51 / 90
+52 / 90
+53 / 90
+54 / 90
+55 / 90
+56 / 90
+57 / 90
+58 / 90
+59 / 90
+60 / 90
+61 / 90
+62 / 90
+63 / 90
+64 / 90
+65 / 90
+66 / 90
+67 / 90
+68 / 90
+69 / 90
+70 / 90
+71 / 90
+ref polygon is invalid
+72 / 90
+73 / 90
+74 / 90
+75 / 90
+76 / 90
+77 / 90
+78 / 90
+79 / 90
+80 / 90
+81 / 90
+82 / 90
+83 / 90
+84 / 90
+85 / 90
+86 / 90
+87 / 90
+88 / 90
+89 / 90
+potted plant process...
+/home/nakachi/data/category_split/potted plant_ja/
+Load filenames from: /home/nakachi/data/category_split/potted plant_ja//train_filenames.pickle (3084)
+Load filenames from: /home/nakachi/data/category_split/potted plant_ja//val_filenames.pickle (1540)
+Load from:  /home/nakachi/data/category_split/potted plant_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 96
+1 / 96
+2 / 96
+3 / 96
+4 / 96
+5 / 96
+6 / 96
+7 / 96
+8 / 96
+9 / 96
+10 / 96
+11 / 96
+12 / 96
+13 / 96
+14 / 96
+15 / 96
+16 / 96
+17 / 96
+18 / 96
+19 / 96
+20 / 96
+21 / 96
+22 / 96
+23 / 96
+24 / 96
+25 / 96
+26 / 96
+27 / 96
+28 / 96
+29 / 96
+30 / 96
+31 / 96
+32 / 96
+33 / 96
+34 / 96
+35 / 96
+36 / 96
+37 / 96
+38 / 96
+39 / 96
+40 / 96
+41 / 96
+42 / 96
+43 / 96
+44 / 96
+45 / 96
+46 / 96
+47 / 96
+48 / 96
+49 / 96
+50 / 96
+51 / 96
+52 / 96
+53 / 96
+54 / 96
+55 / 96
+56 / 96
+57 / 96
+58 / 96
+59 / 96
+60 / 96
+61 / 96
+62 / 96
+63 / 96
+64 / 96
+65 / 96
+66 / 96
+67 / 96
+68 / 96
+69 / 96
+70 / 96
+71 / 96
+72 / 96
+73 / 96
+74 / 96
+75 / 96
+76 / 96
+77 / 96
+78 / 96
+79 / 96
+80 / 96
+81 / 96
+82 / 96
+83 / 96
+84 / 96
+85 / 96
+86 / 96
+87 / 96
+88 / 96
+89 / 96
+90 / 96
+91 / 96
+92 / 96
+93 / 96
+94 / 96
+95 / 96
+bed process...
+/home/nakachi/data/category_split/bed_ja/
+Load filenames from: /home/nakachi/data/category_split/bed_ja//train_filenames.pickle (2539)
+Load filenames from: /home/nakachi/data/category_split/bed_ja//val_filenames.pickle (1292)
+Load from:  /home/nakachi/data/category_split/bed_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 80
+ref polygon is invalid
+ref polygon is invalid
+1 / 80
+2 / 80
+3 / 80
+4 / 80
+5 / 80
+ref polygon is invalid
+6 / 80
+7 / 80
+8 / 80
+9 / 80
+ref polygon is invalid
+10 / 80
+11 / 80
+12 / 80
+13 / 80
+14 / 80
+15 / 80
+16 / 80
+17 / 80
+18 / 80
+19 / 80
+20 / 80
+21 / 80
+22 / 80
+23 / 80
+24 / 80
+25 / 80
+26 / 80
+27 / 80
+28 / 80
+29 / 80
+30 / 80
+31 / 80
+32 / 80
+33 / 80
+34 / 80
+35 / 80
+36 / 80
+37 / 80
+38 / 80
+39 / 80
+40 / 80
+41 / 80
+42 / 80
+43 / 80
+44 / 80
+45 / 80
+46 / 80
+47 / 80
+48 / 80
+49 / 80
+50 / 80
+51 / 80
+52 / 80
+ref polygon is invalid
+53 / 80
+54 / 80
+55 / 80
+56 / 80
+57 / 80
+58 / 80
+59 / 80
+60 / 80
+61 / 80
+62 / 80
+63 / 80
+64 / 80
+65 / 80
+66 / 80
+67 / 80
+68 / 80
+69 / 80
+70 / 80
+71 / 80
+72 / 80
+73 / 80
+74 / 80
+75 / 80
+76 / 80
+77 / 80
+78 / 80
+79 / 80
+dining table process...
+/home/nakachi/data/category_split/dining table_ja/
+Load filenames from: /home/nakachi/data/category_split/dining table_ja//train_filenames.pickle (8378)
+Load filenames from: /home/nakachi/data/category_split/dining table_ja//val_filenames.pickle (3960)
+Load from:  /home/nakachi/data/category_split/dining table_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 247
+1 / 247
+2 / 247
+3 / 247
+4 / 247
+5 / 247
+6 / 247
+7 / 247
+8 / 247
+9 / 247
+10 / 247
+11 / 247
+12 / 247
+13 / 247
+14 / 247
+15 / 247
+16 / 247
+17 / 247
+18 / 247
+19 / 247
+20 / 247
+21 / 247
+22 / 247
+23 / 247
+24 / 247
+25 / 247
+26 / 247
+27 / 247
+28 / 247
+29 / 247
+30 / 247
+31 / 247
+32 / 247
+33 / 247
+34 / 247
+35 / 247
+36 / 247
+37 / 247
+38 / 247
+39 / 247
+40 / 247
+41 / 247
+42 / 247
+43 / 247
+44 / 247
+45 / 247
+46 / 247
+47 / 247
+48 / 247
+49 / 247
+ref polygon is invalid
+50 / 247
+ref polygon is invalid
+51 / 247
+52 / 247
+53 / 247
+54 / 247
+55 / 247
+56 / 247
+57 / 247
+58 / 247
+59 / 247
+60 / 247
+61 / 247
+62 / 247
+63 / 247
+64 / 247
+65 / 247
+66 / 247
+67 / 247
+68 / 247
+69 / 247
+70 / 247
+71 / 247
+72 / 247
+73 / 247
+74 / 247
+75 / 247
+76 / 247
+77 / 247
+78 / 247
+79 / 247
+80 / 247
+81 / 247
+82 / 247
+83 / 247
+84 / 247
+85 / 247
+86 / 247
+87 / 247
+88 / 247
+89 / 247
+90 / 247
+91 / 247
+92 / 247
+93 / 247
+94 / 247
+95 / 247
+ref polygon is invalid
+96 / 247
+97 / 247
+98 / 247
+99 / 247
+100 / 247
+101 / 247
+102 / 247
+ref polygon is invalid
+103 / 247
+104 / 247
+105 / 247
+106 / 247
+107 / 247
+108 / 247
+109 / 247
+110 / 247
+111 / 247
+112 / 247
+113 / 247
+114 / 247
+115 / 247
+116 / 247
+117 / 247
+118 / 247
+119 / 247
+120 / 247
+121 / 247
+122 / 247
+123 / 247
+124 / 247
+125 / 247
+126 / 247
+127 / 247
+128 / 247
+129 / 247
+130 / 247
+131 / 247
+132 / 247
+133 / 247
+134 / 247
+135 / 247
+136 / 247
+137 / 247
+138 / 247
+139 / 247
+140 / 247
+141 / 247
+142 / 247
+143 / 247
+144 / 247
+145 / 247
+146 / 247
+147 / 247
+148 / 247
+149 / 247
+150 / 247
+ref polygon is invalid
+151 / 247
+152 / 247
+153 / 247
+154 / 247
+155 / 247
+156 / 247
+157 / 247
+158 / 247
+159 / 247
+160 / 247
+161 / 247
+162 / 247
+163 / 247
+164 / 247
+165 / 247
+166 / 247
+167 / 247
+168 / 247
+169 / 247
+170 / 247
+ref polygon is invalid
+171 / 247
+172 / 247
+173 / 247
+174 / 247
+175 / 247
+176 / 247
+177 / 247
+178 / 247
+179 / 247
+180 / 247
+181 / 247
+182 / 247
+183 / 247
+184 / 247
+185 / 247
+186 / 247
+187 / 247
+188 / 247
+189 / 247
+190 / 247
+191 / 247
+192 / 247
+193 / 247
+194 / 247
+195 / 247
+196 / 247
+197 / 247
+198 / 247
+199 / 247
+200 / 247
+201 / 247
+202 / 247
+203 / 247
+204 / 247
+205 / 247
+206 / 247
+207 / 247
+208 / 247
+209 / 247
+210 / 247
+211 / 247
+212 / 247
+ref polygon is invalid
+213 / 247
+ref polygon is invalid
+214 / 247
+215 / 247
+216 / 247
+217 / 247
+218 / 247
+219 / 247
+220 / 247
+221 / 247
+222 / 247
+223 / 247
+224 / 247
+225 / 247
+ref polygon is invalid
+226 / 247
+227 / 247
+228 / 247
+229 / 247
+230 / 247
+231 / 247
+232 / 247
+233 / 247
+234 / 247
+235 / 247
+236 / 247
+237 / 247
+238 / 247
+239 / 247
+240 / 247
+241 / 247
+242 / 247
+243 / 247
+244 / 247
+245 / 247
+246 / 247
+toilet process...
+/home/nakachi/data/category_split/toilet_ja/
+Load filenames from: /home/nakachi/data/category_split/toilet_ja//train_filenames.pickle (2317)
+Load filenames from: /home/nakachi/data/category_split/toilet_ja//val_filenames.pickle (1185)
+Load from:  /home/nakachi/data/category_split/toilet_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 74
+1 / 74
+2 / 74
+ref polygon is invalid
+3 / 74
+4 / 74
+5 / 74
+6 / 74
+7 / 74
+8 / 74
+9 / 74
+10 / 74
+11 / 74
+12 / 74
+13 / 74
+14 / 74
+15 / 74
+16 / 74
+17 / 74
+18 / 74
+19 / 74
+20 / 74
+21 / 74
+22 / 74
+23 / 74
+24 / 74
+25 / 74
+26 / 74
+27 / 74
+28 / 74
+29 / 74
+30 / 74
+31 / 74
+32 / 74
+33 / 74
+34 / 74
+35 / 74
+36 / 74
+37 / 74
+38 / 74
+39 / 74
+40 / 74
+41 / 74
+42 / 74
+ref polygon is invalid
+43 / 74
+44 / 74
+45 / 74
+46 / 74
+47 / 74
+ref polygon is invalid
+48 / 74
+49 / 74
+50 / 74
+51 / 74
+52 / 74
+ref polygon is invalid
+53 / 74
+54 / 74
+55 / 74
+56 / 74
+57 / 74
+58 / 74
+59 / 74
+60 / 74
+61 / 74
+ref polygon is invalid
+62 / 74
+63 / 74
+64 / 74
+65 / 74
+66 / 74
+67 / 74
+68 / 74
+69 / 74
+70 / 74
+71 / 74
+72 / 74
+73 / 74
+tv process...
+/home/nakachi/data/category_split/tv_ja/
+Load filenames from: /home/nakachi/data/category_split/tv_ja//train_filenames.pickle (3191)
+Load filenames from: /home/nakachi/data/category_split/tv_ja//val_filenames.pickle (1577)
+Load from:  /home/nakachi/data/category_split/tv_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 98
+1 / 98
+2 / 98
+3 / 98
+4 / 98
+5 / 98
+6 / 98
+7 / 98
+8 / 98
+9 / 98
+10 / 98
+11 / 98
+12 / 98
+13 / 98
+14 / 98
+15 / 98
+16 / 98
+17 / 98
+18 / 98
+19 / 98
+20 / 98
+21 / 98
+ref polygon is invalid
+ref polygon is invalid
+22 / 98
+23 / 98
+24 / 98
+25 / 98
+26 / 98
+ref polygon is invalid
+ref polygon is invalid
+27 / 98
+28 / 98
+29 / 98
+30 / 98
+31 / 98
+32 / 98
+33 / 98
+34 / 98
+35 / 98
+36 / 98
+37 / 98
+38 / 98
+39 / 98
+40 / 98
+41 / 98
+42 / 98
+43 / 98
+44 / 98
+45 / 98
+46 / 98
+47 / 98
+48 / 98
+49 / 98
+50 / 98
+51 / 98
+52 / 98
+ref polygon is invalid
+53 / 98
+54 / 98
+55 / 98
+56 / 98
+57 / 98
+58 / 98
+59 / 98
+60 / 98
+61 / 98
+62 / 98
+63 / 98
+64 / 98
+65 / 98
+66 / 98
+67 / 98
+68 / 98
+69 / 98
+70 / 98
+71 / 98
+72 / 98
+73 / 98
+74 / 98
+75 / 98
+76 / 98
+77 / 98
+78 / 98
+79 / 98
+80 / 98
+81 / 98
+82 / 98
+83 / 98
+84 / 98
+85 / 98
+86 / 98
+87 / 98
+88 / 98
+89 / 98
+90 / 98
+91 / 98
+92 / 98
+ref polygon is invalid
+93 / 98
+94 / 98
+95 / 98
+96 / 98
+97 / 98
+laptop process...
+/home/nakachi/data/category_split/laptop_ja/
+Load filenames from: /home/nakachi/data/category_split/laptop_ja//train_filenames.pickle (2475)
+Load filenames from: /home/nakachi/data/category_split/laptop_ja//val_filenames.pickle (1232)
+Load from:  /home/nakachi/data/category_split/laptop_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 77
+1 / 77
+2 / 77
+3 / 77
+4 / 77
+5 / 77
+6 / 77
+7 / 77
+8 / 77
+9 / 77
+10 / 77
+11 / 77
+ref polygon is invalid
+12 / 77
+13 / 77
+14 / 77
+15 / 77
+16 / 77
+17 / 77
+18 / 77
+19 / 77
+ref polygon is invalid
+20 / 77
+21 / 77
+22 / 77
+23 / 77
+24 / 77
+25 / 77
+26 / 77
+27 / 77
+28 / 77
+29 / 77
+ref polygon is invalid
+30 / 77
+ref polygon is invalid
+31 / 77
+32 / 77
+ref polygon is invalid
+33 / 77
+34 / 77
+35 / 77
+36 / 77
+37 / 77
+38 / 77
+39 / 77
+40 / 77
+41 / 77
+42 / 77
+43 / 77
+44 / 77
+45 / 77
+46 / 77
+47 / 77
+48 / 77
+49 / 77
+50 / 77
+51 / 77
+52 / 77
+53 / 77
+54 / 77
+55 / 77
+56 / 77
+57 / 77
+58 / 77
+59 / 77
+60 / 77
+ref polygon is invalid
+61 / 77
+62 / 77
+63 / 77
+64 / 77
+65 / 77
+66 / 77
+67 / 77
+68 / 77
+69 / 77
+70 / 77
+71 / 77
+72 / 77
+73 / 77
+74 / 77
+75 / 77
+76 / 77
+mouse process...
+/home/nakachi/data/category_split/mouse_ja/
+Load filenames from: /home/nakachi/data/category_split/mouse_ja//train_filenames.pickle (1290)
+Load filenames from: /home/nakachi/data/category_split/mouse_ja//val_filenames.pickle (674)
+Load from:  /home/nakachi/data/category_split/mouse_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 42
+1 / 42
+2 / 42
+3 / 42
+4 / 42
+5 / 42
+6 / 42
+7 / 42
+attn polygon is invalid
+8 / 42
+9 / 42
+10 / 42
+11 / 42
+12 / 42
+13 / 42
+14 / 42
+15 / 42
+16 / 42
+17 / 42
+18 / 42
+19 / 42
+20 / 42
+21 / 42
+22 / 42
+23 / 42
+24 / 42
+25 / 42
+26 / 42
+27 / 42
+28 / 42
+29 / 42
+30 / 42
+31 / 42
+32 / 42
+33 / 42
+34 / 42
+35 / 42
+36 / 42
+37 / 42
+38 / 42
+ref polygon is invalid
+39 / 42
+40 / 42
+41 / 42
+remote process...
+/home/nakachi/data/category_split/remote_ja/
+Load filenames from: /home/nakachi/data/category_split/remote_ja//train_filenames.pickle (2180)
+Load filenames from: /home/nakachi/data/category_split/remote_ja//val_filenames.pickle (1041)
+Load from:  /home/nakachi/data/category_split/remote_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 65
+1 / 65
+2 / 65
+3 / 65
+4 / 65
+5 / 65
+6 / 65
+7 / 65
+8 / 65
+9 / 65
+10 / 65
+11 / 65
+12 / 65
+13 / 65
+14 / 65
+15 / 65
+16 / 65
+17 / 65
+18 / 65
+19 / 65
+20 / 65
+21 / 65
+22 / 65
+23 / 65
+24 / 65
+25 / 65
+26 / 65
+27 / 65
+28 / 65
+29 / 65
+30 / 65
+31 / 65
+32 / 65
+33 / 65
+34 / 65
+35 / 65
+36 / 65
+37 / 65
+38 / 65
+39 / 65
+40 / 65
+41 / 65
+42 / 65
+43 / 65
+44 / 65
+45 / 65
+46 / 65
+47 / 65
+48 / 65
+49 / 65
+50 / 65
+51 / 65
+52 / 65
+53 / 65
+54 / 65
+55 / 65
+56 / 65
+57 / 65
+58 / 65
+59 / 65
+60 / 65
+61 / 65
+ref polygon is invalid
+62 / 65
+63 / 65
+64 / 65
+keyboard process...
+/home/nakachi/data/category_split/keyboard_ja/
+Load filenames from: /home/nakachi/data/category_split/keyboard_ja//train_filenames.pickle (1471)
+Load filenames from: /home/nakachi/data/category_split/keyboard_ja//val_filenames.pickle (750)
+Load from:  /home/nakachi/data/category_split/keyboard_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 46
+1 / 46
+2 / 46
+3 / 46
+4 / 46
+5 / 46
+6 / 46
+7 / 46
+8 / 46
+9 / 46
+10 / 46
+11 / 46
+12 / 46
+13 / 46
+14 / 46
+15 / 46
+16 / 46
+17 / 46
+18 / 46
+19 / 46
+20 / 46
+21 / 46
+22 / 46
+23 / 46
+24 / 46
+25 / 46
+26 / 46
+27 / 46
+28 / 46
+29 / 46
+30 / 46
+31 / 46
+32 / 46
+33 / 46
+34 / 46
+35 / 46
+ref polygon is invalid
+36 / 46
+37 / 46
+38 / 46
+39 / 46
+40 / 46
+41 / 46
+42 / 46
+43 / 46
+44 / 46
+45 / 46
+cell phone process...
+/home/nakachi/data/category_split/cell phone_ja/
+Load filenames from: /home/nakachi/data/category_split/cell phone_ja//train_filenames.pickle (3322)
+Load filenames from: /home/nakachi/data/category_split/cell phone_ja//val_filenames.pickle (1695)
+Load from:  /home/nakachi/data/category_split/cell phone_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 105
+1 / 105
+2 / 105
+3 / 105
+4 / 105
+5 / 105
+6 / 105
+7 / 105
+8 / 105
+9 / 105
+10 / 105
+ref polygon is invalid
+11 / 105
+12 / 105
+13 / 105
+14 / 105
+15 / 105
+16 / 105
+17 / 105
+18 / 105
+19 / 105
+20 / 105
+21 / 105
+22 / 105
+23 / 105
+24 / 105
+25 / 105
+26 / 105
+27 / 105
+28 / 105
+29 / 105
+30 / 105
+31 / 105
+32 / 105
+ref polygon is invalid
+ref polygon is invalid
+33 / 105
+34 / 105
+35 / 105
+36 / 105
+37 / 105
+38 / 105
+39 / 105
+40 / 105
+41 / 105
+42 / 105
+43 / 105
+44 / 105
+45 / 105
+46 / 105
+47 / 105
+48 / 105
+49 / 105
+50 / 105
+51 / 105
+52 / 105
+53 / 105
+54 / 105
+55 / 105
+56 / 105
+57 / 105
+58 / 105
+59 / 105
+60 / 105
+61 / 105
+62 / 105
+63 / 105
+64 / 105
+65 / 105
+66 / 105
+67 / 105
+68 / 105
+69 / 105
+70 / 105
+71 / 105
+72 / 105
+73 / 105
+74 / 105
+75 / 105
+76 / 105
+77 / 105
+78 / 105
+79 / 105
+80 / 105
+81 / 105
+82 / 105
+83 / 105
+84 / 105
+85 / 105
+86 / 105
+87 / 105
+88 / 105
+89 / 105
+90 / 105
+91 / 105
+92 / 105
+93 / 105
+94 / 105
+95 / 105
+96 / 105
+97 / 105
+98 / 105
+99 / 105
+100 / 105
+101 / 105
+102 / 105
+103 / 105
+104 / 105
+microwave process...
+/home/nakachi/data/category_split/microwave_ja/
+Load filenames from: /home/nakachi/data/category_split/microwave_ja//train_filenames.pickle (1089)
+Load filenames from: /home/nakachi/data/category_split/microwave_ja//val_filenames.pickle (512)
+Load from:  /home/nakachi/data/category_split/microwave_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 32
+1 / 32
+2 / 32
+3 / 32
+4 / 32
+5 / 32
+6 / 32
+7 / 32
+ref polygon is invalid
+8 / 32
+9 / 32
+10 / 32
+11 / 32
+12 / 32
+13 / 32
+14 / 32
+15 / 32
+16 / 32
+17 / 32
+18 / 32
+19 / 32
+20 / 32
+21 / 32
+22 / 32
+23 / 32
+24 / 32
+25 / 32
+26 / 32
+27 / 32
+28 / 32
+29 / 32
+30 / 32
+31 / 32
+oven process...
+/home/nakachi/data/category_split/oven_ja/
+Load filenames from: /home/nakachi/data/category_split/oven_ja//train_filenames.pickle (2003)
+Load filenames from: /home/nakachi/data/category_split/oven_ja//val_filenames.pickle (989)
+Load from:  /home/nakachi/data/category_split/oven_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 61
+1 / 61
+2 / 61
+3 / 61
+4 / 61
+5 / 61
+6 / 61
+7 / 61
+8 / 61
+9 / 61
+10 / 61
+11 / 61
+12 / 61
+13 / 61
+14 / 61
+15 / 61
+16 / 61
+17 / 61
+18 / 61
+19 / 61
+20 / 61
+21 / 61
+22 / 61
+23 / 61
+24 / 61
+25 / 61
+26 / 61
+27 / 61
+28 / 61
+29 / 61
+30 / 61
+31 / 61
+32 / 61
+33 / 61
+34 / 61
+35 / 61
+36 / 61
+37 / 61
+38 / 61
+39 / 61
+40 / 61
+41 / 61
+42 / 61
+43 / 61
+44 / 61
+45 / 61
+46 / 61
+47 / 61
+48 / 61
+49 / 61
+50 / 61
+51 / 61
+52 / 61
+53 / 61
+54 / 61
+55 / 61
+56 / 61
+57 / 61
+58 / 61
+59 / 61
+60 / 61
+toaster process...
+/home/nakachi/data/category_split/toaster_ja/
+Load filenames from: /home/nakachi/data/category_split/toaster_ja//train_filenames.pickle (151)
+Load filenames from: /home/nakachi/data/category_split/toaster_ja//val_filenames.pickle (74)
+Load from:  /home/nakachi/data/category_split/toaster_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 4
+1 / 4
+2 / 4
+3 / 4
+sink process...
+/home/nakachi/data/category_split/sink_ja/
+Load filenames from: /home/nakachi/data/category_split/sink_ja//train_filenames.pickle (3291)
+Load filenames from: /home/nakachi/data/category_split/sink_ja//val_filenames.pickle (1574)
+Load from:  /home/nakachi/data/category_split/sink_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 98
+1 / 98
+2 / 98
+3 / 98
+4 / 98
+5 / 98
+6 / 98
+7 / 98
+8 / 98
+9 / 98
+10 / 98
+11 / 98
+12 / 98
+13 / 98
+14 / 98
+15 / 98
+16 / 98
+17 / 98
+18 / 98
+19 / 98
+20 / 98
+21 / 98
+22 / 98
+23 / 98
+24 / 98
+25 / 98
+26 / 98
+27 / 98
+28 / 98
+29 / 98
+30 / 98
+31 / 98
+32 / 98
+33 / 98
+34 / 98
+35 / 98
+36 / 98
+37 / 98
+38 / 98
+39 / 98
+40 / 98
+41 / 98
+42 / 98
+43 / 98
+44 / 98
+45 / 98
+46 / 98
+47 / 98
+48 / 98
+49 / 98
+50 / 98
+51 / 98
+52 / 98
+53 / 98
+54 / 98
+55 / 98
+56 / 98
+57 / 98
+58 / 98
+59 / 98
+60 / 98
+61 / 98
+62 / 98
+63 / 98
+64 / 98
+65 / 98
+66 / 98
+67 / 98
+68 / 98
+69 / 98
+70 / 98
+71 / 98
+72 / 98
+73 / 98
+74 / 98
+75 / 98
+76 / 98
+77 / 98
+78 / 98
+79 / 98
+80 / 98
+81 / 98
+82 / 98
+83 / 98
+84 / 98
+85 / 98
+86 / 98
+87 / 98
+88 / 98
+89 / 98
+90 / 98
+91 / 98
+92 / 98
+93 / 98
+94 / 98
+95 / 98
+96 / 98
+97 / 98
+refrigerator process...
+/home/nakachi/data/category_split/refrigerator_ja/
+Load filenames from: /home/nakachi/data/category_split/refrigerator_ja//train_filenames.pickle (1671)
+Load filenames from: /home/nakachi/data/category_split/refrigerator_ja//val_filenames.pickle (790)
+Load from:  /home/nakachi/data/category_split/refrigerator_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 49
+1 / 49
+2 / 49
+3 / 49
+4 / 49
+5 / 49
+6 / 49
+7 / 49
+8 / 49
+9 / 49
+10 / 49
+11 / 49
+12 / 49
+13 / 49
+14 / 49
+15 / 49
+16 / 49
+17 / 49
+18 / 49
+19 / 49
+20 / 49
+21 / 49
+22 / 49
+23 / 49
+24 / 49
+25 / 49
+26 / 49
+27 / 49
+28 / 49
+29 / 49
+30 / 49
+31 / 49
+32 / 49
+33 / 49
+34 / 49
+35 / 49
+36 / 49
+37 / 49
+38 / 49
+39 / 49
+40 / 49
+41 / 49
+42 / 49
+43 / 49
+44 / 49
+45 / 49
+46 / 49
+47 / 49
+48 / 49
+book process...
+/home/nakachi/data/category_split/book_ja/
+Load filenames from: /home/nakachi/data/category_split/book_ja//train_filenames.pickle (3734)
+Load filenames from: /home/nakachi/data/category_split/book_ja//val_filenames.pickle (1828)
+Load from:  /home/nakachi/data/category_split/book_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 114
+1 / 114
+2 / 114
+3 / 114
+4 / 114
+5 / 114
+6 / 114
+7 / 114
+8 / 114
+9 / 114
+10 / 114
+11 / 114
+12 / 114
+13 / 114
+14 / 114
+15 / 114
+16 / 114
+17 / 114
+18 / 114
+19 / 114
+20 / 114
+21 / 114
+22 / 114
+23 / 114
+24 / 114
+25 / 114
+26 / 114
+27 / 114
+28 / 114
+29 / 114
+30 / 114
+31 / 114
+32 / 114
+33 / 114
+34 / 114
+35 / 114
+36 / 114
+37 / 114
+38 / 114
+39 / 114
+40 / 114
+41 / 114
+ref polygon is invalid
+42 / 114
+43 / 114
+44 / 114
+45 / 114
+46 / 114
+47 / 114
+48 / 114
+49 / 114
+50 / 114
+51 / 114
+52 / 114
+53 / 114
+54 / 114
+55 / 114
+56 / 114
+57 / 114
+ref polygon is invalid
+58 / 114
+59 / 114
+60 / 114
+61 / 114
+62 / 114
+63 / 114
+64 / 114
+65 / 114
+66 / 114
+67 / 114
+68 / 114
+69 / 114
+70 / 114
+71 / 114
+72 / 114
+73 / 114
+74 / 114
+75 / 114
+76 / 114
+77 / 114
+78 / 114
+79 / 114
+80 / 114
+81 / 114
+82 / 114
+ref polygon is invalid
+83 / 114
+84 / 114
+85 / 114
+86 / 114
+87 / 114
+88 / 114
+89 / 114
+90 / 114
+91 / 114
+92 / 114
+93 / 114
+94 / 114
+95 / 114
+96 / 114
+ref polygon is invalid
+97 / 114
+98 / 114
+99 / 114
+100 / 114
+101 / 114
+102 / 114
+103 / 114
+104 / 114
+105 / 114
+106 / 114
+107 / 114
+108 / 114
+109 / 114
+110 / 114
+111 / 114
+112 / 114
+113 / 114
+clock process...
+/home/nakachi/data/category_split/clock_ja/
+Load filenames from: /home/nakachi/data/category_split/clock_ja//train_filenames.pickle (3159)
+Load filenames from: /home/nakachi/data/category_split/clock_ja//val_filenames.pickle (1704)
+Load from:  /home/nakachi/data/category_split/clock_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 106
+1 / 106
+2 / 106
+3 / 106
+4 / 106
+5 / 106
+6 / 106
+7 / 106
+8 / 106
+9 / 106
+10 / 106
+11 / 106
+12 / 106
+13 / 106
+14 / 106
+15 / 106
+16 / 106
+17 / 106
+18 / 106
+19 / 106
+20 / 106
+21 / 106
+22 / 106
+23 / 106
+24 / 106
+25 / 106
+26 / 106
+27 / 106
+28 / 106
+29 / 106
+30 / 106
+31 / 106
+32 / 106
+33 / 106
+34 / 106
+35 / 106
+36 / 106
+37 / 106
+38 / 106
+39 / 106
+40 / 106
+41 / 106
+42 / 106
+43 / 106
+44 / 106
+45 / 106
+46 / 106
+47 / 106
+48 / 106
+49 / 106
+50 / 106
+51 / 106
+ref polygon is invalid
+52 / 106
+53 / 106
+54 / 106
+55 / 106
+56 / 106
+57 / 106
+58 / 106
+59 / 106
+60 / 106
+61 / 106
+62 / 106
+63 / 106
+64 / 106
+65 / 106
+66 / 106
+67 / 106
+68 / 106
+69 / 106
+70 / 106
+71 / 106
+72 / 106
+73 / 106
+74 / 106
+75 / 106
+76 / 106
+77 / 106
+ref polygon is invalid
+78 / 106
+79 / 106
+ref polygon is invalid
+80 / 106
+81 / 106
+82 / 106
+83 / 106
+84 / 106
+85 / 106
+86 / 106
+87 / 106
+88 / 106
+89 / 106
+90 / 106
+91 / 106
+92 / 106
+93 / 106
+94 / 106
+95 / 106
+96 / 106
+97 / 106
+98 / 106
+99 / 106
+100 / 106
+101 / 106
+102 / 106
+103 / 106
+104 / 106
+105 / 106
+vase process...
+/home/nakachi/data/category_split/vase_ja/
+Load filenames from: /home/nakachi/data/category_split/vase_ja//train_filenames.pickle (2530)
+Load filenames from: /home/nakachi/data/category_split/vase_ja//val_filenames.pickle (1200)
+Load from:  /home/nakachi/data/category_split/vase_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 75
+1 / 75
+2 / 75
+3 / 75
+4 / 75
+5 / 75
+6 / 75
+7 / 75
+8 / 75
+9 / 75
+10 / 75
+11 / 75
+12 / 75
+13 / 75
+14 / 75
+15 / 75
+16 / 75
+17 / 75
+18 / 75
+19 / 75
+20 / 75
+21 / 75
+22 / 75
+23 / 75
+24 / 75
+ref polygon is invalid
+25 / 75
+26 / 75
+27 / 75
+28 / 75
+29 / 75
+30 / 75
+31 / 75
+32 / 75
+33 / 75
+34 / 75
+35 / 75
+36 / 75
+37 / 75
+38 / 75
+39 / 75
+40 / 75
+41 / 75
+ref polygon is invalid
+42 / 75
+43 / 75
+44 / 75
+45 / 75
+46 / 75
+47 / 75
+48 / 75
+49 / 75
+50 / 75
+51 / 75
+52 / 75
+53 / 75
+54 / 75
+55 / 75
+56 / 75
+57 / 75
+58 / 75
+59 / 75
+60 / 75
+61 / 75
+62 / 75
+63 / 75
+64 / 75
+65 / 75
+66 / 75
+67 / 75
+68 / 75
+69 / 75
+70 / 75
+71 / 75
+72 / 75
+73 / 75
+74 / 75
+scissors process...
+/home/nakachi/data/category_split/scissors_ja/
+Load filenames from: /home/nakachi/data/category_split/scissors_ja//train_filenames.pickle (673)
+Load filenames from: /home/nakachi/data/category_split/scissors_ja//val_filenames.pickle (302)
+Load from:  /home/nakachi/data/category_split/scissors_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 18
+1 / 18
+2 / 18
+3 / 18
+4 / 18
+5 / 18
+6 / 18
+7 / 18
+8 / 18
+9 / 18
+10 / 18
+11 / 18
+12 / 18
+13 / 18
+14 / 18
+15 / 18
+16 / 18
+17 / 18
+teddy bear process...
+/home/nakachi/data/category_split/teddy bear_ja/
+Load filenames from: /home/nakachi/data/category_split/teddy bear_ja//train_filenames.pickle (1510)
+Load filenames from: /home/nakachi/data/category_split/teddy bear_ja//val_filenames.pickle (724)
+Load from:  /home/nakachi/data/category_split/teddy bear_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 45
+1 / 45
+2 / 45
+3 / 45
+4 / 45
+5 / 45
+6 / 45
+7 / 45
+8 / 45
+9 / 45
+10 / 45
+11 / 45
+12 / 45
+13 / 45
+14 / 45
+15 / 45
+ref polygon is invalid
+16 / 45
+17 / 45
+18 / 45
+19 / 45
+20 / 45
+21 / 45
+22 / 45
+23 / 45
+ref polygon is invalid
+24 / 45
+25 / 45
+26 / 45
+27 / 45
+ref polygon is invalid
+28 / 45
+29 / 45
+30 / 45
+31 / 45
+32 / 45
+33 / 45
+34 / 45
+35 / 45
+36 / 45
+37 / 45
+38 / 45
+39 / 45
+40 / 45
+41 / 45
+42 / 45
+43 / 45
+44 / 45
+hair drier process...
+/home/nakachi/data/category_split/hair drier_ja/
+Load filenames from: /home/nakachi/data/category_split/hair drier_ja//train_filenames.pickle (128)
+Load filenames from: /home/nakachi/data/category_split/hair drier_ja//val_filenames.pickle (70)
+Load from:  /home/nakachi/data/category_split/hair drier_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 4
+1 / 4
+2 / 4
+3 / 4
+toothbrush process...
+/home/nakachi/data/category_split/toothbrush_ja/
+Load filenames from: /home/nakachi/data/category_split/toothbrush_ja//train_filenames.pickle (700)
+Load filenames from: /home/nakachi/data/category_split/toothbrush_ja//val_filenames.pickle (341)
+Load from:  /home/nakachi/data/category_split/toothbrush_ja/captions.pickle
+Load pretrained model from  https://download.pytorch.org/models/inception_v3_google-1a9a5a14.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth
+Load  /data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/image_encoder550.pth
+start_epoch 551
+0 / 21
+1 / 21
+2 / 21
+3 / 21
+4 / 21
+5 / 21
+ref polygon is invalid
+6 / 21
+7 / 21
+8 / 21
+9 / 21
+10 / 21
+11 / 21
+12 / 21
+13 / 21
+14 / 21
+15 / 21
+16 / 21
+17 / 21
+18 / 21
+19 / 21
+20 / 21
