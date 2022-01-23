@@ -13,7 +13,7 @@ TREE:
 
 TRAIN:
     FLAG: True
-    NET_E: '/home/nakachi/data/models/coco/text_encoder100.pth'  # '../DAMSMencoders/coco/text_encoder100.pth'
+    NET_E: '/home/nakachi/coco/text_encoder100.pth'  # '../DAMSMencoders/coco/text_encoder100.pth'
     BATCH_SIZE: 16
     MAX_EPOCH: 600
     SNAPSHOT_INTERVAL: 5

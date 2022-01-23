@@ -88,7 +88,7 @@ def build_models():
     labels = Variable(torch.LongTensor(range(batch_size)))
     start_epoch = 0
     if cfg.TRAIN.NET_E != '':
-        state_dict = torch.load(cfg.TRAIN.NET_E)
+        state_dict = torch.load(cfg.TRAIN.NET_E, map_location='cpu')
         text_encoder.load_state_dict(state_dict)
         print('Load ', cfg.TRAIN.NET_E)
         #
@@ -148,11 +148,14 @@ if __name__ == "__main__":
     # Get data loader ##################################################
     imsize = cfg.TREE.BASE_SIZE * (2 ** (cfg.TREE.BRANCH_NUM-1))
     batch_size = cfg.TRAIN.BATCH_SIZE
+    # image_transform = transforms.Compose([
+    #     transforms.Resize(int(imsize * 76 / 64)),
+    #     # transforms.RandomCrop(imsize),
+    #     transforms.CenterCrop(imsize),
+    #     transforms.RandomHorizontalFlip()])
     image_transform = transforms.Compose([
-        transforms.Resize(int(imsize * 76 / 64)),
-        # transforms.RandomCrop(imsize),
-        transforms.CenterCrop(imsize),
-        transforms.RandomHorizontalFlip()])
+        transforms.Resize((imsize, imsize))
+        ])
 
     dataset = TextDataset(cfg.DATA_DIR, 'train',
                           base_size=cfg.TREE.BASE_SIZE,
