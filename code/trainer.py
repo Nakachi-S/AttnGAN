@@ -23,6 +23,7 @@ import os
 import time
 import numpy as np
 import sys
+import json
 
 # ################# Text to image task############################ #
 class condGANTrainer(object):
@@ -321,6 +322,12 @@ class condGANTrainer(object):
                   % (epoch, self.max_epoch, self.num_batches,
                      errD_total.item(), errG_total.item(),
                      end_t - start_t))
+            # lossの保存
+            write_json = {'epoch': epoch, 'Loss_D': errD_total.item(), 'LossG': errG_total.item()}
+            write_path = f'{self.model_dir}/loss_epoch_{epoch}.json'
+            with open(write_path, 'w') as f:
+                json.dump(write_json, f)
+
 
             if epoch % cfg.TRAIN.SNAPSHOT_INTERVAL == 0:  # and epoch != 0:
                 self.save_model(netG, avg_param_G, netsD, epoch)
@@ -395,6 +402,8 @@ class condGANTrainer(object):
             # the path to save generated images
             s_tmp = model_dir[:model_dir.rfind('.pth')]
             save_dir = '%s/%s' % (s_tmp, split_dir)
+            # 以下は実験用
+            # save_dir = '/home/nakachi/data/gen_imgs/ja/sandwich'
             mkdir_p(save_dir)
 
             cnt = 0
@@ -405,7 +414,7 @@ class condGANTrainer(object):
                 for step, data in enumerate(self.data_loader, 0):
                     cnt += batch_size
                     if step % 100 == 0:
-                        print('step: ', step)
+                        print(f'step: {step} / {len(self.data_loader)}')
                     # if step > 50:
                     #     break
 
@@ -432,6 +441,15 @@ class condGANTrainer(object):
                         if not os.path.isdir(folder):
                             print('Make a new folder: ', folder)
                             mkdir_p(folder)
+                        # captionの表示
+                        # cap = captions[j].data.cpu().numpy()
+                        # sentence = []
+                        # for jj in range(len(cap)):
+                        #     if cap[jj] == 0:
+                        #         break
+                        #     word = self.ixtoword[cap[jj]].encode('utf-8', 'ignore').decode('utf-8')
+                        #     sentence.append(word)
+                        # print(sentence)
                         k = -1
                         # for k in range(len(fake_imgs)):
                         im = fake_imgs[k][j].data.cpu().numpy()
