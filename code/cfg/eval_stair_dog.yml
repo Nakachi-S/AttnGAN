@@ -1,0 +1,28 @@
+CONFIG_NAME: "eval-stai-dog"
+
+DATASET_NAME: "stair"
+DATA_DIR: "/home/nakachi/data/category_split/dog_ja"
+GPU_ID: 0
+WORKERS: 1
+
+B_VALIDATION: True
+TREE:
+  BRANCH_NUM: 3
+
+TRAIN:
+  FLAG: False
+  NET_G: "/data/Users/nakachi/stair/AttnGAN/output/stair_attn2-stair_2021_02_04_10_23_01/Model/netG_epoch_120.pth"
+  B_NET_D: False
+  BATCH_SIZE: 8
+  NET_E: "/home/nakachi/data/stair/AttnGAN/output/stair_DAMSM_2021_12_17_09_57_02/Model/text_encoder95.pth"
+
+GAN:
+  DF_DIM: 96
+  GF_DIM: 48
+  Z_DIM: 100
+  R_NUM: 3
+
+TEXT:
+  EMBEDDING_DIM: 256
+  CAPTIONS_PER_IMAGE: 5
+  WORDS_NUM: 12

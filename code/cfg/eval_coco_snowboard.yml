@@ -1,0 +1,28 @@
+CONFIG_NAME: "eval-coco-snowboard"
+
+DATASET_NAME: "coco_tv"
+DATA_DIR: "/home/nakachi/data/category_split/snowboard_en"
+GPU_ID: 0
+WORKERS: 1
+
+B_VALIDATION: True
+TREE:
+  BRANCH_NUM: 3
+
+TRAIN:
+  FLAG: False
+  NET_G: "/home/nakachi/data/models/coco_AttnGAN2.pth"
+  B_NET_D: False
+  BATCH_SIZE: 8
+  NET_E: "/home/nakachi/data/models/coco/text_encoder100.pth"
+
+GAN:
+  DF_DIM: 96
+  GF_DIM: 48
+  Z_DIM: 100
+  R_NUM: 3
+
+TEXT:
+  EMBEDDING_DIM: 256
+  CAPTIONS_PER_IMAGE: 5
+  WORDS_NUM: 20
