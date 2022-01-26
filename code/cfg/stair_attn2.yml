@@ -1,9 +1,9 @@
-CONFIG_NAME: 'attn2-stair'
+CONFIG_NAME: 'attn2'
 
 DATASET_NAME: 'stair'
 DATA_DIR: '/data/Users/nakachi/stair/'
-GPU_ID: 4
-WORKERS: 4
+GPU_ID: 2
+WORKERS: 2
 
 
 TREE:
@@ -12,15 +12,15 @@ TREE:
 
 TRAIN:
     FLAG: True
-    NET_G: '/data/Users/nakachi/stair/AttnGAN/output/stair_attn2-stair_2021_02_02_10_40_53/Model/netG_epoch_30.pth'  # '../models/coco_AttnGAN2.pth'
+    NET_G: ''  # '../models/coco_AttnGAN2.pth'
     B_NET_D: True
-    BATCH_SIZE: 14  # 32
+    BATCH_SIZE: 12  # 32
     MAX_EPOCH: 120
     SNAPSHOT_INTERVAL: 5
     DISCRIMINATOR_LR: 0.0002
     GENERATOR_LR: 0.0002
     #
-    NET_E: '/data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_01_28_12_07_37/Model/text_encoder300.pth'
+    NET_E: '/home/nakachi/data/stair/AttnGAN/output/stair_DAMSM_2021_12_17_09_57_02/Model/text_encoder95.pth'
     SMOOTH:
         GAMMA1: 4.0  # 1,2,5 good 4 best  10&100bad
         GAMMA2: 5.0
