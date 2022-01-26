@@ -201,23 +201,22 @@ def build_super_images(real_imgs, captions, ixtoword,
                     bbox_draw.rectangle([x_min_bbox, y_min_bbox, x_max_bbox, y_max_bbox], outline=(255, 0, 0), width=3)
                 elif MODE == 'polygon':
                     if j < len(cap)-1:
-                        if cap[j-1] in category_words_ix:
-                            # 正解ポリゴンの描画
-                            print(ixtoword[cap[j-1]].encode('utf-8', 'ignore').decode('utf-8'))
-                            ref_polygon_draw = ImageDraw.Draw(merged)
-                            for polygon in real_polygons_list[i]:
-                                ref_polygon_draw.line(polygon, fill=(255, 0, 0), width=4)
-                                ref_polygon_draw.polygon(polygon, outline=(255, 0, 0))
+                        # if cap[j-1] in category_words_ix:
+                        # 正解ポリゴンの描画
+                        # ref_polygon_draw = ImageDraw.Draw(merged)
+                        # for polygon in real_polygons_list[i]:
+                        #     ref_polygon_draw.line(polygon, fill=(255, 0, 0), width=4)
+                        #     ref_polygon_draw.polygon(polygon, outline=(255, 0, 0))
 
-                            # over_mean_bi_mapからオブジェクトの輪郭を検出する
-                            contours, _ = cv2.findContours(pil2cv(PIL_att), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-                            # 小さい輪郭は誤検出として削除する
-                            contours = list(filter(lambda x: cv2.contourArea(x) > 100, contours))
-                            attn_polygon_draw = ImageDraw.Draw(merged)
-                            for cnt in contours:
-                                flatten_cnt = cnt.flatten().tolist()
-                                attn_polygon_draw.line(flatten_cnt, fill=(255, 255, 0), width=4)
-                                attn_polygon_draw.polygon(flatten_cnt, outline=(255, 255,0))
+                        # over_mean_bi_mapからオブジェクトの輪郭を検出する
+                        contours, _ = cv2.findContours(pil2cv(PIL_att), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                        # 小さい輪郭は誤検出として削除する
+                        contours = list(filter(lambda x: cv2.contourArea(x) > 100, contours))
+                        attn_polygon_draw = ImageDraw.Draw(merged)
+                        for cnt in contours:
+                            flatten_cnt = cnt.flatten().tolist()
+                            attn_polygon_draw.line(flatten_cnt, fill=(255, 255, 0), width=4)
+                            attn_polygon_draw.polygon(flatten_cnt, outline=(255, 255,0))
 
                     else:
                         print('exceed cap len')
