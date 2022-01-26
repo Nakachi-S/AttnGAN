@@ -121,10 +121,13 @@ if __name__ == "__main__":
     # Get data loader
     imsize = cfg.TREE.BASE_SIZE * (2 ** (cfg.TREE.BRANCH_NUM - 1))
     # 前処理定義
+    # image_transform = transforms.Compose([
+    #     transforms.Resize(int(imsize * 76 / 64)),
+    #     transforms.RandomCrop(imsize),
+    #     transforms.RandomHorizontalFlip()])
     image_transform = transforms.Compose([
-        transforms.Resize(int(imsize * 76 / 64)),
-        transforms.RandomCrop(imsize),
-        transforms.RandomHorizontalFlip()])
+        transforms.Resize((imsize, imsize))
+        ])
     dataset = TextDataset(cfg.DATA_DIR, split_dir,
                           base_size=cfg.TREE.BASE_SIZE,
                           transform=image_transform)
