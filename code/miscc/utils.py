@@ -203,21 +203,57 @@ def build_super_images(real_imgs, captions, ixtoword,
                     if j < len(cap)-1:
                         if cap[j-1] in category_words_ix:
                             # 正解ポリゴンの描画
-                            print(ixtoword[cap[j-1]].encode('utf-8', 'ignore').decode('utf-8'))
-                            ref_polygon_draw = ImageDraw.Draw(merged)
-                            for polygon in real_polygons_list[i]:
-                                ref_polygon_draw.line(polygon, fill=(255, 0, 0), width=4)
-                                ref_polygon_draw.polygon(polygon, outline=(255, 0, 0))
-
+                            # print(ixtoword[cap[j-1]].encode('utf-8', 'ignore').decode('utf-8'))
                             # over_mean_bi_mapからオブジェクトの輪郭を検出する
                             contours, _ = cv2.findContours(pil2cv(PIL_att), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
                             # 小さい輪郭は誤検出として削除する
                             contours = list(filter(lambda x: cv2.contourArea(x) > 100, contours))
+                            # attention mapの描画
                             attn_polygon_draw = ImageDraw.Draw(merged)
                             for cnt in contours:
                                 flatten_cnt = cnt.flatten().tolist()
                                 attn_polygon_draw.line(flatten_cnt, fill=(255, 255, 0), width=4)
                                 attn_polygon_draw.polygon(flatten_cnt, outline=(255, 255,0))
+
+
+                            ref_polygon_draw = ImageDraw.Draw(merged)
+                            for real_polygon in real_polygons_list[i]:
+                                # 正解ポリゴンの描画
+                                ref_polygon_draw.line(real_polygon, fill=(255, 0, 0), width=4)
+                                ref_polygon_draw.polygon(real_polygon, outline=(255, 0, 0))
+                                # TEA-IoUの計算
+                                attn_map_ious = []
+                                ref_polygon = Polygon(np.array(real_polygon).reshape(-1, 2).tolist())
+                                if not ref_polygon.is_valid:
+                                    print('ref polygon is invalid')
+                                    continue
+                                for cnt in contours:
+                                    # attentionごとのloop
+                                    attn_polygon = Polygon(np.array(cnt).reshape(-1, 2).tolist())
+                                    if not attn_polygon.is_valid:
+                                        print('attn polygon is invalid')
+                                        continue
+
+                                    intersect = ref_polygon.intersection(attn_polygon).area
+                                    union = ref_polygon.union(attn_polygon).area
+                                    iou = intersect / union
+                                    attn_map_ious.append(iou)
+
+                                # maxのiouを入れる
+                                if attn_map_ious and True:
+                                    max_tea_iou = (max(attn_map_ious))
+                                    # max tea iouの描画。テキストで
+                                    x_list = real_polygon[0::2]
+                                    y_list = real_polygon[1::2]
+                                    x_center = min(x_list) + ((max(x_list) - min(x_list)) / 2)
+                                    y_center = min(y_list) + ((max(y_list) - min(y_list)) / 2)
+                                    txpos = (x_center, y_center)
+                                    font = ImageFont.truetype("DejaVuSans.ttf", size=22)
+                                    text = f'{max_tea_iou:.03f}'
+                                    txw, _ = ref_polygon_draw.textsize(text, font=font)
+                                    ref_polygon_draw.rectangle([txpos, (x_center+txw, y_center+22)], fill=(255, 0, 0))
+                                    ref_polygon_draw.text(txpos, text, font=font, fill=(255, 255, 255))
+
 
                     else:
                         print('exceed cap len')

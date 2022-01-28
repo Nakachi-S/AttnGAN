@@ -100,37 +100,36 @@ def evaluate(dataloader, cnn_model, rnn_model, batch_size, image_dir, ixtoword, 
 
         if category_words_ix:
             real_polygons_list = get_real_polygons(keys, category_real_polygons)
-            mean_iou, std_iou, num_calc_iou_batch = calc_tea_iou(imgs[-1].cpu(), captions, ixtoword, attn, att_sze, category_words_ix, real_polygons_list)
-
-            # categoryがある場合は正解ポリゴンの描画
-            # img_set, sentences = \
-            #     build_super_images(imgs[-1].cpu(), captions,
-            #                         ixtoword, attn, att_sze,
-            #                         category_words_ix=category_words_ix, real_polygons_list=real_polygons_list)
-
+            # mean_iou, std_iou, num_calc_iou_batch = calc_tea_iou(imgs[-1].cpu(), captions, ixtoword, attn, att_sze, category_words_ix, real_polygons_list)
             # print(f'one batch mean tea-iou: {mean_iou}')
             # print(f'one batch num_calc_iou: {num_calc_iou_batch}')
-            mean_iou_list.append(mean_iou)
-            std_iou_list.append(std_iou)
-            num_sentence += len(keys)
-            num_calc_iou += num_calc_iou_batch
+            # mean_iou_list.append(mean_iou)
+            # std_iou_list.append(std_iou)
+            # num_sentence += len(keys)
+            # num_calc_iou += num_calc_iou_batch
+
+            # categoryがある場合は正解ポリゴンの描画
+            img_set, sentences = \
+                build_super_images(imgs[-1].cpu(), captions,
+                                    ixtoword, attn, att_sze,
+                                    category_words_ix=category_words_ix, real_polygons_list=real_polygons_list)
+
 
         else:
             img_set, sentences = \
                 build_super_images(imgs[-1].cpu(), captions,
                                     ixtoword, attn, att_sze)
 
-        # if img_set is not None:
-        #     im = Image.fromarray(img_set)
-        #     fullpath = '%s/attention_maps%d.png' % (image_dir, step)
-        #     im.save(fullpath)
+        if img_set is not None:
+            im = Image.fromarray(img_set)
+            fullpath = '%s/attention_maps%d.png' % (image_dir, step)
+            im.save(fullpath)
 
-    mean_tea_iou = sum(mean_iou_list) / len(mean_iou_list)
-    std_tea_iou = sum(std_iou_list) / len(std_iou_list)
-    result_dic = {category: {'tea_iou': mean_tea_iou, 'std_tea_iou': std_tea_iou, 'num_calu_iou': num_calc_iou, 'num_sentence': num_sentence}}
-
-    return result_dic
-
+    # mean_tea_iou = sum(mean_iou_list) / len(mean_iou_list)
+    # std_tea_iou = sum(std_iou_list) / len(std_iou_list)
+    # result_dic = {category: {'tea_iou': mean_tea_iou, 'std_tea_iou': std_tea_iou, 'num_calu_iou': num_calc_iou, 'num_sentence': num_sentence}}
+    # return result_dic
+    return
 
 def build_models():
     # build model ############################################################
@@ -191,8 +190,7 @@ if __name__ == "__main__":
     output_dir = '/data/Users/nakachi/stair/AttnGAN/output/%s_%s_%s' % \
         (cfg.DATASET_NAME, cfg.CONFIG_NAME, timestamp)
     image_dir = os.path.join(output_dir, 'Image')
-    # mkdir_p(image_dir)
-
+    mkdir_p(image_dir)
     torch.cuda.set_device(cfg.GPU_ID)
     cudnn.benchmark = True
 
@@ -214,38 +212,60 @@ if __name__ == "__main__":
         dataset, batch_size=batch_size, drop_last=True,
         shuffle=True, num_workers=int(cfg.WORKERS))
 
-    # categoryごとのtea_iouが欲しいのでカテゴリー一覧
-    category_words_dic_path = '/home/nakachi/data/category_split/category_words_ja_dic.json'
-    with open(category_words_dic_path) as f:
-        category_words_dic = json.load(f)
+    # 単一のカテゴリのみ
+    category = 'tv'
+    dataset_val = TextDataset(cfg.DATA_DIR, 'val', # stair用。本来はtest
+                              base_size=cfg.TREE.BASE_SIZE,
+                              transform=image_transform, category=category)
+    
+    dataloader_val = torch.utils.data.DataLoader(
+        dataset_val, batch_size=batch_size, drop_last=True,
+        num_workers=int(cfg.WORKERS))
 
-    result_dic = {}
-    reslut_dic_save_path = '/home/nakachi/data/category_tea_iou_ja_20220112.pk'
-    LANG = '_ja'
-    for category in category_words_dic.keys():
-        print(f'{category} process...')
-        data_dir = f'/home/nakachi/data/category_split/{category}{LANG}/'
-        print(data_dir)
+    text_encoder, image_encoder, labels, start_epoch = build_models()
 
-        # # validation data #
-        dataset_val = TextDataset(data_dir, 'val', # stair用。本来はtest
-                                base_size=cfg.TREE.BASE_SIZE,
-                                transform=image_transform, category=category)
+    try:
+        evaluate(dataloader_val, image_encoder, text_encoder, batch_size, image_dir, dataset_val.ixtoword, dataset_val.category_words_ix, dataset_val.category_real_polygons, category)
 
-        dataloader_val = torch.utils.data.DataLoader(
-            dataset_val, batch_size=batch_size, drop_last=True,
-            num_workers=int(cfg.WORKERS))
-
-        text_encoder, image_encoder, labels, start_epoch = build_models()
+    except KeyboardInterrupt:
+        print('-' * 89)
+        print('Exiting from training early')
 
 
-        try:
-            category_result_dic = evaluate(dataloader_val, image_encoder, text_encoder, batch_size, image_dir, dataset_val.ixtoword, dataset_val.category_words_ix, dataset_val.category_real_polygons, category)
+    # 以下、コメントはずす
+    # # categoryごとのtea_iouが欲しいのでカテゴリー一覧
+    # category_words_dic_path = '/home/nakachi/data/category_split/category_words_ja_dic.json'
+    # with open(category_words_dic_path) as f:
+    #     category_words_dic = json.load(f)
 
-        except KeyboardInterrupt:
-            print('-' * 89)
-            print('Exiting from training early')
+    # result_dic = {}
+    # reslut_dic_save_path = '/home/nakachi/data/category_tea_iou_ja_20220112.pk'
+    # LANG = '_ja'
+    # for category in category_words_dic.keys():
+    #     print(f'{category} process...')
+    #     data_dir = f'/home/nakachi/data/category_split/{category}{LANG}/'
+    #     print(data_dir)
 
-        result_dic.update(category_result_dic)
-        with open(reslut_dic_save_path, mode="wb") as f:
-            pickle.dump(result_dic, f)
+    #     # # validation data #
+    #     dataset_val = TextDataset(data_dir, 'val', # stair用。本来はtest
+    #                             base_size=cfg.TREE.BASE_SIZE,
+    #                             transform=image_transform, category=category)
+
+    #     dataloader_val = torch.utils.data.DataLoader(
+    #         dataset_val, batch_size=batch_size, drop_last=True,
+    #         num_workers=int(cfg.WORKERS))
+
+    #     text_encoder, image_encoder, labels, start_epoch = build_models()
+
+
+    #     try:
+    #         # category_result_dic = evaluate(dataloader_val, image_encoder, text_encoder, batch_size, image_dir, dataset_val.ixtoword, dataset_val.category_words_ix, dataset_val.category_real_polygons, category)
+    #         # result_dic.update(category_result_dic)
+    #         # with open(reslut_dic_save_path, mode="wb") as f:
+    #         #     pickle.dump(result_dic, f)
+
+    #         evaluate(dataloader_val, image_encoder, text_encoder, batch_size, image_dir, dataset_val.ixtoword, dataset_val.category_words_ix, dataset_val.category_real_polygons, category)
+
+    #     except KeyboardInterrupt:
+    #         print('-' * 89)
+    #         print('Exiting from training early')

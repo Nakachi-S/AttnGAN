@@ -13,7 +13,7 @@ TREE:
 
 TRAIN:
     FLAG: True
-    NET_E: '/data/Users/nakachi/stair/AttnGAN/output/stair_DAMSM_2021_06_24_09_32_00/Model/text_encoder550.pth'  # '../DAMSMencoders/coco/text_encoder100.pth'
+    NET_E: '/home/nakachi/data/stair/AttnGAN/output/stair_DAMSM_2021_12_17_09_57_02/Model/text_encoder95.pth'  # '../DAMSMencoders/coco/text_encoder100.pth'
     BATCH_SIZE: 16
     MAX_EPOCH: 600
     SNAPSHOT_INTERVAL: 5
