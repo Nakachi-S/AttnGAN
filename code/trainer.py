@@ -403,7 +403,7 @@ class condGANTrainer(object):
             s_tmp = model_dir[:model_dir.rfind('.pth')]
             save_dir = '%s/%s' % (s_tmp, split_dir)
             # 以下は実験用
-            # save_dir = '/home/nakachi/data/gen_imgs/ja/sandwich'
+            # save_dir = '/home/nakachi/data/gen_imgs/en/sandwich'
             mkdir_p(save_dir)
 
             cnt = 0
