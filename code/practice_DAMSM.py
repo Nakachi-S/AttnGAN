@@ -54,7 +54,7 @@ def parse_args():
 
 
 def evaluate(dataloader, cnn_model, rnn_model, batch_size, image_dir, ixtoword, category_words_ix, category_real_polygons, category):
-    MAX_GEN = 2000
+    MAX_GEN = 20
     cnn_model.eval()
     rnn_model.eval()
 
@@ -213,7 +213,7 @@ if __name__ == "__main__":
         shuffle=True, num_workers=int(cfg.WORKERS))
 
     # 単一のカテゴリのみ
-    category = 'tv'
+    category = 'train'
     dataset_val = TextDataset(cfg.DATA_DIR, 'val', # stair用。本来はtest
                               base_size=cfg.TREE.BASE_SIZE,
                               transform=image_transform, category=category)

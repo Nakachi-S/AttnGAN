@@ -240,7 +240,7 @@ def build_super_images(real_imgs, captions, ixtoword,
                                     attn_map_ious.append(iou)
 
                                 # maxのiouを入れる
-                                if attn_map_ious and True:
+                                if attn_map_ious and False:
                                     max_tea_iou = (max(attn_map_ious))
                                     # max tea iouの描画。テキストで
                                     x_list = real_polygon[0::2]

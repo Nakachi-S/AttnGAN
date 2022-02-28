@@ -1,7 +1,7 @@
 CONFIG_NAME: 'DAMSM'
 
-DATASET_NAME: 'coco_tv'
-DATA_DIR: '/home/nakachi/data/category_split/tv_en/'
+DATASET_NAME: 'coco_train'
+DATA_DIR: '/home/nakachi/data/category_split/train_en/'
 GPU_ID: 1
 WORKERS: 1
 
@@ -14,7 +14,7 @@ TREE:
 TRAIN:
     FLAG: True
     NET_E: '/home/nakachi/data/models/coco/text_encoder100.pth'  # '../DAMSMencoders/coco/text_encoder100.pth'
-    BATCH_SIZE: 16
+    BATCH_SIZE: 8
     MAX_EPOCH: 600
     SNAPSHOT_INTERVAL: 5
     ENCODER_LR: 0.002  # 0.0002best; 0.002good
